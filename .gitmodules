@@ -1,4 +1,4 @@
 [submodule "ArkSavegameToolkit"]
 	path = ArkSavegameToolkit
-url=https://e.coding.net/juzhijian/ARK/ArkSavegameToolkit.git
+url=https://github.com/juzhijian/ArkSavegameToolkit.git
 	branch = master
