@@ -387,9 +387,6 @@
   <data name="femalesToolStripMenuItem" xml:space="preserve">
     <value>雌性</value>
   </data>
-  <data name="Female_gen" xml:space="preserve">
-    <value>母</value>
-  </data>
   <data name="fileToolStripMenuItem" xml:space="preserve">
     <value>文件</value>
   </data>
@@ -569,9 +566,6 @@
   </data>
   <data name="malesToolStripMenuItem" xml:space="preserve">
     <value>雄性</value>
-  </data>
-  <data name="Male_gen" xml:space="preserve">
-    <value>公</value>
   </data>
   <data name="Maturation" xml:space="preserve">
     <value>成长度</value>
@@ -1041,5 +1035,301 @@
   </data>
   <data name="generation" xml:space="preserve">
     <value>代</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="apply" xml:space="preserve">
+    <value>apply</value>
+  </data>
+  <data name="BestPossibleSpeciesLibrary" xml:space="preserve">
+    <value>Best possible {0} for this library</value>
+  </data>
+  <data name="BestPossibleSpeciesLibraryFiltered" xml:space="preserve">
+    <value>Best possible {0} for this filter</value>
+  </data>
+  <data name="BtApplyOTSPreset" xml:space="preserve">
+    <value>Apply OTS Preset</value>
+  </data>
+  <data name="BtApplyOTSPresetTT" xml:space="preserve">
+    <value>Set the values for owner, tribe and server from the saved preset</value>
+  </data>
+  <data name="BtBeepFailure" xml:space="preserve">
+    <value>import failed</value>
+  </data>
+  <data name="BtBeepFailureTT" xml:space="preserve">
+    <value>This sound is played when an automatic import failed, manual selection of levels may be needed.</value>
+  </data>
+  <data name="BtBeepNewTop" xml:space="preserve">
+    <value>new top stat</value>
+  </data>
+  <data name="BtBeepNewTopTT" xml:space="preserve">
+    <value>This sound is played when an automatic imported creature has a higher level in a stat than all other creatures of that species in the library</value>
+  </data>
+  <data name="BtBeepSuccess" xml:space="preserve">
+    <value>import success</value>
+  </data>
+  <data name="BtBeepSuccessTT" xml:space="preserve">
+    <value>This sound is played when an automatic import succeeded</value>
+  </data>
+  <data name="BtBeepTop" xml:space="preserve">
+    <value>top stat</value>
+  </data>
+  <data name="BtBeepTopTT" xml:space="preserve">
+    <value>This sound is played when a level of the imported creature is a top stat, i.e. equal to the current highest level in the library</value>
+  </data>
+  <data name="BtSaveOTSPreset" xml:space="preserve">
+    <value>Save OTS</value>
+  </data>
+  <data name="BtSaveOTSPresetTT" xml:space="preserve">
+    <value>Save Owner, Tribe and Server as preset.
+The preset can be applied by the Apply Preset button</value>
+  </data>
+  <data name="btUpdateLibraryCreature" xml:space="preserve">
+    <value>Update creature in Library</value>
+  </data>
+  <data name="Cancel quitting" xml:space="preserve">
+    <value>Cancel quitting</value>
+  </data>
+  <data name="clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="clearColors" xml:space="preserve">
+    <value>clear colors</value>
+  </data>
+  <data name="clearColorsFilters" xml:space="preserve">
+    <value>Clear Color Filters</value>
+  </data>
+  <data name="ClickDisplayFile" xml:space="preserve">
+    <value>Click to show file in explorer</value>
+  </data>
+  <data name="Collection changed discard and load?" xml:space="preserve">
+    <value>Your Creature Collection has been modified since it was last saved, are you sure you want to discard your changes and load the file without saving first?</value>
+  </data>
+  <data name="Collection changed discard and new?" xml:space="preserve">
+    <value>Your Creature Collection has been modified since it was last saved, are you sure you want to discard your changes and create a new Library without saving?</value>
+  </data>
+  <data name="Collection changed discard and quit?" xml:space="preserve">
+    <value>Your Creature Collection has been modified since it was last saved, are you sure you want to discard your changes and quit without saving?</value>
+  </data>
+  <data name="copyInfoGraphicToClipboard" xml:space="preserve">
+    <value>Copy info graphic to clipboard</value>
+  </data>
+  <data name="creatureOfFile" xml:space="preserve">
+    <value>Creature of the export file</value>
+  </data>
+  <data name="Descendants" xml:space="preserve">
+    <value>Descendants</value>
+  </data>
+  <data name="Discard changes and load file" xml:space="preserve">
+    <value>Discard changes and load new library</value>
+  </data>
+  <data name="Discard changes and new" xml:space="preserve">
+    <value>Discard changes and create new library</value>
+  </data>
+  <data name="Discard changes and quit" xml:space="preserve">
+    <value>Discard changes and quit</value>
+  </data>
+  <data name="Discard changes?" xml:space="preserve">
+    <value>Discard changes?</value>
+  </data>
+  <data name="downloadingValuesSuccess" xml:space="preserve">
+    <value>Downloading and updating of the new species-stats was successful.</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="filterAllNeededInfo" xml:space="preserve">
+    <value>Only creatures with all of these flags will be displayed</value>
+  </data>
+  <data name="filterByName" xml:space="preserve">
+    <value>Filter by name</value>
+  </data>
+  <data name="filterExcludeInfo" xml:space="preserve">
+    <value>Creatures with this flag will not be shown</value>
+  </data>
+  <data name="filterOneNeededInfo" xml:space="preserve">
+    <value>Only creatures with one of these flags will be displayed</value>
+  </data>
+  <data name="Fortitude" xml:space="preserve">
+    <value>Fortitude</value>
+  </data>
+  <data name="Fortitude_Abb" xml:space="preserve">
+    <value>Fr</value>
+  </data>
+  <data name="generations" xml:space="preserve">
+    <value>generations</value>
+  </data>
+  <data name="groupLibraryBySpecies" xml:space="preserve">
+    <value>Group library by species</value>
+  </data>
+  <data name="HarpoonLauncher" xml:space="preserve">
+    <value>Harpoon Launcher</value>
+  </data>
+  <data name="holdCtrlForRandomColors" xml:space="preserve">
+    <value>Hold Ctrl for random natural colors
+Hold Ctrl + Shift for random colors</value>
+  </data>
+  <data name="ImportingSavegame" xml:space="preserve">
+    <value>Importing savegame</value>
+  </data>
+  <data name="issueCauseArkStatIssue" xml:space="preserve">
+    <value>This species is known to show wrong stat values ingame, this can prevent a successful extraction.</value>
+  </data>
+  <data name="issueCauseCreatureLevel" xml:space="preserve">
+    <value>Check if the total level of the creature is entered correctly.
+If the creature is bred, also check if the BabyImprintingStatScaleMultiplier is set correctly.</value>
+  </data>
+  <data name="issueCauseImpossibleTe" xml:space="preserve">
+    <value>The level results in an impossible taming effectiveness. Did you enter the levels arbitrarily? It might work if you set the creature to bred.</value>
+  </data>
+  <data name="issueCauseImprintingLocked" xml:space="preserve">
+    <value>You locked the imprinting-value by checking "Exactly, don't adjust" and the tool won't adjust it, this may cause the extraction to fail.</value>
+  </data>
+  <data name="issueCauseImprintingNotPossible" xml:space="preserve">
+    <value>The imprinting-percentage given is not possible with the current multipliers and may cause wrong values during the extraction-process.
+Make sure the BabyCuddleIntervallMultiplier and the BabyMatureSpeedMultiplier are set correctly.
+They may have to be set to the value when the creature hatched/was born, even if they were changed.</value>
+  </data>
+  <data name="issueCauseImprintingNotUpdated" xml:space="preserve">
+    <value>Sometimes the game doesn't update the stat-value after an imprinting. Try the extraction after the creature was cryoed again.</value>
+  </data>
+  <data name="issueCauseLockedDomLevel" xml:space="preserve">
+    <value>Uncheck all Lock-to-Zero-buttons in the stats (all lock-symbols should be green and opened).</value>
+  </data>
+  <data name="issueCauseMaxWildLevel" xml:space="preserve">
+    <value>The maximal wild level is set too low, go to the settings and adjust it.</value>
+  </data>
+  <data name="issueCauseModValues" xml:space="preserve">
+    <value>If the creature is from a mod, you may need to enable the according mod values in Settings - Mod value manager.</value>
+  </data>
+  <data name="issueCauseOutdatedIngameValues" xml:space="preserve">
+    <value>The stats of the creature were changed recently and the game displays the old values. Level up a stat, that should trigger a recalculation of the values.</value>
+  </data>
+  <data name="issueCauseSingleplayer" xml:space="preserve">
+    <value>If you have enabled the Singleplayer-Settings in the game, make sure the according checkbox is enabled in the settings in this application as well.</value>
+  </data>
+  <data name="issueCauseStatMultipliers" xml:space="preserve">
+    <value>The stat multipliers in the Settings are not set to the multipliers of the server. Ask your admin for the correct multipliers and adjust them in the Settings.</value>
+  </data>
+  <data name="issueCauseTamingEffectivenessRange" xml:space="preserve">
+    <value>Taming-Effectiveness-Range too narrow, increase the upper and / or decrease the lower bound.</value>
+  </data>
+  <data name="issueCauseTypo" xml:space="preserve">
+    <value>Double check if all stat-values are entered correctly.</value>
+  </data>
+  <data name="issueCauseWildLevelSteps" xml:space="preserve">
+    <value>Adjust or disable the "Consider Wild-level - steps" in the settings.</value>
+  </data>
+  <data name="issueCauseWildTamedBred" xml:space="preserve">
+    <value>Make sure the correct state (wild, tamed, bred) for the creature is chosen.</value>
+  </data>
+  <data name="LbAlternativeColor" xml:space="preserve">
+    <value>Hold Ctrl to select an alternative color id (red border). Hold Ctrl and click on No Color to unset it.</value>
+  </data>
+  <data name="lbServerTT" xml:space="preserve">
+    <value>Click to toggle freezing this field. If the field is frozen its background is grey and importing a creature won't update this field.</value>
+  </data>
+  <data name="libraryFilter" xml:space="preserve">
+    <value>Library Filter</value>
+  </data>
+  <data name="libraryFilterToolStripMenuItem" xml:space="preserve">
+    <value>Filter library…</value>
+  </data>
+  <data name="max wild level" xml:space="preserve">
+    <value>max wild level</value>
+  </data>
+  <data name="maxLevelForLevelUp" xml:space="preserve">
+    <value>max level that allows domestic levelups</value>
+  </data>
+  <data name="maxLevelSaved" xml:space="preserve">
+    <value>max wild level that will be saved</value>
+  </data>
+  <data name="na" xml:space="preserve">
+    <value>n/a</value>
+  </data>
+  <data name="newTopLevel" xml:space="preserve">
+    <value>new top level</value>
+  </data>
+  <data name="noCreatureSelectedInLibrary" xml:space="preserve">
+    <value>There are no creatures in the library selected to copy to the clipboard.</value>
+  </data>
+  <data name="noValidData" xml:space="preserve">
+    <value>No valid data</value>
+  </data>
+  <data name="noValidExtractedCreatureToExport" xml:space="preserve">
+    <value>There is no valid extracted creature to export.</value>
+  </data>
+  <data name="Nursing Effectiveness" xml:space="preserve">
+    <value>Nursing Effectiveness</value>
+  </data>
+  <data name="Nursing Effectiveness_Abb" xml:space="preserve">
+    <value>NE</value>
+  </data>
+  <data name="onlyCreaturesWithThisColor" xml:space="preserve">
+    <value>Only creatures that have this color</value>
+  </data>
+  <data name="ownerFilterFromLibrary" xml:space="preserve">
+    <value>Owner filter from library</value>
+  </data>
+  <data name="owners" xml:space="preserve">
+    <value>owners</value>
+  </data>
+  <data name="possibleLevelRange" xml:space="preserve">
+    <value>Possible Level-Range: {0}–{1}</value>
+  </data>
+  <data name="preTameLevel" xml:space="preserve">
+    <value>Pre tame level</value>
+  </data>
+  <data name="serverFilterFromLibrary" xml:space="preserve">
+    <value>Server filter from library</value>
+  </data>
+  <data name="tags" xml:space="preserve">
+    <value>tags</value>
+  </data>
+  <data name="ToolStripLabelFilter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ToolStripLabelFilterTT" xml:space="preserve">
+    <value>Filters the library. Multiple search words are separated by commas. Considered are the creature's
+Name
+Owner
+Tribe
+Note
+Ark id in game
+Server
+Tags
+Filter for a stats with {statAbb} [==|&lt;|&gt;] {value}, e.g. hp &gt; 20, st == 35
+Filter for colors with c{region}: {colorValue} {colorValue2}, e.g. c0: 20, c5: 3 4 5 6, c1: 13 14</value>
+  </data>
+  <data name="topLevel" xml:space="preserve">
+    <value>top level</value>
+  </data>
+  <data name="tribeFilterFromLibrary" xml:space="preserve">
+    <value>Tribe filter from library</value>
+  </data>
+  <data name="tribes" xml:space="preserve">
+    <value>tribes</value>
+  </data>
+  <data name="ultraMaxLevel" xml:space="preserve">
+    <value>Warning: The level is higher than the possible max value and will not be saved.</value>
+  </data>
+  <data name="unknownSpecies" xml:space="preserve">
+    <value>unknown species</value>
+  </data>
+  <data name="updateSuccessTitle" xml:space="preserve">
+    <value>Update successful</value>
+  </data>
+  <data name="useFilterInTopStatCalculation" xml:space="preserve">
+    <value>Use filter in top stat calculation</value>
+  </data>
+  <data name="valuesFileLoadingError" xml:space="preserve">
+    <value>The species values-file couldn't be loaded, this application does not work without. Try redownloading the tool.</value>
+  </data>
+  <data name="VariantSelector" xml:space="preserve">
+    <value>Variant Selector</value>
+  </data>
+  <data name="VariantSelectorInfo" xml:space="preserve">
+    <value>Species that contain one variant that is unchecked will be hidden.</value>
   </data>
 </root>
