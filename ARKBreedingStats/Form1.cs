@@ -751,9 +751,9 @@ namespace ARKBreedingStats
             }
             else
             {
-                btReadValuesFromArk.Text = "Import Exported Data";
+                btReadValuesFromArk.Text = "导入导出数据";
                 _tt.SetToolTip(btReadValuesFromArk,
-                    "Displays all exported creatures in the default-folder (needs to be set in the settings).");
+                    "在默认文件夹中显示所有导出的生物（需要在设置中设置）.");
             }
 
             ArkOcr.Ocr.waitBeforeScreenCapture = Properties.Settings.Default.waitBeforeScreenCapture;
@@ -3603,6 +3603,11 @@ namespace ARKBreedingStats
         {
             // copy currently loaded color definitions to the clipboard
             Clipboard.SetText(string.Join("\n", Values.V.Colors.ColorsList.Select(c => $"{c.Id,3}: {c}")));
+        }
+
+        private void tbSpeciesGlobal_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

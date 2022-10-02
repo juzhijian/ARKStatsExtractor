@@ -142,7 +142,7 @@
     <value>最优可能</value>
   </data>
   <data name="Body" xml:space="preserve">
-    <value>躯干</value>
+    <value>身体</value>
   </data>
   <data name="BonusLevel" xml:space="preserve">
     <value>额外等级</value>
@@ -166,13 +166,13 @@
     <value>繁殖</value>
   </data>
   <data name="BreedingNotPossible" xml:space="preserve">
-    <value>不可育种</value>
+    <value>不可繁殖</value>
   </data>
   <data name="BreedingPlan" xml:space="preserve">
-    <value>育种计划</value>
+    <value>繁殖计划</value>
   </data>
   <data name="BreedingPlanHelpToolStripMenuItem" xml:space="preserve">
-    <value>育种计划…</value>
+    <value>繁殖计划…</value>
   </data>
   <data name="breedingValue" xml:space="preserve">
     <value>繁殖数值</value>
@@ -277,7 +277,7 @@
     <value>光宠蓄电量</value>
   </data>
   <data name="Charge Emission Range" xml:space="preserve">
-    <value>Ch 光宠照明范围</value>
+    <value>光宠照明范围</value>
   </data>
   <data name="Charge Emission Range_Abb" xml:space="preserve">
     <value>光宠照明范围</value>
@@ -331,7 +331,7 @@
     <value>伤害</value>
   </data>
   <data name="Damage_Abb" xml:space="preserve">
-    <value>伤害</value>
+    <value>伤</value>
   </data>
   <data name="deadCreaturesToolStripMenuItem" xml:space="preserve">
     <value>已死亡生物</value>
@@ -352,7 +352,7 @@
     <value>生物驯服后手动赋予属性值</value>
   </data>
   <data name="domLvl" xml:space="preserve">
-    <value>后期加点-Lvl</value>
+    <value>驯服服等級</value>
   </data>
   <data name="editToolStripMenuItem" xml:space="preserve">
     <value>编辑</value>
@@ -403,7 +403,7 @@
     <value>食物减少 {0}.</value>
   </data>
   <data name="Food_Abb" xml:space="preserve">
-    <value>食物</value>
+    <value>食</value>
   </data>
   <data name="gbBPBreedingMode" xml:space="preserve">
     <value>交配模式</value>
@@ -442,7 +442,7 @@
     <value>生命</value>
   </data>
   <data name="Health_Abb" xml:space="preserve">
-    <value>生命</value>
+    <value>HP</value>
   </data>
   <data name="helpToolStripMenuItem" xml:space="preserve">
     <value>?</value>
@@ -463,10 +463,9 @@
     <value>留痕加成</value>
   </data>
   <data name="issueMaxWildLevelTooLow" xml:space="preserve">
-    <value>此次提取理论上成立, 但是对于完成一个有效提取, 最大野生等级似乎被设置太低. 请检查是否在设定中输入了正确的值.
-当前值为 {0}, 该生物似乎拥有高于当前值的野生等级.
-
-由于其他原因造成的提取失败,请在关闭此提示框后参阅右侧列表.</value>
+    <value>汇出数据是正确的，但最大野生等级设定太低而无法进行有效的汇出，请检查设定中是否设定正确.
+现在设定的值为 {0} ，但此生物的野生等级似乎高于此设定.
+有关汇出失败的其他原因，请在关闭此讯息框后查看右侧的列表.</value>
   </data>
   <data name="lbBPBreedingScore" xml:space="preserve">
     <value>育种分数</value>
@@ -547,13 +546,13 @@
     <value>等级</value>
   </data>
   <data name="LevelWild_Abb" xml:space="preserve">
-    <value>等级</value>
+    <value>野Lv</value>
   </data>
   <data name="Level_Abb" xml:space="preserve">
-    <value>Lvl</value>
+    <value>Lv</value>
   </data>
   <data name="library" xml:space="preserve">
-    <value>库</value>
+    <value>资料库</value>
   </data>
   <data name="loadToolStripMenuItem" xml:space="preserve">
     <value>&amp;读取...</value>
@@ -651,10 +650,10 @@
     <value>设置…</value>
   </data>
   <data name="OrOneBioToxinEvery" xml:space="preserve">
-    <value>水母毒素每</value>
+    <value>或 每个水母毒素</value>
   </data>
   <data name="OrOneNarcoticEvery" xml:space="preserve">
-    <value>麻醉剂每</value>
+    <value>或 每个麻醉剂</value>
   </data>
   <data name="Owner" xml:space="preserve">
     <value>所有者</value>
@@ -663,7 +662,7 @@
     <value>氧气</value>
   </data>
   <data name="Oxygen_Abb" xml:space="preserve">
-    <value>氧气</value>
+    <value>氧</value>
   </data>
   <data name="pasteCreatureToolStripMenuItem" xml:space="preserve">
     <value>粘贴生物</value>
@@ -692,18 +691,20 @@
 并且考虑配出最优属性后代的重要性.</value>
   </data>
   <data name="rbBPTopStats" xml:space="preserve">
-    <value>最好属性 Lc</value>
+    <value>最好属性 - 欧洲人</value>
   </data>
   <data name="rbBPTopStatsCn" xml:space="preserve">
-    <value>最好属性 Cn</value>
+    <value>最好属性 - 保守的</value>
   </data>
   <data name="rbBPTopStatsCnTT" xml:space="preserve">
-    <value>最好属性, 保守育种.
-检测最佳的结果并且如果你想使用保守的方法育种, 但是其中一些后代可能出现更糟的属性, 但是如果您希望能在几代中拥有完美的生物, 那么这就是你需要的模式.</value>
+    <value>最好属性 - 保守的
+检查最好的长期结果，相对安全且稳定的获得更好的后代.
+有些后代会出现更糟的属性，但如果您希望能在几代内拥有完美的生物，这模式就是你需要的.</value>
   </data>
   <data name="rbBPTopStatsTT" xml:space="preserve">
-    <value>最好属性, 欧洲人专用.
-检测最佳的结果并且您感觉自己的人品特别好, 此模式下可以比保守模式更快的速度获得完美的生物, 虽然其中一些后代可能获得更糟糕的属性, 但是您也有机会获得更好的后代.</value>
+    <value>最好属性 - 欧洲人
+检查最好的长期结果，且您觉得自己是欧洲人.
+这个模式获得完美生物的速度可能比 最好属性 - 保守的 更快，虽然有些后代会出现更糟糕的属性，但是也有机会获得完美的后代</value>
   </data>
   <data name="runDefaultExtractionAndImportFileToolStripMenuItem" xml:space="preserve">
     <value>执行默认的提取操作并且导入文件</value>
@@ -751,13 +752,13 @@
     <value>移动速度</value>
   </data>
   <data name="Speed_Abb" xml:space="preserve">
-    <value>移动速度</value>
+    <value>移</value>
   </data>
   <data name="Stamina" xml:space="preserve">
     <value>耐力</value>
   </data>
   <data name="Stamina_Abb" xml:space="preserve">
-    <value>耐力</value>
+    <value>耐</value>
   </data>
   <data name="statChart" xml:space="preserve">
     <value>属性表</value>
@@ -850,7 +851,7 @@
     <value>最大%</value>
   </data>
   <data name="topPercentileLevel" xml:space="preserve">
-    <value>该等级在你能找到的所有中排前 {0} %.</value>
+    <value>您能找到所有前 {0} % 在这个等级.</value>
   </data>
   <data name="Torpidity" xml:space="preserve">
     <value>眩晕值</value>
@@ -874,7 +875,7 @@
     <value>部落</value>
   </data>
   <data name="tsBtAddAsExtractionTest" xml:space="preserve">
-    <value>作为测试添加</value>
+    <value>新增测试</value>
   </data>
   <data name="unavailableCreaturesToolStripMenuItem" xml:space="preserve">
     <value>不可用生物</value>
@@ -895,7 +896,7 @@
     <value>负重</value>
   </data>
   <data name="Weight_Abb" xml:space="preserve">
-    <value>负重</value>
+    <value>重</value>
   </data>
   <data name="wild" xml:space="preserve">
     <value>野生</value>
@@ -916,7 +917,7 @@
     <value>最差可能</value>
   </data>
   <data name="loadAndAddToolStripMenuItem" xml:space="preserve">
-    <value>加载和添加…</value>
+    <value>载入和新增…</value>
   </data>
   <data name="cbBPIncludeCooldowneds" xml:space="preserve">
     <value>包括具有冷却的生物</value>
@@ -925,7 +926,7 @@
     <value>没有颜色</value>
   </data>
   <data name="servers" xml:space="preserve">
-    <value>伺服器</value>
+    <value>服务器</value>
   </data>
   <data name="showOnlyNaturalOccurring" xml:space="preserve">
     <value>仅显示自然发生的颜色</value>
@@ -943,7 +944,7 @@
     <value>制作速度</value>
   </data>
   <data name="Crafting Speed_Abb" xml:space="preserve">
-    <value>制作速度</value>
+    <value>制</value>
   </data>
   <data name="CurrentCreature" xml:space="preserve">
     <value>当前生物</value>
@@ -959,10 +960,10 @@
 到达此留痕加成所需的留痕次数.</value>
   </data>
   <data name="matingTime" xml:space="preserve">
-    <value>交配时长</value>
+    <value>交配时间</value>
   </data>
   <data name="OrOneAscerbicMushroom" xml:space="preserve">
-    <value>每个黑色蘑菇</value>
+    <value>或 每个黑色蘑菇</value>
   </data>
   <data name="ProbabilityForOneMutation" xml:space="preserve">
     <value>单次变异可能性</value>
@@ -974,7 +975,7 @@
     <value>温度</value>
   </data>
   <data name="Temperature_Abb" xml:space="preserve">
-    <value>温度</value>
+    <value>℃</value>
   </data>
   <data name="TorporDepletion" xml:space="preserve">
     <value>眩晕消耗</value>
@@ -989,7 +990,7 @@
     <value>水份</value>
   </data>
   <data name="Water_Abb" xml:space="preserve">
-    <value>水份</value>
+    <value>水</value>
   </data>
   <data name="BPCancelRestrictionOn" xml:space="preserve">
     <value>取消对 {0} 的限制</value>
@@ -1031,7 +1032,7 @@
     <value>等级</value>
   </data>
   <data name="Values" xml:space="preserve">
-    <value>价值观</value>
+    <value>数值</value>
   </data>
   <data name="generation" xml:space="preserve">
     <value>代</value>
@@ -1040,296 +1041,295 @@
     <value>全部</value>
   </data>
   <data name="apply" xml:space="preserve">
-    <value>apply</value>
+    <value>套用</value>
   </data>
   <data name="BestPossibleSpeciesLibrary" xml:space="preserve">
-    <value>Best possible {0} for this library</value>
+    <value>在资料库中的最佳可能 {0}</value>
   </data>
   <data name="BestPossibleSpeciesLibraryFiltered" xml:space="preserve">
-    <value>Best possible {0} for this filter</value>
+    <value>在此范围的最佳 {0}</value>
   </data>
   <data name="BtApplyOTSPreset" xml:space="preserve">
-    <value>Apply OTS Preset</value>
+    <value>套用 OTS 预设</value>
   </data>
   <data name="BtApplyOTSPresetTT" xml:space="preserve">
-    <value>Set the values for owner, tribe and server from the saved preset</value>
+    <value>从 OTS 设定套用拥有者、部落和伺服器</value>
   </data>
   <data name="BtBeepFailure" xml:space="preserve">
-    <value>import failed</value>
+    <value>汇入失败</value>
   </data>
   <data name="BtBeepFailureTT" xml:space="preserve">
-    <value>This sound is played when an automatic import failed, manual selection of levels may be needed.</value>
+    <value>自动汇入失败时会拨放此音效，可能需要手动选择级别.</value>
   </data>
   <data name="BtBeepNewTop" xml:space="preserve">
-    <value>new top stat</value>
+    <value>新的最高屬性</value>
   </data>
   <data name="BtBeepNewTopTT" xml:space="preserve">
-    <value>This sound is played when an automatic imported creature has a higher level in a stat than all other creatures of that species in the library</value>
+    <value>自动汇入时，其中一项属性高于资料库中所有生物时，会拨放此音效.</value>
   </data>
   <data name="BtBeepSuccess" xml:space="preserve">
-    <value>import success</value>
+    <value>汇入成功</value>
   </data>
   <data name="BtBeepSuccessTT" xml:space="preserve">
-    <value>This sound is played when an automatic import succeeded</value>
+    <value>自动汇入成功时，会拨放此音效.</value>
   </data>
   <data name="BtBeepTop" xml:space="preserve">
-    <value>top stat</value>
+    <value>最高屬性</value>
   </data>
   <data name="BtBeepTopTT" xml:space="preserve">
-    <value>This sound is played when a level of the imported creature is a top stat, i.e. equal to the current highest level in the library</value>
+    <value>汇入时属性是资料库中最高级别时，会拨放此音效.等于资料库中目前最高级别</value>
   </data>
   <data name="BtSaveOTSPreset" xml:space="preserve">
-    <value>Save OTS</value>
+    <value>保存 OTS</value>
   </data>
   <data name="BtSaveOTSPresetTT" xml:space="preserve">
-    <value>Save Owner, Tribe and Server as preset.
-The preset can be applied by the Apply Preset button</value>
+    <value>将拥有者、部落和伺服器设为预设，使用套用预设"按钮套用此预设内容"</value>
   </data>
   <data name="btUpdateLibraryCreature" xml:space="preserve">
-    <value>Update creature in Library</value>
+    <value>更新资料库中的生物</value>
   </data>
   <data name="Cancel quitting" xml:space="preserve">
-    <value>Cancel quitting</value>
+    <value>取消 退出</value>
   </data>
   <data name="clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>清除</value>
   </data>
   <data name="clearColors" xml:space="preserve">
-    <value>clear colors</value>
+    <value>清除 顏色</value>
   </data>
   <data name="clearColorsFilters" xml:space="preserve">
-    <value>Clear Color Filters</value>
+    <value>清除 颜色 筛选</value>
   </data>
   <data name="ClickDisplayFile" xml:space="preserve">
-    <value>Click to show file in explorer</value>
+    <value>在档案总管显示文件</value>
   </data>
   <data name="Collection changed discard and load?" xml:space="preserve">
-    <value>Your Creature Collection has been modified since it was last saved, are you sure you want to discard your changes and load the file without saving first?</value>
+    <value>您的生物群集已被修改，确定要放弃变更并开启档案?</value>
   </data>
   <data name="Collection changed discard and new?" xml:space="preserve">
-    <value>Your Creature Collection has been modified since it was last saved, are you sure you want to discard your changes and create a new Library without saving?</value>
+    <value>您的生物群集已被修改，确定要放弃变更并建立一个新资料库?</value>
   </data>
   <data name="Collection changed discard and quit?" xml:space="preserve">
-    <value>Your Creature Collection has been modified since it was last saved, are you sure you want to discard your changes and quit without saving?</value>
+    <value>您的生物群集已被修改，确定要放弃变更并退出程式?</value>
   </data>
   <data name="copyInfoGraphicToClipboard" xml:space="preserve">
-    <value>Copy info graphic to clipboard</value>
+    <value>复制资讯图型至剪贴簿</value>
   </data>
   <data name="creatureOfFile" xml:space="preserve">
-    <value>Creature of the export file</value>
+    <value>汇出档案的生物</value>
   </data>
   <data name="Descendants" xml:space="preserve">
-    <value>Descendants</value>
+    <value>子孙</value>
   </data>
   <data name="Discard changes and load file" xml:space="preserve">
-    <value>Discard changes and load new library</value>
+    <value>放弃变更并开启新资料库?</value>
   </data>
   <data name="Discard changes and new" xml:space="preserve">
-    <value>Discard changes and create new library</value>
+    <value>放弃变更并新建新资料库?</value>
   </data>
   <data name="Discard changes and quit" xml:space="preserve">
-    <value>Discard changes and quit</value>
+    <value>放弃变更并离开?</value>
   </data>
   <data name="Discard changes?" xml:space="preserve">
-    <value>Discard changes?</value>
+    <value>放弃变更?</value>
   </data>
   <data name="downloadingValuesSuccess" xml:space="preserve">
-    <value>Downloading and updating of the new species-stats was successful.</value>
+    <value>成功下载新物种的数据.</value>
   </data>
   <data name="error" xml:space="preserve">
-    <value>Error</value>
+    <value>错误</value>
   </data>
   <data name="filterAllNeededInfo" xml:space="preserve">
-    <value>Only creatures with all of these flags will be displayed</value>
+    <value>只显示符合所有这些标籤的生物</value>
   </data>
   <data name="filterByName" xml:space="preserve">
-    <value>Filter by name</value>
+    <value>按名称过滤</value>
   </data>
   <data name="filterExcludeInfo" xml:space="preserve">
-    <value>Creatures with this flag will not be shown</value>
+    <value>不显示包含此标签的生物</value>
   </data>
   <data name="filterOneNeededInfo" xml:space="preserve">
-    <value>Only creatures with one of these flags will be displayed</value>
+    <value>只显示与标签相符的生物</value>
   </data>
   <data name="Fortitude" xml:space="preserve">
-    <value>Fortitude</value>
+    <value>抗性</value>
   </data>
   <data name="Fortitude_Abb" xml:space="preserve">
-    <value>Fr</value>
+    <value>抗</value>
   </data>
   <data name="generations" xml:space="preserve">
-    <value>generations</value>
+    <value>代</value>
   </data>
   <data name="groupLibraryBySpecies" xml:space="preserve">
-    <value>Group library by species</value>
+    <value>按物种分类</value>
   </data>
   <data name="HarpoonLauncher" xml:space="preserve">
-    <value>Harpoon Launcher</value>
+    <value>鱼叉枪</value>
   </data>
   <data name="holdCtrlForRandomColors" xml:space="preserve">
-    <value>Hold Ctrl for random natural colors
-Hold Ctrl + Shift for random colors</value>
+    <value>按 Ctrl + 点击 随机自然的颜色
+按 Ctrl + Shift + 点击 随机颜色</value>
   </data>
   <data name="ImportingSavegame" xml:space="preserve">
-    <value>Importing savegame</value>
+    <value>汇入保存游戏</value>
   </data>
   <data name="issueCauseArkStatIssue" xml:space="preserve">
-    <value>This species is known to show wrong stat values ingame, this can prevent a successful extraction.</value>
+    <value>此生物在游戏内显示错误的属性值. 因此，可能会汇出失败.</value>
   </data>
   <data name="issueCauseCreatureLevel" xml:space="preserve">
-    <value>Check if the total level of the creature is entered correctly.
-If the creature is bred, also check if the BabyImprintingStatScaleMultiplier is set correctly.</value>
+    <value>请检查总等级是否输入正确.
+如果该生物已繁殖，需要再检查 BabyImprintingStatScaleMultiplier 是否设定正确</value>
   </data>
   <data name="issueCauseImpossibleTe" xml:space="preserve">
-    <value>The level results in an impossible taming effectiveness. Did you enter the levels arbitrarily? It might work if you set the creature to bred.</value>
+    <value>这个等级是一个不可能的驯服效果。 你是不是随意输入等级？ 如果您将生物设置为繁殖，它可能会起作用。</value>
   </data>
   <data name="issueCauseImprintingLocked" xml:space="preserve">
-    <value>You locked the imprinting-value by checking "Exactly, don't adjust" and the tool won't adjust it, this may cause the extraction to fail.</value>
+    <value>您勾选 "不可调整" 锁定了留痕值，该工具不会对其进行调整，这可能会导致汇出失败。</value>
   </data>
   <data name="issueCauseImprintingNotPossible" xml:space="preserve">
-    <value>The imprinting-percentage given is not possible with the current multipliers and may cause wrong values during the extraction-process.
-Make sure the BabyCuddleIntervallMultiplier and the BabyMatureSpeedMultiplier are set correctly.
-They may have to be set to the value when the creature hatched/was born, even if they were changed.</value>
+    <value>目前的留痕百分比是当前倍率无法达成的数值，并且可能在汇出过程中导致错误的值。
+确保 BabyCuddleIntervallMultiplier 和 BabyMatureSpeedMultiplier 设定正确。
+它们可能必须设置为生物孵化/出生时的值，即使它们已更改。</value>
   </data>
   <data name="issueCauseImprintingNotUpdated" xml:space="preserve">
-    <value>Sometimes the game doesn't update the stat-value after an imprinting. Try the extraction after the creature was cryoed again.</value>
+    <value>有时游戏在留痕后不会更新属性值. 将生物收入低温舱后再尝试汇出.</value>
   </data>
   <data name="issueCauseLockedDomLevel" xml:space="preserve">
-    <value>Uncheck all Lock-to-Zero-buttons in the stats (all lock-symbols should be green and opened).</value>
+    <value>取消勾選狀態值內所有 [ Lock-to-Zero ] 按鈕（所有鎖定符號應為綠色並打開）.</value>
   </data>
   <data name="issueCauseMaxWildLevel" xml:space="preserve">
-    <value>The maximal wild level is set too low, go to the settings and adjust it.</value>
+    <value>最大野生等级设定太低，请到设定内进行调整.</value>
   </data>
   <data name="issueCauseModValues" xml:space="preserve">
-    <value>If the creature is from a mod, you may need to enable the according mod values in Settings - Mod value manager.</value>
+    <value>如果生物来自 Mod，您可能需要在设定 - 模组值管理器中启用相应的模组值.</value>
   </data>
   <data name="issueCauseOutdatedIngameValues" xml:space="preserve">
-    <value>The stats of the creature were changed recently and the game displays the old values. Level up a stat, that should trigger a recalculation of the values.</value>
+    <value>此生物的属性值最近发生了变化，但游戏内显示旧的数值. 请升级属性，这应该会触发重新计算数值.</value>
   </data>
   <data name="issueCauseSingleplayer" xml:space="preserve">
-    <value>If you have enabled the Singleplayer-Settings in the game, make sure the according checkbox is enabled in the settings in this application as well.</value>
+    <value>如果您在游戏中启用了单人游戏的设定，请确定在此应用程序的设定中也启用了相应的选项.</value>
   </data>
   <data name="issueCauseStatMultipliers" xml:space="preserve">
-    <value>The stat multipliers in the Settings are not set to the multipliers of the server. Ask your admin for the correct multipliers and adjust them in the Settings.</value>
+    <value>设定中的属性倍率未设定为伺服器的倍率. 请向您的管理员询问正确的倍率并在"设定"中进行调整.</value>
   </data>
   <data name="issueCauseTamingEffectivenessRange" xml:space="preserve">
-    <value>Taming-Effectiveness-Range too narrow, increase the upper and / or decrease the lower bound.</value>
+    <value>驯服有效范围太窄，请增加上限和/或减少下限.</value>
   </data>
   <data name="issueCauseTypo" xml:space="preserve">
-    <value>Double check if all stat-values are entered correctly.</value>
+    <value>请仔细检查所有的属性值是否输入正确</value>
   </data>
   <data name="issueCauseWildLevelSteps" xml:space="preserve">
-    <value>Adjust or disable the "Consider Wild-level - steps" in the settings.</value>
+    <value>调整或禁用设定中的 "考虑野生级别 - 步骤".</value>
   </data>
   <data name="issueCauseWildTamedBred" xml:space="preserve">
-    <value>Make sure the correct state (wild, tamed, bred) for the creature is chosen.</value>
+    <value>请确认生物的状态是否正确（野生、驯服、繁殖）</value>
   </data>
   <data name="LbAlternativeColor" xml:space="preserve">
-    <value>Hold Ctrl to select an alternative color id (red border). Hold Ctrl and click on No Color to unset it.</value>
+    <value>按住 Ctrl 选择替代颜色 ID（红色边框），按住 Ctrl 并点击无颜色以取消设定。</value>
   </data>
   <data name="lbServerTT" xml:space="preserve">
-    <value>Click to toggle freezing this field. If the field is frozen its background is grey and importing a creature won't update this field.</value>
+    <value>点击以切换锁定此栏位. 背景为灰色代表被冻结，汇入生物时将不会更新这些栏位.</value>
   </data>
   <data name="libraryFilter" xml:space="preserve">
-    <value>Library Filter</value>
+    <value>筛选资料库</value>
   </data>
   <data name="libraryFilterToolStripMenuItem" xml:space="preserve">
-    <value>Filter library…</value>
+    <value>筛选资料库…</value>
   </data>
   <data name="max wild level" xml:space="preserve">
-    <value>max wild level</value>
+    <value>最大野生等级</value>
   </data>
   <data name="maxLevelForLevelUp" xml:space="preserve">
-    <value>max level that allows domestic levelups</value>
+    <value>最大驯服等级</value>
   </data>
   <data name="maxLevelSaved" xml:space="preserve">
-    <value>max wild level that will be saved</value>
+    <value>將被保存的最大野生級別</value>
   </data>
   <data name="na" xml:space="preserve">
     <value>n/a</value>
   </data>
   <data name="newTopLevel" xml:space="preserve">
-    <value>new top level</value>
+    <value>新最高属性</value>
   </data>
   <data name="noCreatureSelectedInLibrary" xml:space="preserve">
-    <value>There are no creatures in the library selected to copy to the clipboard.</value>
+    <value>资料库中没有选择复制到剪贴簿的生物.</value>
   </data>
   <data name="noValidData" xml:space="preserve">
-    <value>No valid data</value>
+    <value>没有有效数据</value>
   </data>
   <data name="noValidExtractedCreatureToExport" xml:space="preserve">
-    <value>There is no valid extracted creature to export.</value>
+    <value>没有有效的汇出生物资料可以汇出.</value>
   </data>
   <data name="Nursing Effectiveness" xml:space="preserve">
-    <value>Nursing Effectiveness</value>
+    <value>护理效果</value>
   </data>
   <data name="Nursing Effectiveness_Abb" xml:space="preserve">
-    <value>NE</value>
+    <value>护</value>
   </data>
   <data name="onlyCreaturesWithThisColor" xml:space="preserve">
-    <value>Only creatures that have this color</value>
+    <value>只有具有这种颜色的生物</value>
   </data>
   <data name="ownerFilterFromLibrary" xml:space="preserve">
-    <value>Owner filter from library</value>
+    <value>依照所有者筛选资料库</value>
   </data>
   <data name="owners" xml:space="preserve">
-    <value>owners</value>
+    <value>所有者</value>
   </data>
   <data name="possibleLevelRange" xml:space="preserve">
-    <value>Possible Level-Range: {0}–{1}</value>
+    <value>可能等级区间：{0} – {1}</value>
   </data>
   <data name="preTameLevel" xml:space="preserve">
-    <value>Pre tame level</value>
+    <value>驯服前等级</value>
   </data>
   <data name="serverFilterFromLibrary" xml:space="preserve">
-    <value>Server filter from library</value>
+    <value>依照服务器筛选资料库</value>
   </data>
   <data name="tags" xml:space="preserve">
-    <value>tags</value>
+    <value>标签</value>
   </data>
   <data name="ToolStripLabelFilter" xml:space="preserve">
-    <value>Filter</value>
+    <value>筛选</value>
   </data>
   <data name="ToolStripLabelFilterTT" xml:space="preserve">
-    <value>Filters the library. Multiple search words are separated by commas. Considered are the creature's
-Name
-Owner
-Tribe
-Note
-Ark id in game
-Server
-Tags
-Filter for a stats with {statAbb} [==|&lt;|&gt;] {value}, e.g. hp &gt; 20, st == 35
-Filter for colors with c{region}: {colorValue} {colorValue2}, e.g. c0: 20, c5: 3 4 5 6, c1: 13 14</value>
+    <value>过滤资料库。 搜索多个关键字用逗号分隔。 筛选包括该生物的
+姓名
+所有者
+部落
+笔记
+游戏内 ID
+伺服器
+标籤
+使用 {属性简称} [==|&amp;lt;|&amp;gt;] {数值} 过滤属性，例如： HP &amp;gt; 20, 耐 == 35
+使用 c{region} 过滤颜色：{colorValue} {colorValue2}，例如： c0: 20, c5: 3 4 5 6, c1: 13 14</value>
   </data>
   <data name="topLevel" xml:space="preserve">
-    <value>top level</value>
+    <value>最大等级</value>
   </data>
   <data name="tribeFilterFromLibrary" xml:space="preserve">
-    <value>Tribe filter from library</value>
+    <value>依照部落筛选资料库</value>
   </data>
   <data name="tribes" xml:space="preserve">
-    <value>tribes</value>
+    <value>部落</value>
   </data>
   <data name="ultraMaxLevel" xml:space="preserve">
-    <value>Warning: The level is higher than the possible max value and will not be saved.</value>
+    <value>警告：等级高于最大可能等级，将不会被保存。</value>
   </data>
   <data name="unknownSpecies" xml:space="preserve">
-    <value>unknown species</value>
+    <value>未知物种</value>
   </data>
   <data name="updateSuccessTitle" xml:space="preserve">
-    <value>Update successful</value>
+    <value>更新成功</value>
   </data>
   <data name="useFilterInTopStatCalculation" xml:space="preserve">
-    <value>Use filter in top stat calculation</value>
+    <value>在顶级属性计算机内使用筛选</value>
   </data>
   <data name="valuesFileLoadingError" xml:space="preserve">
-    <value>The species values-file couldn't be loaded, this application does not work without. Try redownloading the tool.</value>
+    <value>无法读取物种数据档案，此应用程式将无法工作.　请重新下载此应用程式.</value>
   </data>
   <data name="VariantSelector" xml:space="preserve">
-    <value>Variant Selector</value>
+    <value>变体选择器</value>
   </data>
   <data name="VariantSelectorInfo" xml:space="preserve">
-    <value>Species that contain one variant that is unchecked will be hidden.</value>
+    <value>隐藏未选择的变体物种.</value>
   </data>
 </root>
