@@ -445,19 +445,19 @@ namespace ARKBreedingStats.importExported
                 switch (_eccComparer.OrderPropertyList[i])
                 {
                     case OrderProperties.CreatureName:
-                        creatureNameToolStripMenuItem1.Text = text + "Creature name";
+                        creatureNameToolStripMenuItem1.Text = text + "生物名称";
                         break;
                     case OrderProperties.ExportTime:
-                        exportTimeToolStripMenuItem1.Text = text + "Export time";
+                        exportTimeToolStripMenuItem1.Text = text + "导出时间";
                         break;
                     case OrderProperties.ImportStatus:
-                        importStatusToolStripMenuItem.Text = text + "Import status";
+                        importStatusToolStripMenuItem.Text = text + "导入状态";
                         break;
                     case OrderProperties.OwnerName:
-                        ownerNameToolStripMenuItem1.Text = text + "Owner name";
+                        ownerNameToolStripMenuItem1.Text = text + "驯养者";
                         break;
                     case OrderProperties.Species:
-                        speciesToolStripMenuItem1.Text = text + "Species";
+                        speciesToolStripMenuItem1.Text = text + "物种";
                         break;
                 }
             }

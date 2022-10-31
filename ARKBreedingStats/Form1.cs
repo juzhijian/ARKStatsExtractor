@@ -3614,9 +3614,5 @@ namespace ARKBreedingStats
             Clipboard.SetText(string.Join("\n", Values.V.Colors.ColorsList.Select(c => $"{c.Id,3}: {c}")));
         }
 
-        private void tbSpeciesGlobal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
