@@ -2918,6 +2918,7 @@ namespace ARKBreedingStats
             {
                 CreatureCollection.ColorExisting[] colorAlreadyExistingInformation = null;
                 if (Properties.Settings.Default.NamingPatterns != null
+                    && !string.IsNullOrEmpty(Properties.Settings.Default.NamingPatterns[namingPatternIndex])
                     && Properties.Settings.Default.NamingPatterns[namingPatternIndex].IndexOf("#colorNew:", StringComparison.InvariantCultureIgnoreCase) != -1)
                     colorAlreadyExistingInformation = _creatureCollection.ColorAlreadyAvailable(cr.Species, input.RegionColors, out _);
                 input.ColorAlreadyExistingInformation = colorAlreadyExistingInformation;
@@ -3614,9 +3615,5 @@ namespace ARKBreedingStats
             Clipboard.SetText(string.Join("\n", Values.V.Colors.ColorsList.Select(c => $"{c.Id,3}: {c}")));
         }
 
-        private void tbSpeciesGlobal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

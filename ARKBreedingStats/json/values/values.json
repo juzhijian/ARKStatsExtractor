@@ -1,5 +1,5 @@
 {
-	"version": "346.16.8991126",
+	"version": "352.6.9875140",
 	"format": "1.14-flyerspeed",
 	"species": [
 		{
@@ -1113,7 +1113,7 @@
 					]
 				},
 				null,
-				null,
+				{ "name": "Lantern" },
 				{
 					"name": "Belly",
 					"colors": [
@@ -2743,7 +2743,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Rock Drake",
+			"name": "岩龙",
 			"blueprintPath": "/Game/Aberration/Dinos/RockDrake/RockDrake_Character_BP.RockDrake_Character_BP",
 			"variants": [ "Aberration" ],
 			"fullStatsRaw": [
@@ -4726,7 +4726,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Gacha",
+			"name": "嘎查",
 			"blueprintPath": "/Game/Extinction/Dinos/Gacha/Gacha_Character_BP.Gacha_Character_BP",
 			"variants": [ "Extinction" ],
 			"fullStatsRaw": [
@@ -5039,7 +5039,7 @@
 			"displayedStats": 2975
 		},
 		{
-			"name": "Gasbags",
+			"name": "气囊虫",
 			"blueprintPath": "/Game/Extinction/Dinos/GasBag/GasBags_Character_BP.GasBags_Character_BP",
 			"variants": [ "Extinction" ],
 			"fullStatsRaw": [
@@ -6335,7 +6335,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Fenrir",
+			"name": "芬里尔",
 			"blueprintPath": "/Game/Fjordur/Boss/Fenrir_Character_BP_Minion.Fenrir_Character_BP_Minion",
 			"variants": [ "Boss", "维京", "Minion" ],
 			"fullStatsRaw": [
@@ -6911,7 +6911,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Fenrir",
+			"name": "芬里尔",
 			"blueprintPath": "/Game/Fjordur/Dinos/Fenrir/Fenrir_Character_BP.Fenrir_Character_BP",
 			"variants": [ "维京" ],
 			"fullStatsRaw": [
@@ -7047,12 +7047,12 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Fjordhawk",
+			"name": "菲尤尔峡鹰",
 			"blueprintPath": "/Game/Fjordur/Dinos/Fjordhawk/Fjordhawk_Character_BP.Fjordhawk_Character_BP",
 			"variants": [ "维京" ],
 			"isFlyer": true,
 			"fullStatsRaw": [
-				[ 150, 0.2, 0.27, 0.5, 0 ],
+				[ 125, 0.167, 0.22545, 0.5, 0 ],
 				[ 150, 0.1, 0.1, 0, 0 ],
 				[ 120, 0.06, 0, 0.5, 0 ],
 				[ 150, 0.1, 0.1, 0, 0 ],
@@ -7233,7 +7233,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Fenrir",
+			"name": "芬里尔",
 			"blueprintPath": "/Game/Fjordur/Dinos/HatiSkoll/Fenrir_Character_BP_MiniBoss.Fenrir_Character_BP_MiniBoss",
 			"variants": [ "Boss", "维京" ],
 			"fullStatsRaw": [
@@ -7730,7 +7730,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Parasaur",
+			"name": "X-副栉龙",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/BogPara/Bog_Para_Character_BP.Bog_Para_Character_BP",
 			"variants": [ "Bog", "创世纪" ],
 			"fullStatsRaw": [
@@ -7901,7 +7901,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Paraceratherium",
+			"name": "X-巨犀",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/BogParaceratherium/Bog_Paracer_Character_BP.Bog_Paracer_Character_BP",
 			"variants": [ "Bog", "创世纪" ],
 			"fullStatsRaw": [
@@ -8790,7 +8790,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Sabertooth Salmon",
+			"name": "X-剑齿鲑鱼",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Lunar_Salmon/Lunar_Salmon_Character_BP.Lunar_Salmon_Character_BP",
 			"variants": [ "创世纪", "Lunar" ],
 			"fullStatsRaw": [
@@ -8948,7 +8948,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Sabertooth Salmon",
+			"name": "X-剑齿鲑鱼",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Lunar_Salmon/Rare_Lunar_Salmon_Character_BP.Rare_Lunar_Salmon_Character_BP",
 			"variants": [ "创世纪", "Lunar", "Rare" ],
 			"fullStatsRaw": [
@@ -9106,7 +9106,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Basilosaurus",
+			"name": "X-龙王鲸",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Ocean_Basilosaurus/Ocean_Basilosaurus_Character_BP.Ocean_Basilosaurus_Character_BP",
 			"variants": [ "创世纪", "Ocean" ],
 			"fullStatsRaw": [
@@ -9239,7 +9239,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Ichthyosaurus",
+			"name": "X-鱼龙",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Ocean_Dolphin/Ocean_Dolphin_Character_BP.Ocean_Dolphin_Character_BP",
 			"variants": [ "创世纪", "Ocean" ],
 			"fullStatsRaw": [
@@ -9404,7 +9404,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Dunkleosteus",
+			"name": "X-邓氏鱼",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Ocean_Dunkleosteus/Ocean_Dunkle_Character_BP.Ocean_Dunkle_Character_BP",
 			"variants": [ "创世纪", "Ocean" ],
 			"fullStatsRaw": [
@@ -9578,7 +9578,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Megalodon",
+			"name": "X-巨齿鲨",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Ocean_Megalodon/Ocean_Megalodon_Character_BP.Ocean_Megalodon_Character_BP",
 			"variants": [ "创世纪", "Ocean" ],
 			"fullStatsRaw": [
@@ -9742,7 +9742,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Mosasaurus",
+			"name": "X-沧龙",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Ocean_Mosasaurus/Ocean_Mosa_Character_BP.Ocean_Mosa_Character_BP",
 			"variants": [ "创世纪", "Ocean" ],
 			"fullStatsRaw": [
@@ -10181,7 +10181,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Sabertooth",
+			"name": "X-剑齿虎",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Snow_Saber/Snow_Saber_Character_BP.Snow_Saber_Character_BP",
 			"variants": [ "创世纪", "Snow" ],
 			"fullStatsRaw": [
@@ -10471,7 +10471,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Yutyrannus",
+			"name": "X-羽暴龙",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Snow_Yutyrannus/Snow_Yutyrannus_Character_BP.Snow_Yutyrannus_Character_BP",
 			"variants": [ "创世纪", "Snow" ],
 			"fullStatsRaw": [
@@ -11084,7 +11084,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Allosaurus",
+			"name": "X-异特龙",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Volcano_Allosaurus/Volcano_Allo_Character_BP.Volcano_Allo_Character_BP",
 			"variants": [ "创世纪", "Volcano" ],
 			"fullStatsRaw": [
@@ -11205,7 +11205,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Ankylosaurus",
+			"name": "X-甲龙",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Volcano_Ankylosaurus/Volcano_Ankylo_Character_BP.Volcano_Ankylo_Character_BP",
 			"variants": [ "创世纪", "Volcano" ],
 			"fullStatsRaw": [
@@ -11595,7 +11595,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Triceratops",
+			"name": "X-三角龙",
 			"blueprintPath": "/Game/Genesis/Dinos/BiomeVariants/Volcano_Trike/Volcano_Trike_Character_BP.Volcano_Trike_Character_BP",
 			"variants": [ "创世纪", "Volcano" ],
 			"fullStatsRaw": [
@@ -12127,7 +12127,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Magmasaur",
+			"name": "熔喉龙",
 			"blueprintPath": "/Game/Genesis/Dinos/Cherufe/Cherufe_Character_BP.Cherufe_Character_BP",
 			"variants": [ "创世纪" ],
 			"fullStatsRaw": [
@@ -12703,7 +12703,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Direwolf",
+			"name": "恐狼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Arctic/Direwolf_Character_BP_Escort.Direwolf_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -12799,7 +12799,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Procoptodon",
+			"name": "袋鼠",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Arctic/Procoptodon_Character_BP_Escort.Procoptodon_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -12942,7 +12942,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Sabertooth",
+			"name": "X-剑齿虎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Arctic/Snow_Saber_Character_BP_Escort.Snow_Saber_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -13069,7 +13069,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Baryonyx",
+			"name": "重爪龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Bog/Baryonyx_Character_BP_Escort.Baryonyx_Character_BP_Escort",
 			"variants": [ "Bog", "Escort", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -13168,7 +13168,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Titanoboa",
+			"name": "泰坦巨蟒",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Bog/BoaFrill_Character_BP_Escort.BoaFrill_Character_BP_Escort",
 			"variants": [ "Bog", "Escort", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -13655,7 +13655,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Beelzebufo",
+			"name": "魔鬼蛙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Bog/Toad_Character_BP_Escort.Toad_Character_BP_Escort",
 			"variants": [ "Bog", "Escort", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -14191,7 +14191,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Anglerfish",
+			"name": "鮟鱇鱼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Angler_Character_BP_Escort.Angler_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -14303,7 +14303,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Electrophorus",
+			"name": "电鳗",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Eel_Character_BP_Escort.Eel_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -14604,7 +14604,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Manta",
+			"name": "蝠鲼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Manta_Character_BP_Escort.Manta_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -14841,7 +14841,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Ichthyosaurus",
+			"name": "X-鱼龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Ocean_Dolphin_Character_BP_Escort.Ocean_Dolphin_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -15006,7 +15006,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Dunkleosteus",
+			"name": "X-邓氏鱼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Ocean_Dunkle_Character_BP_Escort.Ocean_Dunkle_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -15179,7 +15179,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Megalodon",
+			"name": "X-巨齿鲨",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Ocean_Megalodon_Character_BP_Escort.Ocean_Megalodon_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -15342,7 +15342,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Plesiosaur",
+			"name": "蛇颈龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Plesiosaur_Character_BP_Escort.Plesiosaur_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -15609,7 +15609,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sabertooth Salmon",
+			"name": "剑齿鲑鱼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Salmon_Character_BP_Escort.Salmon_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -15698,7 +15698,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Carbonemys",
+			"name": "淡水碳龟",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Ocean/Turtle_Character_BP_Escort.Turtle_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -15807,7 +15807,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Carnotaurus",
+			"name": "牛龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Volcanic/Carno_Character_BP_Escort.Carno_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -16191,7 +16191,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Pulmonoscorpius",
+			"name": "巨蝎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Volcanic/Scorpion_Character_BP_Escort.Scorpion_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -16362,7 +16362,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Allosaurus",
+			"name": "X-异特龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Escort/Volcanic/Volcano_Allo_Character_BP_Escort.Volcano_Allo_Character_BP_Escort",
 			"variants": [ "Escort", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -16697,7 +16697,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Castoroides",
+			"name": "巨河狸",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Arctic/Beaver_Character_BP_Gauntlet.Beaver_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -16900,7 +16900,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Chalicotherium",
+			"name": "砂犷兽",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Arctic/Chalico_Character_BP_Gauntlet.Chalico_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -17138,7 +17138,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Direwolf",
+			"name": "恐狼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Arctic/Direwolf_Character_BP_Gauntlet.Direwolf_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -17892,7 +17892,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ferox",
+			"name": "猿狐",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Arctic/Shapeshifter_Large_Character_BP_Gauntlet.Shapeshifter_Large_Character_BP_Gauntlet",
 			"variants": [
 				"Gauntlet",
@@ -18308,7 +18308,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Sabertooth",
+			"name": "X-剑齿虎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Arctic/Snow_Saber_Character_BP_Gauntlet.Snow_Saber_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -18435,7 +18435,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Yutyrannus",
+			"name": "X-羽暴龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Arctic/Snow_Yutyrannus_Character_BP_Gauntlet.Snow_Yutyrannus_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -18706,7 +18706,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Baryonyx",
+			"name": "重爪龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Baryonyx_Character_BP_Gauntlet.Baryonyx_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -18902,7 +18902,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Titanoboa",
+			"name": "泰坦巨蟒",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/BoaFrill_Character_BP_Gauntlet.BoaFrill_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -19189,7 +19189,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Paraceratherium",
+			"name": "X-巨犀",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Bog_Paracer_Character_BP_Gauntlet.Bog_Paracer_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -19889,7 +19889,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dilophosaur",
+			"name": "双脊龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Dilo_Character_BP_Gauntlet.Dilo_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -20029,7 +20029,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dodo",
+			"name": "渡渡鸟",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Dodo_Character_BP_Aggressive.Dodo_Character_BP_Aggressive",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -20319,7 +20319,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dodo",
+			"name": "渡渡鸟",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Dodo_Character_BP_Aggressive_Large.Dodo_Character_BP_Aggressive_Large",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -20609,7 +20609,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Iguanodon",
+			"name": "禽龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Iguanodon_Character_BP_Gauntlet.Iguanodon_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -20976,7 +20976,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Lymantria",
+			"name": "沙蛾",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Moth_Character_BP_Gauntlet.Moth_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"isFlyer": true,
@@ -21207,7 +21207,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sarco",
+			"name": "帝鳄",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Sarco_Character_BP_Gauntlet.Sarco_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -21360,7 +21360,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/SpiderS_Character_BP_Gauntlet.SpiderS_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -21897,7 +21897,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Beelzebufo",
+			"name": "魔鬼蛙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Bog/Toad_Character_BP_Gauntlet.Toad_Character_BP_Gauntlet",
 			"variants": [ "Bog", "Gauntlet", "创世纪", "Mission" ],
 			"fullStatsRaw": [
@@ -23183,7 +23183,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Rock Drake",
+			"name": "岩龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Lunar/RockDrake_Character_BP_Gauntlet.RockDrake_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Lunar", "Mission" ],
 			"fullStatsRaw": [
@@ -23449,7 +23449,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Arthropluera",
+			"name": "古马陆",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Arthro_Character_BP_Gauntlet.Arthro_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -23741,7 +23741,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Onyc",
+			"name": "爪蝠",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Bat_Character_BP_Gauntlet.Bat_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"isFlyer": true,
@@ -23846,7 +23846,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Carnotaurus",
+			"name": "牛龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Carno_Character_BP_Gauntlet.Carno_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -24050,7 +24050,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Magmasaur",
+			"name": "熔喉龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Cherufe_Character_BP_Gauntlet.Cherufe_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -24604,7 +24604,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Purlovia",
+			"name": "兽头兽",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Purlovia_Character_BP_Gauntlet.Purlovia_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -24687,7 +24687,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Pulmonoscorpius",
+			"name": "巨蝎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Scorpion_Character_BP_Gauntlet.Scorpion_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -25106,7 +25106,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Allosaurus",
+			"name": "X-异特龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Volcano_Allo_Character_BP_Gauntlet.Volcano_Allo_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -25276,7 +25276,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Ankylosaurus",
+			"name": "X-甲龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Volcano_Ankylo_Character_BP_Gauntlet.Volcano_Ankylo_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -25867,7 +25867,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Triceratops",
+			"name": "X-三角龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/Volcano_Trike_Character_BP_Gauntlet.Volcano_Trike_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -26275,7 +26275,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Carnotaurus",
+			"name": "牛龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Arctic/Carno_Character_BP_HuntFollower.Carno_Character_BP_HuntFollower",
 			"variants": [ "创世纪", "Hunt", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -26389,7 +26389,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Direwolf",
+			"name": "恐狼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Arctic/Direwolf_Character_BP_Hunt.Direwolf_Character_BP_Hunt",
 			"variants": [ "创世纪", "Hunt", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -26956,7 +26956,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Sabertooth",
+			"name": "X-剑齿虎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Arctic/Snow_Saber_Character_BP_Hunt.Snow_Saber_Character_BP_Hunt",
 			"variants": [ "创世纪", "Hunt", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -27247,7 +27247,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Yutyrannus",
+			"name": "X-羽暴龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Arctic/Snow_Yutyrannus_Character_BP_HuntFollower.Snow_Yutyrannus_Character_BP_HuntFollower",
 			"variants": [ "创世纪", "Hunt", "Mission", "Snow" ],
 			"fullStatsRaw": [
@@ -27648,7 +27648,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Baryonyx",
+			"name": "重爪龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Bog/Baryonyx_Character_BP_Hunt.Baryonyx_Character_BP_Hunt",
 			"variants": [ "Bog", "创世纪", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -28440,7 +28440,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dimetrodon",
+			"name": "异齿龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Bog/Dimetro_Character_BP_Hunt.Dimetro_Character_BP_Hunt",
 			"variants": [ "Bog", "创世纪", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -28838,7 +28838,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sarco",
+			"name": "帝鳄",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Bog/Sarco_Character_BP_Hunt_Secondary.Sarco_Character_BP_Hunt_Secondary",
 			"variants": [ "Bog", "创世纪", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -29634,7 +29634,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Electrophorus",
+			"name": "电鳗",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Ocean/Eel_Character_BP_Hunt.Eel_Character_BP_Hunt",
 			"variants": [ "创世纪", "Hunt", "Mission", "Ocean" ],
 			"fullStatsRaw": [
@@ -30700,7 +30700,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Carnotaurus",
+			"name": "牛龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Volcanic/Carno_Character_BP_Hunt.Carno_Character_BP_Hunt",
 			"variants": [ "创世纪", "Hunt", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -31059,7 +31059,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Pulmonoscorpius",
+			"name": "巨蝎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Hunt/Volcanic/Scorpion_Character_BP_Hunt.Scorpion_Character_BP_Hunt",
 			"variants": [ "创世纪", "Hunt", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -31918,7 +31918,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Doedicurus",
+			"name": "星尾兽",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Race/Doed_Character_BP_Race.Doed_Character_BP_Race",
 			"variants": [ "创世纪", "Mission", "Race" ],
 			"fullStatsRaw": [
@@ -32027,7 +32027,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Gallimimus",
+			"name": "似鸡龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Race/Galli_Character_BP_Race.Galli_Character_BP_Race",
 			"variants": [ "创世纪", "Mission", "Race" ],
 			"fullStatsRaw": [
@@ -32247,7 +32247,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Manta",
+			"name": "蝠鲼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Race/Manta_Character_BP_Race.Manta_Character_BP_Race",
 			"variants": [ "创世纪", "Mission", "Race" ],
 			"fullStatsRaw": [
@@ -32370,7 +32370,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ichthyosaurus",
+			"name": "鱼龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Race/RaceDolphin_Character_BP.RaceDolphin_Character_BP",
 			"variants": [ "创世纪", "Mission", "Race" ],
 			"fullStatsRaw": [
@@ -32458,7 +32458,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Sabertooth",
+			"name": "X-剑齿虎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Race/RaceSnow_Saber_Character_BP.RaceSnow_Saber_Character_BP",
 			"variants": [ "创世纪", "Mission", "Race", "Snow" ],
 			"fullStatsRaw": [
@@ -32741,7 +32741,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Carnotaurus",
+			"name": "牛龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Arctic/Carno_Character_BP_Retrieve.Carno_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Snow" ],
 			"fullStatsRaw": [
@@ -33010,7 +33010,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Direwolf",
+			"name": "恐狼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Arctic/Direwolf_Character_BP_Retrieve.Direwolf_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Snow" ],
 			"fullStatsRaw": [
@@ -33290,7 +33290,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Purlovia",
+			"name": "兽头兽",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Arctic/Purlovia_Character_BP_Polar_Retrieve.Purlovia_Character_BP_Polar_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Snow" ],
 			"fullStatsRaw": [
@@ -33480,7 +33480,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Sabertooth",
+			"name": "X-剑齿虎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Arctic/Snow_Saber_Character_BP_Retrieve.Snow_Saber_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Snow" ],
 			"fullStatsRaw": [
@@ -33607,7 +33607,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Yutyrannus",
+			"name": "X-羽暴龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Arctic/Snow_Yutyrannus_Character_BP_Retrieve.Snow_Yutyrannus_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Snow" ],
 			"fullStatsRaw": [
@@ -33770,7 +33770,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Titanoboa",
+			"name": "泰坦巨蟒",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Bog/BoaFrill_Character_BP_Retrieve.BoaFrill_Character_BP_Retrieve",
 			"variants": [ "Bog", "创世纪", "Mission", "Retrieve" ],
 			"fullStatsRaw": [
@@ -34273,7 +34273,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dilophosaur",
+			"name": "双脊龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Bog/Dilo_Character_BP_Retrieve.Dilo_Character_BP_Retrieve",
 			"variants": [ "Bog", "创世纪", "Mission", "Retrieve" ],
 			"fullStatsRaw": [
@@ -34514,7 +34514,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sarco",
+			"name": "帝鳄",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Bog/Sarco_Character_BP_Retrieve.Sarco_Character_BP_Retrieve",
 			"variants": [ "Bog", "创世纪", "Mission", "Retrieve" ],
 			"fullStatsRaw": [
@@ -34628,7 +34628,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Bog/SpiderS_Character_BP_Retrieve.SpiderS_Character_BP_Retrieve",
 			"variants": [ "Bog", "创世纪", "Mission", "Retrieve" ],
 			"fullStatsRaw": [
@@ -35311,7 +35311,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Electrophorus",
+			"name": "电鳗",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Ocean/Eel_Character_BP_Retrieve.Eel_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Ocean", "Retrieve" ],
 			"fullStatsRaw": [
@@ -35585,7 +35585,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Manta",
+			"name": "蝠鲼",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Ocean/Manta_Character_BP_Retrieve.Manta_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Ocean", "Retrieve" ],
 			"fullStatsRaw": [
@@ -35778,7 +35778,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Megalodon",
+			"name": "X-巨齿鲨",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Ocean/Ocean_Megalodon_Character_BP_RetrieveNonTarget.Ocean_Megalodon_Character_BP_RetrieveNonTarget",
 			"variants": [ "创世纪", "Mission", "Ocean", "Retrieve" ],
 			"fullStatsRaw": [
@@ -36006,7 +36006,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "X-Mosasaurus",
+			"name": "X-沧龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Ocean/Ocean_Mosa_Character_BP_Retrieve.Ocean_Mosa_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Ocean", "Retrieve" ],
 			"fullStatsRaw": [
@@ -36171,7 +36171,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Plesiosaur",
+			"name": "蛇颈龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Ocean/Plesiosaur_Character_BP_Retrieve.Plesiosaur_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Ocean", "Retrieve" ],
 			"fullStatsRaw": [
@@ -36285,7 +36285,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Tusoteuthis",
+			"name": "托斯特巨鱿",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Ocean/Tusoteuthis_Character_BP_Retrieve.Tusoteuthis_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Ocean", "Retrieve" ],
 			"fullStatsRaw": [
@@ -36506,7 +36506,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Arthropluera",
+			"name": "古马陆",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Arthro_Character_BP_Retrieve.Arthro_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"fullStatsRaw": [
@@ -36781,7 +36781,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Onyc",
+			"name": "爪蝠",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Bat_Character_BP_Retrieve.Bat_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"isFlyer": true,
@@ -36886,7 +36886,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Magmasaur",
+			"name": "熔喉龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Cherufe_Character_BP_Retrieve.Cherufe_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"fullStatsRaw": [
@@ -37009,7 +37009,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dimorphodon",
+			"name": "双型齿翼龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Dimorph_Character_BP_Aggressive_Retrieve.Dimorph_Character_BP_Aggressive_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"isFlyer": true,
@@ -37260,7 +37260,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Purlovia",
+			"name": "兽头兽",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Purlovia_Character_BP_Retrieve.Purlovia_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"fullStatsRaw": [
@@ -37465,7 +37465,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Pulmonoscorpius",
+			"name": "巨蝎",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Scorpion_Character_BP_Retrieve.Scorpion_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"fullStatsRaw": [
@@ -37769,7 +37769,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Allosaurus",
+			"name": "X-异特龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Volcano_Allo_Character_BP_Retrieve.Volcano_Allo_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"fullStatsRaw": [
@@ -38104,7 +38104,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "X-Triceratops",
+			"name": "X-三角龙",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/Volcano_Trike_Character_BP_Retrieve.Volcano_Trike_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"fullStatsRaw": [
@@ -38376,7 +38376,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dodo",
+			"name": "渡渡鸟",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Sport/Dodo_Character_BP_Basketball.Dodo_Character_BP_Basketball",
 			"variants": [ "创世纪", "Mission", "Sport" ],
 			"fullStatsRaw": [
@@ -38679,7 +38679,7 @@
 			}
 		},
 		{
-			"name": "Ferox",
+			"name": "猿狐",
 			"blueprintPath": "/Game/Genesis/Dinos/Shapeshifter/Shapeshifter_Large/Shapeshifter_Large_Character_BP.Shapeshifter_Large_Character_BP",
 			"variants": [ "创世纪", "Large" ],
 			"fullStatsRaw": [
@@ -38801,7 +38801,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Ferox",
+			"name": "猿狐",
 			"blueprintPath": "/Game/Genesis/Dinos/Shapeshifter/Shapeshifter_Small/Shapeshifter_Small_Character_BP.Shapeshifter_Small_Character_BP",
 			"variants": [ "创世纪", "Small" ],
 			"fullStatsRaw": [
@@ -38931,7 +38931,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Astrocetus",
+			"name": "虚空鲸",
 			"blueprintPath": "/Game/Genesis/Dinos/SpaceWhale/SpaceWhale_Character_BP.SpaceWhale_Character_BP",
 			"variants": [ "创世纪" ],
 			"isFlyer": true,
@@ -39409,7 +39409,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Allosaurus",
+			"name": "R-异特龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Allo_Character_BP_Rockwell.Allo_Character_BP_Rockwell",
 			"variants": [ "创世纪2", "Rockwell" ],
 			"fullStatsRaw": [
@@ -39689,7 +39689,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Carnotaurus",
+			"name": "R-牛龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Carno_Character_BP_Rockwell.Carno_Character_BP_Rockwell",
 			"variants": [ "创世纪2", "Rockwell" ],
 			"fullStatsRaw": [
@@ -39932,7 +39932,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Daeodon",
+			"name": "R-凶齿豨",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Daeodon_Character_BP_Eden.Daeodon_Character_BP_Eden",
 			"variants": [ "Eden", "创世纪2" ],
 			"fullStatsRaw": [
@@ -40121,7 +40121,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Dilophosaur",
+			"name": "R-双脊龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Dilo_Character_BP_Rockwell.Dilo_Character_BP_Rockwell",
 			"variants": [ "创世纪2", "Rockwell" ],
 			"fullStatsRaw": [
@@ -40406,7 +40406,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Dire Bear",
+			"name": "R-恐熊",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Direbear_Character_BP_Rockwell.Direbear_Character_BP_Rockwell",
 			"variants": [ "创世纪2", "Rockwell" ],
 			"fullStatsRaw": [
@@ -40566,7 +40566,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Direwolf",
+			"name": "R-恐狼",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Direwolf_Character_BP_Eden.Direwolf_Character_BP_Eden",
 			"variants": [ "Eden", "创世纪2" ],
 			"fullStatsRaw": [
@@ -40678,7 +40678,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Equus",
+			"name": "R-庞马",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Equus_Character_BP_Eden.Equus_Character_BP_Eden",
 			"variants": [ "Eden", "创世纪2" ],
 			"fullStatsRaw": [
@@ -40846,7 +40846,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Gasbags",
+			"name": "R-气囊虫",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/GasBags_Character_BP_Eden.GasBags_Character_BP_Eden",
 			"variants": [ "Eden", "创世纪2" ],
 			"fullStatsRaw": [
@@ -41019,7 +41019,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Giganotosaurus",
+			"name": "R-南方巨兽龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Gigant_Character_BP_Rockwell.Gigant_Character_BP_Rockwell",
 			"variants": [ "创世纪2", "Rockwell" ],
 			"fullStatsRaw": [
@@ -41205,7 +41205,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Megatherium",
+			"name": "R-大地懒",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Megatherium_Character_BP_Eden.Megatherium_Character_BP_Eden",
 			"variants": [ "Eden", "创世纪2" ],
 			"fullStatsRaw": [
@@ -41612,7 +41612,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Parasaur",
+			"name": "R-副栉龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Para_Character_BP_Eden.Para_Character_BP_Eden",
 			"variants": [ "Eden", "创世纪2" ],
 			"fullStatsRaw": [
@@ -41873,7 +41873,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Procoptodon",
+			"name": "R-袋鼠",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Procoptodon_Character_BP_Eden.Procoptodon_Character_BP_Eden",
 			"variants": [ "Eden", "创世纪2" ],
 			"fullStatsRaw": [
@@ -42237,7 +42237,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Brontosaurus",
+			"name": "R-雷龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Sauropod_Character_BP_Rockwell.Sauropod_Character_BP_Rockwell",
 			"variants": [ "创世纪2", "Rockwell" ],
 			"fullStatsRaw": [
@@ -42935,7 +42935,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Carbonemys",
+			"name": "R-淡水碳龟",
 			"blueprintPath": "/Game/Genesis2/Dinos/BiomeVariants/Turtle_Character_BP_Rockwell.Turtle_Character_BP_Rockwell",
 			"variants": [ "创世纪2", "Rockwell" ],
 			"fullStatsRaw": [
@@ -43554,7 +43554,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Noglin",
+			"name": "诺格林",
 			"blueprintPath": "/Game/Genesis2/Dinos/BrainSlug/BrainSlug_Character_BP.BrainSlug_Character_BP",
 			"variants": [ "创世纪2" ],
 			"fullStatsRaw": [
@@ -44468,7 +44468,7 @@
 					]
 				},
 				{
-					"name": "Membrane accents",
+					"name": "Belly",
 					"colors": [
 						"BigFoot0",
 						"BigFoot4",
@@ -44546,7 +44546,7 @@
 					]
 				},
 				{
-					"name": "Belly",
+					"name": "Membrane accents",
 					"colors": [
 						"BigFoot0",
 						"BigFoot4",
@@ -44613,7 +44613,7 @@
 			"statNames": { "9": "Nursing Effectiveness" }
 		},
 		{
-			"name": "Astrodelphis",
+			"name": "虚空海豚",
 			"blueprintPath": "/Game/Genesis2/Dinos/SpaceDolphin/SpaceDolphin_Character_BP.SpaceDolphin_Character_BP",
 			"variants": [ "创世纪2" ],
 			"isFlyer": true,
@@ -44756,7 +44756,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "R-Allosaurus",
+			"name": "R-异特龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Allo_Character_BP_Rockwell_Summoned.Allo_Character_BP_Rockwell_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -45150,7 +45150,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Arthropluera",
+			"name": "畸变古马陆",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Arthro_Character_BP_Aberrant_Summoned.Arthro_Character_BP_Aberrant_Summoned",
 			"variants": [ "畸变", "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -45296,7 +45296,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Baryonyx",
+			"name": "重爪龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Baryonyx_Character_BP_Summoned.Baryonyx_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -45524,7 +45524,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Onyc",
+			"name": "爪蝠",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Bat_Character_BP_Summoned.Bat_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"isFlyer": true,
@@ -45629,7 +45629,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Titanoboa",
+			"name": "泰坦巨蟒",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/BoaFrill_Character_BP_Summoned.BoaFrill_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -45917,7 +45917,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Carnotaurus",
+			"name": "R-牛龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Carno_Character_BP_Rockwell_Summoned.Carno_Character_BP_Rockwell_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -46249,7 +46249,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Magmasaur",
+			"name": "熔喉龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Cherufe_Character_BP_Summoned.Cherufe_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -46458,7 +46458,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "R-Daeodon",
+			"name": "R-凶齿豨",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Daeodon_Character_BP_Eden_Summoned.Daeodon_Character_BP_Eden_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -46646,7 +46646,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Dilophosaur",
+			"name": "R-双脊龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Dilo_Character_BP_Rockwell_Summoned.Dilo_Character_BP_Rockwell_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -46930,7 +46930,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Dire Bear",
+			"name": "R-恐熊",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Direbear_Character_BP_Rockwell_Summoned.Direbear_Character_BP_Rockwell_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -47216,7 +47216,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Direwolf",
+			"name": "R-恐狼",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Direwolf_Character_BP_Eden_Summoned.Direwolf_Character_BP_Eden_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -47829,7 +47829,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Megatherium",
+			"name": "R-大地懒",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Megatherium_Character_BP_Eden_Summoned.Megatherium_Character_BP_Eden_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -48385,7 +48385,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Paraceratherium",
+			"name": "巨犀",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Paracer_Character_BP_Summoned.Paracer_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -48634,7 +48634,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Purlovia",
+			"name": "兽头兽",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Purlovia_Character_BP_Summoned.Purlovia_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -49063,7 +49063,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Rock Drake",
+			"name": "岩龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/RockDrake_Character_BP_Summoned.RockDrake_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -49271,7 +49271,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sabertooth",
+			"name": "剑齿虎",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Saber_Character_BP_Summoned.Saber_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -49368,7 +49368,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Sarco",
+			"name": "帝鳄",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Sarco_Character_BP_Summoned.Sarco_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -49482,7 +49482,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "R-Brontosaurus",
+			"name": "R-雷龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Sauropod_Character_BP_Rockwell_Summoned.Sauropod_Character_BP_Rockwell_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -49709,7 +49709,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Ferox",
+			"name": "猿狐",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Shapeshifter_Large_Character_BP_Summoned.Shapeshifter_Large_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Large", "Summoned" ],
 			"fullStatsRaw": [
@@ -49831,7 +49831,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/SpiderS_Character_BP_Summoned.SpiderS_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -50511,7 +50511,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Stegosaurus",
+			"name": "剑龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Stego_Character_BP_Summoned.Stego_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -51103,7 +51103,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Triceratops",
+			"name": "三角龙",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/Trike_Character_BP_Summoned.Trike_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -51718,7 +51718,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Tek Stryder",
+			"name": "泰克跨步者",
 			"blueprintPath": "/Game/Genesis2/Dinos/TekStrider/TekStrider_Character_BP.TekStrider_Character_BP",
 			"variants": [ "创世纪2" ],
 			"fullStatsRaw": [
@@ -52109,7 +52109,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Gigantopithecus",
+			"name": "巨猿",
 			"blueprintPath": "/Game/Genesis2/Missions/Hunt/Dinos/Bigfoot_Character_BP_Hunt.Bigfoot_Character_BP_Hunt",
 			"variants": [ "创世纪2", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -52256,7 +52256,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dilophosaur",
+			"name": "双脊龙",
 			"blueprintPath": "/Game/Genesis2/Missions/Hunt/Dinos/Dilo_Character_BP_Hunt.Dilo_Character_BP_Hunt",
 			"variants": [ "创世纪2", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -52458,7 +52458,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Direwolf",
+			"name": "R-恐狼",
 			"blueprintPath": "/Game/Genesis2/Missions/Hunt/Dinos/Direwolf_Character_BP_Eden_Hunt_Enemy.Direwolf_Character_BP_Eden_Hunt_Enemy",
 			"variants": [ "创世纪2", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -53362,7 +53362,7 @@
 			"statNames": { "9": "Nursing Effectiveness" }
 		},
 		{
-			"name": "Paraceratherium",
+			"name": "巨犀",
 			"blueprintPath": "/Game/Genesis2/Missions/Hunt/Dinos/Paracer_Character_BP_TorporHunt.Paracer_Character_BP_TorporHunt",
 			"variants": [ "创世纪2", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -55575,7 +55575,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Achatina",
+			"name": "玛瑙螺",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Achatina_Character_BP_STA.Achatina_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -55693,7 +55693,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Allosaurus",
+			"name": "异特龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Allo_Character_BP_STA.Allo_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -56062,7 +56062,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Archaeopteryx",
+			"name": "始祖鸟",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Archa_Character_BP_STA.Archa_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -56331,7 +56331,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Arthropluera",
+			"name": "古马陆",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Arthro_Character_BP_STA.Arthro_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -56477,7 +56477,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Baryonyx",
+			"name": "重爪龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Baryonyx_Character_BP_STA.Baryonyx_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -56705,7 +56705,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Onyc",
+			"name": "爪蝠",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Bat_Character_BP_STA.Bat_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -56810,7 +56810,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Castoroides",
+			"name": "巨河狸",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Beaver_Character_BP_STA.Beaver_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -57135,7 +57135,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Gigantopithecus",
+			"name": "巨猿",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Bigfoot_Character_BP_STA.Bigfoot_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -57234,7 +57234,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Titanoboa",
+			"name": "泰坦巨蟒",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/BoaFrill_Character_BP_STA.BoaFrill_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -57521,7 +57521,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Noglin",
+			"name": "诺格林",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/BrainSlug_Character_BP_STA.BrainSlug_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -57721,7 +57721,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Carnotaurus",
+			"name": "牛龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Carno_Character_BP_STA.Carno_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -57972,7 +57972,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Chalicotherium",
+			"name": "砂犷兽",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Chalico_Character_BP_STA.Chalico_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -58055,7 +58055,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Magmasaur",
+			"name": "熔喉龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Cherufe_Character_BP_STA.Cherufe_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -58178,7 +58178,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Compy",
+			"name": "美颌龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Compy_Character_BP_STA.Compy_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -58479,7 +58479,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ember Crystal Wyvern",
+			"name": "灰烬水晶飞龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/CrystalWyvern_Character_BP_Ember_STA.CrystalWyvern_Character_BP_Ember_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -59036,7 +59036,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dilophosaur",
+			"name": "双脊龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Dilo_Character_BP_STA.Dilo_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -59176,7 +59176,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dimetrodon",
+			"name": "异齿龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Dimetro_Character_BP_STA.Dimetro_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -59328,7 +59328,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dimorphodon",
+			"name": "双型齿翼龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Dimorph_Character_BP_STA.Dimorph_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -59446,7 +59446,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Diplocaulus",
+			"name": "盗首螈",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Diplocaulus_Character_BP_STA.Diplocaulus_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -59558,7 +59558,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Diplodocus",
+			"name": "梁龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Diplodocus_Character_BP_STA.Diplodocus_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -59816,7 +59816,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Direwolf",
+			"name": "恐狼",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Direwolf_Character_BP_STA.Direwolf_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -59945,7 +59945,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dodo",
+			"name": "渡渡鸟",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Dodo_Character_BP_STA.Dodo_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -60100,7 +60100,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Doedicurus",
+			"name": "星尾兽",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Doed_Character_BP_STA.Doed_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -60215,7 +60215,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Meganeura",
+			"name": "巨脉蜻蜓",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Dragonfly_Character_BP_STA.Dragonfly_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -60597,7 +60597,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Equus",
+			"name": "庞马",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Equus_Character_BP_STA.Equus_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -60795,7 +60795,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Gacha",
+			"name": "嘎查",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Gacha_Character_BP_STA.Gacha_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -60937,7 +60937,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Gallimimus",
+			"name": "似鸡龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Galli_Character_BP_STA.Galli_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -61072,7 +61072,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Gasbags",
+			"name": "气囊虫",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/GasBags_Character_BP_STA.GasBags_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -61436,7 +61436,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Griffin",
+			"name": "狮鹫",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Griffin_Character_BP_STA.Griffin_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -61640,7 +61640,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Hyaenodon",
+			"name": "鬣齿兽",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Hyaenodon_Character_BP_STA.Hyaenodon_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -61877,7 +61877,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ichthyornis",
+			"name": "鱼鸟",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Ichthyornis_Character_BP_STA.Ichthyornis_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -61971,7 +61971,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Iguanodon",
+			"name": "禽龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Iguanodon_Character_BP_STA.Iguanodon_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -62178,7 +62178,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Jerboa",
+			"name": "跳鼠",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Jerboa_Character_BP_STA.Jerboa_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -63527,7 +63527,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Lystrosaurus",
+			"name": "水龙兽",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Lystro_Character_BP_STA.Lystro_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -65129,7 +65129,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Lymantria",
+			"name": "沙蛾",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Moth_Character_BP_STA.Moth_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -65953,7 +65953,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Paraceratherium",
+			"name": "巨犀",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Paracer_Character_BP_STA.Paracer_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -66284,7 +66284,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Phiomia",
+			"name": "渐新象",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Phiomia_Character_BP_STA.Phiomia_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -66486,7 +66486,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Procoptodon",
+			"name": "袋鼠",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Procoptodon_Character_BP_STA.Procoptodon_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -66877,7 +66877,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Purlovia",
+			"name": "兽头兽",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Purlovia_Character_BP_STA.Purlovia_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -67681,7 +67681,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Rock Drake",
+			"name": "岩龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/RockDrake_Character_BP_STA.RockDrake_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -67888,7 +67888,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sabertooth",
+			"name": "剑齿虎",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Saber_Character_BP_STA.Saber_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -67985,7 +67985,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sarco",
+			"name": "帝鳄",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Sarco_Character_BP_STA.Sarco_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -68099,7 +68099,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Brontosaurus",
+			"name": "雷龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Sauropod_Character_BP_STA.Sauropod_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -68202,7 +68202,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Pulmonoscorpius",
+			"name": "巨蝎",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Scorpion_Character_BP_STA.Scorpion_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -68492,7 +68492,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ferox",
+			"name": "猿狐",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Shapeshifter_Large_Character_BP_STA.Shapeshifter_Large_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Large", "Mission" ],
 			"fullStatsRaw": [
@@ -68614,7 +68614,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ferox",
+			"name": "猿狐",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Shapeshifter_Small_Character_BP_STA.Shapeshifter_Small_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission", "Small" ],
 			"fullStatsRaw": [
@@ -68885,7 +68885,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Astrodelphis",
+			"name": "虚空海豚",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/SpaceDolphin_Character_BP_STA.SpaceDolphin_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -69025,7 +69025,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Astrocetus",
+			"name": "虚空鲸",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/SpaceWhale_Character_BP_STA.SpaceWhale_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -69169,7 +69169,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/SpiderS_Character_BP_STA.SpiderS_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -69716,7 +69716,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Megaloceros",
+			"name": "大角鹿",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Stag_Character_BP_STA.Stag_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -69816,7 +69816,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Stegosaurus",
+			"name": "剑龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Stego_Character_BP_STA.Stego_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -70318,7 +70318,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Tek Stryder",
+			"name": "泰克跨步者",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/TekStrider_Character_BP_STA.TekStrider_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -71172,7 +71172,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Beelzebufo",
+			"name": "魔鬼蛙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Toad_Character_BP_STA.Toad_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -71312,7 +71312,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Triceratops",
+			"name": "三角龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Trike_Character_BP_STA.Trike_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -71483,7 +71483,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Trilobite",
+			"name": "三叶虫",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Trilobite_Character_STA.Trilobite_Character_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -71829,7 +71829,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Carbonemys",
+			"name": "淡水碳龟",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Turtle_Character_BP_STA.Turtle_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -71938,7 +71938,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Vulture",
+			"name": "秃鹫",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Vulture_Character_BP_STA.Vulture_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -73117,7 +73117,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Morellatops",
+			"name": "驼峰兽",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/camelsaurus_Character_BP_STA.camelsaurus_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -76449,7 +76449,7 @@
 			"statNames": { "3": "Charge Capacity" }
 		},
 		{
-			"name": "R-Allosaurus",
+			"name": "R-异特龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Mashup/ExperimentG/DinosAndStructures/Allo_Character_BP_ExpG_Pod.Allo_Character_BP_ExpG_Pod",
 			"variants": [ "创世纪2", "Mashup", "Mission" ],
 			"fullStatsRaw": [
@@ -76959,7 +76959,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Arthropluera",
+			"name": "古马陆",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Mashup/ExperimentG/DinosAndStructures/Arthro_Character_BP_ExpG.Arthro_Character_BP_ExpG",
 			"variants": [ "创世纪2", "Mashup", "Mission" ],
 			"fullStatsRaw": [
@@ -77214,7 +77214,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Gigantopithecus",
+			"name": "巨猿",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Mashup/ExperimentG/DinosAndStructures/Bigfoot_Character_BP_ExpG_Pod.Bigfoot_Character_BP_ExpG_Pod",
 			"variants": [ "创世纪2", "Mashup", "Mission" ],
 			"fullStatsRaw": [
@@ -77515,7 +77515,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Chalicotherium",
+			"name": "砂犷兽",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Mashup/ExperimentG/DinosAndStructures/Chalico_Character_BP_ExpG_Pod.Chalico_Character_BP_ExpG_Pod",
 			"variants": [ "创世纪2", "Mashup", "Mission" ],
 			"fullStatsRaw": [
@@ -77958,7 +77958,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Megatherium",
+			"name": "R-大地懒",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Mashup/ExperimentG/DinosAndStructures/Megatherium_Character_BP_ExpG_Pod.Megatherium_Character_BP_ExpG_Pod",
 			"variants": [ "创世纪2", "Mashup", "Mission" ],
 			"fullStatsRaw": [
@@ -78651,7 +78651,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "R-Parasaur",
+			"name": "R-副栉龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Mashup/ExperimentG/DinosAndStructures/Para_Character_BP_ExpG_Pod.Para_Character_BP_ExpG_Pod",
 			"variants": [ "创世纪2", "Mashup", "Mission" ],
 			"fullStatsRaw": [
@@ -78911,7 +78911,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Paraceratherium",
+			"name": "巨犀",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Mashup/ExperimentG/DinosAndStructures/Paracer_Character_BP_ExpG_Pod.Paracer_Character_BP_ExpG_Pod",
 			"variants": [ "创世纪2", "Mashup", "Mission" ],
 			"fullStatsRaw": [
@@ -82689,7 +82689,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Astrodelphis",
+			"name": "虚空海豚",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Shmup/WhaleRescue/Dinos/SpaceDolphin_Character_BP_WhaleRescue.SpaceDolphin_Character_BP_WhaleRescue",
 			"variants": [ "创世纪2", "Mission", "Shmup" ],
 			"isFlyer": true,
@@ -82829,7 +82829,7 @@
 			"statNames": { "9": "Nursing Effectiveness" }
 		},
 		{
-			"name": "Astrodelphis",
+			"name": "虚空海豚",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Shmup/WhaleRescue/Dinos/SpaceDolphin_Character_BP_WhaleRescue_Bot.SpaceDolphin_Character_BP_WhaleRescue_Bot",
 			"variants": [ "创世纪2", "Mission", "Shmup" ],
 			"isFlyer": true,
@@ -82872,7 +82872,7 @@
 			"displayedStats": 769
 		},
 		{
-			"name": "Astrocetus",
+			"name": "虚空鲸",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Shmup/WhaleRescue/Dinos/SpaceWhale_Character_BP_WhaleRescue.SpaceWhale_Character_BP_WhaleRescue",
 			"variants": [ "创世纪2", "Mission", "Shmup" ],
 			"isFlyer": true,
@@ -83409,7 +83409,7 @@
 			"statNames": { "9": "Nursing Effectiveness" }
 		},
 		{
-			"name": "Astrodelphis",
+			"name": "虚空海豚",
 			"blueprintPath": "/Game/Genesis2/Missions/Race2/SpaceDolphin/SpaceDolphin_Character_BP_Race.SpaceDolphin_Character_BP_Race",
 			"variants": [ "创世纪2", "Mission", "Race2" ],
 			"isFlyer": true,
@@ -83765,7 +83765,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Amargasaurus",
+			"name": "阿马加龙",
 			"blueprintPath": "/Game/LostIsland/Boss/Minions/Amargasaurus_Character_BP_Minion.Amargasaurus_Character_BP_Minion",
 			"variants": [ "Boss", "LostIsland", "Minion" ],
 			"fullStatsRaw": [
@@ -83877,7 +83877,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dinopithecus",
+			"name": "恐狒",
 			"blueprintPath": "/Game/LostIsland/Boss/Minions/Dinopithecus_Character_BP_Minion.Dinopithecus_Character_BP_Minion",
 			"variants": [ "LostIsland", "Minion" ],
 			"fullStatsRaw": [
@@ -84138,7 +84138,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Amargasaurus",
+			"name": "阿马加龙",
 			"blueprintPath": "/Game/LostIsland/Dinos/Amargasaurus/Amargasaurus_Character_BP.Amargasaurus_Character_BP",
 			"variants": [ "LostIsland" ],
 			"fullStatsRaw": [
@@ -84252,7 +84252,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dinopithecus",
+			"name": "恐狒",
 			"blueprintPath": "/Game/LostIsland/Dinos/Dinopithecus/Dinopithecus_Character_BP.Dinopithecus_Character_BP",
 			"variants": [ "LostIsland" ],
 			"fullStatsRaw": [
@@ -84790,7 +84790,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Griffin",
+			"name": "狮鹫",
 			"blueprintPath": "/Game/Mods/Ragnarok/Custom_Assets/Bosses/Griffin_Character_Minion_BP.Griffin_Character_Minion_BP",
 			"variants": [ "Minion", "Ragnarok" ],
 			"isFlyer": true,
@@ -85013,7 +85013,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Megaloceros",
+			"name": "大角鹿",
 			"blueprintPath": "/Game/Mods/Ragnarok/Custom_Assets/Bosses/LifeLabyrinth/Elk/Stag_LL_Character_BP.Stag_LL_Character_BP",
 			"variants": [ "Cave", "LifeLabyrinth", "Ragnarok" ],
 			"fullStatsRaw": [
@@ -85114,7 +85114,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Direwolf",
+			"name": "恐狼",
 			"blueprintPath": "/Game/Mods/Ragnarok/Custom_Assets/Bosses/LifeLabyrinth/Wolf/Direwolf_LL_Character_BP.Direwolf_LL_Character_BP",
 			"variants": [ "Cave", "LifeLabyrinth", "Ragnarok" ],
 			"fullStatsRaw": [
@@ -86123,7 +86123,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Achatina",
+			"name": "玛瑙螺",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Achatina/Achatina_Character_BP.Achatina_Character_BP",
 			"fullStatsRaw": [
 				[ 75, 0.2, 0.27, 0.5, 0 ],
@@ -86241,7 +86241,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Achatina",
+			"name": "畸变玛瑙螺",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Achatina/Achatina_Character_BP_Aberrant.Achatina_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -86360,7 +86360,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Allosaurus",
+			"name": "异特龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Allosaurus/Allo_Character_BP.Allo_Character_BP",
 			"fullStatsRaw": [
 				[ 630, 0.2, 0.27, 0.5, 0 ],
@@ -86490,7 +86490,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Ammonite",
+			"name": "菊石",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Ammonite/Ammonite_Character.Ammonite_Character",
 			"fullStatsRaw": [
 				[ 165, 0.2, 0.27, 0.5, 0 ],
@@ -86622,7 +86622,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Anglerfish",
+			"name": "鮟鱇鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Anglerfish/Angler_Character_BP.Angler_Character_BP",
 			"fullStatsRaw": [
 				[ 450, 0.2, 0.27, 0.3, 0 ],
@@ -86734,7 +86734,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Anglerfish",
+			"name": "畸变鮟鱇鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Anglerfish/Angler_Character_BP_Aberrant.Angler_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -87249,7 +87249,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Archaeopteryx",
+			"name": "始祖鸟",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Archaeopteryx/Archa_Character_BP.Archa_Character_BP",
 			"fullStatsRaw": [
 				[ 125, 0.2, 0.27, 0.5, 0 ],
@@ -87495,7 +87495,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Arthropluera",
+			"name": "古马陆",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Arthropluera/Arthro_Character_BP.Arthro_Character_BP",
 			"fullStatsRaw": [
 				[ 500, 0.2, 0.27, 0.5, 0 ],
@@ -87642,7 +87642,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Arthropluera",
+			"name": "畸变古马陆",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Arthropluera/Arthro_Character_BP_Aberrant.Arthro_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -87790,7 +87790,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Baryonyx",
+			"name": "重爪龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Baryonyx/Baryonyx_Character_BP.Baryonyx_Character_BP",
 			"fullStatsRaw": [
 				[ 440, 0.2, 0.27, 0.5, 0 ],
@@ -87889,7 +87889,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Baryonyx",
+			"name": "畸变重爪龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Baryonyx/Baryonyx_Character_BP_Aberrant.Baryonyx_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -87989,7 +87989,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Basilosaurus",
+			"name": "龙王鲸",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Basilosaurus/Basilosaurus_Character_BP.Basilosaurus_Character_BP",
 			"fullStatsRaw": [
 				[ 2400, 0.2, 0.243, 0.3, 0 ],
@@ -88062,7 +88062,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Onyc",
+			"name": "爪蝠",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Bat/Bat_Character_BP.Bat_Character_BP",
 			"isFlyer": true,
 			"fullStatsRaw": [
@@ -88168,7 +88168,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Castoroides",
+			"name": "巨河狸",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Beaver/Beaver_Character_BP.Beaver_Character_BP",
 			"fullStatsRaw": [
 				[ 450, 0.2, 0.27, 0.5, 0 ],
@@ -88461,7 +88461,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Gigantopithecus",
+			"name": "巨猿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Bigfoot/Bigfoot_Character_BP.Bigfoot_Character_BP",
 			"fullStatsRaw": [
 				[ 640, 0.1, 0.27, 0.5, 0 ],
@@ -88561,7 +88561,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Gigantopithecus",
+			"name": "畸变巨猿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Bigfoot/Bigfoot_Character_BP_Aberrant.Bigfoot_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -88662,7 +88662,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Gigantopithecus",
+			"name": "巨猿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Bigfoot/Bigfoot_Character_BP_Aggressive.Bigfoot_Character_BP_Aggressive",
 			"variants": [ "Boss", "Gamma" ],
 			"fullStatsRaw": [
@@ -88763,7 +88763,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Gigantopithecus",
+			"name": "巨猿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Bigfoot/Bigfoot_Character_BP_Aggressive_Hard.Bigfoot_Character_BP_Aggressive_Hard",
 			"variants": [ "Alpha", "Boss" ],
 			"fullStatsRaw": [
@@ -88865,7 +88865,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Gigantopithecus",
+			"name": "巨猿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Bigfoot/Bigfoot_Character_BP_Aggressive_Med.Bigfoot_Character_BP_Aggressive_Med",
 			"variants": [ "Beta", "Boss" ],
 			"fullStatsRaw": [
@@ -89026,7 +89026,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Titanoboa",
+			"name": "泰坦巨蟒",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/BoaFrill/BoaFrill_Character_BP.BoaFrill_Character_BP",
 			"fullStatsRaw": [
 				[ 170, 0.2, 0.27, 0.5, 0 ],
@@ -89172,7 +89172,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Titanoboa",
+			"name": "畸变泰坦巨蟒",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/BoaFrill/BoaFrill_Character_BP_Aberrant.BoaFrill_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -89319,6 +89319,177 @@
 			"displayedStats": 919
 		},
 		{
+			"name": "Carcharodontosaurus",
+			"blueprintPath": "/Game/PrimalEarth/Dinos/Carcharodontosaurus/Carcha_Character_BP.Carcha_Character_BP",
+			"fullStatsRaw": [
+				[ 70000, 0.0008, 0.004, -54000, 0 ],
+				[ 480, 0.006, 0.025, 0, 0 ],
+				[ 6000, 0.06, 0, 0, 0 ],
+				[ 150, 0.0025, 0.025, 0, 0 ],
+				[ 4000, 0.0025, 0.025, 0, 0 ],
+				null,
+				null,
+				[ 650, 0.02, 0.01, 0, 0 ],
+				[ 1, 0.05, 0.05, -0.8, 0 ],
+				[ 1, 0, 0.0031, 0, 0 ],
+				null,
+				null
+			],
+			"immobilizedBy": [ "Large Bear Trap" ],
+			"breeding": {
+				"gestationTime": 0,
+				"incubationTime": 179985.601,
+				"eggTempMin": 37,
+				"eggTempMax": 39,
+				"maturationTime": 878348.704,
+				"matingCooldownMin": 64800,
+				"matingCooldownMax": 172800
+			},
+			"colors": [
+				{
+					"name": "Body Main",
+					"colors": [
+						"BigFoot0",
+						"Black",
+						"BlackSands",
+						"BurntSienna",
+						"Cammo",
+						"Dark Grey",
+						"DarkCement",
+						"DarkWarmGray",
+						"Dino Dark Brown",
+						"Dino Dark Orange",
+						"Dino Dark Red",
+						"Dino Dark Yellow",
+						"Dino Darker Grey",
+						"Dino Light Brown",
+						"Dino Light Yellow",
+						"Dino Medium Brown",
+						"DragonBase0",
+						"DragonGreen0",
+						"DragonGreen1",
+						"DryMoss",
+						"GreenSlate",
+						"Light Grey",
+						"LightAutumn",
+						"LightWarmGray",
+						"MediumWarmGray",
+						"Mustard",
+						"NearBlack"
+					]
+				},
+				null,
+				{
+					"name": "Spikes",
+					"colors": [
+						"BlackSands",
+						"BurntSienna",
+						"DarkBlue",
+						"DarkCement",
+						"DarkWarmGray",
+						"DarkWolfFur",
+						"Dino Dark Brown",
+						"Dino Darker Grey",
+						"Dino Medium Brown",
+						"MediumWarmGray",
+						"NearBlack",
+						"Sage"
+					]
+				},
+				{
+					"name": "Spike Webbing",
+					"colors": [
+						"BigFoot0",
+						"BigFoot4",
+						"BigFoot5",
+						"Coral",
+						"Cream",
+						"Dino Dark Orange",
+						"Dino Light Blue",
+						"Dino Light Green",
+						"Dino Light Orange",
+						"Dino Light Purple",
+						"Dino Light Yellow",
+						"DragonBase0",
+						"DragonBase1",
+						"DragonFire",
+						"DragonGreen1",
+						"DragonGreen3",
+						"LightAutumn",
+						"MediumAutumn",
+						"WolfFur",
+						"WyvernBlue0",
+						"WyvernPurple1"
+					]
+				},
+				{
+					"name": "Body Underbelly",
+					"colors": [
+						"BigFoot0",
+						"BigFoot4",
+						"BigFoot5",
+						"Coral",
+						"Cream",
+						"Dino Dark Orange",
+						"Dino Light Blue",
+						"Dino Light Green",
+						"Dino Light Orange",
+						"Dino Light Purple",
+						"Dino Light Yellow",
+						"DragonBase0",
+						"DragonBase1",
+						"DragonFire",
+						"DragonGreen1",
+						"DragonGreen3",
+						"LightAutumn",
+						"MediumAutumn",
+						"WolfFur",
+						"WyvernBlue0",
+						"WyvernPurple1"
+					]
+				},
+				{
+					"name": "Spots and Stripes",
+					"colors": [
+						"BigFoot0",
+						"BigFoot4",
+						"BigFoot5",
+						"Coral",
+						"Cream",
+						"Dino Dark Orange",
+						"Dino Light Blue",
+						"Dino Light Green",
+						"Dino Light Orange",
+						"Dino Light Purple",
+						"Dino Light Yellow",
+						"DragonBase0",
+						"DragonBase1",
+						"DragonFire",
+						"DragonGreen1",
+						"DragonGreen3",
+						"LightAutumn",
+						"MediumAutumn",
+						"WolfFur",
+						"WyvernBlue0",
+						"WyvernPurple1"
+					]
+				}
+			],
+			"taming": {
+				"nonViolent": false,
+				"violent": true,
+				"tamingIneffectiveness": 0,
+				"affinityNeeded0": 9000,
+				"affinityIncreasePL": 240,
+				"torporDepletionPS0": 0.5,
+				"foodConsumptionBase": 0.002314,
+				"foodConsumptionMult": 150.0634,
+				"babyFoodConsumptionMult": 700
+			},
+			"TamedBaseHealthMultiplier": 1,
+			"displayedStats": 927
+		},
+		{
 			"name": "Skeletal Carnotaurus",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Carno/Bone_MegaCarno_Character_BP.Bone_MegaCarno_Character_BP",
 			"variants": [ "Skeletal" ],
@@ -89380,7 +89551,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Carnotaurus",
+			"name": "牛龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Carno/Carno_Character_BP.Carno_Character_BP",
 			"fullStatsRaw": [
 				[ 420, 0.2, 0.27, 0.5, 0 ],
@@ -89494,7 +89665,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Carnotaurus",
+			"name": "畸变牛龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Carno/Carno_Character_BP_Aberrant.Carno_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -89670,7 +89841,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Chalicotherium",
+			"name": "砂犷兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Chalicotherium/Chalico_Character_BP.Chalico_Character_BP",
 			"fullStatsRaw": [
 				[ 600, 0.2, 0.27, 0.5, 0 ],
@@ -89819,7 +89990,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Coelacanth",
+			"name": "腔棘鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Coelacanth/Coel_Character_BP.Coel_Character_BP",
 			"fullStatsRaw": [
 				[ 30, 0.2, 0.27, 0.5, 0 ],
@@ -89924,7 +90095,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Coelacanth",
+			"name": "畸变腔棘鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Coelacanth/Coel_Character_BP_Aberrant.Coel_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -90030,7 +90201,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Coelacanth",
+			"name": "腔棘鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Coelacanth/Coel_Character_BP_IceFishMission.Coel_Character_BP_IceFishMission",
 			"variants": [ "IceFishing" ],
 			"fullStatsRaw": [
@@ -90136,7 +90307,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Coelacanth",
+			"name": "腔棘鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Coelacanth/Coel_Character_BP_Ocean.Coel_Character_BP_Ocean",
 			"variants": [ "Ocean" ],
 			"fullStatsRaw": [
@@ -90242,7 +90413,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Coelacanth",
+			"name": "腔棘鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Coelacanth/Coel_Character_BP_VDay.Coel_Character_BP_VDay",
 			"variants": [ "VDay" ],
 			"fullStatsRaw": [
@@ -90330,7 +90501,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Coelacanth",
+			"name": "畸变腔棘鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Coelacanth/Coel_Character_BP_VDay_Aberrant.Coel_Character_BP_VDay_Aberrant",
 			"variants": [ "畸变", "VDay" ],
 			"fullStatsRaw": [
@@ -90418,7 +90589,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Coelacanth",
+			"name": "腔棘鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Coelacanth/Coel_Character_BP_VDay_Ocean.Coel_Character_BP_VDay_Ocean",
 			"variants": [ "Ocean", "VDay" ],
 			"fullStatsRaw": [
@@ -90506,7 +90677,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Compy",
+			"name": "美颌龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Compy/Compy_Character_BP.Compy_Character_BP",
 			"fullStatsRaw": [
 				[ 50, 0.2, 0.32, 0.5, 0 ],
@@ -90724,7 +90895,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Ember Crystal Wyvern",
+			"name": "灰烬水晶飞龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/CrystalWyvern/CrystalWyvern_Character_BP_Ember.CrystalWyvern_Character_BP_Ember",
 			"variants": [ "水晶岛" ],
 			"isFlyer": true,
@@ -91088,7 +91259,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dilophosaur",
+			"name": "双脊龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dilo/Dilo_Character_BP.Dilo_Character_BP",
 			"fullStatsRaw": [
 				[ 130, 0.2, 0.27, 0.5, 0 ],
@@ -91228,7 +91399,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dimetrodon",
+			"name": "异齿龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dimetrodon/Dimetro_Character_BP.Dimetro_Character_BP",
 			"fullStatsRaw": [
 				[ 350, 0.2, 0.27, 0.65, 0 ],
@@ -91380,7 +91551,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Dimetrodon",
+			"name": "畸变异齿龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dimetrodon/Dimetro_Character_BP_Aberrant.Dimetro_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -91533,7 +91704,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Dimorphodon",
+			"name": "双型齿翼龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dimorphodon/Dimorph_Character_BP.Dimorph_Character_BP",
 			"isFlyer": true,
 			"fullStatsRaw": [
@@ -91651,7 +91822,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Dimorphodon",
+			"name": "畸变双型齿翼龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dimorphodon/Dimorph_Character_BP_Aberrant.Dimorph_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"isFlyer": true,
@@ -91770,7 +91941,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dimorphodon",
+			"name": "双型齿翼龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dimorphodon/Dimorph_Character_BP_Aggressive_DragonBoss.Dimorph_Character_BP_Aggressive_DragonBoss",
 			"variants": [ "Boss", "Gamma", "Minion" ],
 			"isFlyer": true,
@@ -91889,7 +92060,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dimorphodon",
+			"name": "双型齿翼龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dimorphodon/Dimorph_Character_BP_Aggressive_DragonBoss_Hard.Dimorph_Character_BP_Aggressive_DragonBoss_Hard",
 			"variants": [ "Alpha", "Boss", "Minion" ],
 			"isFlyer": true,
@@ -92009,7 +92180,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dimorphodon",
+			"name": "双型齿翼龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dimorphodon/Dimorph_Character_BP_Aggressive_DragonBoss_Med.Dimorph_Character_BP_Aggressive_DragonBoss_Med",
 			"variants": [ "Beta", "Boss", "Minion" ],
 			"isFlyer": true,
@@ -92129,7 +92300,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Diplocaulus",
+			"name": "盗首螈",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Diplocaulus/Diplocaulus_Character_BP.Diplocaulus_Character_BP",
 			"fullStatsRaw": [
 				[ 250, 0.2, 0.27, 0.5, 0 ],
@@ -92241,7 +92412,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Diplocaulus",
+			"name": "畸变盗首螈",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Diplocaulus/Diplocaulus_Character_BP_Aberrant.Diplocaulus_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -92354,7 +92525,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Diplodocus",
+			"name": "梁龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Diplodocus/Diplodocus_Character_BP.Diplodocus_Character_BP",
 			"fullStatsRaw": [
 				[ 1700, 0.2, 0.27, 0.5, 0 ],
@@ -92459,7 +92630,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Diplodocus",
+			"name": "畸变梁龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Diplodocus/Diplodocus_Character_BP_Aberrant.Diplodocus_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -92672,7 +92843,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Dire Bear",
+			"name": "畸变恐熊",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Direbear/Direbear_Character_BP_Aberrant.Direbear_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -92862,7 +93033,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Direwolf",
+			"name": "恐狼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Direwolf/Direwolf_Character_BP.Direwolf_Character_BP",
 			"fullStatsRaw": [
 				[ 330, 0.2, 0.27, 0.66, 0 ],
@@ -93054,7 +93225,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dodo",
+			"name": "渡渡鸟",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dodo/Dodo_Character_BP.Dodo_Character_BP",
 			"fullStatsRaw": [
 				[ 40, 0.2, 0.27, 0.5, 0 ],
@@ -93209,7 +93380,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Dodo",
+			"name": "畸变渡渡鸟",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dodo/Dodo_Character_BP_Aberrant.Dodo_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -94060,7 +94231,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Doedicurus",
+			"name": "星尾兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Doedicurus/Doed_Character_BP.Doed_Character_BP",
 			"fullStatsRaw": [
 				[ 850, 0.2, 0.27, 0.5, 0 ],
@@ -94175,7 +94346,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Doedicurus",
+			"name": "畸变星尾兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Doedicurus/Doed_Character_BP_Aberrant.Doed_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -94291,7 +94462,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Ichthyosaurus",
+			"name": "鱼龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dolphin/Dolphin_Character_BP.Dolphin_Character_BP",
 			"fullStatsRaw": [
 				[ 275, 0.05, 0.0675, 0.3, 0 ],
@@ -94483,7 +94654,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Meganeura",
+			"name": "巨脉蜻蜓",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dragonfly/Dragonfly_Character_BP.Dragonfly_Character_BP",
 			"isFlyer": true,
 			"fullStatsRaw": [
@@ -94825,7 +94996,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Dung Beetle",
+			"name": "畸变蜣螂",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/DungBeetle/DungBeetle_Character_BP_Aberrant.DungBeetle_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -94939,7 +95110,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Dunkleosteus",
+			"name": "邓氏鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Dunkleosteus/Dunkle_Character_BP.Dunkle_Character_BP",
 			"fullStatsRaw": [
 				[ 710, 0.2, 0.27, 0.3, 0 ],
@@ -95025,7 +95196,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Electrophorus",
+			"name": "电鳗",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Eel/Eel_Character_BP.Eel_Character_BP",
 			"fullStatsRaw": [
 				[ 180, 0.2, 0.27, -0.2, 0 ],
@@ -95142,7 +95313,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Electrophorus",
+			"name": "畸变电鳗",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Eel/Eel_Character_BP_Aberrant.Eel_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -95260,7 +95431,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Equus",
+			"name": "庞马",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Equus/Equus_Character_BP.Equus_Character_BP",
 			"fullStatsRaw": [
 				[ 240, 0.2, 0.27, 0.5, 0 ],
@@ -95362,7 +95533,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Equus",
+			"name": "畸变庞马",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Equus/Equus_Character_BP_Aberrant.Equus_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -95465,7 +95636,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Unicorn",
+			"name": "独角兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Equus/Equus_Character_BP_Unicorn.Equus_Character_BP_Unicorn",
 			"fullStatsRaw": [
 				[ 240, 0.2, 0.27, 0.5, 0 ],
@@ -95628,7 +95799,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Gallimimus",
+			"name": "似鸡龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Gallimimus/Galli_Character_BP.Galli_Character_BP",
 			"fullStatsRaw": [
 				[ 150, 0.2, 0.27, 0.5, 0 ],
@@ -95763,7 +95934,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Tek Giganotosaurus",
+			"name": "泰克南方巨兽龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Giganotosaurus/BionicGigant_Character_BP.BionicGigant_Character_BP",
 			"fullStatsRaw": [
 				[ 80000, 0.0005, 0.002, -63000, 0 ],
@@ -96396,7 +96567,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Griffin",
+			"name": "狮鹫",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Griffin/Griffin_Character_BP.Griffin_Character_BP",
 			"variants": [ "Ragnarok" ],
 			"isFlyer": true,
@@ -96603,7 +96774,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Hyaenodon",
+			"name": "鬣齿兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Hyaenodon/Hyaenodon_Character_BP.Hyaenodon_Character_BP",
 			"fullStatsRaw": [
 				[ 175, 0.2, 0.27, 0.66, 0 ],
@@ -96736,7 +96907,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ichthyornis",
+			"name": "鱼鸟",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Ichthyornis/Ichthyornis_Character_BP.Ichthyornis_Character_BP",
 			"isFlyer": true,
 			"fullStatsRaw": [
@@ -96830,7 +97001,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Iguanodon",
+			"name": "禽龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Iguanodon/Iguanodon_Character_BP.Iguanodon_Character_BP",
 			"fullStatsRaw": [
 				[ 250, 0.2, 0.27, 0.5, 0 ],
@@ -96930,7 +97101,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Iguanodon",
+			"name": "畸变禽龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Iguanodon/Iguanodon_Character_BP_Aberrant.Iguanodon_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -97646,7 +97817,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Lystrosaurus",
+			"name": "水龙兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Lystrosaurus/Lystro_Character_BP.Lystro_Character_BP",
 			"fullStatsRaw": [
 				[ 90, 0.2, 0.27, 0.5, 0 ],
@@ -97742,7 +97913,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Lystrosaurus",
+			"name": "畸变水龙兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Lystrosaurus/Lystro_Character_BP_Aberrant.Lystro_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -98023,7 +98194,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Manta",
+			"name": "蝠鲼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Manta/Manta_Character_BP.Manta_Character_BP",
 			"fullStatsRaw": [
 				[ 320, 0.05, 0.0675, 0.5, 0 ],
@@ -98112,7 +98283,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Manta",
+			"name": "畸变蝠鲼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Manta/Manta_Character_BP_Aberrant.Manta_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -98353,7 +98524,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Megalania",
+			"name": "畸变古巨蜥",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Megalania/Megalania_Character_BP_Aberrant.Megalania_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -98521,7 +98692,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Megalodon",
+			"name": "巨齿鲨",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Megalodon/Megalodon_Character_BP.Megalodon_Character_BP",
 			"fullStatsRaw": [
 				[ 600, 0.2, 0.27, 0.3, 0 ],
@@ -99612,7 +99783,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Mosasaurus",
+			"name": "沧龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Mosasaurus/Mosa_Character_BP.Mosa_Character_BP",
 			"fullStatsRaw": [
 				[ 3600, 0.12, 0.21, 0.3, 0 ],
@@ -99740,7 +99911,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Mosasaurus",
+			"name": "沧龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Mosasaurus/Mosa_Character_BP_Cave.Mosa_Character_BP_Cave",
 			"variants": [ "Cave" ],
 			"fullStatsRaw": [
@@ -100314,7 +100485,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Otter",
+			"name": "畸变水獭",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Otter/Otter_Character_BP_Aberrant.Otter_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -101244,7 +101415,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Parasaur",
+			"name": "畸变副栉龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Para/Para_Character_BP_Aberrant.Para_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -101393,7 +101564,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Paraceratherium",
+			"name": "巨犀",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Paraceratherium/Paracer_Character_BP.Paracer_Character_BP",
 			"fullStatsRaw": [
 				[ 1026, 0.2, 0.172125, 0.5, 0 ],
@@ -101488,7 +101659,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Paraceratherium",
+			"name": "畸变巨犀",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Paraceratherium/Paracer_Character_BP_Aberrant.Paracer_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -101793,7 +101964,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Phiomia",
+			"name": "渐新象",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Phiomia/Phiomia_Character_BP.Phiomia_Character_BP",
 			"fullStatsRaw": [
 				[ 300, 0.2, 0.27, 0.5, 0 ],
@@ -101907,7 +102078,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Piranha",
+			"name": "食人鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Piranha/Piranha_Character_BP.Piranha_Character_BP",
 			"fullStatsRaw": [
 				[ 150, 0.2, 0.27, 0.5, 0 ],
@@ -102022,7 +102193,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Piranha",
+			"name": "畸变食人鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Piranha/Piranha_Character_BP_Aberrant.Piranha_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -102138,7 +102309,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Piranha",
+			"name": "食人鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Piranha/Piranha_Character_BP_BreakNet.Piranha_Character_BP_BreakNet",
 			"variants": [ "BreakNet", "Mission" ],
 			"fullStatsRaw": [
@@ -102254,7 +102425,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Piranha",
+			"name": "食人鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Piranha/Piranha_Character_BP_IceFishMission.Piranha_Character_BP_IceFishMission",
 			"variants": [ "IceFishing", "Mission" ],
 			"fullStatsRaw": [
@@ -102370,7 +102541,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Plesiosaur",
+			"name": "蛇颈龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Plesiosaur/Plesiosaur_Character_BP.Plesiosaur_Character_BP",
 			"fullStatsRaw": [
 				[ 2400, 0.12, 0.162, 0.16, 0 ],
@@ -102484,7 +102655,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Procoptodon",
+			"name": "袋鼠",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Procoptodon/Procoptodon_Character_BP.Procoptodon_Character_BP",
 			"fullStatsRaw": [
 				[ 400, 0.2, 0.27, 0.75, 0 ],
@@ -103183,7 +103354,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Purlovia",
+			"name": "兽头兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Purlovia/Purlovia_Character_BP.Purlovia_Character_BP",
 			"fullStatsRaw": [
 				[ 275, 0.2, 0.27, 0.5, 0 ],
@@ -103266,7 +103437,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Purlovia",
+			"name": "畸变兽头兽",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Purlovia/Purlovia_Character_BP_Aberrant.Purlovia_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -104214,7 +104385,7 @@
 				},
 				null,
 				{
-					"name": "Body",
+					"name": "Body and Feathers",
 					"colors": [
 						"Black",
 						"Dark Grey",
@@ -104234,7 +104405,7 @@
 					]
 				},
 				{
-					"name": "Feathers",
+					"name": "Spine",
 					"colors": [
 						"Dino Light Blue",
 						"Dino Light Green",
@@ -104280,7 +104451,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Raptor",
+			"name": "畸变迅猛龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Raptor/Raptor_Character_BP_Aberrant.Raptor_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -105048,7 +105219,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Sabertooth",
+			"name": "剑齿虎",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Saber/Saber_Character_BP.Saber_Character_BP",
 			"fullStatsRaw": [
 				[ 250, 0.2, 0.27, 0.5, 0 ],
@@ -105236,7 +105407,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sabertooth Salmon",
+			"name": "剑齿鲑鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Salmon/Salmon_Character_BP.Salmon_Character_BP",
 			"fullStatsRaw": [
 				[ 65, 0.2, 0.27, 0.5, 0 ],
@@ -105326,7 +105497,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sabertooth Salmon",
+			"name": "剑齿鲑鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Salmon/Salmon_Character_BP_IceFishMission.Salmon_Character_BP_IceFishMission",
 			"variants": [ "IceFishing" ],
 			"fullStatsRaw": [
@@ -105417,7 +105588,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sabertooth Salmon",
+			"name": "剑齿鲑鱼",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Salmon/Salmon_Character_Rare_BP.Salmon_Character_Rare_BP",
 			"variants": [ "Rare" ],
 			"fullStatsRaw": [
@@ -105508,7 +105679,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Sarco",
+			"name": "帝鳄",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Sarco/Sarco_Character_BP.Sarco_Character_BP",
 			"fullStatsRaw": [
 				[ 400, 0.2, 0.27, 0.65, 0 ],
@@ -105622,7 +105793,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Sarco",
+			"name": "畸变帝鳄",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Sarco/Sarco_Character_BP_Aberrant.Sarco_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -105838,7 +106009,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Brontosaurus",
+			"name": "雷龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Sauropod/Sauropod_Character_BP.Sauropod_Character_BP",
 			"fullStatsRaw": [
 				[ 2070, 0.2, 0.1254, 0.5, 0 ],
@@ -105941,7 +106112,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Pulmonoscorpius",
+			"name": "巨蝎",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Scorpion/Scorpion_Character_BP.Scorpion_Character_BP",
 			"fullStatsRaw": [
 				[ 280, 0.2, 0.27, 0.5, 0 ],
@@ -106112,7 +106283,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Pulmonoscorpius",
+			"name": "畸变巨蝎",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Scorpion/Scorpion_Character_BP_Aberrant.Scorpion_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -106380,7 +106551,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Ovis",
+			"name": "畸变绵羊",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Sheep/Sheep_Character_BP_Aberrant.Sheep_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -106722,7 +106893,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Spider-Small/SpiderS_Character_BP.SpiderS_Character_BP",
 			"fullStatsRaw": [
 				[ 150, 0.2, 0.135, 0.5, 0 ],
@@ -106851,7 +107022,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Araneo",
+			"name": "畸变蜘蛛",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Spider-Small/SpiderS_Character_BP_Aberrant.SpiderS_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -106981,7 +107152,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Spider-Small/SpiderS_Character_BP_Aggressive.SpiderS_Character_BP_Aggressive",
 			"variants": [ "Boss", "Gamma" ],
 			"fullStatsRaw": [
@@ -107111,7 +107282,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Spider-Small/SpiderS_Character_BP_Aggressive_Hard.SpiderS_Character_BP_Aggressive_Hard",
 			"variants": [ "Alpha", "Boss" ],
 			"fullStatsRaw": [
@@ -107242,7 +107413,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Araneo",
+			"name": "蜘蛛",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Spider-Small/SpiderS_Character_BP_Aggressive_Med.SpiderS_Character_BP_Aggressive_Med",
 			"variants": [ "Beta", "Boss" ],
 			"fullStatsRaw": [
@@ -107652,7 +107823,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Megaloceros",
+			"name": "大角鹿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Stag/Stag_Character_BP.Stag_Character_BP",
 			"fullStatsRaw": [
 				[ 300, 0.2, 0.27, 0.5, 0 ],
@@ -107752,7 +107923,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Tek Stegosaurus",
+			"name": "泰克剑龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Stego/BionicStego_Character_BP.BionicStego_Character_BP",
 			"fullStatsRaw": [
 				[ 650, 0.2, 0.27, 0.5, 0 ],
@@ -108076,7 +108247,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Stegosaurus",
+			"name": "剑龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Stego/Stego_Character_BP.Stego_Character_BP",
 			"fullStatsRaw": [
 				[ 650, 0.2, 0.27, 0.5, 0 ],
@@ -108222,7 +108393,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Stegosaurus",
+			"name": "畸变剑龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Stego/Stego_Character_BP_Aberrant.Stego_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -108889,7 +109060,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Beelzebufo",
+			"name": "魔鬼蛙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Toad/Toad_Character_BP.Toad_Character_BP",
 			"fullStatsRaw": [
 				[ 220, 0.2, 0.27, 0.5, 0 ],
@@ -109029,7 +109200,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Beelzebufo",
+			"name": "畸变魔鬼蛙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Toad/Toad_Character_BP_Aberrant.Toad_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -109170,7 +109341,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Tek Triceratops",
+			"name": "泰克三角龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Trike/BionicTrike_Character_BP.BionicTrike_Character_BP",
 			"fullStatsRaw": [
 				[ 375, 0.2, 0.27, 0.5, 0 ],
@@ -109462,7 +109633,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Triceratops",
+			"name": "三角龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Trike/Trike_Character_BP.Trike_Character_BP",
 			"fullStatsRaw": [
 				[ 375, 0.2, 0.27, 0.5, 0 ],
@@ -109587,7 +109758,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Aberrant Triceratops",
+			"name": "畸变三角龙",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Trike/Trike_Character_BP_Aberrant.Trike_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -109713,7 +109884,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Trilobite",
+			"name": "三叶虫",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Trilobite/Trilobite_Character.Trilobite_Character",
 			"fullStatsRaw": [
 				[ 160, 0.2, 0.27, 0.5, 0 ],
@@ -109747,7 +109918,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Trilobite",
+			"name": "畸变三叶虫",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Trilobite/Trilobite_Character_Aberrant.Trilobite_Character_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -110098,7 +110269,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Carbonemys",
+			"name": "淡水碳龟",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Turtle/Turtle_Character_BP.Turtle_Character_BP",
 			"fullStatsRaw": [
 				[ 700, 0.2, 0.27, 0.5, 0 ],
@@ -110207,7 +110378,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Aberrant Carbonemys",
+			"name": "畸变淡水碳龟",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Turtle/Turtle_Character_BP_Aberrant.Turtle_Character_BP_Aberrant",
 			"variants": [ "畸变" ],
 			"fullStatsRaw": [
@@ -110423,7 +110594,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Tusoteuthis",
+			"name": "托斯特巨鱿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Tusoteuthis/Tusoteuthis_Character_BP.Tusoteuthis_Character_BP",
 			"fullStatsRaw": [
 				[ 2700, 0.2, 0.2025, 0.5, 0 ],
@@ -110530,7 +110701,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Tusoteuthis",
+			"name": "托斯特巨鱿",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Tusoteuthis/Tusoteuthis_Character_BP_Caves.Tusoteuthis_Character_BP_Caves",
 			"variants": [ "Cave" ],
 			"fullStatsRaw": [
@@ -110845,7 +111016,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Morellatops",
+			"name": "驼峰兽",
 			"blueprintPath": "/Game/ScorchedEarth/Dinos/Camelsaurus/camelsaurus_Character_BP.camelsaurus_Character_BP",
 			"variants": [ "ScorchedEarth" ],
 			"fullStatsRaw": [
@@ -111390,7 +111561,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Jerboa",
+			"name": "跳鼠",
 			"blueprintPath": "/Game/ScorchedEarth/Dinos/Jerboa/Jerboa_Character_BP.Jerboa_Character_BP",
 			"variants": [ "ScorchedEarth" ],
 			"fullStatsRaw": [
@@ -111995,7 +112166,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Lymantria",
+			"name": "沙蛾",
 			"blueprintPath": "/Game/ScorchedEarth/Dinos/Moth/Moth_Character_BP.Moth_Character_BP",
 			"variants": [ "ScorchedEarth" ],
 			"isFlyer": true,
@@ -112450,7 +112621,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Vulture",
+			"name": "秃鹫",
 			"blueprintPath": "/Game/ScorchedEarth/Dinos/Vulture/Vulture_Character_BP.Vulture_Character_BP",
 			"variants": [ "ScorchedEarth" ],
 			"isFlyer": true,

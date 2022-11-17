@@ -442,7 +442,7 @@
     <value>生命</value>
   </data>
   <data name="Health_Abb" xml:space="preserve">
-    <value>HP</value>
+    <value>血</value>
   </data>
   <data name="helpToolStripMenuItem" xml:space="preserve">
     <value>?</value>
