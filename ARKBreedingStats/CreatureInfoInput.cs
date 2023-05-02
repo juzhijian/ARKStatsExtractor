@@ -80,8 +80,6 @@ namespace ARKBreedingStats
             parentComboBoxFather.SelectedIndex = 0;
             _updateMaturation = true;
             _regionColorIDs = new byte[Ark.ColorRegionCount];
-            CooldownUntil = new DateTime(2000, 1, 1);
-            GrowingUntil = new DateTime(2000, 1, 1);
             NamesOfAllCreatures = new List<string>();
 
             var namingPatternButtons = ButtonsNamingPattern;
@@ -243,13 +241,16 @@ namespace ARKBreedingStats
             set => _sameSpecies = value;
         }
 
+        /// <summary>
+        /// Possible parents of the current creature. Index 0: possible mothers, index 1: possible fathers. If species has no sex all parents are in index 0.
+        /// </summary>
         public List<Creature>[] Parents
         {
             set
             {
                 if (value == null) return;
                 parentComboBoxMother.ParentList = value[0];
-                parentComboBoxFather.ParentList = value[1];
+                parentComboBoxFather.ParentList = value[1] ?? value[0];
             }
         }
 
@@ -259,7 +260,7 @@ namespace ARKBreedingStats
             {
                 if (value == null) return;
                 parentComboBoxMother.parentsSimilarity = value[0];
-                parentComboBoxFather.parentsSimilarity = value[1];
+                parentComboBoxFather.parentsSimilarity = value[1] ?? value[0];
             }
         }
 
@@ -277,8 +278,8 @@ namespace ARKBreedingStats
             set
             {
                 btSaveChanges.Visible = value;
-                btAdd2Library.Size = new Size((value ? 120 : 250), 37);
-                btAdd2Library.Location = new Point(value ? 136 : 6, btAdd2Library.Location.Y);
+                btAdd2Library.Size = new Size((value ? Width / 2 : Width) - 10, btAdd2Library.Size.Height);
+                btAdd2Library.Location = new Point(value ? Width / 2 + 6 : 6, btAdd2Library.Location.Y);
             }
         }
 
@@ -288,38 +289,39 @@ namespace ARKBreedingStats
                 ParentListRequested?.Invoke(this);
         }
 
-        //private void dhmsInputGrown_ValueChanged(object sender, TimeSpan ts)
-        //{
-        //    if (_updateMaturation && _selectedSpecies != null)
-        //    {
-        //        _updateMaturation = false;
-        //        double maturation = 0;
-        //        if (_selectedSpecies.breeding != null && _selectedSpecies.breeding.maturationTimeAdjusted > 0)
-        //        {
-        //            maturation = 1 - dhmsInputGrown.Timespan.TotalSeconds / _selectedSpecies.breeding.maturationTimeAdjusted;
-        //            if (maturation < 0) maturation = 0;
-        //            if (maturation > 1) maturation = 1;
-        //        }
-        //        nudMaturation.Value = (decimal)maturation * 100;
+        private void dhmsInputGrown_ValueChanged(object sender, TimeSpan ts)
+        {
+            if (!_updateMaturation || _selectedSpecies?.breeding == null) return;
+            dhmsInputGrown.changed = true;
+            SetMaturationAccordingToGrownUpIn();
+        }
 
-        //        _updateMaturation = true;
-        //    }
-        //}
+        private void SetMaturationAccordingToGrownUpIn()
+        {
+            double maturation = 1;
+            if (_selectedSpecies.breeding != null && _selectedSpecies.breeding.maturationTimeAdjusted > 0)
+            {
+                maturation = 1 - dhmsInputGrown.Timespan.TotalSeconds / _selectedSpecies.breeding.maturationTimeAdjusted;
+                if (maturation < 0) maturation = 0;
+                if (maturation > 1) maturation = 1;
+            }
+            _updateMaturation = false;
+            nudMaturation.Value = (decimal)maturation * 100;
+            _updateMaturation = true;
+        }
 
         private void nudMaturation_ValueChanged(object sender, EventArgs e)
         {
-            if (_updateMaturation)
+            if (!_updateMaturation) return;
+
+            _updateMaturation = false;
+            if (_selectedSpecies.breeding != null)
             {
-                _updateMaturation = false;
-                if (_selectedSpecies.breeding != null)
-                {
-                    dhmsInputGrown.Timespan = new TimeSpan(0, 0, (int)(_selectedSpecies.breeding.maturationTimeAdjusted *
-                            (1 - (double)nudMaturation.Value / 100)));
-                    dhmsInputGrown.changed = true;
-                }
-                else dhmsInputGrown.Timespan = TimeSpan.Zero;
-                _updateMaturation = true;
+                dhmsInputGrown.Timespan = TimeSpan.FromSeconds(_selectedSpecies.breeding.maturationTimeAdjusted * (1 - (double)nudMaturation.Value / 100));
+                dhmsInputGrown.changed = true;
             }
+            else dhmsInputGrown.Timespan = TimeSpan.Zero;
+            _updateMaturation = true;
         }
 
         /// <summary>
@@ -345,8 +347,9 @@ namespace ARKBreedingStats
             get => dhmsInputGrown.changed ? DateTime.Now.Add(dhmsInputGrown.Timespan) : default(DateTime?);
             set
             {
-                if (value.HasValue)
-                    dhmsInputGrown.Timespan = value.Value - DateTime.Now;
+                if (!value.HasValue) return;
+                dhmsInputGrown.Timespan = value.Value - DateTime.Now;
+                SetMaturationAccordingToGrownUpIn();
             }
         }
 
@@ -537,7 +540,7 @@ namespace ARKBreedingStats
                 lbMaturationPerc.Visible = breedingPossible;
                 if (!breedingPossible)
                 {
-                    nudMaturation.Value = 0;
+                    nudMaturation.Value = 1;
                     dhmsInputGrown.Timespan = TimeSpan.Zero;
                     dhmsInputCooldown.Timespan = TimeSpan.Zero;
                 }
@@ -588,6 +591,7 @@ namespace ARKBreedingStats
             CreatureName = NamePattern.GenerateCreatureName(creature, _sameSpecies, speciesTopLevels, speciesLowestLevels, customReplacings, showDuplicateNameWarning, namingPatternIndex, false, colorsExisting: ColorAlreadyExistingInformation);
             if (CreatureName.Length > 24)
                 SetMessageLabelText?.Invoke("The generated name is longer than 24 characters, the name will look like this in game:\n" + CreatureName.Substring(0, 24), MessageBoxIcon.Error);
+            else SetMessageLabelText?.Invoke();
         }
 
         public void OpenNamePatternEditor(Creature creature, int[] speciesTopLevels, int[] speciesLowestLevels, Dictionary<string, string> customReplacings, int namingPatternIndex, Action<PatternEditor> reloadCallback)
@@ -629,7 +633,8 @@ namespace ARKBreedingStats
             cr.colors = RegionColors;
             cr.ColorIdsAlsoPossible = ColorIdsAlsoPossible;
             cr.cooldownUntil = CooldownUntil;
-            cr.growingUntil = GrowingUntil;
+            if (GrowingUntil != null) // if growing was not changed, don't change that value, growing could be paused
+                cr.growingUntil = GrowingUntil;
             cr.domesticatedAt = DomesticatedAt;
             cr.ArkId = ArkId;
             cr.InitializeArkInGame();

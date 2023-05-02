@@ -12,7 +12,7 @@ namespace ARKBreedingStats.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -1605,18 +1605,6 @@ namespace ARKBreedingStats.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool BreedingPlannerConsiderOnlyEvenForHighStats {
-            get {
-                return ((bool)(this["BreedingPlannerConsiderOnlyEvenForHighStats"]));
-            }
-            set {
-                this["BreedingPlannerConsiderOnlyEvenForHighStats"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool AutoImportGotoLibraryAfterSuccess {
             get {
                 return ((bool)(this["AutoImportGotoLibraryAfterSuccess"]));
@@ -2133,6 +2121,77 @@ namespace ARKBreedingStats.Properties {
             }
             set {
                 this["LibraryGroupBySpecies"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LibraryColorInfoUseFilter {
+            get {
+                return ((bool)(this["LibraryColorInfoUseFilter"]));
+            }
+            set {
+                this["LibraryColorInfoUseFilter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseNaturalSort {
+            get {
+                return ((bool)(this["UseNaturalSort"]));
+            }
+            set {
+                this["UseNaturalSort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NaturalSortIgnoreSpaces {
+            get {
+                return ((bool)(this["NaturalSortIgnoreSpaces"]));
+            }
+            set {
+                this["NaturalSortIgnoreSpaces"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowColorIdOnRegionButtons {
+            get {
+                return ((bool)(this["ShowColorIdOnRegionButtons"]));
+            }
+            set {
+                this["ShowColorIdOnRegionButtons"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AlwaysShowAllColorRegions {
+            get {
+                return ((bool)(this["AlwaysShowAllColorRegions"]));
+            }
+            set {
+                this["AlwaysShowAllColorRegions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public byte[][] CustomStatWeightOddEven {
+            get {
+                return ((byte[][])(this["CustomStatWeightOddEven"]));
+            }
+            set {
+                this["CustomStatWeightOddEven"] = value;
             }
         }
     }

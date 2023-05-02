@@ -199,17 +199,18 @@ namespace ARKBreedingStats.species
         /// </summary>
         public void InitializeNames()
         {
+            string variantInfoForName = null;
             if (variants != null && variants.Any())
             {
                 VariantInfo = string.Join(", ", variants);
+                variantInfoForName = string.Join(", ", variants.Where(v => !name.Contains(v)));
             }
 
-            DescriptiveName = name + (string.IsNullOrEmpty(VariantInfo) ? string.Empty : " (" + VariantInfo + ")");
+            DescriptiveName = name + (string.IsNullOrEmpty(variantInfoForName) ? string.Empty : " (" + variantInfoForName + ")");
             string modSuffix = string.IsNullOrEmpty(_mod?.title) ? string.Empty : _mod.title;
             DescriptiveNameAndMod = DescriptiveName + (string.IsNullOrEmpty(modSuffix) ? string.Empty : " (" + modSuffix + ")");
             SortName = DescriptiveNameAndMod;
         }
-
 
         /// <summary>
         /// Sets the ArkColor objects for the natural occurring colors. Call after colors are loaded or changed by loading mods.
@@ -230,10 +231,11 @@ namespace ARKBreedingStats.species
         /// </summary>
         public void InitializeColorRegions()
         {
-            EnabledColorRegions = colors?.Select(n =>
+            EnabledColorRegions = colors != null && !Properties.Settings.Default.AlwaysShowAllColorRegions
+                ? colors.Select(n =>
                       !string.IsNullOrEmpty(n?.name) && (!n.invisible || !Properties.Settings.Default.HideInvisibleColorRegions)
-                ).ToArray() ??
-                new[] { true, true, true, true, true, true, };
+                ).ToArray()
+                : new[] { true, true, true, true, true, true, };
         }
 
         /// <summary>

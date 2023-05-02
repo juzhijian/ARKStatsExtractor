@@ -1,5 +1,4 @@
 ﻿using ARKBreedingStats.species;
-using ARKBreedingStats.values;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -160,8 +159,21 @@ namespace ARKBreedingStats.Library
             get => ColorIdsAlsoPossible?.Select(i => (int)i).ToArray();
         }
 
+        private DateTime? _growingUntil;
+
         [JsonProperty]
-        public DateTime? growingUntil;
+        public DateTime? growingUntil
+        {
+            set
+            {
+                if (growingPaused && value != null)
+                    growingLeft = value.Value.Subtract(DateTime.Now);
+                else
+                    _growingUntil = value == null || value <= DateTime.Now ? null : value;
+            }
+            get => !growingPaused ? _growingUntil : growingLeft.Ticks > 0 ? DateTime.Now.Add(growingLeft) : default(DateTime?);
+        }
+
         public TimeSpan growingLeft;
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool growingPaused;
@@ -240,6 +252,15 @@ namespace ARKBreedingStats.Library
             flags = CreatureFlags.Placeholder;
         }
 
+        /// <summary>
+        /// Creates a placeholder creature with a species and no other info.
+        /// </summary>
+        public Creature(Species species)
+        {
+            _species = species;
+            flags = CreatureFlags.Placeholder;
+        }
+
         public bool Equals(Creature other) => other != null && other.guid == guid;
 
         public override bool Equals(object obj) => obj is Creature creatureObj && creatureObj.guid == guid;
@@ -249,9 +270,24 @@ namespace ARKBreedingStats.Library
             get => _status;
             set
             {
-                _status = value;
                 // remove other status while keeping the other flags
                 flags = (flags & CreatureFlags.StatusMask) | (CreatureFlags)(1 << (int)value);
+
+                if (_status == value) return;
+
+                if (Maturation < 1)
+                {
+                    if (value == CreatureStatus.Dead)
+                        PauseMaturationTimer();
+                    else if ((_status == CreatureStatus.Cryopod || _status == CreatureStatus.Obelisk)
+                             && (value == CreatureStatus.Available || value == CreatureStatus.Unavailable))
+                        StartMaturationTimer();
+                    else if ((_status == CreatureStatus.Available || _status == CreatureStatus.Unavailable)
+                             && (value == CreatureStatus.Cryopod || value == CreatureStatus.Obelisk))
+                        PauseMaturationTimer();
+                }
+
+                _status = value;
             }
         }
 
@@ -263,6 +299,13 @@ namespace ARKBreedingStats.Library
         public void CalculateLevelFound(int? levelStep)
         {
             levelFound = 0;
+
+            if (!isDomesticated)
+            {
+                levelFound = LevelHatched;
+                return;
+            }
+
             if (isBred || tamingEff < 0) return;
 
             if (levelStep.HasValue)
@@ -420,25 +463,33 @@ namespace ARKBreedingStats.Library
         /// <summary>
         /// Starts the timer for maturation.
         /// </summary>
-        private void StartTimer()
+        private void StartMaturationTimer()
         {
             if (growingPaused)
             {
                 growingPaused = false;
-                growingUntil = DateTime.Now.Add(growingLeft);
+                if (growingLeft.Ticks <= 0)
+                    growingUntil = null;
+                else
+                    growingUntil = DateTime.Now.Add(growingLeft);
             }
         }
 
         /// <summary>
         /// Pauses the timer for maturation.
         /// </summary>
-        private void PauseTimer()
+        private void PauseMaturationTimer()
         {
             if (!growingPaused)
             {
-                growingPaused = true;
-                growingLeft = growingUntil?.Subtract(DateTime.Now) ?? new TimeSpan();
-                if (growingLeft.TotalHours < 0) growingLeft = new TimeSpan();
+                growingLeft = growingUntil?.Subtract(DateTime.Now) ?? TimeSpan.Zero;
+                if (growingLeft.Ticks > 0)
+                {
+                    growingPaused = true;
+                    return;
+                }
+                growingLeft = TimeSpan.Zero;
+                growingUntil = null;
             }
         }
 
@@ -448,8 +499,8 @@ namespace ARKBreedingStats.Library
         public void StartStopMatureTimer(bool start)
         {
             if (start)
-                StartTimer();
-            else PauseTimer();
+                StartMaturationTimer();
+            else PauseMaturationTimer();
         }
 
         /// <summary>
@@ -460,17 +511,14 @@ namespace ARKBreedingStats.Library
         public string GrowingLeftString
         {
             get => System.Xml.XmlConvert.ToString(growingLeft);
-            set
-            {
-                growingLeft = string.IsNullOrEmpty(value) ?
+            set => growingLeft = string.IsNullOrEmpty(value) ?
                     TimeSpan.Zero : System.Xml.XmlConvert.ToTimeSpan(value);
-            }
         }
 
         /// <summary>
         /// Maturation of this creature, 0: baby, 1: adult.
         /// </summary>
-        public double Maturation => Species?.breeding == null || growingUntil == null ? 1 : growingUntil.Value.Subtract(DateTime.Now).TotalSeconds / Species.breeding.maturationTimeAdjusted;
+        public double Maturation => Species?.breeding == null || growingUntil == null ? 1 : 1 - growingUntil.Value.Subtract(DateTime.Now).TotalSeconds / Species.breeding.maturationTimeAdjusted;
 
         [OnDeserialized]
         private void Initialize(StreamingContext ct)
@@ -552,8 +600,12 @@ namespace ARKBreedingStats.Library
         Male = 1024,
         MutagenApplied = 2048,
         /// <summary>
+        /// Indicates a dummy creature used as a species separator in the library listView.
+        /// </summary>
+        Divider = 4096,
+        /// <summary>
         /// If applied to the flags with &, the status is removed.
         /// </summary>
-        StatusMask = Mutated | Neutered | Placeholder | Female | Male | MutagenApplied
+        StatusMask = Mutated | Neutered | Placeholder | Female | Male | MutagenApplied | Divider
     }
 }
