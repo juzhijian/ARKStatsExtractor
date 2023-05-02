@@ -45,11 +45,10 @@
             this.listViewNoteTitles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewNoteTitles.FullRowSelect = true;
             this.listViewNoteTitles.HideSelection = false;
-            this.listViewNoteTitles.Location = new System.Drawing.Point(4, 43);
-            this.listViewNoteTitles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewNoteTitles.Location = new System.Drawing.Point(3, 31);
             this.listViewNoteTitles.MultiSelect = false;
             this.listViewNoteTitles.Name = "listViewNoteTitles";
-            this.listViewNoteTitles.Size = new System.Drawing.Size(292, 443);
+            this.listViewNoteTitles.Size = new System.Drawing.Size(194, 320);
             this.listViewNoteTitles.TabIndex = 0;
             this.listViewNoteTitles.UseCompatibleStateImageBehavior = false;
             this.listViewNoteTitles.View = System.Windows.Forms.View.List;
@@ -59,9 +58,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 802F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 535F));
             this.tableLayoutPanel1.Controls.Add(this.listViewNoteTitles, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.richTextBoxNote, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.tbNoteTitle, 2, 0);
@@ -70,24 +69,22 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1102, 518);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(735, 374);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // richTextBoxNote
             // 
             this.richTextBoxNote.AcceptsTab = true;
             this.richTextBoxNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxNote.Location = new System.Drawing.Point(304, 43);
-            this.richTextBoxNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxNote.Location = new System.Drawing.Point(203, 31);
             this.richTextBoxNote.Name = "richTextBoxNote";
             this.tableLayoutPanel1.SetRowSpan(this.richTextBoxNote, 2);
-            this.richTextBoxNote.Size = new System.Drawing.Size(794, 471);
+            this.richTextBoxNote.Size = new System.Drawing.Size(529, 340);
             this.richTextBoxNote.TabIndex = 1;
             this.richTextBoxNote.Text = "";
             this.richTextBoxNote.Enter += new System.EventHandler(this.richTextBoxNote_Enter);
@@ -96,10 +93,9 @@
             // tbNoteTitle
             // 
             this.tbNoteTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbNoteTitle.Location = new System.Drawing.Point(304, 4);
-            this.tbNoteTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbNoteTitle.Location = new System.Drawing.Point(203, 3);
             this.tbNoteTitle.Name = "tbNoteTitle";
-            this.tbNoteTitle.Size = new System.Drawing.Size(794, 28);
+            this.tbNoteTitle.Size = new System.Drawing.Size(529, 20);
             this.tbNoteTitle.TabIndex = 2;
             this.tbNoteTitle.Enter += new System.EventHandler(this.tbNoteTitle_Enter);
             this.tbNoteTitle.Leave += new System.EventHandler(this.tbNoteTitle_Leave);
@@ -107,10 +103,9 @@
             // BAddNote
             // 
             this.BAddNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BAddNote.Location = new System.Drawing.Point(4, 4);
-            this.BAddNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BAddNote.Location = new System.Drawing.Point(3, 3);
             this.BAddNote.Name = "BAddNote";
-            this.BAddNote.Size = new System.Drawing.Size(142, 31);
+            this.BAddNote.Size = new System.Drawing.Size(94, 22);
             this.BAddNote.TabIndex = 3;
             this.BAddNote.Text = "New Note";
             this.BAddNote.UseVisualStyleBackColor = true;
@@ -119,10 +114,9 @@
             // BDeleteNote
             // 
             this.BDeleteNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BDeleteNote.Location = new System.Drawing.Point(154, 4);
-            this.BDeleteNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BDeleteNote.Location = new System.Drawing.Point(103, 3);
             this.BDeleteNote.Name = "BDeleteNote";
-            this.BDeleteNote.Size = new System.Drawing.Size(142, 31);
+            this.BDeleteNote.Size = new System.Drawing.Size(94, 22);
             this.BDeleteNote.TabIndex = 4;
             this.BDeleteNote.Text = "Delete Note";
             this.BDeleteNote.UseVisualStyleBackColor = true;
@@ -132,21 +126,19 @@
             // 
             this.label1.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-            this.label1.Location = new System.Drawing.Point(4, 490);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(3, 354);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(278, 28);
+            this.label1.Size = new System.Drawing.Size(192, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Check a note to display it in the overlay";
             // 
             // NotesControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "NotesControl";
-            this.Size = new System.Drawing.Size(1102, 518);
+            this.Size = new System.Drawing.Size(735, 374);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
