@@ -112,7 +112,8 @@ namespace ARKBreedingStats
             for (int s = 0; s < Stats.StatsCount; s++)
             {
                 domLevels += _testingIOs[s].LevelDom;
-                if (_testingIOs[s].LevelWild == 255 && s != Stats.Torpidity)
+                if (s == Stats.Torpidity) continue;
+                if (_testingIOs[s].LevelWild == 255)
                     wildLevel255 = true;
                 if (_testingIOs[s].LevelWild > 255
                     || _testingIOs[s].LevelDom > 255)
@@ -364,12 +365,12 @@ namespace ARKBreedingStats
             {
                 Species = speciesSelector1.SelectedSpecies,
                 levelsWild = GetCurrentWildLevels(true),
-                levelsDom = GetCurrentDomLevels(true)
+                levelsDom = GetCurrentDomLevels(true),
+                tamingEff = _extractor.UniqueTamingEffectiveness(),
+                isBred = rbBredExtractor.Checked,
+                imprintingBonus = _extractor.ImprintingBonus
             };
 
-            creature.tamingEff = _extractor.UniqueTamingEffectiveness();
-            creature.isBred = rbBredExtractor.Checked;
-            creature.imprintingBonus = _extractor.ImprintingBonus;
             creatureInfoInputExtractor.SetCreatureData(creature);
             creature.RecalculateAncestorGenerations();
             creature.RecalculateNewMutations();

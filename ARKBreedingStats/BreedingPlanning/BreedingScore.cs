@@ -4,7 +4,6 @@ using System.Linq;
 using ARKBreedingStats.Library;
 using ARKBreedingStats.Properties;
 using ARKBreedingStats.species;
-using ARKBreedingStats.values;
 
 namespace ARKBreedingStats.BreedingPlanning
 {
@@ -21,7 +20,7 @@ namespace ARKBreedingStats.BreedingPlanning
         /// <param name="species"></param>
         /// <param name="bestPossLevels"></param>
         /// <param name="statWeights"></param>
-        /// <param name="bestLevels"></param>
+        /// <param name="bestLevelsOfSpecies">If the according stat weight is negative, the lowest level is contained.</param>
         /// <param name="breedingMode"></param>
         /// <param name="considerChosenCreature"></param>
         /// <param name="considerMutationLimit"></param>
@@ -30,15 +29,25 @@ namespace ARKBreedingStats.BreedingPlanning
         /// <param name="offspringLevelLimit">If &gt; 0, pairs that can result in a creature with a level higher than that, are highlighted. This can be used if there's a level cap.</param>
         /// <param name="downGradeOffspringWithLevelHigherThanLimit">Downgrade score if level is higher than limit.</param>
         /// <param name="onlyBestSuggestionForFemale">Only the pairing with the highest score is kept for each female. Is not used if species has no sex or sex is ignored in breeding planner.</param>
+        /// <param name="anyOddEven">Array for each stat if the higher level should be considered for score: 0: consider any level, 1: consider only if odd, 2: consider only if even.</param>
         /// <returns></returns>
         public static List<BreedingPair> CalculateBreedingScores(Creature[] females, Creature[] males, Species species,
-            short[] bestPossLevels, double[] statWeights, int[] bestLevels, BreedingPlan.BreedingMode breedingMode,
+            short[] bestPossLevels, double[] statWeights, int[] bestLevelsOfSpecies, BreedingPlan.BreedingMode breedingMode,
             bool considerChosenCreature, bool considerMutationLimit, int mutationLimit,
             ref bool creaturesMutationsFilteredOut, int offspringLevelLimit = 0, bool downGradeOffspringWithLevelHigherThanLimit = false,
-            bool onlyBestSuggestionForFemale = false)
+            bool onlyBestSuggestionForFemale = false, byte[] anyOddEven = null)
         {
             var breedingPairs = new List<BreedingPair>();
             var ignoreSex = Properties.Settings.Default.IgnoreSexInBreedingPlan || species.noGender;
+            if (anyOddEven != null && anyOddEven.Length != Stats.StatsCount)
+                anyOddEven = null;
+
+            var customIgnoreTopStatsEvenOdd = new bool[Stats.StatsCount];
+            for (int s = 0; s < Stats.StatsCount; s++)
+            {
+                customIgnoreTopStatsEvenOdd[s] = anyOddEven != null && statWeights[s] > 0;
+            }
+
             for (int fi = 0; fi < females.Length; fi++)
             {
                 var female = females[fi];
@@ -65,11 +74,11 @@ namespace ARKBreedingStats.BreedingPlanning
                     }
 
                     double t = 0;
-                    int nrTS = 0;
-                    double eTS = 0;
+                    int offspringPotentialTopStatCount = 0;
+                    double offspringExpectedTopStatCount = 0; // a guaranteed top stat counts 1, otherwise the inheritance probability of the top stat is counted
 
-                    int topFemale = 0;
-                    int topMale = 0;
+                    int topStatsMother = 0;
+                    int topStatsFather = 0;
 
                     int maxPossibleOffspringLevel = 1;
 
@@ -83,49 +92,61 @@ namespace ARKBreedingStats.BreedingPlanning
                         if (lowerLevel < 0) lowerLevel = 0;
                         maxPossibleOffspringLevel += higherLevel;
 
-                        bool ignoreTopStats = Settings.Default.BreedingPlannerConsiderOnlyEvenForHighStats
-                                              && higherLevel % 2 != 0
-                                              && statWeights[s] > 0;
+                        bool ignoreTopStats = false;
 
-                        bool higherIsBetter = statWeights[s] >= 0;
+                        if (customIgnoreTopStatsEvenOdd[s])
+                        {
+                            // if there is a custom setting for this species, consider that for higher levels
+                            // 0: consider all levels, 1: consider only odd levels, 2: consider only even levels
+                            switch (anyOddEven[s])
+                            {
+                                case 1:
+                                    ignoreTopStats = higherLevel % 2 == 0;
+                                    break;
+                                case 2:
+                                    ignoreTopStats = higherLevel % 2 != 0;
+                                    break;
+                            }
+                        }
 
-                        double tt = statWeights[s] * (Ark.ProbabilityHigherLevel * higherLevel + Ark.ProbabilityLowerLevel * lowerLevel) / 40;
-                        if (tt != 0)
+                        double weightedExpectedStatLevel = statWeights[s] * (Ark.ProbabilityInheritHigherLevel * higherLevel + Ark.ProbabilityInheritLowerLevel * lowerLevel) / 40;
+                        if (weightedExpectedStatLevel != 0)
                         {
                             if (breedingMode == BreedingPlan.BreedingMode.TopStatsLucky)
                             {
-                                if (!ignoreTopStats && (female.levelsWild[s] == bestLevels[s] || male.levelsWild[s] == bestLevels[s]))
+                                if (!ignoreTopStats && (female.levelsWild[s] == bestLevelsOfSpecies[s] || male.levelsWild[s] == bestLevelsOfSpecies[s]))
                                 {
-                                    if (female.levelsWild[s] == bestLevels[s] && male.levelsWild[s] == bestLevels[s])
-                                        tt *= 1.142;
+                                    if (female.levelsWild[s] == bestLevelsOfSpecies[s] && male.levelsWild[s] == bestLevelsOfSpecies[s])
+                                        weightedExpectedStatLevel *= 1.142;
                                 }
-                                else if (bestLevels[s] > 0)
-                                    tt *= .01;
+                                else if (bestLevelsOfSpecies[s] > 0)
+                                    weightedExpectedStatLevel *= .01;
                             }
-                            else if (breedingMode == BreedingPlan.BreedingMode.TopStatsConservative && bestLevels[s] > 0)
+                            else if (breedingMode == BreedingPlan.BreedingMode.TopStatsConservative && bestLevelsOfSpecies[s] > 0)
                             {
+                                bool higherIsBetter = statWeights[s] >= 0;
                                 bestPossLevels[s] = (short)(higherIsBetter ? Math.Max(female.levelsWild[s], male.levelsWild[s]) : Math.Min(female.levelsWild[s], male.levelsWild[s]));
-                                tt *= .01;
-                                if (!ignoreTopStats && (female.levelsWild[s] == bestLevels[s] || male.levelsWild[s] == bestLevels[s]))
+                                weightedExpectedStatLevel *= .01;
+                                if (!ignoreTopStats && (female.levelsWild[s] == bestLevelsOfSpecies[s] || male.levelsWild[s] == bestLevelsOfSpecies[s]))
                                 {
-                                    nrTS++;
-                                    eTS += female.levelsWild[s] == bestLevels[s] && male.levelsWild[s] == bestLevels[s] ? 1 : Ark.ProbabilityHigherLevel;
-                                    if (female.levelsWild[s] == bestLevels[s])
-                                        topFemale++;
-                                    if (male.levelsWild[s] == bestLevels[s])
-                                        topMale++;
+                                    offspringPotentialTopStatCount++;
+                                    offspringExpectedTopStatCount += female.levelsWild[s] == bestLevelsOfSpecies[s] && male.levelsWild[s] == bestLevelsOfSpecies[s] ? 1 : Ark.ProbabilityInheritHigherLevel;
+                                    if (female.levelsWild[s] == bestLevelsOfSpecies[s])
+                                        topStatsMother++;
+                                    if (male.levelsWild[s] == bestLevelsOfSpecies[s])
+                                        topStatsFather++;
                                 }
                             }
+                            t += weightedExpectedStatLevel;
                         }
-                        t += tt;
                     }
 
                     if (breedingMode == BreedingPlan.BreedingMode.TopStatsConservative)
                     {
-                        if (topFemale < nrTS && topMale < nrTS)
-                            t += eTS;
+                        if (topStatsMother < offspringPotentialTopStatCount && topStatsFather < offspringPotentialTopStatCount)
+                            t += offspringExpectedTopStatCount;
                         else
-                            t += .1 * eTS;
+                            t += .1 * offspringExpectedTopStatCount;
                         // check if the best possible stat outcome regarding topLevels already exists in a male
                         bool maleExists = false;
 
@@ -137,7 +158,7 @@ namespace ARKBreedingStats.BreedingPlanning
                                 if (s == Stats.Torpidity
                                     || !cr.Species.UsesStat(s)
                                     || cr.levelsWild[s] == bestPossLevels[s]
-                                    || bestPossLevels[s] != bestLevels[s])
+                                    || bestPossLevels[s] != bestLevelsOfSpecies[s])
                                     continue;
 
                                 maleExists = false;
@@ -160,7 +181,7 @@ namespace ARKBreedingStats.BreedingPlanning
                                     if (s == Stats.Torpidity
                                         || !cr.Species.UsesStat(s)
                                         || cr.levelsWild[s] == bestPossLevels[s]
-                                        || bestPossLevels[s] != bestLevels[s])
+                                        || bestPossLevels[s] != bestLevelsOfSpecies[s])
                                         continue;
 
                                     femaleExists = false;
@@ -184,7 +205,7 @@ namespace ARKBreedingStats.BreedingPlanning
                         : female.Mutations < Ark.MutationPossibleWithLessThan || male.Mutations < Ark.MutationPossibleWithLessThan ? 1 : 0;
 
                     breedingPairs.Add(new BreedingPair(female, male,
-                        t * 1.25,
+                        new Score(t * 1.25),
                         (mutationPossibleFrom == 2 ? Ark.ProbabilityOfOneMutation : mutationPossibleFrom == 1 ? Ark.ProbabilityOfOneMutationFromOneParent : 0),
                         highestOffspringOverLevelLimit));
                 }
@@ -210,7 +231,7 @@ namespace ARKBreedingStats.BreedingPlanning
         /// <summary>
         /// Sets the best levels in the passed bestLevels array, depending on the statWeights and onlyHighEvenLevels.
         /// </summary>
-        public static void SetBestLevels(IEnumerable<Creature> creatures, int[] bestLevels, double[] statWeights, bool onlyHighEvenLevels)
+        public static void SetBestLevels(IEnumerable<Creature> creatures, int[] bestLevels, double[] statWeights, byte[] anyOddEven = null)
         {
             for (int s = 0; s < Stats.StatsCount; s++)
                 bestLevels[s] = -1;
@@ -221,12 +242,37 @@ namespace ARKBreedingStats.BreedingPlanning
                 {
                     if ((s == Stats.Torpidity || statWeights[s] >= 0) && c.levelsWild[s] > bestLevels[s])
                     {
-                        if (!onlyHighEvenLevels || c.levelsWild[s] % 2 == 0)
+                        if ((anyOddEven?[s] ?? 0) == 0
+                            || (anyOddEven[s] == 1 && c.levelsWild[s] % 2 == 1)
+                            || (anyOddEven[s] == 2 && c.levelsWild[s] % 2 == 0)
+                            )
                             bestLevels[s] = c.levelsWild[s];
                     }
                     else if (s != Stats.Torpidity && statWeights[s] < 0 && c.levelsWild[s] >= 0 && (c.levelsWild[s] < bestLevels[s] || bestLevels[s] < 0))
                         bestLevels[s] = c.levelsWild[s];
                 }
+            }
+        }
+
+        /// <summary>
+        /// Returns better of two given levels. If anyOddEven == 0: higher of both, if == 1: higher of odd levels, if == 2: higher of even levels.
+        /// If both levels don't match odd/even, -1 is returned.
+        /// </summary>
+        public static int GetHigherBestLevel(int level1, int level2, byte anyOddEven)
+        {
+            switch (anyOddEven)
+            {
+                case 1:
+                    if (level1 % 2 == 1 && level2 % 2 == 1) return Math.Max(level1, level2);
+                    if (level1 % 2 == 1) return level1;
+                    if (level2 % 2 == 1) return level2;
+                    return -1;
+                case 2:
+                    if (level1 % 2 == 0 && level2 % 2 == 0) return Math.Max(level1, level2);
+                    if (level1 % 2 == 0) return level1;
+                    if (level2 % 2 == 0) return level2;
+                    return -1;
+                default: return Math.Max(level1, level2);
             }
         }
     }

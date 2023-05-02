@@ -278,8 +278,8 @@ namespace ARKBreedingStats
             set
             {
                 btSaveChanges.Visible = value;
-                btAdd2Library.Size = new Size((value ? 120 : 250), 37);
-                btAdd2Library.Location = new Point(value ? 136 : 6, btAdd2Library.Location.Y);
+                btAdd2Library.Size = new Size((value ? Width / 2 : Width) - 10, btAdd2Library.Size.Height);
+                btAdd2Library.Location = new Point(value ? Width / 2 + 6 : 6, btAdd2Library.Location.Y);
             }
         }
 
@@ -591,6 +591,7 @@ namespace ARKBreedingStats
             CreatureName = NamePattern.GenerateCreatureName(creature, _sameSpecies, speciesTopLevels, speciesLowestLevels, customReplacings, showDuplicateNameWarning, namingPatternIndex, false, colorsExisting: ColorAlreadyExistingInformation);
             if (CreatureName.Length > 24)
                 SetMessageLabelText?.Invoke("The generated name is longer than 24 characters, the name will look like this in game:\n" + CreatureName.Substring(0, 24), MessageBoxIcon.Error);
+            else SetMessageLabelText?.Invoke();
         }
 
         public void OpenNamePatternEditor(Creature creature, int[] speciesTopLevels, int[] speciesLowestLevels, Dictionary<string, string> customReplacings, int namingPatternIndex, Action<PatternEditor> reloadCallback)

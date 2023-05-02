@@ -45,25 +45,50 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.nudTamedDinoCharacterFoodDrain = new ARKBreedingStats.uiControls.Nud();
+            this.nudTamedDinoCharacterFoodDrainEvent = new ARKBreedingStats.uiControls.Nud();
+            this.label64 = new System.Windows.Forms.Label();
+            this.nudBabyImprintAmountEvent = new ARKBreedingStats.uiControls.Nud();
             this.label49 = new System.Windows.Forms.Label();
+            this.nudBabyImprintAmount = new ARKBreedingStats.uiControls.Nud();
             this.label44 = new System.Windows.Forms.Label();
+            this.nudMatingSpeed = new ARKBreedingStats.uiControls.Nud();
+            this.nudBabyFoodConsumptionSpeedEvent = new ARKBreedingStats.uiControls.Nud();
+            this.nudMatingIntervalEvent = new ARKBreedingStats.uiControls.Nud();
+            this.nudBabyCuddleIntervalEvent = new ARKBreedingStats.uiControls.Nud();
+            this.nudBabyMatureSpeedEvent = new ARKBreedingStats.uiControls.Nud();
+            this.nudEggHatchSpeedEvent = new ARKBreedingStats.uiControls.Nud();
             this.labelBabyFoodConsumptionSpeed = new System.Windows.Forms.Label();
+            this.nudBabyFoodConsumptionSpeed = new ARKBreedingStats.uiControls.Nud();
             this.label3 = new System.Windows.Forms.Label();
+            this.nudMatingInterval = new ARKBreedingStats.uiControls.Nud();
             this.label17 = new System.Windows.Forms.Label();
+            this.nudBabyCuddleInterval = new ARKBreedingStats.uiControls.Nud();
             this.label13 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.nudBabyMatureSpeed = new ARKBreedingStats.uiControls.Nud();
+            this.nudBabyImprintingStatScale = new ARKBreedingStats.uiControls.Nud();
             this.label8 = new System.Windows.Forms.Label();
+            this.nudEggHatchSpeed = new ARKBreedingStats.uiControls.Nud();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.LbDefaultLevelups = new System.Windows.Forms.Label();
+            this.nudMaxServerLevel = new ARKBreedingStats.uiControls.Nud();
             this.lbMaxTotalLevel = new System.Windows.Forms.Label();
+            this.nudMaxGraphLevel = new ARKBreedingStats.uiControls.Nud();
             this.label18 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.nudMaxWildLevels = new ARKBreedingStats.uiControls.Nud();
             this.label10 = new System.Windows.Forms.Label();
+            this.nudMaxDomLevels = new ARKBreedingStats.uiControls.Nud();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label57 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.pbChartOddRange = new System.Windows.Forms.PictureBox();
             this.pbChartEvenRange = new System.Windows.Forms.PictureBox();
+            this.nudChartLevelOddMax = new ARKBreedingStats.uiControls.Nud();
+            this.nudChartLevelOddMin = new ARKBreedingStats.uiControls.Nud();
+            this.nudChartLevelEvenMax = new ARKBreedingStats.uiControls.Nud();
+            this.nudChartLevelEvenMin = new ARKBreedingStats.uiControls.Nud();
             this.CbHighlightLevelEvenOdd = new System.Windows.Forms.CheckBox();
             this.CbHighlightLevel255 = new System.Windows.Forms.CheckBox();
             this.cbIgnoreSexInBreedingPlan = new System.Windows.Forms.CheckBox();
@@ -71,22 +96,32 @@
             this.radioButtonFahrenheit = new System.Windows.Forms.RadioButton();
             this.radioButtonCelsius = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDownMaxBreedingSug = new ARKBreedingStats.uiControls.Nud();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.nudDinoCharacterFoodDrainEvent = new ARKBreedingStats.uiControls.Nud();
+            this.nudTamingSpeedEvent = new ARKBreedingStats.uiControls.Nud();
             this.label7 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.nudDinoCharacterFoodDrain = new ARKBreedingStats.uiControls.Nud();
+            this.nudTamingSpeed = new ARKBreedingStats.uiControls.Nud();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label55 = new System.Windows.Forms.Label();
+            this.NudWaitBeforeAutoLoad = new ARKBreedingStats.uiControls.Nud();
             this.label54 = new System.Windows.Forms.Label();
+            this.NudKeepBackupFilesCount = new ARKBreedingStats.uiControls.Nud();
             this.label53 = new System.Windows.Forms.Label();
             this.BtClearBackupFolder = new System.Windows.Forms.Button();
             this.label52 = new System.Windows.Forms.Label();
             this.BtBackupFolder = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.NudBackupEveryMinutes = new ARKBreedingStats.uiControls.Nud();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.checkBoxDisplayHiddenStats = new System.Windows.Forms.CheckBox();
             this.tabControlSettings = new System.Windows.Forms.TabControl();
             this.tabPageMultipliers = new System.Windows.Forms.TabPage();
+            this.CbAtlasSettings = new System.Windows.Forms.CheckBox();
+            this.BtSettingsToClipboard = new System.Windows.Forms.Button();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
             this.CbAllowFlyerSpeedLeveling = new System.Windows.Forms.CheckBox();
             this.label34 = new System.Windows.Forms.Label();
@@ -98,11 +133,14 @@
             this.cbSingleplayerSettings = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.cbAllowMoreThanHundredImprinting = new System.Windows.Forms.CheckBox();
+            this.nudWildLevelStep = new ARKBreedingStats.uiControls.Nud();
             this.cbConsiderWildLevelSteps = new System.Windows.Forms.CheckBox();
             this.buttonEventToDefault = new System.Windows.Forms.Button();
             this.labelEvent = new System.Windows.Forms.Label();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.CbColorIdOnColorRegionButton = new System.Windows.Forms.CheckBox();
+            this.CbAlwaysShowAllColorRegions = new System.Windows.Forms.CheckBox();
             this.CbHideInvisibleColorRegions = new System.Windows.Forms.CheckBox();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.CbExportTableFieldsAll = new System.Windows.Forms.CheckBox();
@@ -115,12 +153,14 @@
             this.cbDevTools = new System.Windows.Forms.CheckBox();
             this.GbSpecies = new System.Windows.Forms.GroupBox();
             this.LbSpeciesSelectorCountLastUsed = new System.Windows.Forms.Label();
+            this.NudSpeciesSelectorCountLastUsed = new ARKBreedingStats.uiControls.Nud();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.cbAdminConsoleCommandWithCheat = new System.Windows.Forms.CheckBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.CbbAppDefaultFontName = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
             this.CbbColorMode = new System.Windows.Forms.ComboBox();
+            this.nudDefaultFontSize = new ARKBreedingStats.uiControls.Nud();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -128,6 +168,8 @@
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.cbbLanguage = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.CbNaturalSortIgnoreSpaces = new System.Windows.Forms.CheckBox();
+            this.CbNaturalSorting = new System.Windows.Forms.CheckBox();
             this.CbConsiderWastedStatsForTopCreatures = new System.Windows.Forms.CheckBox();
             this.CbPauseGrowingTimerAfterAdding = new System.Windows.Forms.CheckBox();
             this.CbLibrarySelectSelectedSpeciesOnLoad = new System.Windows.Forms.CheckBox();
@@ -141,6 +183,7 @@
             this.groupBox32 = new System.Windows.Forms.GroupBox();
             this.LbInfoGraphicSize = new System.Windows.Forms.Label();
             this.CbbInfoGraphicFontName = new System.Windows.Forms.ComboBox();
+            this.nudInfoGraphicHeight = new ARKBreedingStats.uiControls.Nud();
             this.BtInfoGraphicForeColor = new System.Windows.Forms.Button();
             this.BtInfoGraphicBackColor = new System.Windows.Forms.Button();
             this.BtInfoGraphicBorderColor = new System.Windows.Forms.Button();
@@ -165,12 +208,17 @@
             this.cbImportUpdateCreatureStatus = new System.Windows.Forms.CheckBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.dataGridView_FileLocations = new System.Windows.Forms.DataGridView();
+            this.convenientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serverNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileLocationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvFileLocation_Change = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ImportWithQuickImport = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvFileLocation_Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.aTImportFileLocationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btAddSavegameFileLocation = new System.Windows.Forms.Button();
             this.labelSavegameFileLocationHint = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.fileSelectorExtractedSaveFolder = new ARKBreedingStats.uiControls.FileSelector();
             this.label24 = new System.Windows.Forms.Label();
             this.tabPageImportExported = new System.Windows.Forms.TabPage();
             this.BtGetExportFolderAutomatically = new System.Windows.Forms.Button();
@@ -181,6 +229,7 @@
             this.groupBox23 = new System.Windows.Forms.GroupBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.nudImportLowerBoundTE = new ARKBreedingStats.uiControls.Nud();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.CbBringToFrontOnImportExportIssue = new System.Windows.Forms.CheckBox();
             this.CbAutoExtractAddToLibrary = new System.Windows.Forms.CheckBox();
@@ -211,9 +260,13 @@
             this.nudWarnImportMoreThan = new System.Windows.Forms.NumericUpDown();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.dataGridViewExportFolders = new System.Windows.Forms.DataGridView();
+            this.convenientNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ownerSuffixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.folderPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvExportFolderChange = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvExportFolderDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvExportMakeDefault = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.aTExportFolderLocationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btAddExportFolder = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.tabPageTimers = new System.Windows.Forms.TabPage();
@@ -224,23 +277,34 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.tbPlayAlarmsSeconds = new System.Windows.Forms.TextBox();
+            this.customSCCustom = new ARKBreedingStats.settings.customSoundChooser();
+            this.customSCWakeup = new ARKBreedingStats.settings.customSoundChooser();
+            this.customSCBirth = new ARKBreedingStats.settings.customSoundChooser();
+            this.customSCStarving = new ARKBreedingStats.settings.customSoundChooser();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPageOverlay = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.CbOverlayDisplayInheritance = new System.Windows.Forms.CheckBox();
             this.label45 = new System.Windows.Forms.Label();
             this.pCustomOverlayLocation = new System.Windows.Forms.Panel();
+            this.nudCustomOverlayLocX = new ARKBreedingStats.uiControls.Nud();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
+            this.nudCustomOverlayLocY = new ARKBreedingStats.uiControls.Nud();
             this.cbCustomOverlayLocation = new System.Windows.Forms.CheckBox();
             this.label38 = new System.Windows.Forms.Label();
+            this.nudOverlayInfoPosY = new ARKBreedingStats.uiControls.Nud();
             this.label39 = new System.Windows.Forms.Label();
+            this.nudOverlayInfoPosDFR = new ARKBreedingStats.uiControls.Nud();
             this.label40 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
+            this.nudOverlayTimerPosY = new ARKBreedingStats.uiControls.Nud();
             this.label36 = new System.Windows.Forms.Label();
+            this.nudOverlayTimerPosX = new ARKBreedingStats.uiControls.Nud();
             this.label35 = new System.Windows.Forms.Label();
             this.cbInventoryCheck = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.nudOverlayInfoDuration = new ARKBreedingStats.uiControls.Nud();
             this.chkbSpeechRecognition = new System.Windows.Forms.CheckBox();
             this.tabPageOCR = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -249,134 +313,28 @@
             this.label60 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
+            this.NudOCRClipboardCropHeight = new ARKBreedingStats.uiControls.Nud();
+            this.NudOCRClipboardCropWidth = new ARKBreedingStats.uiControls.Nud();
+            this.NudOCRClipboardCropTop = new ARKBreedingStats.uiControls.Nud();
+            this.NudOCRClipboardCropLeft = new ARKBreedingStats.uiControls.Nud();
             this.CbOCRFromClipboard = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.cbOCRIgnoreImprintValue = new System.Windows.Forms.CheckBox();
             this.cbShowOCRButton = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.nudWaitBeforeScreenCapture = new ARKBreedingStats.uiControls.Nud();
             this.label19 = new System.Windows.Forms.Label();
+            this.nudWhiteThreshold = new ARKBreedingStats.uiControls.Nud();
             this.tbOCRCaptureApp = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbbOCRApp = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.BtSettingsToClipboard = new System.Windows.Forms.Button();
-            this.nudWildLevelStep = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyImprintAmountEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyImprintAmount = new ARKBreedingStats.uiControls.Nud();
-            this.nudMatingSpeed = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyFoodConsumptionSpeedEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudMatingIntervalEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyCuddleIntervalEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyMatureSpeedEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudEggHatchSpeedEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyFoodConsumptionSpeed = new ARKBreedingStats.uiControls.Nud();
-            this.nudMatingInterval = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyCuddleInterval = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyMatureSpeed = new ARKBreedingStats.uiControls.Nud();
-            this.nudBabyImprintingStatScale = new ARKBreedingStats.uiControls.Nud();
-            this.nudEggHatchSpeed = new ARKBreedingStats.uiControls.Nud();
-            this.nudMaxServerLevel = new ARKBreedingStats.uiControls.Nud();
-            this.nudMaxGraphLevel = new ARKBreedingStats.uiControls.Nud();
-            this.nudMaxWildLevels = new ARKBreedingStats.uiControls.Nud();
-            this.nudMaxDomLevels = new ARKBreedingStats.uiControls.Nud();
-            this.nudDinoCharacterFoodDrainEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudTamingSpeedEvent = new ARKBreedingStats.uiControls.Nud();
-            this.nudDinoCharacterFoodDrain = new ARKBreedingStats.uiControls.Nud();
-            this.nudTamingSpeed = new ARKBreedingStats.uiControls.Nud();
-            this.NudSpeciesSelectorCountLastUsed = new ARKBreedingStats.uiControls.Nud();
-            this.nudDefaultFontSize = new ARKBreedingStats.uiControls.Nud();
-            this.nudChartLevelOddMax = new ARKBreedingStats.uiControls.Nud();
-            this.nudChartLevelOddMin = new ARKBreedingStats.uiControls.Nud();
-            this.nudChartLevelEvenMax = new ARKBreedingStats.uiControls.Nud();
-            this.nudChartLevelEvenMin = new ARKBreedingStats.uiControls.Nud();
-            this.numericUpDownMaxBreedingSug = new ARKBreedingStats.uiControls.Nud();
-            this.NudWaitBeforeAutoLoad = new ARKBreedingStats.uiControls.Nud();
-            this.NudKeepBackupFilesCount = new ARKBreedingStats.uiControls.Nud();
-            this.NudBackupEveryMinutes = new ARKBreedingStats.uiControls.Nud();
-            this.nudInfoGraphicHeight = new ARKBreedingStats.uiControls.Nud();
-            this.convenientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serverNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileLocationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aTImportFileLocationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fileSelectorExtractedSaveFolder = new ARKBreedingStats.uiControls.FileSelector();
-            this.nudImportLowerBoundTE = new ARKBreedingStats.uiControls.Nud();
-            this.convenientNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ownerSuffixDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.folderPathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aTExportFolderLocationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customSCCustom = new ARKBreedingStats.settings.customSoundChooser();
-            this.customSCWakeup = new ARKBreedingStats.settings.customSoundChooser();
-            this.customSCBirth = new ARKBreedingStats.settings.customSoundChooser();
-            this.customSCStarving = new ARKBreedingStats.settings.customSoundChooser();
-            this.nudCustomOverlayLocX = new ARKBreedingStats.uiControls.Nud();
-            this.nudCustomOverlayLocY = new ARKBreedingStats.uiControls.Nud();
-            this.nudOverlayInfoPosY = new ARKBreedingStats.uiControls.Nud();
-            this.nudOverlayInfoPosDFR = new ARKBreedingStats.uiControls.Nud();
-            this.nudOverlayTimerPosY = new ARKBreedingStats.uiControls.Nud();
-            this.nudOverlayTimerPosX = new ARKBreedingStats.uiControls.Nud();
-            this.nudOverlayInfoDuration = new ARKBreedingStats.uiControls.Nud();
-            this.NudOCRClipboardCropHeight = new ARKBreedingStats.uiControls.Nud();
-            this.NudOCRClipboardCropWidth = new ARKBreedingStats.uiControls.Nud();
-            this.NudOCRClipboardCropTop = new ARKBreedingStats.uiControls.Nud();
-            this.NudOCRClipboardCropLeft = new ARKBreedingStats.uiControls.Nud();
-            this.nudWaitBeforeScreenCapture = new ARKBreedingStats.uiControls.Nud();
-            this.nudWhiteThreshold = new ARKBreedingStats.uiControls.Nud();
             this.groupBoxMultiplier.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbChartOddRange)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbChartEvenRange)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.tabControlSettings.SuspendLayout();
-            this.tabPageMultipliers.SuspendLayout();
-            this.groupBox29.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.tabPageGeneral.SuspendLayout();
-            this.groupBox31.SuspendLayout();
-            this.groupBox30.SuspendLayout();
-            this.GbImgCacheLocalAppData.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.GbSpecies.SuspendLayout();
-            this.groupBox26.SuspendLayout();
-            this.groupBox25.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.tabPageInfoGraphic.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PbInfoGraphicPreview)).BeginInit();
-            this.groupBox32.SuspendLayout();
-            this.groupBox28.SuspendLayout();
-            this.tabPageImportSavegame.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_FileLocations)).BeginInit();
-            this.groupBox14.SuspendLayout();
-            this.tabPageImportExported.SuspendLayout();
-            this.groupBox27.SuspendLayout();
-            this.groupBox23.SuspendLayout();
-            this.groupBox22.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox21.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWarnImportMoreThan)).BeginInit();
-            this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExportFolders)).BeginInit();
-            this.tabPageTimers.SuspendLayout();
-            this.groupBox24.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.tabPageOverlay.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.pCustomOverlayLocation.SuspendLayout();
-            this.tabPageOCR.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWildLevelStep)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamedDinoCharacterFoodDrain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamedDinoCharacterFoodDrainEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyImprintAmountEvent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyImprintAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMatingSpeed)).BeginInit();
@@ -391,28 +349,77 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyMatureSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyImprintingStatScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEggHatchSpeed)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxServerLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxGraphLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxWildLevels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxDomLevels)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrainEvent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeedEvent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NudSpeciesSelectorCountLastUsed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDefaultFontSize)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbChartOddRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbChartEvenRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelOddMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelOddMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelEvenMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelEvenMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxBreedingSug)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrainEvent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeedEvent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeed)).BeginInit();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudWaitBeforeAutoLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudKeepBackupFilesCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudBackupEveryMinutes)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            this.tabControlSettings.SuspendLayout();
+            this.tabPageMultipliers.SuspendLayout();
+            this.groupBox29.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWildLevelStep)).BeginInit();
+            this.tabPageGeneral.SuspendLayout();
+            this.groupBox31.SuspendLayout();
+            this.groupBox30.SuspendLayout();
+            this.GbImgCacheLocalAppData.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.GbSpecies.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NudSpeciesSelectorCountLastUsed)).BeginInit();
+            this.groupBox26.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDefaultFontSize)).BeginInit();
+            this.groupBox20.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.tabPageInfoGraphic.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbInfoGraphicPreview)).BeginInit();
+            this.groupBox32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudInfoGraphicHeight)).BeginInit();
+            this.groupBox28.SuspendLayout();
+            this.tabPageImportSavegame.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_FileLocations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aTImportFileLocationBindingSource)).BeginInit();
+            this.groupBox14.SuspendLayout();
+            this.tabPageImportExported.SuspendLayout();
+            this.groupBox27.SuspendLayout();
+            this.groupBox23.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudImportLowerBoundTE)).BeginInit();
+            this.groupBox22.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBox21.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWarnImportMoreThan)).BeginInit();
+            this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExportFolders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aTExportFolderLocationsBindingSource)).BeginInit();
+            this.tabPageTimers.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.tabPageOverlay.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.pCustomOverlayLocation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCustomOverlayLocX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCustomOverlayLocY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayInfoPosY)).BeginInit();
@@ -420,12 +427,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayTimerPosY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayTimerPosX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayInfoDuration)).BeginInit();
+            this.tabPageOCR.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWaitBeforeScreenCapture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWhiteThreshold)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxMultiplier
@@ -586,6 +596,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.nudTamedDinoCharacterFoodDrain);
+            this.groupBox2.Controls.Add(this.nudTamedDinoCharacterFoodDrainEvent);
+            this.groupBox2.Controls.Add(this.label64);
             this.groupBox2.Controls.Add(this.nudBabyImprintAmountEvent);
             this.groupBox2.Controls.Add(this.label49);
             this.groupBox2.Controls.Add(this.nudBabyImprintAmount);
@@ -611,11 +624,91 @@
             this.groupBox2.Location = new System.Drawing.Point(591, 334);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(519, 334);
+            this.groupBox2.Size = new System.Drawing.Size(346, 255);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Breeding-Multiplier";
+            // 
+            // nudTamedDinoCharacterFoodDrain
+            // 
+            this.nudTamedDinoCharacterFoodDrain.DecimalPlaces = 6;
+            this.nudTamedDinoCharacterFoodDrain.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudTamedDinoCharacterFoodDrain.Location = new System.Drawing.Point(183, 227);
+            this.nudTamedDinoCharacterFoodDrain.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudTamedDinoCharacterFoodDrain.Name = "nudTamedDinoCharacterFoodDrain";
+            this.nudTamedDinoCharacterFoodDrain.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTamedDinoCharacterFoodDrain.Size = new System.Drawing.Size(72, 20);
+            this.nudTamedDinoCharacterFoodDrain.TabIndex = 21;
+            this.nudTamedDinoCharacterFoodDrain.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudTamedDinoCharacterFoodDrainEvent
+            // 
+            this.nudTamedDinoCharacterFoodDrainEvent.DecimalPlaces = 6;
+            this.nudTamedDinoCharacterFoodDrainEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudTamedDinoCharacterFoodDrainEvent.Location = new System.Drawing.Point(263, 227);
+            this.nudTamedDinoCharacterFoodDrainEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudTamedDinoCharacterFoodDrainEvent.Name = "nudTamedDinoCharacterFoodDrainEvent";
+            this.nudTamedDinoCharacterFoodDrainEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTamedDinoCharacterFoodDrainEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudTamedDinoCharacterFoodDrainEvent.TabIndex = 23;
+            this.nudTamedDinoCharacterFoodDrainEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(10, 229);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(177, 13);
+            this.label64.TabIndex = 22;
+            this.label64.Text = "TamedDinoCharacterFoodDrainMult";
+            // 
+            // nudBabyImprintAmountEvent
+            // 
+            this.nudBabyImprintAmountEvent.DecimalPlaces = 6;
+            this.nudBabyImprintAmountEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyImprintAmountEvent.Location = new System.Drawing.Point(263, 149);
+            this.nudBabyImprintAmountEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyImprintAmountEvent.Name = "nudBabyImprintAmountEvent";
+            this.nudBabyImprintAmountEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyImprintAmountEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyImprintAmountEvent.TabIndex = 12;
+            this.nudBabyImprintAmountEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label49
             // 
@@ -627,6 +720,30 @@
             this.label49.TabIndex = 20;
             this.label49.Text = "BabyImprintAmountMultiplier";
             // 
+            // nudBabyImprintAmount
+            // 
+            this.nudBabyImprintAmount.DecimalPlaces = 6;
+            this.nudBabyImprintAmount.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyImprintAmount.Location = new System.Drawing.Point(183, 149);
+            this.nudBabyImprintAmount.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyImprintAmount.Name = "nudBabyImprintAmount";
+            this.nudBabyImprintAmount.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyImprintAmount.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyImprintAmount.TabIndex = 5;
+            this.nudBabyImprintAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // label44
             // 
             this.label44.AutoSize = true;
@@ -636,6 +753,150 @@
             this.label44.Size = new System.Drawing.Size(197, 18);
             this.label44.TabIndex = 18;
             this.label44.Text = "MatingSpeedMultiplier";
+            // 
+            // nudMatingSpeed
+            // 
+            this.nudMatingSpeed.DecimalPlaces = 6;
+            this.nudMatingSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudMatingSpeed.Location = new System.Drawing.Point(183, 19);
+            this.nudMatingSpeed.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudMatingSpeed.Name = "nudMatingSpeed";
+            this.nudMatingSpeed.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudMatingSpeed.Size = new System.Drawing.Size(72, 20);
+            this.nudMatingSpeed.TabIndex = 0;
+            this.nudMatingSpeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudBabyFoodConsumptionSpeedEvent
+            // 
+            this.nudBabyFoodConsumptionSpeedEvent.DecimalPlaces = 6;
+            this.nudBabyFoodConsumptionSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyFoodConsumptionSpeedEvent.Location = new System.Drawing.Point(263, 201);
+            this.nudBabyFoodConsumptionSpeedEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyFoodConsumptionSpeedEvent.Name = "nudBabyFoodConsumptionSpeedEvent";
+            this.nudBabyFoodConsumptionSpeedEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyFoodConsumptionSpeedEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyFoodConsumptionSpeedEvent.TabIndex = 13;
+            this.nudBabyFoodConsumptionSpeedEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudMatingIntervalEvent
+            // 
+            this.nudMatingIntervalEvent.DecimalPlaces = 6;
+            this.nudMatingIntervalEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudMatingIntervalEvent.Location = new System.Drawing.Point(263, 45);
+            this.nudMatingIntervalEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudMatingIntervalEvent.Name = "nudMatingIntervalEvent";
+            this.nudMatingIntervalEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudMatingIntervalEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudMatingIntervalEvent.TabIndex = 8;
+            this.nudMatingIntervalEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudBabyCuddleIntervalEvent
+            // 
+            this.nudBabyCuddleIntervalEvent.DecimalPlaces = 6;
+            this.nudBabyCuddleIntervalEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyCuddleIntervalEvent.Location = new System.Drawing.Point(263, 123);
+            this.nudBabyCuddleIntervalEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyCuddleIntervalEvent.Name = "nudBabyCuddleIntervalEvent";
+            this.nudBabyCuddleIntervalEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyCuddleIntervalEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyCuddleIntervalEvent.TabIndex = 11;
+            this.nudBabyCuddleIntervalEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudBabyMatureSpeedEvent
+            // 
+            this.nudBabyMatureSpeedEvent.DecimalPlaces = 6;
+            this.nudBabyMatureSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyMatureSpeedEvent.Location = new System.Drawing.Point(263, 97);
+            this.nudBabyMatureSpeedEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyMatureSpeedEvent.Name = "nudBabyMatureSpeedEvent";
+            this.nudBabyMatureSpeedEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyMatureSpeedEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyMatureSpeedEvent.TabIndex = 10;
+            this.nudBabyMatureSpeedEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudEggHatchSpeedEvent
+            // 
+            this.nudEggHatchSpeedEvent.DecimalPlaces = 6;
+            this.nudEggHatchSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudEggHatchSpeedEvent.Location = new System.Drawing.Point(263, 71);
+            this.nudEggHatchSpeedEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudEggHatchSpeedEvent.Name = "nudEggHatchSpeedEvent";
+            this.nudEggHatchSpeedEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudEggHatchSpeedEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudEggHatchSpeedEvent.TabIndex = 9;
+            this.nudEggHatchSpeedEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // labelBabyFoodConsumptionSpeed
             // 
@@ -647,6 +908,30 @@
             this.labelBabyFoodConsumptionSpeed.TabIndex = 10;
             this.labelBabyFoodConsumptionSpeed.Text = "BabyFoodConsumptionSpeedMult";
             // 
+            // nudBabyFoodConsumptionSpeed
+            // 
+            this.nudBabyFoodConsumptionSpeed.DecimalPlaces = 6;
+            this.nudBabyFoodConsumptionSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyFoodConsumptionSpeed.Location = new System.Drawing.Point(183, 201);
+            this.nudBabyFoodConsumptionSpeed.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyFoodConsumptionSpeed.Name = "nudBabyFoodConsumptionSpeed";
+            this.nudBabyFoodConsumptionSpeed.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyFoodConsumptionSpeed.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyFoodConsumptionSpeed.TabIndex = 7;
+            this.nudBabyFoodConsumptionSpeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -657,6 +942,30 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "MatingIntervalMultiplier";
             // 
+            // nudMatingInterval
+            // 
+            this.nudMatingInterval.DecimalPlaces = 6;
+            this.nudMatingInterval.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudMatingInterval.Location = new System.Drawing.Point(183, 45);
+            this.nudMatingInterval.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudMatingInterval.Name = "nudMatingInterval";
+            this.nudMatingInterval.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudMatingInterval.Size = new System.Drawing.Size(72, 20);
+            this.nudMatingInterval.TabIndex = 1;
+            this.nudMatingInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -666,6 +975,30 @@
             this.label17.Size = new System.Drawing.Size(260, 18);
             this.label17.TabIndex = 6;
             this.label17.Text = "BabyCuddleIntervalMultiplier";
+            // 
+            // nudBabyCuddleInterval
+            // 
+            this.nudBabyCuddleInterval.DecimalPlaces = 6;
+            this.nudBabyCuddleInterval.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyCuddleInterval.Location = new System.Drawing.Point(183, 123);
+            this.nudBabyCuddleInterval.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyCuddleInterval.Name = "nudBabyCuddleInterval";
+            this.nudBabyCuddleInterval.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyCuddleInterval.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyCuddleInterval.TabIndex = 4;
+            this.nudBabyCuddleInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label13
             // 
@@ -687,6 +1020,54 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "BabyMatureSpeedMultiplier";
             // 
+            // nudBabyMatureSpeed
+            // 
+            this.nudBabyMatureSpeed.DecimalPlaces = 6;
+            this.nudBabyMatureSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyMatureSpeed.Location = new System.Drawing.Point(183, 97);
+            this.nudBabyMatureSpeed.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyMatureSpeed.Name = "nudBabyMatureSpeed";
+            this.nudBabyMatureSpeed.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyMatureSpeed.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyMatureSpeed.TabIndex = 3;
+            this.nudBabyMatureSpeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudBabyImprintingStatScale
+            // 
+            this.nudBabyImprintingStatScale.DecimalPlaces = 6;
+            this.nudBabyImprintingStatScale.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudBabyImprintingStatScale.Location = new System.Drawing.Point(183, 175);
+            this.nudBabyImprintingStatScale.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudBabyImprintingStatScale.Name = "nudBabyImprintingStatScale";
+            this.nudBabyImprintingStatScale.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudBabyImprintingStatScale.Size = new System.Drawing.Size(72, 20);
+            this.nudBabyImprintingStatScale.TabIndex = 6;
+            this.nudBabyImprintingStatScale.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -696,6 +1077,30 @@
             this.label8.Size = new System.Drawing.Size(215, 18);
             this.label8.TabIndex = 0;
             this.label8.Text = "EggHatchSpeedMultiplier";
+            // 
+            // nudEggHatchSpeed
+            // 
+            this.nudEggHatchSpeed.DecimalPlaces = 6;
+            this.nudEggHatchSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudEggHatchSpeed.Location = new System.Drawing.Point(183, 71);
+            this.nudEggHatchSpeed.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudEggHatchSpeed.Name = "nudEggHatchSpeed";
+            this.nudEggHatchSpeed.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudEggHatchSpeed.Size = new System.Drawing.Size(72, 20);
+            this.nudEggHatchSpeed.TabIndex = 2;
+            this.nudEggHatchSpeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // groupBox3
             // 
@@ -726,6 +1131,24 @@
             this.LbDefaultLevelups.Size = new System.Drawing.Size(0, 18);
             this.LbDefaultLevelups.TabIndex = 13;
             // 
+            // nudMaxServerLevel
+            // 
+            this.nudMaxServerLevel.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudMaxServerLevel.Location = new System.Drawing.Point(183, 97);
+            this.nudMaxServerLevel.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudMaxServerLevel.Name = "nudMaxServerLevel";
+            this.nudMaxServerLevel.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudMaxServerLevel.Size = new System.Drawing.Size(57, 20);
+            this.nudMaxServerLevel.TabIndex = 3;
+            // 
             // lbMaxTotalLevel
             // 
             this.lbMaxTotalLevel.AutoSize = true;
@@ -735,6 +1158,24 @@
             this.lbMaxTotalLevel.Size = new System.Drawing.Size(269, 18);
             this.lbMaxTotalLevel.TabIndex = 12;
             this.lbMaxTotalLevel.Text = "Max Total Level (0: disabled)";
+            // 
+            // nudMaxGraphLevel
+            // 
+            this.nudMaxGraphLevel.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudMaxGraphLevel.Location = new System.Drawing.Point(183, 71);
+            this.nudMaxGraphLevel.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudMaxGraphLevel.Name = "nudMaxGraphLevel";
+            this.nudMaxGraphLevel.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudMaxGraphLevel.Size = new System.Drawing.Size(57, 20);
+            this.nudMaxGraphLevel.TabIndex = 2;
             // 
             // label18
             // 
@@ -756,6 +1197,24 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Max Wild Level";
             // 
+            // nudMaxWildLevels
+            // 
+            this.nudMaxWildLevels.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudMaxWildLevels.Location = new System.Drawing.Point(183, 19);
+            this.nudMaxWildLevels.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudMaxWildLevels.Name = "nudMaxWildLevels";
+            this.nudMaxWildLevels.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudMaxWildLevels.Size = new System.Drawing.Size(57, 20);
+            this.nudMaxWildLevels.TabIndex = 0;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -765,6 +1224,24 @@
             this.label10.Size = new System.Drawing.Size(170, 18);
             this.label10.TabIndex = 2;
             this.label10.Text = "Max Tamed Levelups";
+            // 
+            // nudMaxDomLevels
+            // 
+            this.nudMaxDomLevels.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudMaxDomLevels.Location = new System.Drawing.Point(183, 45);
+            this.nudMaxDomLevels.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudMaxDomLevels.Name = "nudMaxDomLevels";
+            this.nudMaxDomLevels.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudMaxDomLevels.Size = new System.Drawing.Size(57, 20);
+            this.nudMaxDomLevels.TabIndex = 1;
             // 
             // groupBox4
             // 
@@ -830,6 +1307,107 @@
             this.pbChartEvenRange.Size = new System.Drawing.Size(150, 14);
             this.pbChartEvenRange.TabIndex = 12;
             this.pbChartEvenRange.TabStop = false;
+            // 
+            // nudChartLevelOddMax
+            // 
+            this.nudChartLevelOddMax.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudChartLevelOddMax.Location = new System.Drawing.Point(268, 137);
+            this.nudChartLevelOddMax.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudChartLevelOddMax.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.nudChartLevelOddMax.Name = "nudChartLevelOddMax";
+            this.nudChartLevelOddMax.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudChartLevelOddMax.Size = new System.Drawing.Size(41, 20);
+            this.nudChartLevelOddMax.TabIndex = 11;
+            this.nudChartLevelOddMax.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudChartLevelOddMax.ValueChanged += new System.EventHandler(this.nudChartLevelOddMax_ValueChanged);
+            // 
+            // nudChartLevelOddMin
+            // 
+            this.nudChartLevelOddMin.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudChartLevelOddMin.Location = new System.Drawing.Point(209, 137);
+            this.nudChartLevelOddMin.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudChartLevelOddMin.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.nudChartLevelOddMin.Name = "nudChartLevelOddMin";
+            this.nudChartLevelOddMin.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudChartLevelOddMin.Size = new System.Drawing.Size(41, 20);
+            this.nudChartLevelOddMin.TabIndex = 10;
+            this.nudChartLevelOddMin.ValueChanged += new System.EventHandler(this.nudChartLevelOddMin_ValueChanged);
+            // 
+            // nudChartLevelEvenMax
+            // 
+            this.nudChartLevelEvenMax.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudChartLevelEvenMax.Location = new System.Drawing.Point(102, 137);
+            this.nudChartLevelEvenMax.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudChartLevelEvenMax.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.nudChartLevelEvenMax.Name = "nudChartLevelEvenMax";
+            this.nudChartLevelEvenMax.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudChartLevelEvenMax.Size = new System.Drawing.Size(41, 20);
+            this.nudChartLevelEvenMax.TabIndex = 9;
+            this.nudChartLevelEvenMax.ValueChanged += new System.EventHandler(this.nudChartLevelEvenMax_ValueChanged);
+            // 
+            // nudChartLevelEvenMin
+            // 
+            this.nudChartLevelEvenMin.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudChartLevelEvenMin.Location = new System.Drawing.Point(43, 137);
+            this.nudChartLevelEvenMin.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.nudChartLevelEvenMin.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.nudChartLevelEvenMin.Name = "nudChartLevelEvenMin";
+            this.nudChartLevelEvenMin.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudChartLevelEvenMin.Size = new System.Drawing.Size(41, 20);
+            this.nudChartLevelEvenMin.TabIndex = 8;
+            this.nudChartLevelEvenMin.ValueChanged += new System.EventHandler(this.nudChartLevelEvenMin_ValueChanged);
             // 
             // CbHighlightLevelEvenOdd
             // 
@@ -908,6 +1486,24 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Max Breeding Pair Suggestions";
             // 
+            // numericUpDownMaxBreedingSug
+            // 
+            this.numericUpDownMaxBreedingSug.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.numericUpDownMaxBreedingSug.Location = new System.Drawing.Point(252, 19);
+            this.numericUpDownMaxBreedingSug.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxBreedingSug.Name = "numericUpDownMaxBreedingSug";
+            this.numericUpDownMaxBreedingSug.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxBreedingSug.Size = new System.Drawing.Size(57, 20);
+            this.numericUpDownMaxBreedingSug.TabIndex = 1;
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.nudDinoCharacterFoodDrainEvent);
@@ -924,6 +1520,54 @@
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Taming-Multiplier";
+            // 
+            // nudDinoCharacterFoodDrainEvent
+            // 
+            this.nudDinoCharacterFoodDrainEvent.DecimalPlaces = 6;
+            this.nudDinoCharacterFoodDrainEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudDinoCharacterFoodDrainEvent.Location = new System.Drawing.Point(263, 45);
+            this.nudDinoCharacterFoodDrainEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudDinoCharacterFoodDrainEvent.Name = "nudDinoCharacterFoodDrainEvent";
+            this.nudDinoCharacterFoodDrainEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudDinoCharacterFoodDrainEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudDinoCharacterFoodDrainEvent.TabIndex = 3;
+            this.nudDinoCharacterFoodDrainEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudTamingSpeedEvent
+            // 
+            this.nudTamingSpeedEvent.DecimalPlaces = 6;
+            this.nudTamingSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudTamingSpeedEvent.Location = new System.Drawing.Point(263, 19);
+            this.nudTamingSpeedEvent.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudTamingSpeedEvent.Name = "nudTamingSpeedEvent";
+            this.nudTamingSpeedEvent.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTamingSpeedEvent.Size = new System.Drawing.Size(72, 20);
+            this.nudTamingSpeedEvent.TabIndex = 2;
+            this.nudTamingSpeedEvent.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label7
             // 
@@ -945,10 +1589,57 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "TamingSpeedMultiplier";
             // 
+            // nudDinoCharacterFoodDrain
+            // 
+            this.nudDinoCharacterFoodDrain.DecimalPlaces = 6;
+            this.nudDinoCharacterFoodDrain.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudDinoCharacterFoodDrain.Location = new System.Drawing.Point(183, 45);
+            this.nudDinoCharacterFoodDrain.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudDinoCharacterFoodDrain.Name = "nudDinoCharacterFoodDrain";
+            this.nudDinoCharacterFoodDrain.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudDinoCharacterFoodDrain.Size = new System.Drawing.Size(72, 20);
+            this.nudDinoCharacterFoodDrain.TabIndex = 1;
+            this.nudDinoCharacterFoodDrain.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudTamingSpeed
+            // 
+            this.nudTamingSpeed.DecimalPlaces = 6;
+            this.nudTamingSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudTamingSpeed.Location = new System.Drawing.Point(183, 19);
+            this.nudTamingSpeed.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudTamingSpeed.Name = "nudTamingSpeed";
+            this.nudTamingSpeed.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTamingSpeed.Size = new System.Drawing.Size(72, 20);
+            this.nudTamingSpeed.TabIndex = 0;
+            this.nudTamingSpeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(680, 730);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(453, 555);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(434, 107);
             this.label15.TabIndex = 9;
@@ -989,6 +1680,24 @@
             this.label55.TabIndex = 13;
             this.label55.Text = "加载前等待[ms]";
             // 
+            // NudWaitBeforeAutoLoad
+            // 
+            this.NudWaitBeforeAutoLoad.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.NudWaitBeforeAutoLoad.Location = new System.Drawing.Point(255, 41);
+            this.NudWaitBeforeAutoLoad.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NudWaitBeforeAutoLoad.Name = "NudWaitBeforeAutoLoad";
+            this.NudWaitBeforeAutoLoad.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.NudWaitBeforeAutoLoad.Size = new System.Drawing.Size(56, 20);
+            this.NudWaitBeforeAutoLoad.TabIndex = 12;
+            // 
             // label54
             // 
             this.label54.AutoSize = true;
@@ -998,6 +1707,19 @@
             this.label54.Size = new System.Drawing.Size(323, 18);
             this.label54.TabIndex = 5;
             this.label54.Text = "backup files (0 to disable backups)";
+            // 
+            // NudKeepBackupFilesCount
+            // 
+            this.NudKeepBackupFilesCount.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.NudKeepBackupFilesCount.Location = new System.Drawing.Point(44, 118);
+            this.NudKeepBackupFilesCount.Name = "NudKeepBackupFilesCount";
+            this.NudKeepBackupFilesCount.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.NudKeepBackupFilesCount.Size = new System.Drawing.Size(59, 20);
+            this.NudKeepBackupFilesCount.TabIndex = 4;
             // 
             // label53
             // 
@@ -1053,6 +1775,19 @@
     ". Place the .asb collection-file in a shared-folder that the others have access " +
     "to.";
             // 
+            // NudBackupEveryMinutes
+            // 
+            this.NudBackupEveryMinutes.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.NudBackupEveryMinutes.Location = new System.Drawing.Point(132, 144);
+            this.NudBackupEveryMinutes.Name = "NudBackupEveryMinutes";
+            this.NudBackupEveryMinutes.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.NudBackupEveryMinutes.Size = new System.Drawing.Size(47, 20);
+            this.NudBackupEveryMinutes.TabIndex = 7;
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.checkBoxDisplayHiddenStats);
@@ -1091,13 +1826,14 @@
             this.tabControlSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControlSettings.Name = "tabControlSettings";
             this.tabControlSettings.SelectedIndex = 0;
-            this.tabControlSettings.Size = new System.Drawing.Size(1137, 972);
+            this.tabControlSettings.Size = new System.Drawing.Size(758, 725);
             this.tabControlSettings.TabIndex = 11;
             // 
             // tabPageMultipliers
             // 
             this.tabPageMultipliers.AllowDrop = true;
             this.tabPageMultipliers.AutoScroll = true;
+            this.tabPageMultipliers.Controls.Add(this.CbAtlasSettings);
             this.tabPageMultipliers.Controls.Add(this.BtSettingsToClipboard);
             this.tabPageMultipliers.Controls.Add(this.groupBox29);
             this.tabPageMultipliers.Controls.Add(this.label34);
@@ -1116,13 +1852,33 @@
             this.tabPageMultipliers.Location = new System.Drawing.Point(4, 28);
             this.tabPageMultipliers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageMultipliers.Name = "tabPageMultipliers";
-            this.tabPageMultipliers.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageMultipliers.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageMultipliers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMultipliers.Size = new System.Drawing.Size(750, 699);
             this.tabPageMultipliers.TabIndex = 1;
             this.tabPageMultipliers.Text = "Multipliers";
             this.tabPageMultipliers.UseVisualStyleBackColor = true;
             this.tabPageMultipliers.DragDrop += new System.Windows.Forms.DragEventHandler(this.tabPage2_DragDrop);
             this.tabPageMultipliers.DragEnter += new System.Windows.Forms.DragEventHandler(this.tabPage2_DragEnter);
+            // 
+            // CbAtlasSettings
+            // 
+            this.CbAtlasSettings.AutoSize = true;
+            this.CbAtlasSettings.Location = new System.Drawing.Point(264, 23);
+            this.CbAtlasSettings.Name = "CbAtlasSettings";
+            this.CbAtlasSettings.Size = new System.Drawing.Size(99, 17);
+            this.CbAtlasSettings.TabIndex = 14;
+            this.CbAtlasSettings.Text = "ATLAS settings";
+            this.CbAtlasSettings.UseVisualStyleBackColor = true;
+            // 
+            // BtSettingsToClipboard
+            // 
+            this.BtSettingsToClipboard.Location = new System.Drawing.Point(600, 670);
+            this.BtSettingsToClipboard.Name = "BtSettingsToClipboard";
+            this.BtSettingsToClipboard.Size = new System.Drawing.Size(142, 23);
+            this.BtSettingsToClipboard.TabIndex = 13;
+            this.BtSettingsToClipboard.Text = "Copy settings to clipboard";
+            this.BtSettingsToClipboard.UseVisualStyleBackColor = true;
+            this.BtSettingsToClipboard.Click += new System.EventHandler(this.BtSettingsToClipboard_Click);
             // 
             // groupBox29
             // 
@@ -1149,7 +1905,7 @@
             // 
             // label34
             // 
-            this.label34.Location = new System.Drawing.Point(404, 605);
+            this.label34.Location = new System.Drawing.Point(404, 633);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(338, 34);
             this.label34.TabIndex = 10;
@@ -1158,7 +1914,7 @@
             // 
             // btExportMultipliers
             // 
-            this.btExportMultipliers.Location = new System.Drawing.Point(407, 642);
+            this.btExportMultipliers.Location = new System.Drawing.Point(407, 670);
             this.btExportMultipliers.Name = "btExportMultipliers";
             this.btExportMultipliers.Size = new System.Drawing.Size(187, 23);
             this.btExportMultipliers.TabIndex = 11;
@@ -1204,8 +1960,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(626, 730);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Location = new System.Drawing.Point(417, 555);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(37, 26);
             this.label27.TabIndex = 12;
@@ -1217,9 +1972,9 @@
             this.cbSingleplayerSettings.Location = new System.Drawing.Point(22, 32);
             this.cbSingleplayerSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbSingleplayerSettings.Name = "cbSingleplayerSettings";
-            this.cbSingleplayerSettings.Size = new System.Drawing.Size(223, 22);
+            this.cbSingleplayerSettings.Size = new System.Drawing.Size(122, 17);
             this.cbSingleplayerSettings.TabIndex = 0;
-            this.cbSingleplayerSettings.Text = "Singleplayer Settings";
+            this.cbSingleplayerSettings.Text = "Singleplayer settings";
             this.cbSingleplayerSettings.UseVisualStyleBackColor = true;
             this.cbSingleplayerSettings.CheckedChanged += new System.EventHandler(this.cbSingleplayerSettings_CheckedChanged);
             // 
@@ -1248,6 +2003,34 @@
             this.cbAllowMoreThanHundredImprinting.Text = "Allow more than 100% imprinting";
             this.cbAllowMoreThanHundredImprinting.UseVisualStyleBackColor = true;
             // 
+            // nudWildLevelStep
+            // 
+            this.nudWildLevelStep.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudWildLevelStep.Location = new System.Drawing.Point(319, 17);
+            this.nudWildLevelStep.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudWildLevelStep.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudWildLevelStep.Name = "nudWildLevelStep";
+            this.nudWildLevelStep.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudWildLevelStep.Size = new System.Drawing.Size(57, 20);
+            this.nudWildLevelStep.TabIndex = 1;
+            this.nudWildLevelStep.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // cbConsiderWildLevelSteps
             // 
             this.cbConsiderWildLevelSteps.AutoSize = true;
@@ -1261,8 +2044,7 @@
             // 
             // buttonEventToDefault
             // 
-            this.buttonEventToDefault.Location = new System.Drawing.Point(906, 676);
-            this.buttonEventToDefault.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEventToDefault.Location = new System.Drawing.Point(604, 502);
             this.buttonEventToDefault.Name = "buttonEventToDefault";
             this.buttonEventToDefault.Size = new System.Drawing.Size(204, 32);
             this.buttonEventToDefault.TabIndex = 8;
@@ -1299,29 +2081,49 @@
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 28);
             this.tabPageGeneral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageGeneral.Name = "tabPageGeneral";
-            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageGeneral.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGeneral.Size = new System.Drawing.Size(750, 699);
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
             // groupBox31
             // 
+            this.groupBox31.Controls.Add(this.CbColorIdOnColorRegionButton);
+            this.groupBox31.Controls.Add(this.CbAlwaysShowAllColorRegions);
             this.groupBox31.Controls.Add(this.CbHideInvisibleColorRegions);
             this.groupBox31.Location = new System.Drawing.Point(494, 392);
             this.groupBox31.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox31.Size = new System.Drawing.Size(620, 60);
+            this.groupBox31.Size = new System.Drawing.Size(413, 66);
             this.groupBox31.TabIndex = 14;
             this.groupBox31.TabStop = false;
-            this.groupBox31.Text = "ColorRegions";
+            this.groupBox31.Text = "Color Regions";
+            // 
+            // CbColorIdOnColorRegionButton
+            // 
+            this.CbColorIdOnColorRegionButton.AutoSize = true;
+            this.CbColorIdOnColorRegionButton.Location = new System.Drawing.Point(6, 42);
+            this.CbColorIdOnColorRegionButton.Name = "CbColorIdOnColorRegionButton";
+            this.CbColorIdOnColorRegionButton.Size = new System.Drawing.Size(201, 17);
+            this.CbColorIdOnColorRegionButton.TabIndex = 2;
+            this.CbColorIdOnColorRegionButton.Text = "Show color id on color region buttons";
+            this.CbColorIdOnColorRegionButton.UseVisualStyleBackColor = true;
+            // 
+            // CbAlwaysShowAllColorRegions
+            // 
+            this.CbAlwaysShowAllColorRegions.AutoSize = true;
+            this.CbAlwaysShowAllColorRegions.Location = new System.Drawing.Point(6, 19);
+            this.CbAlwaysShowAllColorRegions.Name = "CbAlwaysShowAllColorRegions";
+            this.CbAlwaysShowAllColorRegions.Size = new System.Drawing.Size(163, 17);
+            this.CbAlwaysShowAllColorRegions.TabIndex = 1;
+            this.CbAlwaysShowAllColorRegions.Text = "Always show all color regions";
+            this.CbAlwaysShowAllColorRegions.UseVisualStyleBackColor = true;
             // 
             // CbHideInvisibleColorRegions
             // 
             this.CbHideInvisibleColorRegions.AutoSize = true;
-            this.CbHideInvisibleColorRegions.Location = new System.Drawing.Point(9, 26);
-            this.CbHideInvisibleColorRegions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CbHideInvisibleColorRegions.Location = new System.Drawing.Point(222, 19);
             this.CbHideInvisibleColorRegions.Name = "CbHideInvisibleColorRegions";
             this.CbHideInvisibleColorRegions.Size = new System.Drawing.Size(214, 22);
             this.CbHideInvisibleColorRegions.TabIndex = 0;
@@ -1334,8 +2136,7 @@
             this.groupBox30.Controls.Add(this.BExportSpreadsheetMoveDown);
             this.groupBox30.Controls.Add(this.BExportSpreadsheetMoveUp);
             this.groupBox30.Controls.Add(this.ClbExportSpreadsheetFields);
-            this.groupBox30.Location = new System.Drawing.Point(494, 460);
-            this.groupBox30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox30.Location = new System.Drawing.Point(329, 355);
             this.groupBox30.Name = "groupBox30";
             this.groupBox30.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox30.Size = new System.Drawing.Size(620, 389);
@@ -1455,6 +2256,19 @@
             this.LbSpeciesSelectorCountLastUsed.TabIndex = 0;
             this.LbSpeciesSelectorCountLastUsed.Text = "显示的上次使用的物种数";
             // 
+            // NudSpeciesSelectorCountLastUsed
+            // 
+            this.NudSpeciesSelectorCountLastUsed.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.NudSpeciesSelectorCountLastUsed.Location = new System.Drawing.Point(252, 19);
+            this.NudSpeciesSelectorCountLastUsed.Name = "NudSpeciesSelectorCountLastUsed";
+            this.NudSpeciesSelectorCountLastUsed.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.NudSpeciesSelectorCountLastUsed.Size = new System.Drawing.Size(57, 20);
+            this.NudSpeciesSelectorCountLastUsed.TabIndex = 1;
+            // 
             // groupBox26
             // 
             this.groupBox26.Controls.Add(this.cbAdminConsoleCommandWithCheat);
@@ -1526,6 +2340,20 @@
             this.CbbColorMode.Size = new System.Drawing.Size(331, 26);
             this.CbbColorMode.TabIndex = 5;
             // 
+            // nudDefaultFontSize
+            // 
+            this.nudDefaultFontSize.DecimalPlaces = 2;
+            this.nudDefaultFontSize.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudDefaultFontSize.Location = new System.Drawing.Point(335, 18);
+            this.nudDefaultFontSize.Name = "nudDefaultFontSize";
+            this.nudDefaultFontSize.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudDefaultFontSize.Size = new System.Drawing.Size(72, 20);
+            this.nudDefaultFontSize.TabIndex = 3;
+            // 
             // label33
             // 
             this.label33.AutoSize = true;
@@ -1572,8 +2400,7 @@
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.cbbLanguage);
-            this.groupBox17.Location = new System.Drawing.Point(494, 857);
-            this.groupBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox17.Location = new System.Drawing.Point(329, 642);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox17.Size = new System.Drawing.Size(620, 71);
@@ -1594,6 +2421,8 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.CbNaturalSortIgnoreSpaces);
+            this.groupBox9.Controls.Add(this.CbNaturalSorting);
             this.groupBox9.Controls.Add(this.CbConsiderWastedStatsForTopCreatures);
             this.groupBox9.Controls.Add(this.CbPauseGrowingTimerAfterAdding);
             this.groupBox9.Controls.Add(this.CbLibrarySelectSelectedSpeciesOnLoad);
@@ -1603,11 +2432,31 @@
             this.groupBox9.Location = new System.Drawing.Point(9, 705);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox9.Size = new System.Drawing.Size(476, 223);
+            this.groupBox9.Size = new System.Drawing.Size(317, 184);
             this.groupBox9.TabIndex = 4;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Library";
+            // 
+            // CbNaturalSortIgnoreSpaces
+            // 
+            this.CbNaturalSortIgnoreSpaces.AutoSize = true;
+            this.CbNaturalSortIgnoreSpaces.Location = new System.Drawing.Point(181, 157);
+            this.CbNaturalSortIgnoreSpaces.Name = "CbNaturalSortIgnoreSpaces";
+            this.CbNaturalSortIgnoreSpaces.Size = new System.Drawing.Size(93, 17);
+            this.CbNaturalSortIgnoreSpaces.TabIndex = 7;
+            this.CbNaturalSortIgnoreSpaces.Text = "Ignore spaces";
+            this.CbNaturalSortIgnoreSpaces.UseVisualStyleBackColor = true;
+            // 
+            // CbNaturalSorting
+            // 
+            this.CbNaturalSorting.AutoSize = true;
+            this.CbNaturalSorting.Location = new System.Drawing.Point(6, 157);
+            this.CbNaturalSorting.Name = "CbNaturalSorting";
+            this.CbNaturalSorting.Size = new System.Drawing.Size(155, 17);
+            this.CbNaturalSorting.TabIndex = 6;
+            this.CbNaturalSorting.Text = "Natural sort (e.g. 10 after 2)";
+            this.CbNaturalSorting.UseVisualStyleBackColor = true;
+            this.CbNaturalSorting.CheckedChanged += new System.EventHandler(this.CbNaturalSorting_CheckedChanged);
             // 
             // CbConsiderWastedStatsForTopCreatures
             // 
@@ -1686,7 +2535,7 @@
             this.tabPageInfoGraphic.Location = new System.Drawing.Point(4, 28);
             this.tabPageInfoGraphic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageInfoGraphic.Name = "tabPageInfoGraphic";
-            this.tabPageInfoGraphic.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageInfoGraphic.Size = new System.Drawing.Size(750, 699);
             this.tabPageInfoGraphic.TabIndex = 7;
             this.tabPageInfoGraphic.Text = "Info Graphic";
             this.tabPageInfoGraphic.UseVisualStyleBackColor = true;
@@ -1759,6 +2608,35 @@
             this.CbbInfoGraphicFontName.Size = new System.Drawing.Size(361, 26);
             this.CbbInfoGraphicFontName.TabIndex = 16;
             this.CbbInfoGraphicFontName.SelectedIndexChanged += new System.EventHandler(this.CbbInfoGraphicFontName_SelectedIndexChanged);
+            // 
+            // nudInfoGraphicHeight
+            // 
+            this.nudInfoGraphicHeight.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudInfoGraphicHeight.Location = new System.Drawing.Point(126, 18);
+            this.nudInfoGraphicHeight.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.nudInfoGraphicHeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudInfoGraphicHeight.Name = "nudInfoGraphicHeight";
+            this.nudInfoGraphicHeight.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudInfoGraphicHeight.Size = new System.Drawing.Size(57, 20);
+            this.nudInfoGraphicHeight.TabIndex = 2;
+            this.nudInfoGraphicHeight.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudInfoGraphicHeight.ValueChanged += new System.EventHandler(this.nudInfoGraphicHeight_ValueChanged);
             // 
             // BtInfoGraphicForeColor
             // 
@@ -1935,8 +2813,8 @@
             this.tabPageImportSavegame.Location = new System.Drawing.Point(4, 28);
             this.tabPageImportSavegame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageImportSavegame.Name = "tabPageImportSavegame";
-            this.tabPageImportSavegame.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageImportSavegame.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageImportSavegame.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageImportSavegame.Size = new System.Drawing.Size(750, 699);
             this.tabPageImportSavegame.TabIndex = 2;
             this.tabPageImportSavegame.Text = "Import Savegame";
             this.tabPageImportSavegame.UseVisualStyleBackColor = true;
@@ -2064,6 +2942,28 @@
             this.dataGridView_FileLocations.TabIndex = 2;
             this.dataGridView_FileLocations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_FileLocations_CellClick);
             // 
+            // convenientNameDataGridViewTextBoxColumn
+            // 
+            this.convenientNameDataGridViewTextBoxColumn.DataPropertyName = "ConvenientName";
+            this.convenientNameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.convenientNameDataGridViewTextBoxColumn.Name = "convenientNameDataGridViewTextBoxColumn";
+            this.convenientNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // serverNameDataGridViewTextBoxColumn
+            // 
+            this.serverNameDataGridViewTextBoxColumn.DataPropertyName = "ServerName";
+            this.serverNameDataGridViewTextBoxColumn.HeaderText = "Server name";
+            this.serverNameDataGridViewTextBoxColumn.Name = "serverNameDataGridViewTextBoxColumn";
+            this.serverNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fileLocationDataGridViewTextBoxColumn
+            // 
+            this.fileLocationDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fileLocationDataGridViewTextBoxColumn.DataPropertyName = "FileLocation";
+            this.fileLocationDataGridViewTextBoxColumn.HeaderText = "File location";
+            this.fileLocationDataGridViewTextBoxColumn.Name = "fileLocationDataGridViewTextBoxColumn";
+            this.fileLocationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // dgvFileLocation_Change
             // 
             this.dgvFileLocation_Change.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -2098,6 +2998,11 @@
             this.dgvFileLocation_Delete.Text = "Delete";
             this.dgvFileLocation_Delete.UseColumnTextForButtonValue = true;
             this.dgvFileLocation_Delete.Width = 50;
+            // 
+            // aTImportFileLocationBindingSource
+            // 
+            this.aTImportFileLocationBindingSource.AllowNew = false;
+            this.aTImportFileLocationBindingSource.DataSource = typeof(ARKBreedingStats.settings.ATImportFileLocation);
             // 
             // btAddSavegameFileLocation
             // 
@@ -2137,6 +3042,15 @@
             this.groupBox14.Text = "Target folder for save-game working copy (user\'s temp dir if empty). It\'s recomme" +
     "nded to leave this setting empty.";
             // 
+            // fileSelectorExtractedSaveFolder
+            // 
+            this.fileSelectorExtractedSaveFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fileSelectorExtractedSaveFolder.Link = "filename";
+            this.fileSelectorExtractedSaveFolder.Location = new System.Drawing.Point(3, 16);
+            this.fileSelectorExtractedSaveFolder.Name = "fileSelectorExtractedSaveFolder";
+            this.fileSelectorExtractedSaveFolder.Size = new System.Drawing.Size(724, 28);
+            this.fileSelectorExtractedSaveFolder.TabIndex = 0;
+            // 
             // label24
             // 
             this.label24.Location = new System.Drawing.Point(9, 22);
@@ -2160,8 +3074,8 @@
             this.tabPageImportExported.Location = new System.Drawing.Point(4, 28);
             this.tabPageImportExported.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageImportExported.Name = "tabPageImportExported";
-            this.tabPageImportExported.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageImportExported.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageImportExported.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageImportExported.Size = new System.Drawing.Size(750, 699);
             this.tabPageImportExported.TabIndex = 3;
             this.tabPageImportExported.Text = "Import Exported";
             this.tabPageImportExported.UseVisualStyleBackColor = true;
@@ -2258,6 +3172,20 @@
             this.label30.Size = new System.Drawing.Size(17, 18);
             this.label30.TabIndex = 11;
             this.label30.Text = "%";
+            // 
+            // nudImportLowerBoundTE
+            // 
+            this.nudImportLowerBoundTE.DecimalPlaces = 2;
+            this.nudImportLowerBoundTE.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudImportLowerBoundTE.Location = new System.Drawing.Point(227, 19);
+            this.nudImportLowerBoundTE.Name = "nudImportLowerBoundTE";
+            this.nudImportLowerBoundTE.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudImportLowerBoundTE.Size = new System.Drawing.Size(64, 20);
+            this.nudImportLowerBoundTE.TabIndex = 1;
             // 
             // groupBox22
             // 
@@ -2620,6 +3548,26 @@
             this.dataGridViewExportFolders.TabIndex = 1;
             this.dataGridViewExportFolders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExportFolders_CellClick);
             // 
+            // convenientNameDataGridViewTextBoxColumn1
+            // 
+            this.convenientNameDataGridViewTextBoxColumn1.DataPropertyName = "ConvenientName";
+            this.convenientNameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.convenientNameDataGridViewTextBoxColumn1.Name = "convenientNameDataGridViewTextBoxColumn1";
+            // 
+            // ownerSuffixDataGridViewTextBoxColumn
+            // 
+            this.ownerSuffixDataGridViewTextBoxColumn.DataPropertyName = "OwnerSuffix";
+            this.ownerSuffixDataGridViewTextBoxColumn.HeaderText = "Owner suffix";
+            this.ownerSuffixDataGridViewTextBoxColumn.Name = "ownerSuffixDataGridViewTextBoxColumn";
+            // 
+            // folderPathDataGridViewTextBoxColumn
+            // 
+            this.folderPathDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.folderPathDataGridViewTextBoxColumn.DataPropertyName = "FolderPath";
+            this.folderPathDataGridViewTextBoxColumn.HeaderText = "Folder";
+            this.folderPathDataGridViewTextBoxColumn.Name = "folderPathDataGridViewTextBoxColumn";
+            this.folderPathDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // dgvExportFolderChange
             // 
             this.dgvExportFolderChange.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -2652,6 +3600,11 @@
             this.dgvExportMakeDefault.UseColumnTextForButtonValue = true;
             this.dgvExportMakeDefault.Width = 150;
             // 
+            // aTExportFolderLocationsBindingSource
+            // 
+            this.aTExportFolderLocationsBindingSource.AllowNew = false;
+            this.aTExportFolderLocationsBindingSource.DataSource = typeof(ARKBreedingStats.settings.ATImportExportedFolderLocation);
+            // 
             // btAddExportFolder
             // 
             this.btAddExportFolder.Dock = System.Windows.Forms.DockStyle.Top;
@@ -2681,8 +3634,8 @@
             this.tabPageTimers.Location = new System.Drawing.Point(4, 28);
             this.tabPageTimers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageTimers.Name = "tabPageTimers";
-            this.tabPageTimers.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageTimers.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageTimers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTimers.Size = new System.Drawing.Size(750, 699);
             this.tabPageTimers.TabIndex = 6;
             this.tabPageTimers.Text = "Timers";
             this.tabPageTimers.UseVisualStyleBackColor = true;
@@ -2770,6 +3723,38 @@
             this.tbPlayAlarmsSeconds.Size = new System.Drawing.Size(208, 28);
             this.tbPlayAlarmsSeconds.TabIndex = 6;
             // 
+            // customSCCustom
+            // 
+            this.customSCCustom.Location = new System.Drawing.Point(6, 139);
+            this.customSCCustom.Name = "customSCCustom";
+            this.customSCCustom.Size = new System.Drawing.Size(401, 23);
+            this.customSCCustom.SoundFile = null;
+            this.customSCCustom.TabIndex = 4;
+            // 
+            // customSCWakeup
+            // 
+            this.customSCWakeup.Location = new System.Drawing.Point(6, 81);
+            this.customSCWakeup.Name = "customSCWakeup";
+            this.customSCWakeup.Size = new System.Drawing.Size(401, 23);
+            this.customSCWakeup.SoundFile = "";
+            this.customSCWakeup.TabIndex = 2;
+            // 
+            // customSCBirth
+            // 
+            this.customSCBirth.Location = new System.Drawing.Point(6, 110);
+            this.customSCBirth.Name = "customSCBirth";
+            this.customSCBirth.Size = new System.Drawing.Size(401, 23);
+            this.customSCBirth.SoundFile = "";
+            this.customSCBirth.TabIndex = 3;
+            // 
+            // customSCStarving
+            // 
+            this.customSCStarving.Location = new System.Drawing.Point(6, 52);
+            this.customSCStarving.Name = "customSCStarving";
+            this.customSCStarving.Size = new System.Drawing.Size(401, 23);
+            this.customSCStarving.SoundFile = null;
+            this.customSCStarving.TabIndex = 1;
+            // 
             // label20
             // 
             this.label20.Location = new System.Drawing.Point(9, 22);
@@ -2786,8 +3771,8 @@
             this.tabPageOverlay.Location = new System.Drawing.Point(4, 28);
             this.tabPageOverlay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageOverlay.Name = "tabPageOverlay";
-            this.tabPageOverlay.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageOverlay.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageOverlay.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOverlay.Size = new System.Drawing.Size(750, 699);
             this.tabPageOverlay.TabIndex = 5;
             this.tabPageOverlay.Text = "Overlay";
             this.tabPageOverlay.UseVisualStyleBackColor = true;
@@ -2855,6 +3840,29 @@
             this.pCustomOverlayLocation.Size = new System.Drawing.Size(302, 39);
             this.pCustomOverlayLocation.TabIndex = 16;
             // 
+            // nudCustomOverlayLocX
+            // 
+            this.nudCustomOverlayLocX.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudCustomOverlayLocX.Location = new System.Drawing.Point(24, 3);
+            this.nudCustomOverlayLocX.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudCustomOverlayLocX.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
+            this.nudCustomOverlayLocX.Name = "nudCustomOverlayLocX";
+            this.nudCustomOverlayLocX.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudCustomOverlayLocX.Size = new System.Drawing.Size(57, 20);
+            this.nudCustomOverlayLocX.TabIndex = 1;
+            // 
             // label42
             // 
             this.label42.AutoSize = true;
@@ -2874,6 +3882,30 @@
             this.label43.Size = new System.Drawing.Size(17, 18);
             this.label43.TabIndex = 0;
             this.label43.Text = "X";
+            // 
+            // nudCustomOverlayLocY
+            // 
+            this.nudCustomOverlayLocY.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudCustomOverlayLocY.Location = new System.Drawing.Point(125, 3);
+            this.nudCustomOverlayLocY.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudCustomOverlayLocY.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
+            this.nudCustomOverlayLocY.Name = "nudCustomOverlayLocY";
+            this.nudCustomOverlayLocY.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudCustomOverlayLocY.Size = new System.Drawing.Size(57, 20);
+            this.nudCustomOverlayLocY.TabIndex = 3;
+            this.nudCustomOverlayLocY.ThousandsSeparator = true;
             // 
             // cbCustomOverlayLocation
             // 
@@ -2897,6 +3929,24 @@
             this.label38.TabIndex = 11;
             this.label38.Text = "distance from right";
             // 
+            // nudOverlayInfoPosY
+            // 
+            this.nudOverlayInfoPosY.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudOverlayInfoPosY.Location = new System.Drawing.Point(320, 147);
+            this.nudOverlayInfoPosY.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudOverlayInfoPosY.Name = "nudOverlayInfoPosY";
+            this.nudOverlayInfoPosY.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudOverlayInfoPosY.Size = new System.Drawing.Size(57, 20);
+            this.nudOverlayInfoPosY.TabIndex = 14;
+            // 
             // label39
             // 
             this.label39.AutoSize = true;
@@ -2906,6 +3956,24 @@
             this.label39.Size = new System.Drawing.Size(17, 18);
             this.label39.TabIndex = 13;
             this.label39.Text = "Y";
+            // 
+            // nudOverlayInfoPosDFR
+            // 
+            this.nudOverlayInfoPosDFR.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudOverlayInfoPosDFR.Location = new System.Drawing.Point(219, 147);
+            this.nudOverlayInfoPosDFR.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudOverlayInfoPosDFR.Name = "nudOverlayInfoPosDFR";
+            this.nudOverlayInfoPosDFR.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudOverlayInfoPosDFR.Size = new System.Drawing.Size(57, 20);
+            this.nudOverlayInfoPosDFR.TabIndex = 12;
             // 
             // label40
             // 
@@ -2927,6 +3995,24 @@
             this.label37.TabIndex = 8;
             this.label37.Text = "Y";
             // 
+            // nudOverlayTimerPosY
+            // 
+            this.nudOverlayTimerPosY.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudOverlayTimerPosY.Location = new System.Drawing.Point(320, 121);
+            this.nudOverlayTimerPosY.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudOverlayTimerPosY.Name = "nudOverlayTimerPosY";
+            this.nudOverlayTimerPosY.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudOverlayTimerPosY.Size = new System.Drawing.Size(57, 20);
+            this.nudOverlayTimerPosY.TabIndex = 9;
+            // 
             // label36
             // 
             this.label36.AutoSize = true;
@@ -2936,6 +4022,24 @@
             this.label36.Size = new System.Drawing.Size(17, 18);
             this.label36.TabIndex = 6;
             this.label36.Text = "X";
+            // 
+            // nudOverlayTimerPosX
+            // 
+            this.nudOverlayTimerPosX.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudOverlayTimerPosX.Location = new System.Drawing.Point(219, 121);
+            this.nudOverlayTimerPosX.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudOverlayTimerPosX.Name = "nudOverlayTimerPosX";
+            this.nudOverlayTimerPosX.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudOverlayTimerPosX.Size = new System.Drawing.Size(57, 20);
+            this.nudOverlayTimerPosX.TabIndex = 7;
             // 
             // label35
             // 
@@ -2967,6 +4071,29 @@
             this.label21.TabIndex = 2;
             this.label21.Text = "Display info in overlay for [s]";
             // 
+            // nudOverlayInfoDuration
+            // 
+            this.nudOverlayInfoDuration.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudOverlayInfoDuration.Location = new System.Drawing.Point(150, 59);
+            this.nudOverlayInfoDuration.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudOverlayInfoDuration.Name = "nudOverlayInfoDuration";
+            this.nudOverlayInfoDuration.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudOverlayInfoDuration.Size = new System.Drawing.Size(57, 20);
+            this.nudOverlayInfoDuration.TabIndex = 3;
+            this.nudOverlayInfoDuration.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // chkbSpeechRecognition
             // 
             this.chkbSpeechRecognition.AutoSize = true;
@@ -2985,8 +4112,8 @@
             this.tabPageOCR.Location = new System.Drawing.Point(4, 28);
             this.tabPageOCR.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPageOCR.Name = "tabPageOCR";
-            this.tabPageOCR.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageOCR.Size = new System.Drawing.Size(1129, 940);
+            this.tabPageOCR.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOCR.Size = new System.Drawing.Size(750, 699);
             this.tabPageOCR.TabIndex = 4;
             this.tabPageOCR.Text = "OCR";
             this.tabPageOCR.UseVisualStyleBackColor = true;
@@ -3073,1117 +4200,6 @@
             this.label58.Size = new System.Drawing.Size(44, 18);
             this.label58.TabIndex = 16;
             this.label58.Text = "Left";
-            // 
-            // CbOCRFromClipboard
-            // 
-            this.CbOCRFromClipboard.AutoSize = true;
-            this.CbOCRFromClipboard.Location = new System.Drawing.Point(6, 191);
-            this.CbOCRFromClipboard.Name = "CbOCRFromClipboard";
-            this.CbOCRFromClipboard.Size = new System.Drawing.Size(506, 17);
-            this.CbOCRFromClipboard.TabIndex = 11;
-            this.CbOCRFromClipboard.Text = "Use image in clipboard for the OCR. You can press the Print-key to copy a screens" +
-    "hot to the cliphoard";
-            this.CbOCRFromClipboard.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 292);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "ShooterGame (default)";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cbOCRIgnoreImprintValue
-            // 
-            this.cbOCRIgnoreImprintValue.AutoSize = true;
-            this.cbOCRIgnoreImprintValue.Location = new System.Drawing.Point(6, 168);
-            this.cbOCRIgnoreImprintValue.Name = "cbOCRIgnoreImprintValue";
-            this.cbOCRIgnoreImprintValue.Size = new System.Drawing.Size(287, 17);
-            this.cbOCRIgnoreImprintValue.TabIndex = 6;
-            this.cbOCRIgnoreImprintValue.Text = "Don\'t read imprinting value (can be overlapped by chat)";
-            this.cbOCRIgnoreImprintValue.UseVisualStyleBackColor = true;
-            // 
-            // cbShowOCRButton
-            // 
-            this.cbShowOCRButton.AutoSize = true;
-            this.cbShowOCRButton.Location = new System.Drawing.Point(6, 96);
-            this.cbShowOCRButton.Name = "cbShowOCRButton";
-            this.cbShowOCRButton.Size = new System.Drawing.Size(228, 17);
-            this.cbShowOCRButton.TabIndex = 1;
-            this.cbShowOCRButton.Text = "Show OCR-Button instead of Import-Button";
-            this.cbShowOCRButton.UseVisualStyleBackColor = true;
-            // 
-            // label23
-            // 
-            this.label23.Location = new System.Drawing.Point(6, 145);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(296, 20);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "Wait before screencapture (time to tab into game) in ms";
-            // 
-            // label19
-            // 
-            this.label19.Location = new System.Drawing.Point(6, 119);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(296, 20);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "White Threshold (increase if you increased gamma ingame)";
-            // 
-            // tbOCRCaptureApp
-            // 
-            this.tbOCRCaptureApp.Location = new System.Drawing.Point(151, 294);
-            this.tbOCRCaptureApp.Name = "tbOCRCaptureApp";
-            this.tbOCRCaptureApp.Size = new System.Drawing.Size(577, 20);
-            this.tbOCRCaptureApp.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 276);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(289, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Capture from (ShooterGame is default for the Steam-version)";
-            // 
-            // cbbOCRApp
-            // 
-            this.cbbOCRApp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbOCRApp.FormattingEnabled = true;
-            this.cbbOCRApp.Location = new System.Drawing.Point(6, 321);
-            this.cbbOCRApp.Name = "cbbOCRApp";
-            this.cbbOCRApp.Size = new System.Drawing.Size(722, 21);
-            this.cbbOCRApp.TabIndex = 10;
-            this.cbbOCRApp.SelectedIndexChanged += new System.EventHandler(this.cbOCRApp_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(722, 77);
-            this.label1.TabIndex = 0;
-            this.label1.Text = resources.GetString("label1.Text");
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonCancel);
-            this.panel1.Controls.Add(this.buttonOK);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 702);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(758, 30);
-            this.panel1.TabIndex = 12;
-            // 
-            // BtSettingsToClipboard
-            // 
-            this.BtSettingsToClipboard.Location = new System.Drawing.Point(600, 642);
-            this.BtSettingsToClipboard.Name = "BtSettingsToClipboard";
-            this.BtSettingsToClipboard.Size = new System.Drawing.Size(142, 23);
-            this.BtSettingsToClipboard.TabIndex = 13;
-            this.BtSettingsToClipboard.Text = "Copy settings to clipboard";
-            this.BtSettingsToClipboard.UseVisualStyleBackColor = true;
-            this.BtSettingsToClipboard.Click += new System.EventHandler(this.BtSettingsToClipboard_Click);
-            // 
-            // nudWildLevelStep
-            // 
-            this.nudWildLevelStep.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudWildLevelStep.Location = new System.Drawing.Point(319, 17);
-            this.nudWildLevelStep.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudWildLevelStep.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudWildLevelStep.Name = "nudWildLevelStep";
-            this.nudWildLevelStep.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudWildLevelStep.Size = new System.Drawing.Size(57, 20);
-            this.nudWildLevelStep.TabIndex = 1;
-            this.nudWildLevelStep.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyImprintAmountEvent
-            // 
-            this.nudBabyImprintAmountEvent.DecimalPlaces = 6;
-            this.nudBabyImprintAmountEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyImprintAmountEvent.Location = new System.Drawing.Point(263, 149);
-            this.nudBabyImprintAmountEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyImprintAmountEvent.Name = "nudBabyImprintAmountEvent";
-            this.nudBabyImprintAmountEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyImprintAmountEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyImprintAmountEvent.TabIndex = 12;
-            this.nudBabyImprintAmountEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyImprintAmount
-            // 
-            this.nudBabyImprintAmount.DecimalPlaces = 6;
-            this.nudBabyImprintAmount.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyImprintAmount.Location = new System.Drawing.Point(183, 149);
-            this.nudBabyImprintAmount.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyImprintAmount.Name = "nudBabyImprintAmount";
-            this.nudBabyImprintAmount.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyImprintAmount.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyImprintAmount.TabIndex = 5;
-            this.nudBabyImprintAmount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudMatingSpeed
-            // 
-            this.nudMatingSpeed.DecimalPlaces = 6;
-            this.nudMatingSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudMatingSpeed.Location = new System.Drawing.Point(183, 19);
-            this.nudMatingSpeed.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudMatingSpeed.Name = "nudMatingSpeed";
-            this.nudMatingSpeed.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudMatingSpeed.Size = new System.Drawing.Size(72, 20);
-            this.nudMatingSpeed.TabIndex = 0;
-            this.nudMatingSpeed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyFoodConsumptionSpeedEvent
-            // 
-            this.nudBabyFoodConsumptionSpeedEvent.DecimalPlaces = 6;
-            this.nudBabyFoodConsumptionSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyFoodConsumptionSpeedEvent.Location = new System.Drawing.Point(263, 201);
-            this.nudBabyFoodConsumptionSpeedEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyFoodConsumptionSpeedEvent.Name = "nudBabyFoodConsumptionSpeedEvent";
-            this.nudBabyFoodConsumptionSpeedEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyFoodConsumptionSpeedEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyFoodConsumptionSpeedEvent.TabIndex = 13;
-            this.nudBabyFoodConsumptionSpeedEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudMatingIntervalEvent
-            // 
-            this.nudMatingIntervalEvent.DecimalPlaces = 6;
-            this.nudMatingIntervalEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudMatingIntervalEvent.Location = new System.Drawing.Point(263, 45);
-            this.nudMatingIntervalEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudMatingIntervalEvent.Name = "nudMatingIntervalEvent";
-            this.nudMatingIntervalEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudMatingIntervalEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudMatingIntervalEvent.TabIndex = 8;
-            this.nudMatingIntervalEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyCuddleIntervalEvent
-            // 
-            this.nudBabyCuddleIntervalEvent.DecimalPlaces = 6;
-            this.nudBabyCuddleIntervalEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyCuddleIntervalEvent.Location = new System.Drawing.Point(263, 123);
-            this.nudBabyCuddleIntervalEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyCuddleIntervalEvent.Name = "nudBabyCuddleIntervalEvent";
-            this.nudBabyCuddleIntervalEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyCuddleIntervalEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyCuddleIntervalEvent.TabIndex = 11;
-            this.nudBabyCuddleIntervalEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyMatureSpeedEvent
-            // 
-            this.nudBabyMatureSpeedEvent.DecimalPlaces = 6;
-            this.nudBabyMatureSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyMatureSpeedEvent.Location = new System.Drawing.Point(263, 97);
-            this.nudBabyMatureSpeedEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyMatureSpeedEvent.Name = "nudBabyMatureSpeedEvent";
-            this.nudBabyMatureSpeedEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyMatureSpeedEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyMatureSpeedEvent.TabIndex = 10;
-            this.nudBabyMatureSpeedEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudEggHatchSpeedEvent
-            // 
-            this.nudEggHatchSpeedEvent.DecimalPlaces = 6;
-            this.nudEggHatchSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudEggHatchSpeedEvent.Location = new System.Drawing.Point(263, 71);
-            this.nudEggHatchSpeedEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudEggHatchSpeedEvent.Name = "nudEggHatchSpeedEvent";
-            this.nudEggHatchSpeedEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudEggHatchSpeedEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudEggHatchSpeedEvent.TabIndex = 9;
-            this.nudEggHatchSpeedEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyFoodConsumptionSpeed
-            // 
-            this.nudBabyFoodConsumptionSpeed.DecimalPlaces = 6;
-            this.nudBabyFoodConsumptionSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyFoodConsumptionSpeed.Location = new System.Drawing.Point(183, 201);
-            this.nudBabyFoodConsumptionSpeed.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyFoodConsumptionSpeed.Name = "nudBabyFoodConsumptionSpeed";
-            this.nudBabyFoodConsumptionSpeed.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyFoodConsumptionSpeed.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyFoodConsumptionSpeed.TabIndex = 7;
-            this.nudBabyFoodConsumptionSpeed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudMatingInterval
-            // 
-            this.nudMatingInterval.DecimalPlaces = 6;
-            this.nudMatingInterval.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudMatingInterval.Location = new System.Drawing.Point(183, 45);
-            this.nudMatingInterval.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudMatingInterval.Name = "nudMatingInterval";
-            this.nudMatingInterval.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudMatingInterval.Size = new System.Drawing.Size(72, 20);
-            this.nudMatingInterval.TabIndex = 1;
-            this.nudMatingInterval.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyCuddleInterval
-            // 
-            this.nudBabyCuddleInterval.DecimalPlaces = 6;
-            this.nudBabyCuddleInterval.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyCuddleInterval.Location = new System.Drawing.Point(183, 123);
-            this.nudBabyCuddleInterval.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyCuddleInterval.Name = "nudBabyCuddleInterval";
-            this.nudBabyCuddleInterval.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyCuddleInterval.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyCuddleInterval.TabIndex = 4;
-            this.nudBabyCuddleInterval.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyMatureSpeed
-            // 
-            this.nudBabyMatureSpeed.DecimalPlaces = 6;
-            this.nudBabyMatureSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyMatureSpeed.Location = new System.Drawing.Point(183, 97);
-            this.nudBabyMatureSpeed.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyMatureSpeed.Name = "nudBabyMatureSpeed";
-            this.nudBabyMatureSpeed.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyMatureSpeed.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyMatureSpeed.TabIndex = 3;
-            this.nudBabyMatureSpeed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudBabyImprintingStatScale
-            // 
-            this.nudBabyImprintingStatScale.DecimalPlaces = 6;
-            this.nudBabyImprintingStatScale.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudBabyImprintingStatScale.Location = new System.Drawing.Point(183, 175);
-            this.nudBabyImprintingStatScale.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudBabyImprintingStatScale.Name = "nudBabyImprintingStatScale";
-            this.nudBabyImprintingStatScale.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudBabyImprintingStatScale.Size = new System.Drawing.Size(72, 20);
-            this.nudBabyImprintingStatScale.TabIndex = 6;
-            this.nudBabyImprintingStatScale.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudEggHatchSpeed
-            // 
-            this.nudEggHatchSpeed.DecimalPlaces = 6;
-            this.nudEggHatchSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudEggHatchSpeed.Location = new System.Drawing.Point(183, 71);
-            this.nudEggHatchSpeed.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudEggHatchSpeed.Name = "nudEggHatchSpeed";
-            this.nudEggHatchSpeed.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudEggHatchSpeed.Size = new System.Drawing.Size(72, 20);
-            this.nudEggHatchSpeed.TabIndex = 2;
-            this.nudEggHatchSpeed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudMaxServerLevel
-            // 
-            this.nudMaxServerLevel.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudMaxServerLevel.Location = new System.Drawing.Point(183, 97);
-            this.nudMaxServerLevel.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudMaxServerLevel.Name = "nudMaxServerLevel";
-            this.nudMaxServerLevel.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudMaxServerLevel.Size = new System.Drawing.Size(57, 20);
-            this.nudMaxServerLevel.TabIndex = 3;
-            // 
-            // nudMaxGraphLevel
-            // 
-            this.nudMaxGraphLevel.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudMaxGraphLevel.Location = new System.Drawing.Point(183, 71);
-            this.nudMaxGraphLevel.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudMaxGraphLevel.Name = "nudMaxGraphLevel";
-            this.nudMaxGraphLevel.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudMaxGraphLevel.Size = new System.Drawing.Size(57, 20);
-            this.nudMaxGraphLevel.TabIndex = 2;
-            // 
-            // nudMaxWildLevels
-            // 
-            this.nudMaxWildLevels.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudMaxWildLevels.Location = new System.Drawing.Point(183, 19);
-            this.nudMaxWildLevels.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudMaxWildLevels.Name = "nudMaxWildLevels";
-            this.nudMaxWildLevels.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudMaxWildLevels.Size = new System.Drawing.Size(57, 20);
-            this.nudMaxWildLevels.TabIndex = 0;
-            // 
-            // nudMaxDomLevels
-            // 
-            this.nudMaxDomLevels.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudMaxDomLevels.Location = new System.Drawing.Point(183, 45);
-            this.nudMaxDomLevels.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudMaxDomLevels.Name = "nudMaxDomLevels";
-            this.nudMaxDomLevels.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudMaxDomLevels.Size = new System.Drawing.Size(57, 20);
-            this.nudMaxDomLevels.TabIndex = 1;
-            // 
-            // nudDinoCharacterFoodDrainEvent
-            // 
-            this.nudDinoCharacterFoodDrainEvent.DecimalPlaces = 6;
-            this.nudDinoCharacterFoodDrainEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudDinoCharacterFoodDrainEvent.Location = new System.Drawing.Point(263, 45);
-            this.nudDinoCharacterFoodDrainEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudDinoCharacterFoodDrainEvent.Name = "nudDinoCharacterFoodDrainEvent";
-            this.nudDinoCharacterFoodDrainEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudDinoCharacterFoodDrainEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudDinoCharacterFoodDrainEvent.TabIndex = 3;
-            this.nudDinoCharacterFoodDrainEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudTamingSpeedEvent
-            // 
-            this.nudTamingSpeedEvent.DecimalPlaces = 6;
-            this.nudTamingSpeedEvent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudTamingSpeedEvent.Location = new System.Drawing.Point(263, 19);
-            this.nudTamingSpeedEvent.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudTamingSpeedEvent.Name = "nudTamingSpeedEvent";
-            this.nudTamingSpeedEvent.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudTamingSpeedEvent.Size = new System.Drawing.Size(72, 20);
-            this.nudTamingSpeedEvent.TabIndex = 2;
-            this.nudTamingSpeedEvent.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudDinoCharacterFoodDrain
-            // 
-            this.nudDinoCharacterFoodDrain.DecimalPlaces = 6;
-            this.nudDinoCharacterFoodDrain.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudDinoCharacterFoodDrain.Location = new System.Drawing.Point(183, 45);
-            this.nudDinoCharacterFoodDrain.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudDinoCharacterFoodDrain.Name = "nudDinoCharacterFoodDrain";
-            this.nudDinoCharacterFoodDrain.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudDinoCharacterFoodDrain.Size = new System.Drawing.Size(72, 20);
-            this.nudDinoCharacterFoodDrain.TabIndex = 1;
-            this.nudDinoCharacterFoodDrain.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudTamingSpeed
-            // 
-            this.nudTamingSpeed.DecimalPlaces = 6;
-            this.nudTamingSpeed.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudTamingSpeed.Location = new System.Drawing.Point(183, 19);
-            this.nudTamingSpeed.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudTamingSpeed.Name = "nudTamingSpeed";
-            this.nudTamingSpeed.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudTamingSpeed.Size = new System.Drawing.Size(72, 20);
-            this.nudTamingSpeed.TabIndex = 0;
-            this.nudTamingSpeed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // NudSpeciesSelectorCountLastUsed
-            // 
-            this.NudSpeciesSelectorCountLastUsed.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.NudSpeciesSelectorCountLastUsed.Location = new System.Drawing.Point(252, 19);
-            this.NudSpeciesSelectorCountLastUsed.Name = "NudSpeciesSelectorCountLastUsed";
-            this.NudSpeciesSelectorCountLastUsed.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.NudSpeciesSelectorCountLastUsed.Size = new System.Drawing.Size(57, 20);
-            this.NudSpeciesSelectorCountLastUsed.TabIndex = 1;
-            // 
-            // nudDefaultFontSize
-            // 
-            this.nudDefaultFontSize.DecimalPlaces = 2;
-            this.nudDefaultFontSize.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudDefaultFontSize.Location = new System.Drawing.Point(335, 18);
-            this.nudDefaultFontSize.Name = "nudDefaultFontSize";
-            this.nudDefaultFontSize.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudDefaultFontSize.Size = new System.Drawing.Size(72, 20);
-            this.nudDefaultFontSize.TabIndex = 3;
-            // 
-            // nudChartLevelOddMax
-            // 
-            this.nudChartLevelOddMax.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudChartLevelOddMax.Location = new System.Drawing.Point(268, 137);
-            this.nudChartLevelOddMax.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.nudChartLevelOddMax.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.nudChartLevelOddMax.Name = "nudChartLevelOddMax";
-            this.nudChartLevelOddMax.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudChartLevelOddMax.Size = new System.Drawing.Size(41, 20);
-            this.nudChartLevelOddMax.TabIndex = 11;
-            this.nudChartLevelOddMax.Value = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.nudChartLevelOddMax.ValueChanged += new System.EventHandler(this.nudChartLevelOddMax_ValueChanged);
-            // 
-            // nudChartLevelOddMin
-            // 
-            this.nudChartLevelOddMin.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudChartLevelOddMin.Location = new System.Drawing.Point(209, 137);
-            this.nudChartLevelOddMin.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.nudChartLevelOddMin.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.nudChartLevelOddMin.Name = "nudChartLevelOddMin";
-            this.nudChartLevelOddMin.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudChartLevelOddMin.Size = new System.Drawing.Size(41, 20);
-            this.nudChartLevelOddMin.TabIndex = 10;
-            this.nudChartLevelOddMin.ValueChanged += new System.EventHandler(this.nudChartLevelOddMin_ValueChanged);
-            // 
-            // nudChartLevelEvenMax
-            // 
-            this.nudChartLevelEvenMax.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudChartLevelEvenMax.Location = new System.Drawing.Point(102, 137);
-            this.nudChartLevelEvenMax.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.nudChartLevelEvenMax.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.nudChartLevelEvenMax.Name = "nudChartLevelEvenMax";
-            this.nudChartLevelEvenMax.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudChartLevelEvenMax.Size = new System.Drawing.Size(41, 20);
-            this.nudChartLevelEvenMax.TabIndex = 9;
-            this.nudChartLevelEvenMax.ValueChanged += new System.EventHandler(this.nudChartLevelEvenMax_ValueChanged);
-            // 
-            // nudChartLevelEvenMin
-            // 
-            this.nudChartLevelEvenMin.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudChartLevelEvenMin.Location = new System.Drawing.Point(43, 137);
-            this.nudChartLevelEvenMin.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.nudChartLevelEvenMin.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.nudChartLevelEvenMin.Name = "nudChartLevelEvenMin";
-            this.nudChartLevelEvenMin.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudChartLevelEvenMin.Size = new System.Drawing.Size(41, 20);
-            this.nudChartLevelEvenMin.TabIndex = 8;
-            this.nudChartLevelEvenMin.ValueChanged += new System.EventHandler(this.nudChartLevelEvenMin_ValueChanged);
-            // 
-            // numericUpDownMaxBreedingSug
-            // 
-            this.numericUpDownMaxBreedingSug.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.numericUpDownMaxBreedingSug.Location = new System.Drawing.Point(252, 19);
-            this.numericUpDownMaxBreedingSug.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxBreedingSug.Name = "numericUpDownMaxBreedingSug";
-            this.numericUpDownMaxBreedingSug.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxBreedingSug.Size = new System.Drawing.Size(57, 20);
-            this.numericUpDownMaxBreedingSug.TabIndex = 1;
-            // 
-            // NudWaitBeforeAutoLoad
-            // 
-            this.NudWaitBeforeAutoLoad.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.NudWaitBeforeAutoLoad.Location = new System.Drawing.Point(255, 41);
-            this.NudWaitBeforeAutoLoad.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.NudWaitBeforeAutoLoad.Name = "NudWaitBeforeAutoLoad";
-            this.NudWaitBeforeAutoLoad.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.NudWaitBeforeAutoLoad.Size = new System.Drawing.Size(56, 20);
-            this.NudWaitBeforeAutoLoad.TabIndex = 12;
-            // 
-            // NudKeepBackupFilesCount
-            // 
-            this.NudKeepBackupFilesCount.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.NudKeepBackupFilesCount.Location = new System.Drawing.Point(44, 118);
-            this.NudKeepBackupFilesCount.Name = "NudKeepBackupFilesCount";
-            this.NudKeepBackupFilesCount.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.NudKeepBackupFilesCount.Size = new System.Drawing.Size(59, 20);
-            this.NudKeepBackupFilesCount.TabIndex = 4;
-            // 
-            // NudBackupEveryMinutes
-            // 
-            this.NudBackupEveryMinutes.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.NudBackupEveryMinutes.Location = new System.Drawing.Point(132, 144);
-            this.NudBackupEveryMinutes.Name = "NudBackupEveryMinutes";
-            this.NudBackupEveryMinutes.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.NudBackupEveryMinutes.Size = new System.Drawing.Size(47, 20);
-            this.NudBackupEveryMinutes.TabIndex = 7;
-            // 
-            // nudInfoGraphicHeight
-            // 
-            this.nudInfoGraphicHeight.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudInfoGraphicHeight.Location = new System.Drawing.Point(126, 18);
-            this.nudInfoGraphicHeight.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.nudInfoGraphicHeight.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudInfoGraphicHeight.Name = "nudInfoGraphicHeight";
-            this.nudInfoGraphicHeight.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudInfoGraphicHeight.Size = new System.Drawing.Size(57, 20);
-            this.nudInfoGraphicHeight.TabIndex = 2;
-            this.nudInfoGraphicHeight.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.nudInfoGraphicHeight.ValueChanged += new System.EventHandler(this.nudInfoGraphicHeight_ValueChanged);
-            // 
-            // convenientNameDataGridViewTextBoxColumn
-            // 
-            this.convenientNameDataGridViewTextBoxColumn.DataPropertyName = "ConvenientName";
-            this.convenientNameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.convenientNameDataGridViewTextBoxColumn.Name = "convenientNameDataGridViewTextBoxColumn";
-            this.convenientNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // serverNameDataGridViewTextBoxColumn
-            // 
-            this.serverNameDataGridViewTextBoxColumn.DataPropertyName = "ServerName";
-            this.serverNameDataGridViewTextBoxColumn.HeaderText = "Server name";
-            this.serverNameDataGridViewTextBoxColumn.Name = "serverNameDataGridViewTextBoxColumn";
-            this.serverNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fileLocationDataGridViewTextBoxColumn
-            // 
-            this.fileLocationDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fileLocationDataGridViewTextBoxColumn.DataPropertyName = "FileLocation";
-            this.fileLocationDataGridViewTextBoxColumn.HeaderText = "File location";
-            this.fileLocationDataGridViewTextBoxColumn.Name = "fileLocationDataGridViewTextBoxColumn";
-            this.fileLocationDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aTImportFileLocationBindingSource
-            // 
-            this.aTImportFileLocationBindingSource.AllowNew = false;
-            this.aTImportFileLocationBindingSource.DataSource = typeof(ARKBreedingStats.settings.ATImportFileLocation);
-            // 
-            // fileSelectorExtractedSaveFolder
-            // 
-            this.fileSelectorExtractedSaveFolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileSelectorExtractedSaveFolder.Link = "filename";
-            this.fileSelectorExtractedSaveFolder.Location = new System.Drawing.Point(3, 16);
-            this.fileSelectorExtractedSaveFolder.Name = "fileSelectorExtractedSaveFolder";
-            this.fileSelectorExtractedSaveFolder.Size = new System.Drawing.Size(724, 28);
-            this.fileSelectorExtractedSaveFolder.TabIndex = 0;
-            // 
-            // nudImportLowerBoundTE
-            // 
-            this.nudImportLowerBoundTE.DecimalPlaces = 2;
-            this.nudImportLowerBoundTE.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudImportLowerBoundTE.Location = new System.Drawing.Point(227, 19);
-            this.nudImportLowerBoundTE.Name = "nudImportLowerBoundTE";
-            this.nudImportLowerBoundTE.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudImportLowerBoundTE.Size = new System.Drawing.Size(64, 20);
-            this.nudImportLowerBoundTE.TabIndex = 1;
-            // 
-            // convenientNameDataGridViewTextBoxColumn1
-            // 
-            this.convenientNameDataGridViewTextBoxColumn1.DataPropertyName = "ConvenientName";
-            this.convenientNameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.convenientNameDataGridViewTextBoxColumn1.Name = "convenientNameDataGridViewTextBoxColumn1";
-            // 
-            // ownerSuffixDataGridViewTextBoxColumn
-            // 
-            this.ownerSuffixDataGridViewTextBoxColumn.DataPropertyName = "OwnerSuffix";
-            this.ownerSuffixDataGridViewTextBoxColumn.HeaderText = "Owner suffix";
-            this.ownerSuffixDataGridViewTextBoxColumn.Name = "ownerSuffixDataGridViewTextBoxColumn";
-            // 
-            // folderPathDataGridViewTextBoxColumn
-            // 
-            this.folderPathDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.folderPathDataGridViewTextBoxColumn.DataPropertyName = "FolderPath";
-            this.folderPathDataGridViewTextBoxColumn.HeaderText = "Folder";
-            this.folderPathDataGridViewTextBoxColumn.Name = "folderPathDataGridViewTextBoxColumn";
-            this.folderPathDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aTExportFolderLocationsBindingSource
-            // 
-            this.aTExportFolderLocationsBindingSource.AllowNew = false;
-            this.aTExportFolderLocationsBindingSource.DataSource = typeof(ARKBreedingStats.settings.ATImportExportedFolderLocation);
-            // 
-            // customSCCustom
-            // 
-            this.customSCCustom.Location = new System.Drawing.Point(6, 139);
-            this.customSCCustom.Name = "customSCCustom";
-            this.customSCCustom.Size = new System.Drawing.Size(401, 23);
-            this.customSCCustom.SoundFile = null;
-            this.customSCCustom.TabIndex = 4;
-            // 
-            // customSCWakeup
-            // 
-            this.customSCWakeup.Location = new System.Drawing.Point(6, 81);
-            this.customSCWakeup.Name = "customSCWakeup";
-            this.customSCWakeup.Size = new System.Drawing.Size(401, 23);
-            this.customSCWakeup.SoundFile = "";
-            this.customSCWakeup.TabIndex = 2;
-            // 
-            // customSCBirth
-            // 
-            this.customSCBirth.Location = new System.Drawing.Point(6, 110);
-            this.customSCBirth.Name = "customSCBirth";
-            this.customSCBirth.Size = new System.Drawing.Size(401, 23);
-            this.customSCBirth.SoundFile = "";
-            this.customSCBirth.TabIndex = 3;
-            // 
-            // customSCStarving
-            // 
-            this.customSCStarving.Location = new System.Drawing.Point(6, 52);
-            this.customSCStarving.Name = "customSCStarving";
-            this.customSCStarving.Size = new System.Drawing.Size(401, 23);
-            this.customSCStarving.SoundFile = null;
-            this.customSCStarving.TabIndex = 1;
-            // 
-            // nudCustomOverlayLocX
-            // 
-            this.nudCustomOverlayLocX.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudCustomOverlayLocX.Location = new System.Drawing.Point(24, 3);
-            this.nudCustomOverlayLocX.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudCustomOverlayLocX.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.nudCustomOverlayLocX.Name = "nudCustomOverlayLocX";
-            this.nudCustomOverlayLocX.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudCustomOverlayLocX.Size = new System.Drawing.Size(57, 20);
-            this.nudCustomOverlayLocX.TabIndex = 1;
-            // 
-            // nudCustomOverlayLocY
-            // 
-            this.nudCustomOverlayLocY.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudCustomOverlayLocY.Location = new System.Drawing.Point(125, 3);
-            this.nudCustomOverlayLocY.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudCustomOverlayLocY.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.nudCustomOverlayLocY.Name = "nudCustomOverlayLocY";
-            this.nudCustomOverlayLocY.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudCustomOverlayLocY.Size = new System.Drawing.Size(57, 20);
-            this.nudCustomOverlayLocY.TabIndex = 3;
-            this.nudCustomOverlayLocY.ThousandsSeparator = true;
-            // 
-            // nudOverlayInfoPosY
-            // 
-            this.nudOverlayInfoPosY.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudOverlayInfoPosY.Location = new System.Drawing.Point(320, 147);
-            this.nudOverlayInfoPosY.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudOverlayInfoPosY.Name = "nudOverlayInfoPosY";
-            this.nudOverlayInfoPosY.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudOverlayInfoPosY.Size = new System.Drawing.Size(57, 20);
-            this.nudOverlayInfoPosY.TabIndex = 14;
-            // 
-            // nudOverlayInfoPosDFR
-            // 
-            this.nudOverlayInfoPosDFR.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudOverlayInfoPosDFR.Location = new System.Drawing.Point(219, 147);
-            this.nudOverlayInfoPosDFR.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudOverlayInfoPosDFR.Name = "nudOverlayInfoPosDFR";
-            this.nudOverlayInfoPosDFR.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudOverlayInfoPosDFR.Size = new System.Drawing.Size(57, 20);
-            this.nudOverlayInfoPosDFR.TabIndex = 12;
-            // 
-            // nudOverlayTimerPosY
-            // 
-            this.nudOverlayTimerPosY.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudOverlayTimerPosY.Location = new System.Drawing.Point(320, 121);
-            this.nudOverlayTimerPosY.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudOverlayTimerPosY.Name = "nudOverlayTimerPosY";
-            this.nudOverlayTimerPosY.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudOverlayTimerPosY.Size = new System.Drawing.Size(57, 20);
-            this.nudOverlayTimerPosY.TabIndex = 9;
-            // 
-            // nudOverlayTimerPosX
-            // 
-            this.nudOverlayTimerPosX.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudOverlayTimerPosX.Location = new System.Drawing.Point(219, 121);
-            this.nudOverlayTimerPosX.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudOverlayTimerPosX.Name = "nudOverlayTimerPosX";
-            this.nudOverlayTimerPosX.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudOverlayTimerPosX.Size = new System.Drawing.Size(57, 20);
-            this.nudOverlayTimerPosX.TabIndex = 7;
-            // 
-            // nudOverlayInfoDuration
-            // 
-            this.nudOverlayInfoDuration.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudOverlayInfoDuration.Location = new System.Drawing.Point(150, 59);
-            this.nudOverlayInfoDuration.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudOverlayInfoDuration.Name = "nudOverlayInfoDuration";
-            this.nudOverlayInfoDuration.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudOverlayInfoDuration.Size = new System.Drawing.Size(57, 20);
-            this.nudOverlayInfoDuration.TabIndex = 3;
-            this.nudOverlayInfoDuration.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // NudOCRClipboardCropHeight
             // 
@@ -4281,6 +4297,55 @@
             this.NudOCRClipboardCropLeft.Size = new System.Drawing.Size(104, 28);
             this.NudOCRClipboardCropLeft.TabIndex = 12;
             // 
+            // CbOCRFromClipboard
+            // 
+            this.CbOCRFromClipboard.AutoSize = true;
+            this.CbOCRFromClipboard.Location = new System.Drawing.Point(6, 191);
+            this.CbOCRFromClipboard.Name = "CbOCRFromClipboard";
+            this.CbOCRFromClipboard.Size = new System.Drawing.Size(506, 17);
+            this.CbOCRFromClipboard.TabIndex = 11;
+            this.CbOCRFromClipboard.Text = "Use image in clipboard for the OCR. You can press the Print-key to copy a screens" +
+    "hot to the cliphoard";
+            this.CbOCRFromClipboard.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 292);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(139, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "ShooterGame (default)";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cbOCRIgnoreImprintValue
+            // 
+            this.cbOCRIgnoreImprintValue.AutoSize = true;
+            this.cbOCRIgnoreImprintValue.Location = new System.Drawing.Point(6, 168);
+            this.cbOCRIgnoreImprintValue.Name = "cbOCRIgnoreImprintValue";
+            this.cbOCRIgnoreImprintValue.Size = new System.Drawing.Size(287, 17);
+            this.cbOCRIgnoreImprintValue.TabIndex = 6;
+            this.cbOCRIgnoreImprintValue.Text = "Don\'t read imprinting value (can be overlapped by chat)";
+            this.cbOCRIgnoreImprintValue.UseVisualStyleBackColor = true;
+            // 
+            // cbShowOCRButton
+            // 
+            this.cbShowOCRButton.AutoSize = true;
+            this.cbShowOCRButton.Location = new System.Drawing.Point(6, 96);
+            this.cbShowOCRButton.Name = "cbShowOCRButton";
+            this.cbShowOCRButton.Size = new System.Drawing.Size(228, 17);
+            this.cbShowOCRButton.TabIndex = 1;
+            this.cbShowOCRButton.Text = "Show OCR-Button instead of Import-Button";
+            this.cbShowOCRButton.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.Location = new System.Drawing.Point(6, 145);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(296, 20);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "Wait before screencapture (time to tab into game) in ms";
+            // 
             // nudWaitBeforeScreenCapture
             // 
             this.nudWaitBeforeScreenCapture.ForeColor = System.Drawing.SystemColors.GrayText;
@@ -4299,6 +4364,14 @@
             0});
             this.nudWaitBeforeScreenCapture.Size = new System.Drawing.Size(108, 28);
             this.nudWaitBeforeScreenCapture.TabIndex = 5;
+            // 
+            // label19
+            // 
+            this.label19.Location = new System.Drawing.Point(6, 119);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(296, 20);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "White Threshold (increase if you increased gamma ingame)";
             // 
             // nudWhiteThreshold
             // 
@@ -4319,20 +4392,49 @@
             this.nudWhiteThreshold.Size = new System.Drawing.Size(108, 28);
             this.nudWhiteThreshold.TabIndex = 3;
             // 
-            this.BtNewRandomInfoGraphicCreature.TabIndex = 19;
-            this.BtNewRandomInfoGraphicCreature.Text = "new random creature for preview";
-            this.BtNewRandomInfoGraphicCreature.UseVisualStyleBackColor = true;
-            this.BtNewRandomInfoGraphicCreature.Click += new System.EventHandler(this.BtNewRandomInfoGraphicCreature_Click);
+            // tbOCRCaptureApp
             // 
-            this.BtNewRandomInfoGraphicCreature.TabIndex = 19;
-            this.BtNewRandomInfoGraphicCreature.Text = "new random creature for preview";
-            this.BtNewRandomInfoGraphicCreature.UseVisualStyleBackColor = true;
-            this.BtNewRandomInfoGraphicCreature.Click += new System.EventHandler(this.BtNewRandomInfoGraphicCreature_Click);
+            this.tbOCRCaptureApp.Location = new System.Drawing.Point(151, 294);
+            this.tbOCRCaptureApp.Name = "tbOCRCaptureApp";
+            this.tbOCRCaptureApp.Size = new System.Drawing.Size(577, 20);
+            this.tbOCRCaptureApp.TabIndex = 9;
             // 
-            this.BtNewRandomInfoGraphicCreature.TabIndex = 19;
-            this.BtNewRandomInfoGraphicCreature.Text = "new random creature for preview";
-            this.BtNewRandomInfoGraphicCreature.UseVisualStyleBackColor = true;
-            this.BtNewRandomInfoGraphicCreature.Click += new System.EventHandler(this.BtNewRandomInfoGraphicCreature_Click);
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 276);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(289, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Capture from (ShooterGame is default for the Steam-version)";
+            // 
+            // cbbOCRApp
+            // 
+            this.cbbOCRApp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbOCRApp.FormattingEnabled = true;
+            this.cbbOCRApp.Location = new System.Drawing.Point(6, 321);
+            this.cbbOCRApp.Name = "cbbOCRApp";
+            this.cbbOCRApp.Size = new System.Drawing.Size(722, 21);
+            this.cbbOCRApp.TabIndex = 10;
+            this.cbbOCRApp.SelectedIndexChanged += new System.EventHandler(this.cbOCRApp_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(722, 77);
+            this.label1.TabIndex = 0;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonCancel);
+            this.panel1.Controls.Add(this.buttonOK);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 725);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(758, 30);
+            this.panel1.TabIndex = 12;
             // 
             // Settings
             // 
@@ -4341,7 +4443,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(1137, 1014);
+            this.ClientSize = new System.Drawing.Size(758, 755);
             this.Controls.Add(this.tabControlSettings);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -4355,90 +4457,8 @@
             this.groupBoxMultiplier.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbChartOddRange)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbChartEvenRange)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.tabControlSettings.ResumeLayout(false);
-            this.tabPageMultipliers.ResumeLayout(false);
-            this.tabPageMultipliers.PerformLayout();
-            this.groupBox29.ResumeLayout(false);
-            this.groupBox29.PerformLayout();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            this.tabPageGeneral.ResumeLayout(false);
-            this.groupBox31.ResumeLayout(false);
-            this.groupBox31.PerformLayout();
-            this.groupBox30.ResumeLayout(false);
-            this.groupBox30.PerformLayout();
-            this.GbImgCacheLocalAppData.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
-            this.GbSpecies.ResumeLayout(false);
-            this.GbSpecies.PerformLayout();
-            this.groupBox26.ResumeLayout(false);
-            this.groupBox26.PerformLayout();
-            this.groupBox25.ResumeLayout(false);
-            this.groupBox25.PerformLayout();
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.tabPageInfoGraphic.ResumeLayout(false);
-            this.tabPageInfoGraphic.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PbInfoGraphicPreview)).EndInit();
-            this.groupBox32.ResumeLayout(false);
-            this.groupBox32.PerformLayout();
-            this.groupBox28.ResumeLayout(false);
-            this.groupBox28.PerformLayout();
-            this.tabPageImportSavegame.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_FileLocations)).EndInit();
-            this.groupBox14.ResumeLayout(false);
-            this.tabPageImportExported.ResumeLayout(false);
-            this.tabPageImportExported.PerformLayout();
-            this.groupBox27.ResumeLayout(false);
-            this.groupBox27.PerformLayout();
-            this.groupBox23.ResumeLayout(false);
-            this.groupBox23.PerformLayout();
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox22.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.groupBox21.ResumeLayout(false);
-            this.groupBox21.PerformLayout();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWarnImportMoreThan)).EndInit();
-            this.groupBox13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExportFolders)).EndInit();
-            this.tabPageTimers.ResumeLayout(false);
-            this.groupBox24.ResumeLayout(false);
-            this.groupBox24.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.tabPageOverlay.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.pCustomOverlayLocation.ResumeLayout(false);
-            this.pCustomOverlayLocation.PerformLayout();
-            this.tabPageOCR.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudWildLevelStep)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamedDinoCharacterFoodDrain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamedDinoCharacterFoodDrainEvent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyImprintAmountEvent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyImprintAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMatingSpeed)).EndInit();
@@ -4453,28 +4473,108 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyMatureSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBabyImprintingStatScale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEggHatchSpeed)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxServerLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxGraphLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxWildLevels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMaxDomLevels)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrainEvent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeedEvent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NudSpeciesSelectorCountLastUsed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDefaultFontSize)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbChartOddRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbChartEvenRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelOddMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelOddMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelEvenMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudChartLevelEvenMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxBreedingSug)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrainEvent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeedEvent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDinoCharacterFoodDrain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTamingSpeed)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudWaitBeforeAutoLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudKeepBackupFilesCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudBackupEveryMinutes)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.tabControlSettings.ResumeLayout(false);
+            this.tabPageMultipliers.ResumeLayout(false);
+            this.tabPageMultipliers.PerformLayout();
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox29.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWildLevelStep)).EndInit();
+            this.tabPageGeneral.ResumeLayout(false);
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox30.PerformLayout();
+            this.GbImgCacheLocalAppData.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.GbSpecies.ResumeLayout(false);
+            this.GbSpecies.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NudSpeciesSelectorCountLastUsed)).EndInit();
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox25.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDefaultFontSize)).EndInit();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.tabPageInfoGraphic.ResumeLayout(false);
+            this.tabPageInfoGraphic.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbInfoGraphicPreview)).EndInit();
+            this.groupBox32.ResumeLayout(false);
+            this.groupBox32.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudInfoGraphicHeight)).EndInit();
+            this.groupBox28.ResumeLayout(false);
+            this.groupBox28.PerformLayout();
+            this.tabPageImportSavegame.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_FileLocations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aTImportFileLocationBindingSource)).EndInit();
+            this.groupBox14.ResumeLayout(false);
+            this.tabPageImportExported.ResumeLayout(false);
+            this.tabPageImportExported.PerformLayout();
+            this.groupBox27.ResumeLayout(false);
+            this.groupBox27.PerformLayout();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudImportLowerBoundTE)).EndInit();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.groupBox21.ResumeLayout(false);
+            this.groupBox21.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWarnImportMoreThan)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExportFolders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aTExportFolderLocationsBindingSource)).EndInit();
+            this.tabPageTimers.ResumeLayout(false);
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.tabPageOverlay.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.pCustomOverlayLocation.ResumeLayout(false);
+            this.pCustomOverlayLocation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCustomOverlayLocX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCustomOverlayLocY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayInfoPosY)).EndInit();
@@ -4482,12 +4582,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayTimerPosY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayTimerPosX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudOverlayInfoDuration)).EndInit();
+            this.tabPageOCR.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudOCRClipboardCropLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWaitBeforeScreenCapture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWhiteThreshold)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4787,5 +4891,13 @@
         private System.Windows.Forms.CheckBox CbHideInvisibleColorRegions;
         private System.Windows.Forms.Button BtNewRandomInfoGraphicCreature;
         private System.Windows.Forms.Button BtSettingsToClipboard;
+        private uiControls.Nud nudTamedDinoCharacterFoodDrainEvent;
+        private System.Windows.Forms.Label label64;
+        private uiControls.Nud nudTamedDinoCharacterFoodDrain;
+        private System.Windows.Forms.CheckBox CbNaturalSortIgnoreSpaces;
+        private System.Windows.Forms.CheckBox CbNaturalSorting;
+        private System.Windows.Forms.CheckBox CbAtlasSettings;
+        private System.Windows.Forms.CheckBox CbAlwaysShowAllColorRegions;
+        private System.Windows.Forms.CheckBox CbColorIdOnColorRegionButton;
     }
 }

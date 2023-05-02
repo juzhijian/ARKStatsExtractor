@@ -109,6 +109,7 @@ namespace ARKBreedingStats
 * Myrmecoleon (extra species images)
 * Lunat1q (improved OCR)
 * ThatGamerBlue (species dividers in virtual listview)
+* Jaymei (ATLAS species data)
 
 Translations:
 * French by Vykan and Yanuut
@@ -120,6 +121,7 @@ Translations:
 * Polish by alex4401
 * Japanese by maririyuzu
 * Portuguese Brazilian by llbranco
-* Chinese (traditional) by abs6808";
+* Chinese (traditional) by abs6808
+* Turkish by Tnc";
     }
 }

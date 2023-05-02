@@ -114,15 +114,14 @@ namespace ARKBreedingStats
             if (allValid)
             {
                 radarChartExtractor.SetLevels(_statIOs.Select(s => s.LevelWild).ToArray());
-                toolStripButtonSaveCreatureValuesTemp.Visible = false;
                 cbExactlyImprinting.BackColor = Color.Transparent;
                 var species = speciesSelector1.SelectedSpecies;
                 var checkTopLevels = _topLevels.TryGetValue(species, out int[] topSpeciesLevels);
                 var checkLowLevels = _lowestLevels.TryGetValue(species, out int[] lowSpeciesLevels);
 
                 var customStatNames = species.statNames;
-                var statWeights = breedingPlan1.StatWeighting.GetWeightingByPresetName(species.name);
-                if (statWeights == null) checkLowLevels = false;
+                var statWeights = breedingPlan1.StatWeighting.GetWeightingForSpecies(species);
+                if (statWeights.Item1 == null) checkLowLevels = false;
                 var analysisState = LevelStatus.Neutral;
                 var newTopStatsText = new List<string>();
                 var topStatsText = new List<string>();
@@ -135,24 +134,32 @@ namespace ARKBreedingStats
 
                     var levelStatus = LevelStatus.Neutral;
 
-                    if (checkTopLevels && (statWeights?[s] ?? 0) >= 0)
+                    if (checkTopLevels && (statWeights.Item1?[s] ?? 0) >= 0)
                     {
                         // higher stats are considered to be good. If no custom weightings are available, consider higher levels to be better.
-                        if (_statIOs[s].LevelWild == topSpeciesLevels[s])
+
+                        // check if higher level is only considered if even or odd
+                        if ((statWeights.Item2?[s] ?? 0) == 0 // even/odd doesn't matter
+                            || (statWeights.Item2[s] == 1 && _statIOs[s].LevelWild % 2 == 1)
+                            || (statWeights.Item2[s] == 2 && _statIOs[s].LevelWild % 2 == 0)
+                            )
                         {
-                            levelStatus = LevelStatus.TopLevel;
-                            topStatsText.Add(Utils.StatName(s, false, customStatNames));
-                            if (analysisState != LevelStatus.NewTopLevel)
-                                analysisState = LevelStatus.TopLevel;
-                        }
-                        else if (topSpeciesLevels[s] != -1 && _statIOs[s].LevelWild > topSpeciesLevels[s])
-                        {
-                            levelStatus = LevelStatus.NewTopLevel;
-                            newTopStatsText.Add(Utils.StatName(s, false, customStatNames));
-                            analysisState = LevelStatus.NewTopLevel;
+                            if (_statIOs[s].LevelWild == topSpeciesLevels[s])
+                            {
+                                levelStatus = LevelStatus.TopLevel;
+                                topStatsText.Add(Utils.StatName(s, false, customStatNames));
+                                if (analysisState != LevelStatus.NewTopLevel)
+                                    analysisState = LevelStatus.TopLevel;
+                            }
+                            else if (topSpeciesLevels[s] != -1 && _statIOs[s].LevelWild > topSpeciesLevels[s])
+                            {
+                                levelStatus = LevelStatus.NewTopLevel;
+                                newTopStatsText.Add(Utils.StatName(s, false, customStatNames));
+                                analysisState = LevelStatus.NewTopLevel;
+                            }
                         }
                     }
-                    else if (checkLowLevels && statWeights[s] < 0)
+                    else if (checkLowLevels && statWeights.Item1[s] < 0)
                     {
                         // lower stats are considered to be good
                         if (_statIOs[s].LevelWild == lowSpeciesLevels[s])
@@ -624,7 +631,7 @@ namespace ARKBreedingStats
                 if (rbTamedExtractor.Checked && _extractor.PostTamed)
                 {
                     var postTameLevelWithoutMutagen = _statIOs[Stats.Torpidity].LevelWild + 1
-                                                      - (creatureInfoInputExtractor.CreatureFlags.HasFlag(CreatureFlags.MutagenApplied) ? ArkConstants.MutagenLevelsAppliedTamedCreature : 0);
+                                                      - (creatureInfoInputExtractor.CreatureFlags.HasFlag(CreatureFlags.MutagenApplied) ? Ark.MutagenTotalLevelUpsNonBred : 0);
                     labelTE.Text += $" (wildlevel: {Creature.CalculatePreTameWildLevel(postTameLevelWithoutMutagen, te)})";
                 }
                 labelTE.BackColor = Color.Transparent;

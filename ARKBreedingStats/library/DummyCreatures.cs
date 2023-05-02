@@ -204,7 +204,7 @@ namespace ARKBreedingStats.library
                     allCreatures.AddRange(femalesMales[Sex.Male]);
                 }
 
-                BreedingScore.SetBestLevels(allCreatures, bestLevels, statWeights, true);
+                BreedingScore.SetBestLevels(allCreatures, bestLevels, statWeights);
 
                 var allCreaturesArray = noGender ? allCreatures.ToArray() : null;
                 var pairs = BreedingScore.CalculateBreedingScores(noGender ? allCreaturesArray : femalesMales[Sex.Female].ToArray(),
@@ -413,7 +413,7 @@ namespace ARKBreedingStats.library
             SpeciesCount = 10;
             Generations = 4;
             PairsPerGeneration = 2;
-            ProbabilityHigherStat = Ark.ProbabilityHigherLevel;
+            ProbabilityHigherStat = Ark.ProbabilityInheritHigherLevel;
             RandomMutationChance = Ark.ProbabilityOfMutation;
             MaxWildLevel = CreatureCollection.CurrentCreatureCollection?.maxWildLevel ?? 150;
             SetOwner = true;

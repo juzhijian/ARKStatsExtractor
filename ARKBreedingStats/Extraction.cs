@@ -91,7 +91,7 @@ namespace ARKBreedingStats
         /// <param name="highPrecisionInputs">If true, the input is expected to be a float value from an export file.
         /// If false, it's assumed to be a displayed value from the game with one decimal digit.</param>
         /// <param name="imprintingChanged"></param>
-        public void ExtractLevels(Species species, int level, List<StatIO> statIOs, double lowerTEBound, double upperTEBound,
+        public void ExtractLevels(Species species, int level, StatIO[] statIOs, double lowerTEBound, double upperTEBound,
             bool tamed, bool bred, double imprintingBonusRounded, bool adjustImprinting, bool allowMoreThanHundredImprinting, double imprintingBonusMultiplier,
             bool considerWildLevelSteps, int wildLevelSteps, bool highPrecisionInputs, bool mutagenApplied, out bool imprintingChanged)
         {
@@ -314,7 +314,7 @@ namespace ARKBreedingStats
                                 {
                                     // check if the total level and the TE is possible by using the TE-level bonus (credits for this check which sorts out more impossible results: https://github.com/VolatilePulse , thanks!)
                                     // if mutagen is applied, a fixed number of wild levels is added to specific stats
-                                    int levelPostTame = LevelWildSum + 1 - (mutagenApplied ? ArkConstants.MutagenLevelsAppliedTamedCreature : 0);
+                                    int levelPostTame = LevelWildSum + 1 - (mutagenApplied ? Ark.MutagenTotalLevelUpsNonBred : 0);
                                     MinMaxInt levelPreTameRange = new MinMaxInt(
                                         Creature.CalculatePreTameWildLevel(levelPostTame, tamingEffectiveness.Max),
                                         Creature.CalculatePreTameWildLevel(levelPostTame, tamingEffectiveness.Min));
