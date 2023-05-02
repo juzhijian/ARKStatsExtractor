@@ -64,8 +64,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.foldersToolStripMenuItem,
             this.toolStripMenuItem1,
@@ -76,7 +74,7 @@
             this.refreshListToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1740, 34);
+            this.menuStrip1.Size = new System.Drawing.Size(1160, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,28 +85,28 @@
             this.openSelectedFolderInExplorerToolStripMenuItem,
             this.saveCurrentFolderInMainMenuToolStripMenuItem});
             this.foldersToolStripMenuItem.Name = "foldersToolStripMenuItem";
-            this.foldersToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
+            this.foldersToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.foldersToolStripMenuItem.Text = "Folders";
             // 
             // chooseFolderToolStripMenuItem1
             // 
             this.chooseFolderToolStripMenuItem1.Name = "chooseFolderToolStripMenuItem1";
-            this.chooseFolderToolStripMenuItem1.Size = new System.Drawing.Size(452, 34);
             this.chooseFolderToolStripMenuItem1.Text = "选择文件夹…";
+            this.chooseFolderToolStripMenuItem1.Size = new System.Drawing.Size(299, 22);
             this.chooseFolderToolStripMenuItem1.Click += new System.EventHandler(this.chooseFolderToolStripMenuItem_Click);
             // 
             // openSelectedFolderInExplorerToolStripMenuItem
             // 
             this.openSelectedFolderInExplorerToolStripMenuItem.Name = "openSelectedFolderInExplorerToolStripMenuItem";
-            this.openSelectedFolderInExplorerToolStripMenuItem.Size = new System.Drawing.Size(452, 34);
             this.openSelectedFolderInExplorerToolStripMenuItem.Text = "在资源管理器中打开所选文件夹";
+            this.openSelectedFolderInExplorerToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
             this.openSelectedFolderInExplorerToolStripMenuItem.Click += new System.EventHandler(this.openFolderToolStripMenuItem_Click);
             // 
             // saveCurrentFolderInMainMenuToolStripMenuItem
             // 
             this.saveCurrentFolderInMainMenuToolStripMenuItem.Name = "saveCurrentFolderInMainMenuToolStripMenuItem";
-            this.saveCurrentFolderInMainMenuToolStripMenuItem.Size = new System.Drawing.Size(452, 34);
             this.saveCurrentFolderInMainMenuToolStripMenuItem.Text = "将当前文件夹保存为主菜单中的预设文件夹";
+            this.saveCurrentFolderInMainMenuToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
             this.saveCurrentFolderInMainMenuToolStripMenuItem.Click += new System.EventHandler(this.saveCurrentFolderInMainMenuToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
@@ -118,34 +116,34 @@
             this.deleteAllImportedFilesToolStripMenuItem1,
             this.deleteALLFilesInSelectedFolderToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(64, 28);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(42, 20);
             this.toolStripMenuItem1.Text = "Files";
             // 
             // moveAllImportedFilesToimportedSubfolderToolStripMenuItem
             // 
             this.moveAllImportedFilesToimportedSubfolderToolStripMenuItem.Name = "moveAllImportedFilesToimportedSubfolderToolStripMenuItem";
-            this.moveAllImportedFilesToimportedSubfolderToolStripMenuItem.Size = new System.Drawing.Size(430, 34);
             this.moveAllImportedFilesToimportedSubfolderToolStripMenuItem.Text = "将所有导入的文件移动到“导入”子文件夹";
+            this.moveAllImportedFilesToimportedSubfolderToolStripMenuItem.Size = new System.Drawing.Size(324, 22);
             this.moveAllImportedFilesToimportedSubfolderToolStripMenuItem.Click += new System.EventHandler(this.moveAllImportedFilesToimportedSubfolderToolStripMenuItem_Click);
             // 
             // deleteAllImportedFilesToolStripMenuItem1
             // 
             this.deleteAllImportedFilesToolStripMenuItem1.Name = "deleteAllImportedFilesToolStripMenuItem1";
-            this.deleteAllImportedFilesToolStripMenuItem1.Size = new System.Drawing.Size(430, 34);
             this.deleteAllImportedFilesToolStripMenuItem1.Text = "删除所有导入的文件";
+            this.deleteAllImportedFilesToolStripMenuItem1.Size = new System.Drawing.Size(324, 22);
             this.deleteAllImportedFilesToolStripMenuItem1.Click += new System.EventHandler(this.deleteAllImportedFilesToolStripMenuItem_Click);
             // 
             // deleteALLFilesInSelectedFolderToolStripMenuItem
             // 
             this.deleteALLFilesInSelectedFolderToolStripMenuItem.Name = "deleteALLFilesInSelectedFolderToolStripMenuItem";
-            this.deleteALLFilesInSelectedFolderToolStripMenuItem.Size = new System.Drawing.Size(520, 34);
             this.deleteALLFilesInSelectedFolderToolStripMenuItem.Text = "删除选定文件夹中的所有文件";
+            this.deleteALLFilesInSelectedFolderToolStripMenuItem.Size = new System.Drawing.Size(324, 22);
             this.deleteALLFilesInSelectedFolderToolStripMenuItem.Click += new System.EventHandler(this.deleteAllFilesToolStripMenuItem_Click);
             // 
             // loadServerSettingsOfFolderToolStripMenuItem
             // 
             this.loadServerSettingsOfFolderToolStripMenuItem.Name = "loadServerSettingsOfFolderToolStripMenuItem";
-            this.loadServerSettingsOfFolderToolStripMenuItem.Size = new System.Drawing.Size(275, 28);
+            this.loadServerSettingsOfFolderToolStripMenuItem.Size = new System.Drawing.Size(170, 20);
             this.loadServerSettingsOfFolderToolStripMenuItem.Text = "load Server Settings of folder";
             this.loadServerSettingsOfFolderToolStripMenuItem.Click += new System.EventHandler(this.loadServerSettingsOfFolderToolStripMenuItem_Click);
             // 
@@ -155,28 +153,28 @@
             this.importAllUnimportedToolStripMenuItem,
             this.importUpdateAllListedToolStripMenuItem});
             this.bulkImportToolStripMenuItem.Name = "bulkImportToolStripMenuItem";
-            this.bulkImportToolStripMenuItem.Size = new System.Drawing.Size(98, 28);
             this.bulkImportToolStripMenuItem.Text = "批量导入";
+            this.bulkImportToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             // 
             // importAllUnimportedToolStripMenuItem
             // 
             this.importAllUnimportedToolStripMenuItem.Name = "importAllUnimportedToolStripMenuItem";
-            this.importAllUnimportedToolStripMenuItem.Size = new System.Drawing.Size(280, 34);
             this.importAllUnimportedToolStripMenuItem.Text = "导入所有未导入的";
+            this.importAllUnimportedToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.importAllUnimportedToolStripMenuItem.Click += new System.EventHandler(this.ImportAllUnimportedToolStripMenuItem_Click);
             // 
             // importUpdateAllListedToolStripMenuItem
             // 
             this.importUpdateAllListedToolStripMenuItem.Name = "importUpdateAllListedToolStripMenuItem";
-            this.importUpdateAllListedToolStripMenuItem.Size = new System.Drawing.Size(280, 34);
             this.importUpdateAllListedToolStripMenuItem.Text = "导入/更新所有列出的";
+            this.importUpdateAllListedToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.importUpdateAllListedToolStripMenuItem.Click += new System.EventHandler(this.ImportUpdateAllListedToolStripMenuItem_Click);
             // 
             // setUserSuffixToolStripMenuItem
             // 
             this.setUserSuffixToolStripMenuItem.Name = "setUserSuffixToolStripMenuItem";
-            this.setUserSuffixToolStripMenuItem.Size = new System.Drawing.Size(134, 28);
             this.setUserSuffixToolStripMenuItem.Text = "设置用户后缀";
+            this.setUserSuffixToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
             this.setUserSuffixToolStripMenuItem.Click += new System.EventHandler(this.setUserSuffixToolStripMenuItem_Click);
             // 
             // filterToolStripMenuItem
@@ -187,134 +185,128 @@
             this.filterAllSpeciestoolStripMenuItem,
             this.toolStripSeparator2});
             this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
-            this.filterToolStripMenuItem.Size = new System.Drawing.Size(70, 28);
+            this.filterToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.filterToolStripMenuItem.Text = "Filter";
             // 
             // showImportedCreaturesToolStripMenuItem
             // 
             this.showImportedCreaturesToolStripMenuItem.CheckOnClick = true;
             this.showImportedCreaturesToolStripMenuItem.Name = "showImportedCreaturesToolStripMenuItem";
-            this.showImportedCreaturesToolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.showImportedCreaturesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.showImportedCreaturesToolStripMenuItem.Text = "Imported creatures";
             this.showImportedCreaturesToolStripMenuItem.Click += new System.EventHandler(this.toolStripCbHideImported_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(171, 6);
             // 
             // filterAllSpeciestoolStripMenuItem
             // 
             this.filterAllSpeciestoolStripMenuItem.CheckOnClick = true;
             this.filterAllSpeciestoolStripMenuItem.Name = "filterAllSpeciestoolStripMenuItem";
-            this.filterAllSpeciestoolStripMenuItem.Size = new System.Drawing.Size(275, 34);
+            this.filterAllSpeciestoolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.filterAllSpeciestoolStripMenuItem.Text = "All species";
             this.filterAllSpeciestoolStripMenuItem.Click += new System.EventHandler(this.filterAllSpeciestoolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(171, 6);
             // 
             // refreshListToolStripMenuItem
             // 
             this.refreshListToolStripMenuItem.Name = "refreshListToolStripMenuItem";
-            this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(98, 28);
             this.refreshListToolStripMenuItem.Text = "刷新列表";
+            this.refreshListToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.refreshListToolStripMenuItem.Click += new System.EventHandler(this.refreshListToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 858);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 620);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1740, 31);
+            this.statusStrip1.Size = new System.Drawing.Size(1160, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(195, 24);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 68);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(0, 48);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1740, 790);
+            this.panel1.Size = new System.Drawing.Size(1160, 572);
             this.panel1.TabIndex = 4;
             // 
             // menuStrip2
             // 
-            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportTimeToolStripMenuItem1,
             this.creatureNameToolStripMenuItem1,
             this.speciesToolStripMenuItem1,
             this.ownerNameToolStripMenuItem1,
             this.importStatusToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 34);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 24);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1740, 34);
+            this.menuStrip2.Size = new System.Drawing.Size(1160, 24);
             this.menuStrip2.TabIndex = 5;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // exportTimeToolStripMenuItem1
             // 
             this.exportTimeToolStripMenuItem1.Name = "exportTimeToolStripMenuItem1";
-            this.exportTimeToolStripMenuItem1.Size = new System.Drawing.Size(98, 28);
             this.exportTimeToolStripMenuItem1.Text = "导出时间";
+            this.exportTimeToolStripMenuItem1.Size = new System.Drawing.Size(80, 20);
             this.exportTimeToolStripMenuItem1.Click += new System.EventHandler(this.exportTimeToolStripMenuItem1_Click);
             // 
             // creatureNameToolStripMenuItem1
             // 
             this.creatureNameToolStripMenuItem1.Name = "creatureNameToolStripMenuItem1";
-            this.creatureNameToolStripMenuItem1.Size = new System.Drawing.Size(98, 28);
             this.creatureNameToolStripMenuItem1.Text = "生物名称";
+            this.creatureNameToolStripMenuItem1.Size = new System.Drawing.Size(97, 20);
             this.creatureNameToolStripMenuItem1.Click += new System.EventHandler(this.creatureNameToolStripMenuItem1_Click);
             // 
             // speciesToolStripMenuItem1
             // 
             this.speciesToolStripMenuItem1.Name = "speciesToolStripMenuItem1";
-            this.speciesToolStripMenuItem1.Size = new System.Drawing.Size(62, 28);
             this.speciesToolStripMenuItem1.Text = "种类";
+            this.speciesToolStripMenuItem1.Size = new System.Drawing.Size(58, 20);
             this.speciesToolStripMenuItem1.Click += new System.EventHandler(this.speciesToolStripMenuItem1_Click);
             // 
             // ownerNameToolStripMenuItem1
             // 
             this.ownerNameToolStripMenuItem1.Name = "ownerNameToolStripMenuItem1";
-            this.ownerNameToolStripMenuItem1.Size = new System.Drawing.Size(80, 28);
             this.ownerNameToolStripMenuItem1.Text = "驯养者";
+            this.ownerNameToolStripMenuItem1.Size = new System.Drawing.Size(87, 20);
             this.ownerNameToolStripMenuItem1.Click += new System.EventHandler(this.ownerNameToolStripMenuItem1_Click);
             // 
             // importStatusToolStripMenuItem
             // 
             this.importStatusToolStripMenuItem.Name = "importStatusToolStripMenuItem";
-            this.importStatusToolStripMenuItem.Size = new System.Drawing.Size(98, 28);
             this.importStatusToolStripMenuItem.Text = "导入状态";
+            this.importStatusToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.importStatusToolStripMenuItem.Click += new System.EventHandler(this.importStatusToolStripMenuItem_Click);
             // 
             // ExportedCreatureList
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1740, 889);
+            this.ClientSize = new System.Drawing.Size(1160, 642);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ExportedCreatureList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "导出的生物";

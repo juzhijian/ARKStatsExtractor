@@ -674,7 +674,6 @@
     <EmbeddedResource Include="local\strings.pl.resx" />
     <EmbeddedResource Include="local\strings.tr.resx" />
     <EmbeddedResource Include="local\strings.zh-tw.resx" />
-    <EmbeddedResource Include="local\strings.zh.resx" />
     <EmbeddedResource Include="ocr\PatternMatching\RecognitionTrainingForm.resx">
       <DependentUpon>RecognitionTrainingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -752,6 +751,7 @@
     <EmbeddedResource Include="local\strings.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="local\strings.zh.resx" />
     <EmbeddedResource Include="mods\CustomStatOverridesEditor.resx">
       <DependentUpon>CustomStatOverridesEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -932,6 +932,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_manifest.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
