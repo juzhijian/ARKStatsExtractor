@@ -733,18 +733,16 @@ namespace ARKBreedingStats
         /// <param name="cc"></param>
         private void UpdateIncubationParents(CreatureCollection cc)
         {
-            foreach (Creature c in cc.creatures)
+            if (!cc.incubationListEntries.Any()) return;
+
+            var dict = cc.creatures.ToDictionary(c => c.guid);
+
+            foreach (IncubationTimerEntry it in cc.incubationListEntries)
             {
-                if (c.guid != Guid.Empty)
-                {
-                    foreach (IncubationTimerEntry it in cc.incubationListEntries)
-                    {
-                        if (c.guid == it.motherGuid)
-                            it.mother = c;
-                        else if (c.guid == it.fatherGuid)
-                            it.father = c;
-                    }
-                }
+                if (it.motherGuid != Guid.Empty && dict.TryGetValue(it.motherGuid, out var m))
+                    it.Mother = m;
+                if (it.fatherGuid != Guid.Empty && dict.TryGetValue(it.fatherGuid, out var f))
+                    it.Father = f;
             }
         }
 
@@ -1303,11 +1301,11 @@ namespace ARKBreedingStats
 
             SetMessageLabelText($"{cnt} creatures selected, " +
                     $"{selCrs.Count(cr => cr.sex == Sex.Female)} females, " +
-                    $"{selCrs.Count(cr => cr.sex == Sex.Male)} males\n" +
+                    $"{selCrs.Count(cr => cr.sex == Sex.Male)} males\r\n" +
                     (cnt == 1
                         ? $"level: {selCrs[0].Level}; Ark-Id (ingame): " + (selCrs[0].ArkIdImported ? Utils.ConvertImportedArkIdToIngameVisualization(selCrs[0].ArkId) : selCrs[0].ArkId.ToString())
                         : $"level-range: {selCrs.Min(cr => cr.Level)} - {selCrs.Max(cr => cr.Level)}"
-                    ) + "\n" +
+                    ) + "\r\n" +
                     $"Tags: {string.Join(", ", tagList)}");
         }
 
@@ -1594,7 +1592,7 @@ namespace ARKBreedingStats
                 }
                 if (listViewLibrary.SelectedIndices.Count > 0)
                 {
-                    var exportCount = ExportImportCreatures.ExportTable(listViewLibrary.SelectedIndices.Cast<int>().Select(i => _creaturesDisplayed[i]));
+                    var exportCount = ExportImportCreatures.ExportTable(listViewLibrary.SelectedIndices.Cast<int>().Select(i => _creaturesDisplayed[i]).ToArray());
                     if (exportCount != 0)
                         SetMessageLabelText($"{exportCount} creatures were exported to the clipboard for pasting in a spreadsheet.", MessageBoxIcon.Information);
 
@@ -1757,7 +1755,7 @@ namespace ARKBreedingStats
             if (imagesCreated == 0) return;
 
             var pluralS = (imagesCreated != 1 ? "s" : string.Empty);
-            SetMessageLabelText($"Infographic{pluralS} for {imagesCreated} creature{pluralS} created at\n{(imagesCreated == 1 ? firstImageFilePath : folderPath)}", MessageBoxIcon.Information, firstImageFilePath);
+            SetMessageLabelText($"Infographic{pluralS} for {imagesCreated} creature{pluralS} created at\r\n{(imagesCreated == 1 ? firstImageFilePath : folderPath)}", MessageBoxIcon.Information, firstImageFilePath);
         }
 
         #region Library ContextMenu

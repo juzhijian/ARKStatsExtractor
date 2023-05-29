@@ -4,7 +4,7 @@
     {
         private void InitLocalization()
         {
-            Loc.LoadResourceFile();
+            Loc.LoadResourceFile(Properties.Settings.Default.language, Properties.Settings.Default.language2);
             Utils.InitializeLocalizations();
         }
 
@@ -170,7 +170,7 @@
             raisingControl1.SetLocalizations();
             creatureBoxListView.SetLocalizations();
             notesControl1.SetLocalizations();
-            _overlay?.SetLocatlizations();
+            _overlay?.SetLocalizations();
         }
     }
 }
