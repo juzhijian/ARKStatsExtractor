@@ -142,7 +142,7 @@ namespace ARKBreedingStats.settings
             _tt.SetToolTip(labelEvent, "These values are used if the Event-Checkbox under the species-selector is selected.");
             _tt.SetToolTip(cbConsiderWildLevelSteps, "Enable to sort out all level-combinations that are not possible for naturally spawned creatures.\nThe step is max-wild-level / 30 by default, e.g. with a max wildlevel of 150, only creatures with levels that are a multiple of 5 are possible (can be different with mods).\nDisable if there are creatures that have other levels, e.g. spawned in by an admin.");
             _tt.SetToolTip(cbSingleplayerSettings, "Check this if you have enabled the \"Singleplayer-Settings\" in your game. This settings adjusts some of the multipliers again.");
-            _tt.SetToolTip(CbAtlasSettings, "Check this if you use this tool with creatures from the game ATLAS. This settings adjusts some of the multipliers to match the ones of ATLAS.");
+            _tt.SetToolTip(CbAtlasSettings, "如果你在ATLAS游戏中使用这个工具，请选中这个选项。此设置会调整一些乘数，使其与ATLAS的乘数相匹配.");
             _tt.SetToolTip(cbAllowMoreThanHundredImprinting, "Enable this if on your server more than 100% imprinting are possible, e.g. with the mod S+ with a Nanny");
             _tt.SetToolTip(cbDevTools, "Shows extra tabs for multiplier-testing and extraction test-cases.");
             _tt.SetToolTip(nudMaxServerLevel, "The max level allowed on the server. Currently creatures with more than 450 levels will be deleted on official servers.\nA creature that can be potentially have a higher level than this (if maximally leveled up) will be marked with a orange-red text in the library.\nSet to 0 to disable a warning in the loaded library.");

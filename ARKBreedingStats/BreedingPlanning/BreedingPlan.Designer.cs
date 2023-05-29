@@ -169,7 +169,7 @@ namespace ARKBreedingStats.BreedingPlanning
             this.CbIgnoreSexInPlanning.Name = "CbIgnoreSexInPlanning";
             this.CbIgnoreSexInPlanning.Size = new System.Drawing.Size(142, 17);
             this.CbIgnoreSexInPlanning.TabIndex = 11;
-            this.CbIgnoreSexInPlanning.Text = "Ignore sex for all species";
+            this.CbIgnoreSexInPlanning.Text = "忽略所有物种的性别";
             this.CbIgnoreSexInPlanning.UseVisualStyleBackColor = true;
             this.CbIgnoreSexInPlanning.CheckedChanged += new System.EventHandler(this.CbIgnoreSexInPlanning_CheckedChanged);
             // 
@@ -180,7 +180,7 @@ namespace ARKBreedingStats.BreedingPlanning
             this.CbDontSuggestOverLimitOffspring.Name = "CbDontSuggestOverLimitOffspring";
             this.CbDontSuggestOverLimitOffspring.Size = new System.Drawing.Size(178, 17);
             this.CbDontSuggestOverLimitOffspring.TabIndex = 10;
-            this.CbDontSuggestOverLimitOffspring.Text = "Don\'t suggest over limit offspring";
+            this.CbDontSuggestOverLimitOffspring.Text = "不要建议过度繁殖后代";
             this.CbDontSuggestOverLimitOffspring.UseVisualStyleBackColor = true;
             this.CbDontSuggestOverLimitOffspring.CheckedChanged += new System.EventHandler(this.CbDontSuggestOverLimitOffspring_CheckedChanged);
             // 
@@ -213,7 +213,7 @@ namespace ARKBreedingStats.BreedingPlanning
             this.cbBPIncludeCryoCreatures.Name = "cbBPIncludeCryoCreatures";
             this.cbBPIncludeCryoCreatures.Size = new System.Drawing.Size(167, 17);
             this.cbBPIncludeCryoCreatures.TabIndex = 6;
-            this.cbBPIncludeCryoCreatures.Text = "Include Creatures in Cryopods";
+            this.cbBPIncludeCryoCreatures.Text = "包括冷冻仓中的生物";
             this.cbBPIncludeCryoCreatures.UseVisualStyleBackColor = true;
             this.cbBPIncludeCryoCreatures.CheckedChanged += new System.EventHandler(this.cbBPIncludeCryoCreatures_CheckedChanged);
             // 
@@ -248,7 +248,7 @@ namespace ARKBreedingStats.BreedingPlanning
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Creatures with Mutations up to";
+            this.label2.Text = "生物最高突变到";
             // 
             // cbBPIncludeCooldowneds
             // 

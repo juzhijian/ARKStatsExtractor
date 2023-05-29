@@ -489,7 +489,7 @@
             this.labelTameLevel.Name = "labelTameLevel";
             this.labelTameLevel.Size = new System.Drawing.Size(60, 13);
             this.labelTameLevel.TabIndex = 4;
-            this.labelTameLevel.Text = "TameLevel";
+            this.labelTameLevel.Text = "驯服倍数";
             // 
             // labelWildLevel
             // 
@@ -498,7 +498,7 @@
             this.labelWildLevel.Name = "labelWildLevel";
             this.labelWildLevel.Size = new System.Drawing.Size(54, 13);
             this.labelWildLevel.TabIndex = 1;
-            this.labelWildLevel.Text = "WildLevel";
+            this.labelWildLevel.Text = "野生倍数";
             // 
             // labelTameAff
             // 
@@ -507,7 +507,7 @@
             this.labelTameAff.Name = "labelTameAff";
             this.labelTameAff.Size = new System.Drawing.Size(47, 13);
             this.labelTameAff.TabIndex = 2;
-            this.labelTameAff.Text = "TameAff";
+            this.labelTameAff.Text = "遗传倍数";
             // 
             // labelTameAdd
             // 
@@ -516,7 +516,7 @@
             this.labelTameAdd.Name = "labelTameAdd";
             this.labelTameAdd.Size = new System.Drawing.Size(53, 13);
             this.labelTameAdd.TabIndex = 1;
-            this.labelTameAdd.Text = "TameAdd";
+            this.labelTameAdd.Text = "加点倍数";
             // 
             // buttonOK
             // 
@@ -1094,7 +1094,7 @@
             this.groupBox3.Size = new System.Drawing.Size(345, 127);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Maximum Levels on Server";
+            this.groupBox3.Text = "服务器上的最大级别";
             // 
             // LbDefaultLevelups
             // 
@@ -1129,7 +1129,7 @@
             this.lbMaxTotalLevel.Name = "lbMaxTotalLevel";
             this.lbMaxTotalLevel.Size = new System.Drawing.Size(143, 13);
             this.lbMaxTotalLevel.TabIndex = 12;
-            this.lbMaxTotalLevel.Text = "Max Total Level (0: disabled)";
+            this.lbMaxTotalLevel.Text = "最高总级别（0:已禁用）";
             // 
             // nudMaxGraphLevel
             // 
@@ -1156,7 +1156,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(88, 13);
             this.label18.TabIndex = 10;
-            this.label18.Text = "Max Graph Level";
+            this.label18.Text = "最大可升等级";
             // 
             // label11
             // 
@@ -1165,7 +1165,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 13);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Max Wild Level";
+            this.label11.Text = "最大野生等级";
             // 
             // nudMaxWildLevels
             // 
@@ -1192,7 +1192,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(109, 13);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Max Tamed Levelups";
+            this.label10.Text = "最大起身等级";
             // 
             // nudMaxDomLevels
             // 
@@ -1904,7 +1904,7 @@
             this.cbSingleplayerSettings.Name = "cbSingleplayerSettings";
             this.cbSingleplayerSettings.Size = new System.Drawing.Size(122, 17);
             this.cbSingleplayerSettings.TabIndex = 0;
-            this.cbSingleplayerSettings.Text = "Singleplayer settings";
+            this.cbSingleplayerSettings.Text = "单人游戏设置";
             this.cbSingleplayerSettings.UseVisualStyleBackColor = true;
             this.cbSingleplayerSettings.CheckedChanged += new System.EventHandler(this.cbSingleplayerSettings_CheckedChanged);
             // 
