@@ -352,7 +352,7 @@
     <value>生物驯服后手动赋予属性值</value>
   </data>
   <data name="domLvl" xml:space="preserve">
-    <value>驯服服等級</value>
+    <value>驯服等級</value>
   </data>
   <data name="editToolStripMenuItem" xml:space="preserve">
     <value>编辑</value>
@@ -386,6 +386,9 @@
   </data>
   <data name="femalesToolStripMenuItem" xml:space="preserve">
     <value>雌性</value>
+  </data>
+  <data name="Female_gen" xml:space="preserve">
+    <value>母</value>
   </data>
   <data name="fileToolStripMenuItem" xml:space="preserve">
     <value>文件</value>
@@ -463,9 +466,10 @@
     <value>留痕加成</value>
   </data>
   <data name="issueMaxWildLevelTooLow" xml:space="preserve">
-    <value>汇出数据是正确的，但最大野生等级设定太低而无法进行有效的汇出，请检查设定中是否设定正确.
-现在设定的值为 {0} ，但此生物的野生等级似乎高于此设定.
-有关汇出失败的其他原因，请在关闭此讯息框后查看右侧的列表.</value>
+    <value>此次提取理论上成立, 但是对于完成一个有效提取, 最大野生等级似乎被设置太低. 请检查是否在设定中输入了正确的值.
+当前值为 {0}, 该生物似乎拥有高于当前值的野生等级.
+
+由于其他原因造成的提取失败,请在关闭此提示框后参阅右侧列表.</value>
   </data>
   <data name="lbBPBreedingScore" xml:space="preserve">
     <value>育种分数</value>
@@ -546,10 +550,10 @@
     <value>等级</value>
   </data>
   <data name="LevelWild_Abb" xml:space="preserve">
-    <value>野Lv</value>
+    <value>等级</value>
   </data>
   <data name="Level_Abb" xml:space="preserve">
-    <value>Lv</value>
+    <value>Lvl</value>
   </data>
   <data name="library" xml:space="preserve">
     <value>资料库</value>
@@ -565,6 +569,9 @@
   </data>
   <data name="malesToolStripMenuItem" xml:space="preserve">
     <value>雄性</value>
+  </data>
+  <data name="Male_gen" xml:space="preserve">
+    <value>公</value>
   </data>
   <data name="Maturation" xml:space="preserve">
     <value>成长度</value>
@@ -691,20 +698,18 @@
 并且考虑配出最优属性后代的重要性.</value>
   </data>
   <data name="rbBPTopStats" xml:space="preserve">
-    <value>最好属性 - 欧洲人</value>
+    <value>最好属性 - 欧皇</value>
   </data>
   <data name="rbBPTopStatsCn" xml:space="preserve">
-    <value>最好属性 - 保守的</value>
+    <value>最好属性 - 保守</value>
   </data>
   <data name="rbBPTopStatsCnTT" xml:space="preserve">
-    <value>最好属性 - 保守的
-检查最好的长期结果，相对安全且稳定的获得更好的后代.
-有些后代会出现更糟的属性，但如果您希望能在几代内拥有完美的生物，这模式就是你需要的.</value>
+    <value>最好属性, 保守育种.
+检测最佳的结果并且如果你想使用保守的方法育种, 但是其中一些后代可能出现更糟的属性, 但是如果您希望能在几代中拥有完美的生物, 那么这就是你需要的模式.</value>
   </data>
   <data name="rbBPTopStatsTT" xml:space="preserve">
-    <value>最好属性 - 欧洲人
-检查最好的长期结果，且您觉得自己是欧洲人.
-这个模式获得完美生物的速度可能比 最好属性 - 保守的 更快，虽然有些后代会出现更糟糕的属性，但是也有机会获得完美的后代</value>
+    <value>最好属性, 欧皇专用.
+检测最佳的结果并且您感觉自己的人品特别好, 此模式下可以比保守模式更快的速度获得完美的生物, 虽然其中一些后代可能获得更糟糕的属性, 但是您也有机会获得更好的后代.</value>
   </data>
   <data name="runDefaultExtractionAndImportFileToolStripMenuItem" xml:space="preserve">
     <value>执行默认的提取操作并且导入文件</value>
@@ -851,7 +856,7 @@
     <value>最大%</value>
   </data>
   <data name="topPercentileLevel" xml:space="preserve">
-    <value>您能找到所有前 {0} % 在这个等级.</value>
+    <value>该等级在你能找到的所有中排前 {0} %.</value>
   </data>
   <data name="Torpidity" xml:space="preserve">
     <value>眩晕值</value>
@@ -960,7 +965,7 @@
 到达此留痕加成所需的留痕次数.</value>
   </data>
   <data name="matingTime" xml:space="preserve">
-    <value>交配时间</value>
+    <value>交配时长</value>
   </data>
   <data name="OrOneAscerbicMushroom" xml:space="preserve">
     <value>或 每个黑色蘑菇</value>
@@ -1032,7 +1037,7 @@
     <value>等级</value>
   </data>
   <data name="Values" xml:space="preserve">
-    <value>数值</value>
+    <value>属性</value>
   </data>
   <data name="generation" xml:space="preserve">
     <value>代</value>

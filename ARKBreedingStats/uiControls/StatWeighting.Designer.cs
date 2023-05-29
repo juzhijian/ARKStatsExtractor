@@ -176,7 +176,7 @@
             this.lbStatWeightInfo.Name = "lbStatWeightInfo";
             this.lbStatWeightInfo.Size = new System.Drawing.Size(177, 13);
             this.lbStatWeightInfo.TabIndex = 15;
-            this.lbStatWeightInfo.Text = "Increase the weight of desired stats.";
+            this.lbStatWeightInfo.Text = "增加所需统计数据的权重.";
             // 
             // StatWeighting
             // 

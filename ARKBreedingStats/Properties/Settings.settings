@@ -551,5 +551,11 @@
     <Setting Name="CustomStatWeightOddEven" Type="System.Byte[][]" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="language2" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OverlayRelativeFontSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
