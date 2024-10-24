@@ -24,7 +24,7 @@ namespace ARKBreedingStats.uiControls
 
             var lb = new Label
             {
-                Text = "Game version of new library",
+                Text = "新库的游戏版本",
                 Width = Width,
                 TextAlign = ContentAlignment.TopCenter,
                 Top = margin
@@ -32,7 +32,7 @@ namespace ARKBreedingStats.uiControls
 
             var btAse = new Button
             {
-                Text = "ARK: Survival Evolved",
+                Text = "方舟：生存进化",
                 Width = buttonWidth,
                 Height = buttonHeight,
                 Top = 2 * margin,
@@ -40,7 +40,7 @@ namespace ARKBreedingStats.uiControls
             };
             var btAsa = new Button
             {
-                Text = "ARK: Survival Ascended",
+                Text = "方舟：生存飞升",
                 Width = buttonWidth,
                 Height = buttonHeight,
                 Top = 2 * margin,
@@ -51,7 +51,7 @@ namespace ARKBreedingStats.uiControls
 
             _cbUseAsDefault = new CheckBox
             {
-                Text = "Remember selection (can be changed in the settings)",
+                Text = "记住选择（可以在设置中更改）",
                 AutoSize = true,
                 Left = margin,
                 Top = 3 * margin + buttonHeight
