@@ -42,7 +42,7 @@ namespace ARKBreedingStats.utils
         /// <summary>
         /// Sort list by given column index. If the columnIndex is -1, use last sorting.
         /// </summary>
-        public IEnumerable<Creature> DoSort(IEnumerable<Creature> list, int columnIndex = -1, Species[] orderBySpecies = null)
+        public Creature[] DoSort(IEnumerable<Creature> list, int columnIndex = -1, Species[] orderBySpecies = null)
         {
             if (list == null) return null;
 
@@ -67,7 +67,30 @@ namespace ARKBreedingStats.utils
                 : (IComparer<object>)Comparer<object>.Default;
 
             // Perform the sort with these new sort options.
-            return OrderList(list, comparer, orderBySpecies);
+            var orderedList = OrderList(list, comparer, orderBySpecies).ToArray();
+
+            // apply list index to creatures
+            var i = 1;
+            if (orderBySpecies != null)
+            {
+                Species currentSpecies = null;
+                foreach (var c in orderedList)
+                {
+                    if (currentSpecies != c.Species)
+                    {
+                        currentSpecies = c.Species;
+                        i = 1;
+                    }
+                    c.ListIndex = i++;
+                }
+            }
+            else
+            {
+                foreach (var c in orderedList)
+                    c.ListIndex = i++;
+            }
+
+            return orderedList;
         }
 
         private IEnumerable<Creature> OrderList(IEnumerable<Creature> list, IComparer<object> comparer, Species[] orderBySpecies = null)
@@ -113,7 +136,7 @@ namespace ARKBreedingStats.utils
             c => c.sex,
             c => c.domesticatedAt,
             c => c.topness,
-            c => c.topStatsCount,
+            c => c.topStatsConsideredCount,
             c => c.generation,
             c => c.levelFound,
             c => c.Mutations,
@@ -130,6 +153,18 @@ namespace ARKBreedingStats.utils
             c => c.levelsWild[9],
             c => c.levelsWild[10],
             c => c.levelsWild[11],
+            c => c.levelsMutated?[0],
+            c => c.levelsMutated?[1],
+            c => c.levelsMutated?[2],
+            c => c.levelsMutated?[3],
+            c => c.levelsMutated?[4],
+            c => c.levelsMutated?[5],
+            c => c.levelsMutated?[6],
+            c => c.levelsMutated?[7],
+            c => c.levelsMutated?[8],
+            c => c.levelsMutated?[9],
+            c => c.levelsMutated?[10],
+            c => c.levelsMutated?[11],
             c => c.colors[0],
             c => c.colors[1],
             c => c.colors[2],
@@ -139,7 +174,8 @@ namespace ARKBreedingStats.utils
             c => c.Species?.DescriptiveNameAndMod,
             c => c.Status,
             c => c.tribe,
-            c => c.Status
+            c => c.Status,
+            c => c.flags & CreatureFlags.MutagenApplied
         };
     }
 }

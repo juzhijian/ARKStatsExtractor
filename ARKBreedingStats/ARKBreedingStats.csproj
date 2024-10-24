@@ -62,6 +62,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Speech" />
@@ -82,8 +83,19 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="Ark.cs" />
+    <Compile Include="AsbServer\Connection.cs" />
+    <Compile Include="AsbServer\ProgressReportAsbServer.cs" />
     <Compile Include="BreedingPlanning\Score.cs" />
     <Compile Include="BreedingPlanning\BreedingScore.cs" />
+    <Compile Include="Form1.exportGun.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="importExportGun\ExportGunCreatureFile.cs" />
+    <Compile Include="importExportGun\ExportGunFileExtensions.cs" />
+    <Compile Include="importExportGun\ExportGunServerFile.cs" />
+    <Compile Include="importExportGun\ImportExportGun.cs" />
+    <Compile Include="importExportGun\ReadExportFile.cs" />
     <Compile Include="library\AddDummyCreaturesSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,8 +103,28 @@
       <DependentUpon>AddDummyCreaturesSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="library\CreatureSpawnCommand.cs" />
+    <Compile Include="library\CreatureTrait.cs" />
     <Compile Include="library\DummyCreatures.cs" />
+    <Compile Include="NamePatterns\JavaScriptNamePattern.cs" />
+    <Compile Include="NamePatterns\TokenModel.cs" />
+    <Compile Include="StatsOptions\StatsOptionsControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StatsOptions\StatsOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatsOptions\TopStatsSettings\ConsiderTopStats.cs" />
+    <Compile Include="StatsOptions\StatOptionsBase.cs" />
+    <Compile Include="StatsOptions\LevelColorSettings\LevelGraphRepresentation.cs" />
+    <Compile Include="library\LevelStatusFlags.cs" />
+    <Compile Include="StatsOptions\LevelColorSettings\StatLevelColors.cs" />
+    <Compile Include="StatsOptions\StatsOptions.cs" />
+    <Compile Include="StatsOptions\StatsOptionsSettings.cs" />
+    <Compile Include="library\TopLevels.cs" />
     <Compile Include="multiplierTesting\CalculateMultipliers.cs" />
+    <Compile Include="multiplierTesting\SpeciesStatsExtractor.cs" />
+    <Compile Include="multiplierTesting\TaTmSolver.cs" />
+    <Compile Include="NamePatterns\NameList.cs" />
     <Compile Include="NamePatterns\NamePatternEntry.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -101,6 +133,19 @@
     <Compile Include="Pedigree\PedigreeCreation.cs" />
     <Compile Include="Pedigree\IPedigreeCreature.cs" />
     <Compile Include="species\ArkColors.cs" />
+    <Compile Include="species\Troodonism.cs" />
+    <Compile Include="StatsOptions\TopStatsSettings\ConsiderTopStatsControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="uiControls\ArkVersionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uiControls\ColorPickerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uiControls\ColorPickerWindow.Designer.cs">
+      <DependentUpon>ColorPickerWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="uiControls\CreatureAnalysis.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +158,12 @@
     <Compile Include="uiControls\Hatching.Designer.cs">
       <DependentUpon>Hatching.cs</DependentUpon>
     </Compile>
+    <Compile Include="StatsOptions\LevelColorSettings\HueControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StatsOptions\LevelColorSettings\HueControl.Designer.cs">
+      <DependentUpon>HueControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="uiControls\LibraryFilterTemplates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +174,27 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="uiControls\LibraryInfo.cs" />
+    <Compile Include="uiControls\LibraryInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uiControls\PopupMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uiControls\ScrollForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uiControls\ScrollForm.Designer.cs">
+      <DependentUpon>ScrollForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatsOptions\LevelColorSettings\StatLevelGraphOptionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StatsOptions\LevelColorSettings\StatLevelGraphOptionsControl.Designer.cs">
+      <DependentUpon>StatLevelGraphOptionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatsOptions\LevelColorSettings\LevelGraphOptionsControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="uiControls\StatSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -241,7 +313,6 @@
       <DependentUpon>StatsMultiplierTesting.cs</DependentUpon>
     </Compile>
     <Compile Include="mods\Mod.cs" />
-    <Compile Include="species\SpeciesListBoxEntry.cs" />
     <Compile Include="testCases\ExtractionTestCase.cs" />
     <Compile Include="ocr\ArkOcr.cs" />
     <Compile Include="ARKOverlay.cs">
@@ -341,7 +412,7 @@
     <Compile Include="CreatureInfoInput.Designer.cs">
       <DependentUpon>CreatureInfoInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="species\CreatureStat.cs" />
+    <Compile Include="species\SpeciesStat.cs" />
     <Compile Include="species\Kibble.cs" />
     <Compile Include="Kibbles.cs" />
     <Compile Include="library\CreatureValues.cs" />
@@ -507,11 +578,11 @@
     <Compile Include="uiControls\MultiSetter.Designer.cs">
       <DependentUpon>MultiSetter.cs</DependentUpon>
     </Compile>
-    <Compile Include="uiControls\MyColorPicker.cs">
-      <SubType>Form</SubType>
+    <Compile Include="uiControls\ColorPickerControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="uiControls\MyColorPicker.Designer.cs">
-      <DependentUpon>MyColorPicker.cs</DependentUpon>
+    <Compile Include="uiControls\ColorPickerControl.Designer.cs">
+      <DependentUpon>ColorPickerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="uiControls\ParentComboBox.cs">
       <SubType>Component</SubType>
@@ -632,7 +703,8 @@
     <Compile Include="utils\ColorModeColors.cs" />
     <Compile Include="utils\Convert32.cs" />
     <Compile Include="utils\Debouncer.cs" />
-    <Compile Include="utils\ExportFolderLocation.cs" />
+    <Compile Include="utils\ArkInstallationPath.cs" />
+    <Compile Include="utils\ExceptionMessages.cs" />
     <Compile Include="utils\ExtensionMethods.cs" />
     <Compile Include="utils\CreatureListSorter.cs" />
     <Compile Include="utils\MessageBoxes.cs" />
@@ -647,7 +719,7 @@
     <Compile Include="values\Values.cs" />
     <Compile Include="utils\Win32API.cs" />
     <Compile Include="values\ValuesFile.cs" />
-    <None Include="json\equalColorIds.json">
+    <None Include="json\values\ASA-values.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\success.wav" />
@@ -656,6 +728,20 @@
     <None Include="Resources\newtopstat.wav" />
     <None Include="Resources\indifferent.wav" />
     <None Include="json\variantsDefaultUnselected.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="json\creatureNamesF.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="json\creatureNamesM.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="json\creatureNamesU.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\updated.wav" />
+    <None Include="Resources\newMutation.wav" />
+    <None Include="NOTICE.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="_manifest.tt">
@@ -679,6 +765,9 @@
     <EmbeddedResource Include="ocr\PatternMatching\RecognitionTrainingForm.resx">
       <DependentUpon>RecognitionTrainingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="uiControls\ColorPickerWindow.resx">
+      <DependentUpon>ColorPickerWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="uiControls\CreatureAnalysis.resx">
       <DependentUpon>CreatureAnalysis.cs</DependentUpon>
     </EmbeddedResource>
@@ -688,11 +777,20 @@
     <EmbeddedResource Include="uiControls\Hatching.resx">
       <DependentUpon>Hatching.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StatsOptions\LevelColorSettings\HueControl.resx">
+      <DependentUpon>HueControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="uiControls\LibraryFilterTemplates.resx">
       <DependentUpon>LibraryFilterTemplates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="uiControls\ParentInheritance.resx">
       <DependentUpon>ParentInheritance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uiControls\ScrollForm.resx">
+      <DependentUpon>ScrollForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatsOptions\LevelColorSettings\StatLevelGraphOptionsControl.resx">
+      <DependentUpon>StatLevelGraphOptionsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="uiControls\StatSelector.resx">
       <DependentUpon>StatSelector.cs</DependentUpon>
@@ -887,6 +985,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BreedingPlanning\BreedingPlan.resx">
       <DependentUpon>BreedingPlan.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatureBox.resx">
       <DependentUpon>CreatureBox.cs</DependentUpon>
@@ -904,8 +1003,8 @@
     <EmbeddedResource Include="uiControls\MultiSetter.resx">
       <DependentUpon>MultiSetter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="uiControls\MyColorPicker.resx">
-      <DependentUpon>MyColorPicker.cs</DependentUpon>
+    <EmbeddedResource Include="uiControls\ColorPickerControl.resx">
+      <DependentUpon>ColorPickerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pedigree\PedigreeControl.resx">
       <DependentUpon>PedigreeControl.cs</DependentUpon>
@@ -920,6 +1019,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="settings\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="uiControls\StatDisplay.resx">
       <DependentUpon>StatDisplay.cs</DependentUpon>
@@ -960,7 +1060,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentFTP">
-      <Version>44.0.1</Version>
+      <Version>51.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="JInt">
+      <Version>4.0.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
       <Version>3.3.4</Version>
@@ -968,7 +1071,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.2</Version>
+      <Version>13.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

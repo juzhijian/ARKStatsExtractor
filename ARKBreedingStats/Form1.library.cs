@@ -14,6 +14,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ARKBreedingStats.library;
 using ARKBreedingStats.settings;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using ARKBreedingStats.NamePatterns;
 
 namespace ARKBreedingStats
 {
@@ -36,63 +38,9 @@ namespace ARKBreedingStats
         /// <param name="goToLibraryTab">go to library tab after the creature is added</param>
         private Creature AddCreatureToCollection(bool fromExtractor = true, long motherArkId = 0, long fatherArkId = 0, bool goToLibraryTab = true)
         {
-            CreatureInfoInput input;
-            bool bred;
-            double te, imprinting;
-            Species species = speciesSelector1.SelectedSpecies;
-            if (fromExtractor)
-            {
-                input = creatureInfoInputExtractor;
-                bred = rbBredExtractor.Checked;
-                te = rbWildExtractor.Checked ? -3 : _extractor.UniqueTamingEffectiveness();
-                imprinting = _extractor.ImprintingBonus;
-            }
-            else
-            {
-                input = creatureInfoInputTester;
-                bred = rbBredTester.Checked;
-                te = TamingEffectivenessTester;
-                imprinting = (double)numericUpDownImprintingBonusTester.Value / 100;
-            }
-
             var levelStep = _creatureCollection.getWildLevelStep();
-            Creature creature = new Creature(species, input.CreatureName, input.CreatureOwner, input.CreatureTribe, input.CreatureSex, GetCurrentWildLevels(fromExtractor), GetCurrentDomLevels(fromExtractor), te, bred, imprinting, levelStep: levelStep)
-            {
-                // set parents
-                Mother = input.Mother,
-                Father = input.Father,
-
-                // cooldown-, growing-time
-                cooldownUntil = input.CooldownUntil,
-                growingUntil = input.GrowingUntil,
-
-                flags = input.CreatureFlags,
-                note = input.CreatureNote,
-                server = input.CreatureServer,
-
-                domesticatedAt = input.DomesticatedAt.HasValue && input.DomesticatedAt.Value.Year > 2014 ? input.DomesticatedAt.Value : default(DateTime?),
-                addedToLibrary = DateTime.Now,
-                mutationsMaternal = input.MutationCounterMother,
-                mutationsPaternal = input.MutationCounterFather,
-                Status = input.CreatureStatus,
-                colors = input.RegionColors,
-                ColorIdsAlsoPossible = input.ColorIdsAlsoPossible,
-                guid = fromExtractor && input.CreatureGuid != Guid.Empty ? input.CreatureGuid : Guid.NewGuid(),
-                ArkId = input.ArkId
-            };
-
-            creature.ArkIdImported = Utils.IsArkIdImported(creature.ArkId, creature.guid);
-            creature.InitializeArkInGame();
-
-            // parent guids
-            if (motherArkId != 0)
-                creature.motherGuid = Utils.ConvertArkIdToGuid(motherArkId);
-            else if (input.MotherArkId != 0)
-                creature.motherGuid = Utils.ConvertArkIdToGuid(input.MotherArkId);
-            if (fatherArkId != 0)
-                creature.fatherGuid = Utils.ConvertArkIdToGuid(fatherArkId);
-            else if (input.FatherArkId != 0)
-                creature.fatherGuid = Utils.ConvertArkIdToGuid(input.FatherArkId);
+            var species = speciesSelector1.SelectedSpecies;
+            var creature = GetCreatureFromInput(fromExtractor, species, levelStep, motherArkId, fatherArkId);
 
             // if creature is placeholder: add it
             // if creature's ArkId is already in library, suggest updating of the creature
@@ -112,7 +60,7 @@ namespace ARKBreedingStats
                 && _creatureCollection.DeletedCreatureGuids.Contains(creature.guid))
                 _creatureCollection.DeletedCreatureGuids.RemoveAll(guid => guid == creature.guid);
 
-            _creatureCollection.MergeCreatureList(new List<Creature> { creature });
+            _creatureCollection.MergeCreatureList(new[] { creature });
 
             // set status of exportedCreatureControl if available
             _exportedCreatureControl?.setStatus(importExported.ExportedCreatureControl.ImportStatus.JustImported, DateTime.Now);
@@ -181,32 +129,35 @@ namespace ARKBreedingStats
         {
             if (tabControlMain.SelectedTab == tabPageLibrary)
             {
-                if (listViewLibrary.SelectedIndices.Count > 0)
+                if (listViewLibrary.SelectedIndices.Count == 0) return;
+                if ((ModifierKeys & Keys.Shift) == 0
+                    && MessageBox.Show("Do you really want to delete the entry and all data for "
+                                    + $"\"{_creaturesDisplayed[listViewLibrary.SelectedIndices[0]].name}\""
+                                    + $"{(listViewLibrary.SelectedIndices.Count > 1 ? " and " + (listViewLibrary.SelectedIndices.Count - 1) + " other creatures" : null)}?\n\n"
+                                    + "(Hold the Shift key to delete without this messagebox confirmation shown.)",
+                        "Delete Creature?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                    != DialogResult.Yes) return;
+
+                bool onlyOneSpecies = true;
+                Species species = _creaturesDisplayed[listViewLibrary.SelectedIndices[0]].Species;
+                foreach (int i in listViewLibrary.SelectedIndices)
                 {
-                    if (MessageBox.Show("Do you really want to delete the entry and all data for " +
-                            $"\"{_creaturesDisplayed[listViewLibrary.SelectedIndices[0]].name}\"" +
-                            $"{(listViewLibrary.SelectedIndices.Count > 1 ? " and " + (listViewLibrary.SelectedIndices.Count - 1) + " other creatures" : null)}?",
-                            "Delete Creature?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    var cr = _creaturesDisplayed[i];
+                    if (onlyOneSpecies)
                     {
-                        bool onlyOneSpecies = true;
-                        Species species = _creaturesDisplayed[listViewLibrary.SelectedIndices[0]].Species;
-                        foreach (int i in listViewLibrary.SelectedIndices)
-                        {
-                            var cr = _creaturesDisplayed[i];
-                            if (onlyOneSpecies)
-                            {
-                                if (species != cr.Species)
-                                    onlyOneSpecies = false;
-                            }
-                            _creatureCollection.DeleteCreature(cr);
-                        }
-                        _creatureCollection.RemoveUnlinkedPlaceholders();
-                        UpdateCreatureListings(onlyOneSpecies ? species : null);
-                        SetCollectionChanged(true, onlyOneSpecies ? species : null);
+                        if (species != cr.Species)
+                            onlyOneSpecies = false;
                     }
+                    _creatureCollection.DeleteCreature(cr);
                 }
+                _creatureCollection.RemoveUnlinkedPlaceholders();
+                UpdateCreatureListings(onlyOneSpecies ? species : null);
+                SetCollectionChanged(true, onlyOneSpecies ? species : null);
+
+                return;
             }
-            else if (tabControlMain.SelectedTab == tabPagePlayerTribes)
+
+            if (tabControlMain.SelectedTab == tabPagePlayerTribes)
             {
                 tribesControl1.RemoveSelected();
             }
@@ -248,32 +199,26 @@ namespace ARKBreedingStats
         /// <summary>
         /// Returns the wild levels from the extractor or tester in an array.
         /// </summary>
-        /// <param name="fromExtractor"></param>
-        /// <returns></returns>
         private int[] GetCurrentWildLevels(bool fromExtractor = true)
-        {
-            int[] levelsWild = new int[Stats.StatsCount];
-            for (int s = 0; s < Stats.StatsCount; s++)
-            {
-                levelsWild[s] = fromExtractor ? _statIOs[s].LevelWild : _testingIOs[s].LevelWild;
-            }
-            return levelsWild;
-        }
+            => (fromExtractor ? _statIOs : _testingIOs).Select(i => i.LevelWild).ToArray();
+
+        /// <summary>
+        /// Returns the mutated levels from the extractor or tester in an array.
+        /// </summary>
+        private int[] GetCurrentMutLevels(bool fromExtractor = true)
+            => (fromExtractor ? _statIOs : _testingIOs).Select(i => i.LevelMut).ToArray();
 
         /// <summary>
         /// Returns the domesticated levels from the extractor or tester in an array.
         /// </summary>
-        /// <param name="fromExtractor"></param>
-        /// <returns></returns>
         private int[] GetCurrentDomLevels(bool fromExtractor = true)
-        {
-            int[] levelsDom = new int[Stats.StatsCount];
-            for (int s = 0; s < Stats.StatsCount; s++)
-            {
-                levelsDom[s] = fromExtractor ? _statIOs[s].LevelDom : _testingIOs[s].LevelDom;
-            }
-            return levelsDom;
-        }
+            => (fromExtractor ? _statIOs : _testingIOs).Select(i => i.LevelDom).ToArray();
+
+        /// <summary>
+        /// Returns the breeding values from the extractor or tester in an array.
+        /// </summary>
+        private double[] GetCurrentBreedingValues(bool fromExtractor = true)
+            => (fromExtractor ? _statIOs : _testingIOs).Select(i => i.BreedingValue).ToArray();
 
         /// <summary>
         /// Call after the creatureCollection-object was created anew (e.g. after loading a file)
@@ -337,8 +282,19 @@ namespace ARKBreedingStats
         /// Calculates the top-stats in each species, sets the top-stat-flags in the creatures
         /// </summary>
         /// <param name="creatures">creatures to consider</param>
-        private void CalculateTopStats(List<Creature> creatures)
+        /// <param name="onlySpecies">If not null, it's assumed only creatures of this species are recalculated</param>
+        private void CalculateTopStats(List<Creature> creatures, Species onlySpecies = null)
         {
+            if (onlySpecies == null)
+            {
+                // if all creatures are recalculated, clear all
+                _topLevels.Clear();
+            }
+            else
+            {
+                _topLevels.Remove(onlySpecies);
+            }
+
             var filteredCreaturesHash = Properties.Settings.Default.useFiltersInTopStatCalculation ? new HashSet<Creature>(ApplyLibraryFilterSettings(creatures)) : null;
 
             var speciesCreaturesGroups = creatures.GroupBy(c => c.Species);
@@ -350,33 +306,43 @@ namespace ARKBreedingStats
                     continue;
                 var speciesCreatures = g.ToArray();
 
-                List<int> usedStatIndices = new List<int>(Stats.StatsCount);
-                List<int> usedAndConsideredStatIndices = new List<int>(Stats.StatsCount);
-                int[] bestStat = new int[Stats.StatsCount];
-                int[] lowestStat = new int[Stats.StatsCount];
+                List<int> usedStatIndices = new List<int>(8);
+                List<int> usedAndConsideredStatIndices = new List<int>();
+                var highestLevels = new int[Stats.StatsCount];
+                var lowestLevels = new int[Stats.StatsCount];
+                var highestMutationLevels = new int[Stats.StatsCount];
+                var lowestMutationLevels = new int[Stats.StatsCount];
+                var considerAsTopStat = StatsOptionsConsiderTopStats.GetStatsOptions(species).StatOptions;
                 var statWeights = breedingPlan1.StatWeighting.GetWeightingForSpecies(species);
                 for (int s = 0; s < Stats.StatsCount; s++)
                 {
-                    bestStat[s] = -1;
-                    lowestStat[s] = -1;
+                    highestLevels[s] = -1;
+                    lowestLevels[s] = -1;
                     if (species.UsesStat(s))
                     {
                         usedStatIndices.Add(s);
-                        if (_considerStatHighlight[s])
+                        if (considerAsTopStat[s].ConsiderStat)
                             usedAndConsideredStatIndices.Add(s);
                     }
                 }
-                List<Creature>[] bestCreatures = new List<Creature>[Stats.StatsCount];
-                int usedStatsCount = usedStatIndices.Count;
-                int usedAndConsideredStatsCount = usedAndConsideredStatIndices.Count;
+                List<Creature>[] bestCreaturesWildLevels = new List<Creature>[Stats.StatsCount];
+                List<Creature>[] bestCreaturesMutatedLevels = new List<Creature>[Stats.StatsCount];
+                var statPreferences = new StatWeighting.StatValuePreference[Stats.StatsCount];
+                for (int s = 0; s < Stats.StatsCount; s++)
+                {
+                    var statWeight = statWeights.Item1?[s] ?? 1;
+                    statPreferences[s] = statWeight > 0 ? StatWeighting.StatValuePreference.High :
+                        statWeight < 0 ? StatWeighting.StatValuePreference.Low :
+                        StatWeighting.StatValuePreference.Indifferent;
+                }
 
                 foreach (var c in speciesCreatures)
                 {
                     if (c.flags.HasFlag(CreatureFlags.Placeholder))
                         continue;
 
-                    // reset topBreeding stats for this creature
-                    c.topBreedingStats = new bool[Stats.StatsCount];
+                    c.ResetTopStats();
+                    c.ResetTopMutationStats();
                     c.topBreedingCreature = false;
 
                     if (
@@ -392,47 +358,113 @@ namespace ARKBreedingStats
                         continue;
                     }
 
-                    for (int s = 0; s < usedStatsCount; s++)
+                    foreach (var s in usedStatIndices)
                     {
-                        int si = usedStatIndices[s];
-                        if (c.levelsWild[si] != -1 && (lowestStat[si] == -1 || c.levelsWild[si] < lowestStat[si]))
+                        if (c.levelsWild[s] >= 0)
                         {
-                            lowestStat[si] = c.levelsWild[si];
-                        }
-
-                        if (c.levelsWild[si] <= 0) continue;
-
-                        if (c.levelsWild[si] == bestStat[si])
-                        {
-                            bestCreatures[si].Add(c);
-                        }
-                        else if (c.levelsWild[si] > bestStat[si])
-                        {
-                            // check if highest stats are only counted if odd or even
-                            if ((statWeights.Item2?[s] ?? 0) == 0 // even/odd doesn't matter
-                                || (statWeights.Item2[s] == 1 && c.levelsWild[si] % 2 == 1)
-                                || (statWeights.Item2[s] == 2 && c.levelsWild[si] % 2 == 0)
-                               )
+                            if (statPreferences[s] == StatWeighting.StatValuePreference.Low)
                             {
-                                bestCreatures[si] = new List<Creature> { c };
-                                bestStat[si] = c.levelsWild[si];
+                                if (lowestLevels[s] == -1 || c.levelsWild[s] < lowestLevels[s])
+                                {
+                                    bestCreaturesWildLevels[s] = new List<Creature> { c };
+                                    lowestLevels[s] = c.levelsWild[s];
+                                }
+                                else if (c.levelsWild[s] == lowestLevels[s])
+                                {
+                                    bestCreaturesWildLevels[s].Add(c);
+                                }
+
+                                if (c.levelsWild[s] > highestLevels[s])
+                                {
+                                    highestLevels[s] = c.levelsWild[s];
+                                }
+                            }
+                            else if (statPreferences[s] == StatWeighting.StatValuePreference.High)
+                            {
+                                if (c.levelsWild[s] > highestLevels[s])
+                                {
+                                    // creature has a higher level than the current highest level
+                                    // check if highest stats are only counted if odd or even
+                                    if ((statWeights.Item2?[s] ?? StatWeighting.StatValueEvenOdd.Indifferent) == StatWeighting.StatValueEvenOdd.Indifferent // even/odd doesn't matter
+                                        || (statWeights.Item2[s] == StatWeighting.StatValueEvenOdd.Odd && c.levelsWild[s] % 2 == 1)
+                                        || (statWeights.Item2[s] == StatWeighting.StatValueEvenOdd.Even && c.levelsWild[s] % 2 == 0)
+                                       )
+                                    {
+                                        bestCreaturesWildLevels[s] = new List<Creature> { c };
+                                        highestLevels[s] = c.levelsWild[s];
+                                    }
+                                }
+                                else if (c.levelsWild[s] == highestLevels[s])
+                                {
+                                    bestCreaturesWildLevels[s].Add(c);
+                                }
+                                if (lowestLevels[s] == -1 || c.levelsWild[s] < lowestLevels[s])
+                                {
+                                    lowestLevels[s] = c.levelsWild[s];
+                                }
+                            }
+                        }
+
+                        if (c.levelsMutated != null && c.levelsMutated[s] >= 0)
+                        {
+                            if (statPreferences[s] == StatWeighting.StatValuePreference.Low)
+                            {
+                                if (c.levelsMutated[s] < lowestMutationLevels[s])
+                                {
+                                    bestCreaturesMutatedLevels[s] = new List<Creature> { c };
+                                    lowestMutationLevels[s] = c.levelsMutated[s];
+                                }
+                                else if (c.levelsMutated[s] == lowestMutationLevels[s])
+                                {
+                                    if (bestCreaturesMutatedLevels[s] == null)
+                                        bestCreaturesMutatedLevels[s] = new List<Creature> { c };
+                                    else bestCreaturesMutatedLevels[s].Add(c);
+                                }
+                            }
+                            else if (statPreferences[s] == StatWeighting.StatValuePreference.High
+                                     && c.levelsMutated[s] > 0)
+                            {
+                                if (c.levelsMutated[s] > 0 && c.levelsMutated[s] > highestMutationLevels[s])
+                                {
+                                    bestCreaturesMutatedLevels[s] = new List<Creature> { c };
+                                    highestMutationLevels[s] = c.levelsMutated[s];
+                                }
+                                else if (c.levelsMutated[s] == highestMutationLevels[s])
+                                {
+                                    bestCreaturesMutatedLevels[s].Add(c);
+                                }
                             }
                         }
                     }
                 }
 
-                _topLevels[species] = bestStat;
-                _lowestLevels[species] = lowestStat;
+                var topLevels = new TopLevels();
+                _topLevels[species] = topLevels;
+
+                topLevels.WildLevelsHighest = highestLevels;
+                topLevels.WildLevelsLowest = lowestLevels;
+                topLevels.MutationLevelsHighest = highestMutationLevels;
+                topLevels.MutationLevelsLowest = lowestMutationLevels;
 
                 // bestStat and bestCreatures now contain the best stats and creatures for each stat.
 
                 // set topness of each creature (== mean wildLevels/mean top wildLevels in permille)
                 int sumTopLevels = 0;
-                for (int s = 0; s < usedAndConsideredStatsCount; s++)
+                foreach (var s in usedAndConsideredStatIndices)
                 {
-                    int si = usedAndConsideredStatIndices[s];
-                    if (bestStat[si] > 0)
-                        sumTopLevels += bestStat[si];
+                    switch (statPreferences[s])
+                    {
+                        case StatWeighting.StatValuePreference.Indifferent:
+                            continue;
+                        case StatWeighting.StatValuePreference.Low:
+                            if (highestLevels[s] > 0 && lowestLevels[s] != 0)
+                                sumTopLevels += highestLevels[s] - lowestLevels[s];
+                            break;
+                        case StatWeighting.StatValuePreference.High:
+                            if (highestLevels[s] > 0)
+                                sumTopLevels += highestLevels[s];
+                            break;
+                    }
                 }
                 if (sumTopLevels > 0)
                 {
@@ -440,10 +472,18 @@ namespace ARKBreedingStats
                     {
                         if (c.levelsWild == null || c.flags.HasFlag(CreatureFlags.Placeholder)) continue;
                         int sumCreatureLevels = 0;
-                        for (int s = 0; s < usedAndConsideredStatsCount; s++)
+                        foreach (var s in usedAndConsideredStatIndices)
                         {
-                            int si = usedAndConsideredStatIndices[s];
-                            sumCreatureLevels += c.levelsWild[si] > 0 ? c.levelsWild[si] : 0;
+                            switch (statPreferences[s])
+                            {
+                                case StatWeighting.StatValuePreference.Low:
+                                    if (c.levelsWild[s] >= 0)
+                                        sumCreatureLevels += highestLevels[s] - c.levelsWild[s];
+                                    break;
+                                case StatWeighting.StatValuePreference.High:
+                                    sumCreatureLevels += c.levelsWild[s] > 0 ? c.levelsWild[s] : 0;
+                                    break;
+                            }
                         }
                         c.topness = (short)(1000 * sumCreatureLevels / sumTopLevels);
                     }
@@ -452,54 +492,59 @@ namespace ARKBreedingStats
                 // if any male is in more than 1 category, remove any male from the topBreedingCreatures that is not top in at least 2 categories himself
                 for (int s = 0; s < Stats.StatsCount; s++)
                 {
-                    if (bestCreatures[s] == null || bestCreatures[s].Count == 0)
+                    if (bestCreaturesMutatedLevels[s] != null)
                     {
-                        continue; // no creature has levelups in this stat or the stat is not used for this species
+                        foreach (var c in bestCreaturesMutatedLevels[s])
+                            c.topBreedingCreature = true;
                     }
 
-                    var crCount = bestCreatures[s].Count;
+                    if (bestCreaturesWildLevels[s] == null || bestCreaturesWildLevels[s].Count == 0)
+                        continue; // no creature has levelups in this stat or the stat is not used for this species
+
+                    var crCount = bestCreaturesWildLevels[s].Count;
                     if (crCount == 1)
                     {
-                        bestCreatures[s][0].topBreedingCreature = true;
+                        bestCreaturesWildLevels[s][0].topBreedingCreature = true;
                         continue;
                     }
 
-                    for (int c = 0; c < crCount; c++)
+                    foreach (var currentCreature in bestCreaturesWildLevels[s])
                     {
-                        bestCreatures[s][c].topBreedingCreature = true;
-                        if (bestCreatures[s][c].sex != Sex.Male)
+                        currentCreature.topBreedingCreature = true;
+                        if (currentCreature.sex != Sex.Male)
                             continue;
 
-                        Creature currentCreature = bestCreatures[s][c];
                         // check how many best stat the male has
                         int maxval = 0;
                         for (int cs = 0; cs < Stats.StatsCount; cs++)
                         {
-                            if (currentCreature.levelsWild[cs] == bestStat[cs])
+                            if (currentCreature.levelsWild[cs] == highestLevels[cs])
                                 maxval++;
                         }
 
                         if (maxval > 1)
                         {
                             // check now if the other males have only 1.
-                            for (int oc = 0; oc < crCount; oc++)
+                            foreach (var otherMale in bestCreaturesWildLevels[s])
                             {
-                                if (bestCreatures[s][oc].sex != Sex.Male)
+                                if (otherMale.sex != Sex.Male
+                                    || currentCreature.Equals(otherMale))
                                     continue;
-
-                                if (oc == c)
-                                    continue;
-
-                                Creature otherMale = bestCreatures[s][oc];
 
                                 int othermaxval = 0;
                                 for (int ocs = 0; ocs < Stats.StatsCount; ocs++)
                                 {
-                                    if (otherMale.levelsWild[ocs] == bestStat[ocs])
+                                    if (otherMale.levelsWild[ocs] == highestLevels[ocs])
                                         othermaxval++;
+                                    if (otherMale.IsTopMutationStat(ocs))
+                                    {
+                                        // if this creature has top mutation levels, don't remove it from breeding pool
+                                        othermaxval = 99;
+                                        break;
+                                    }
                                 }
                                 if (othermaxval == 1)
-                                    bestCreatures[s][oc].topBreedingCreature = false;
+                                    otherMale.topBreedingCreature = false;
                             }
                         }
                     }
@@ -508,24 +553,38 @@ namespace ARKBreedingStats
                 // now we have a list of all candidates for breeding. Iterate on stats.
                 for (int s = 0; s < Stats.StatsCount; s++)
                 {
-                    if (bestCreatures[s] != null)
+                    if (bestCreaturesWildLevels[s] != null)
                     {
-                        for (int c = 0; c < bestCreatures[s].Count; c++)
-                        {
-                            // flag topStats in creatures
-                            bestCreatures[s][c].topBreedingStats[s] = true;
-                        }
+                        foreach (var c in bestCreaturesWildLevels[s])
+                            c.SetTopStat(s, true);
+                    }
+
+                    if (bestCreaturesMutatedLevels[s] != null)
+                    {
+                        foreach (var c in bestCreaturesMutatedLevels[s])
+                            c.SetTopMutationStat(s, true);
                     }
                 }
             }
 
             bool considerWastedStatsForTopCreatures = Properties.Settings.Default.ConsiderWastedStatsForTopCreatures;
+
+            var considerTopStats = new Dictionary<Species, bool[]>();
             foreach (Creature c in creatures)
-                c.SetTopStatCount(_considerStatHighlight, considerWastedStatsForTopCreatures);
+            {
+                if (c.Species == null || c.flags.HasFlag(CreatureFlags.Placeholder))
+                    continue;
+                if (!considerTopStats.TryGetValue(c.Species, out var consideredTopStats))
+                {
+                    consideredTopStats = StatsOptionsConsiderTopStats.GetStatsOptions(c.Species).StatOptions.Select(si => si.ConsiderStat).ToArray();
+                    considerTopStats[c.Species] = consideredTopStats;
+                }
+                c.SetTopStatCount(consideredTopStats, considerWastedStatsForTopCreatures);
+            }
 
             var selectedSpecies = speciesSelector1.SelectedSpecies;
             if (selectedSpecies != null)
-                hatching1.SetSpecies(selectedSpecies, _topLevels.TryGetValue(selectedSpecies, out var tl) ? tl : null, _lowestLevels.TryGetValue(selectedSpecies, out var ll) ? ll : null);
+                hatching1.SetSpecies(selectedSpecies, _topLevels.TryGetValue(selectedSpecies, out var tl) ? tl : null);
         }
 
         /// <summary>
@@ -533,8 +592,6 @@ namespace ARKBreedingStats
         /// </summary>
         private bool UpdateParents(IEnumerable<Creature> creatures)
         {
-            List<Creature> placeholderAncestors = new List<Creature>();
-
             Dictionary<Guid, Creature> creatureGuids;
 
             bool duplicatesWereRemoved = false;
@@ -671,6 +728,8 @@ namespace ARKBreedingStats
                 duplicatesWereRemoved = true;
             }
 
+            var placeholderAncestors = new Dictionary<Guid, Creature>();
+
             foreach (Creature c in creatures)
             {
                 if (c.motherGuid == Guid.Empty && c.fatherGuid == Guid.Empty) continue;
@@ -689,7 +748,7 @@ namespace ARKBreedingStats
                 c.Father = father;
             }
 
-            _creatureCollection.creatures.AddRange(placeholderAncestors);
+            _creatureCollection.creatures.AddRange(placeholderAncestors.Values);
 
             return duplicatesWereRemoved;
         }
@@ -704,13 +763,12 @@ namespace ARKBreedingStats
         /// <param name="name">Name of the creature to create</param>
         /// <param name="sex">Sex of the creature to create</param>
         /// <returns></returns>
-        private Creature EnsurePlaceholderCreature(List<Creature> placeholders, Creature tmpl, Guid guid, string name, Sex sex)
+        private Creature EnsurePlaceholderCreature(Dictionary<Guid, Creature> placeholders, Creature tmpl, Guid guid, string name, Sex sex)
         {
             if (guid == Guid.Empty)
                 return null;
-            var existing = placeholders.FirstOrDefault(ph => ph.guid == guid);
-            if (existing != null)
-                return existing;
+            if (placeholders.TryGetValue(guid, out var existingCreature))
+                return existingCreature;
 
             if (string.IsNullOrEmpty(name))
                 name = (sex == Sex.Female ? "Mother" : "Father") + " of " + tmpl.name;
@@ -722,7 +780,7 @@ namespace ARKBreedingStats
                 flags = CreatureFlags.Placeholder
             };
 
-            placeholders.Add(creature);
+            placeholders.Add(creature.guid, creature);
 
             return creature;
         }
@@ -749,8 +807,8 @@ namespace ARKBreedingStats
         private void ShowCreaturesInListView(IEnumerable<Creature> creatures)
         {
             listViewLibrary.BeginUpdate();
-            IEnumerable<Creature> sorted = _creatureListSorter.DoSort(creatures, orderBySpecies: Properties.Settings.Default.LibraryGroupBySpecies ? _speciesInLibraryOrdered : null);
-            _creaturesDisplayed = Properties.Settings.Default.LibraryGroupBySpecies ? InsertDividers(sorted) : sorted.ToArray();
+            var sorted = _creatureListSorter.DoSort(creatures, orderBySpecies: Properties.Settings.Default.LibraryGroupBySpecies ? _speciesInLibraryOrdered : null);
+            _creaturesDisplayed = Properties.Settings.Default.LibraryGroupBySpecies ? InsertDividers(sorted) : sorted;
             listViewLibrary.VirtualListSize = _creaturesDisplayed.Length;
             _libraryListViewItemCache = null;
             listViewLibrary.EndUpdate();
@@ -769,16 +827,15 @@ namespace ARKBreedingStats
             }
         }
 
-        private Creature[] InsertDividers(IEnumerable<Creature> creatures)
+        private Creature[] InsertDividers(IList<Creature> creatures)
         {
-            var enumerable = creatures.ToList();
-            if (!enumerable.Any())
+            if (!creatures.Any())
             {
                 return Array.Empty<Creature>();
             }
             List<Creature> result = new List<Creature>();
             Species lastSpecies = null;
-            foreach (Creature c in enumerable)
+            foreach (Creature c in creatures)
             {
                 if (lastSpecies == null || c.Species != lastSpecies)
                 {
@@ -803,7 +860,8 @@ namespace ARKBreedingStats
         private void ListViewLibrary_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             // check to see if the requested item is currently in the cache
-            if (_libraryListViewItemCache != null && e.ItemIndex >= _libraryItemCacheFirstIndex && e.ItemIndex < _libraryItemCacheFirstIndex + _libraryListViewItemCache.Length)
+            if (_libraryListViewItemCache != null && e.ItemIndex >= _libraryItemCacheFirstIndex &&
+                e.ItemIndex < _libraryItemCacheFirstIndex + _libraryListViewItemCache.Length)
             {
                 // get the ListViewItem from the cache instead of making a new one.
                 e.Item = _libraryListViewItemCache[e.ItemIndex - _libraryItemCacheFirstIndex];
@@ -811,7 +869,14 @@ namespace ARKBreedingStats
             else if (_creaturesDisplayed?.Length > e.ItemIndex)
             {
                 // create item not available in the cache
-                e.Item = CreateCreatureLvItem(_creaturesDisplayed[e.ItemIndex]);
+                e.Item = CreateCreatureLvItem(_creaturesDisplayed[e.ItemIndex],
+                    Properties.Settings.Default.DisplayLibraryCreatureIndex);
+            }
+            else
+            {
+                throw new Exception($"ListViewItem could not be retrieved. ItemIndex: {e.ItemIndex}."
+                                    + $"_creaturesDisplayedLength: {_creaturesDisplayed?.Length}."
+                                    + $"_libraryListViewItemCacheLength: {_libraryListViewItemCache?.Length}");
             }
         }
 
@@ -831,10 +896,11 @@ namespace ARKBreedingStats
             var length = indexEnd - indexStart + 1;
             _libraryListViewItemCache = new ListViewItem[length];
 
+            var displayIndex = Properties.Settings.Default.DisplayLibraryCreatureIndex;
             //Fill the cache with the appropriate ListViewItems.
             for (int i = 0; i < length; i++)
             {
-                _libraryListViewItemCache[i] = CreateCreatureLvItem(_creaturesDisplayed[i + _libraryItemCacheFirstIndex]);
+                _libraryListViewItemCache[i] = CreateCreatureLvItem(_creaturesDisplayed[i + _libraryItemCacheFirstIndex], displayIndex);
             }
         }
 
@@ -851,11 +917,16 @@ namespace ARKBreedingStats
             {
                 e.DrawDefault = false;
                 var rect = e.Bounds;
+                var count = 0;
+                if (creature.Species.blueprintPath != null)
+                    _creatureCollection.GetCreatureCountBySpecies()
+                        .TryGetValue(creature.Species.blueprintPath, out count);
+                var displayedText = creature.Species.DescriptiveNameAndMod + " (" + count + ")";
                 float middle = (rect.Top + rect.Bottom) / 2f;
                 e.Graphics.FillRectangle(Brushes.Blue, rect.Left, middle, rect.Width - 3, 1);
-                SizeF strSize = e.Graphics.MeasureString(creature.Species.DescriptiveNameAndMod, e.Item.Font);
+                SizeF strSize = e.Graphics.MeasureString(displayedText, e.Item.Font);
                 e.Graphics.FillRectangle(new SolidBrush(e.Item.BackColor), rect.Left, rect.Top, strSize.Width + 15, rect.Height);
-                e.Graphics.DrawString(creature.Species.DescriptiveNameAndMod, e.Item.Font, Brushes.Black, rect.Left + 10, rect.Top + ((rect.Height - strSize.Height) / 2f));
+                e.Graphics.DrawString(displayedText, e.Item.Font, Brushes.Black, rect.Left + 10, rect.Top + ((rect.Height - strSize.Height) / 2f));
             }
         }
 
@@ -884,7 +955,7 @@ namespace ARKBreedingStats
             // if creatureStatus (available/dead) changed, recalculate topStats (dead creatures are not considered there)
             if (creatureStatusChanged)
             {
-                CalculateTopStats(_creatureCollection.creatures.Where(c => c.Species == cr.Species).ToList());
+                CalculateTopStats(_creatureCollection.creatures.Where(c => c.Species == cr.Species).ToList(), cr.Species);
                 FilterLibRecalculate();
                 UpdateStatusBar();
             }
@@ -960,7 +1031,7 @@ namespace ARKBreedingStats
                 }
             }
 
-            _reactOnCreatureSelectionChange = true; // make sure it reacts again even if the previously creature is not visible anymore
+            _reactOnCreatureSelectionChange = true; // make sure it reacts again even if the previous creature is not visible anymore
         }
 
         /// <summary>
@@ -989,11 +1060,25 @@ namespace ARKBreedingStats
             var cacheIndex = index - _libraryItemCacheFirstIndex;
             if (cacheIndex >= 0 && cacheIndex < _libraryListViewItemCache.Length)
             {
-                _libraryListViewItemCache[cacheIndex] = CreateCreatureLvItem(creature);
+                _libraryListViewItemCache[cacheIndex] = CreateCreatureLvItem(creature, Properties.Settings.Default.DisplayLibraryCreatureIndex);
             }
         }
 
-        private ListViewItem CreateCreatureLvItem(Creature cr)
+        private const int ColumnIndexName = 0;
+        private const int ColumnIndexSex = 4;
+        private const int ColumnIndexAdded = 5;
+        private const int ColumnIndexTopness = 6;
+        private const int ColumnIndexTopStats = 7;
+        private const int ColumnIndexGeneration = 8;
+        private const int ColumnIndexWildLevel = 9;
+        private const int ColumnIndexMutations = 10;
+        private const int ColumnIndexCountdown = 11;
+        private const int ColumnIndexFirstStat = 12;
+        private const int ColumnIndexFirstColor = 36;
+        private const int ColumnIndexPostColor = 42;
+        private const int ColumnIndexMutagenApplied = 46;
+
+        private ListViewItem CreateCreatureLvItem(Creature cr, bool displayIndex = false)
         {
             if (cr.flags.HasFlag(CreatureFlags.Divider))
             {
@@ -1003,87 +1088,110 @@ namespace ARKBreedingStats
                 };
             }
 
-            double colorFactor = 100d / _creatureCollection.maxChartLevel;
-
-            string[] subItems = new[]
-                    {
-                            cr.name,
-                            cr.owner,
-                            cr.note,
-                            cr.server,
-                            Utils.SexSymbol(cr.sex),
-                            cr.domesticatedAt?.ToString("yyyy'-'MM'-'dd HH':'mm':'ss") ?? string.Empty,
-                            (cr.topness / 10).ToString(),
-                            cr.topStatsCount.ToString(),
-                            cr.generation.ToString(),
-                            cr.levelFound.ToString(),
-                            cr.Mutations.ToString(),
-                            DisplayedCreatureCountdown(cr, out var cooldownForeColor, out var cooldownBackColor)
+            string[] subItems = new[] {
+                        (displayIndex ? cr.ListIndex + " - " : string.Empty) +
+                        cr.name,
+                        cr.owner,
+                        cr.note,
+                        cr.server,
+                        Utils.SexSymbol(cr.sex),
+                        cr.domesticatedAt?.ToString("yyyy'-'MM'-'dd HH':'mm':'ss") ?? string.Empty,
+                        (cr.topness / 10).ToString(),
+                        cr.topStatsConsideredCount.ToString(),
+                        cr.generation.ToString(),
+                        cr.levelFound.ToString(),
+                        cr.Mutations.ToString(),
+                        DisplayedCreatureCountdown(cr, out var cooldownForeColor, out var cooldownBackColor)
                     }
-                    .Concat(cr.levelsWild.Select(x => x.ToString()).ToArray())
+                    .Concat(cr.levelsWild.Select(l => l.ToString()))
+                    .Concat((cr.levelsMutated ?? new int[Stats.StatsCount]).Select(l => l.ToString()))
+                    .Concat(Properties.Settings.Default.showColorsInLibrary
+                        ? cr.colors.Select(cl => cl.ToString())
+                        : new string[Ark.ColorRegionCount]
+                        )
+                    .Concat(new[] {
+                        cr.Species.DescriptiveNameAndMod,
+                        cr.Status.ToString(),
+                        cr.tribe,
+                        Utils.StatusSymbol(cr.Status, string.Empty),
+                        (cr.flags & CreatureFlags.MutagenApplied) != 0 ? "M" : string.Empty
+                    })
                     .ToArray();
 
-            if (Properties.Settings.Default.showColorsInLibrary)
-                subItems = subItems.Concat(cr.colors.Select(cl => cl.ToString()).ToArray()).ToArray();
-            else
-                subItems = subItems.Concat(new string[6]).ToArray();
-
-            // add the species and status and tribe
-            subItems = subItems.Concat(new[] {
-                cr.Species.DescriptiveNameAndMod,
-                cr.Status.ToString(),
-                cr.tribe,
-                Utils.StatusSymbol(cr.Status, string.Empty)
-            }).ToArray();
-
             // check if groups for species are displayed
-            ListViewItem lvi = new ListViewItem(subItems);
+            ListViewItem lvi = new ListViewItem(subItems) { Tag = cr };
+
+            // apply colors to the subItems
+            var displayZeroMutationLevels = Properties.Settings.Default.LibraryDisplayZeroMutationLevels;
+
+            var statOptionsColors = StatsOptionsLevelColors.GetStatsOptions(cr.Species).StatOptions;
+            var statOptionsTopStats = StatsOptionsConsiderTopStats.GetStatsOptions(cr.Species).StatOptions;
 
             for (int s = 0; s < Stats.StatsCount; s++)
             {
                 if (cr.valuesDom[s] == 0)
                 {
                     // not used
-                    lvi.SubItems[s + 12].ForeColor = Color.White;
-                    lvi.SubItems[s + 12].BackColor = Color.White;
+                    lvi.SubItems[ColumnIndexFirstStat + s].ForeColor = Color.White;
+                    lvi.SubItems[ColumnIndexFirstStat + s].BackColor = Color.White;
                 }
                 else if (cr.levelsWild[s] < 0)
                 {
                     // unknown level 
-                    lvi.SubItems[s + 12].ForeColor = Color.WhiteSmoke;
-                    lvi.SubItems[s + 12].BackColor = Color.White;
+                    lvi.SubItems[ColumnIndexFirstStat + s].ForeColor = Color.WhiteSmoke;
+                    lvi.SubItems[ColumnIndexFirstStat + s].BackColor = Color.White;
                 }
                 else
-                    lvi.SubItems[s + 12].BackColor = Utils.GetColorFromPercent((int)(cr.levelsWild[s] * (s == Stats.Torpidity ? colorFactor / 7 : colorFactor)), // TODO set factor to number of other stats (flyers have 6, Gacha has 8?)
-                            _considerStatHighlight[s] ? cr.topBreedingStats[s] ? 0.2 : 0.7 : 0.93);
+                {
+                    var backColor = Utils.AdjustColorLight(statOptionsColors[s].GetLevelColor(cr.levelsWild[s]),
+                        statOptionsTopStats[s].ConsiderStat ? cr.IsTopStat(s) ? 0.2 : 0.75 : 0.93);
+                    lvi.SubItems[ColumnIndexFirstStat + s].SetBackColorAndAccordingForeColor(backColor);
+                }
+
+                // mutated levels
+                if (cr.levelsMutated == null || (!displayZeroMutationLevels && cr.levelsMutated[s] == 0))
+                {
+                    lvi.SubItems[ColumnIndexFirstStat + Stats.StatsCount + s].ForeColor = Color.White;
+                    lvi.SubItems[ColumnIndexFirstStat + Stats.StatsCount + s].BackColor = Color.White;
+                }
+                else
+                {
+                    var backColor = Utils.AdjustColorLight(statOptionsColors[s].GetLevelColor(cr.levelsWild[s], false, true),
+                        statOptionsTopStats[s].ConsiderStat ? cr.IsTopMutationStat(s) ? 0.2 : 0.75 : 0.93);
+                    lvi.SubItems[ColumnIndexFirstStat + Stats.StatsCount + s].SetBackColorAndAccordingForeColor(backColor);
+                }
             }
-            lvi.SubItems[4].BackColor = cr.flags.HasFlag(CreatureFlags.Neutered) ? Color.FromArgb(220, 220, 220) :
+            lvi.SubItems[ColumnIndexSex].BackColor = cr.flags.HasFlag(CreatureFlags.Neutered) ? Color.FromArgb(220, 220, 220) :
                     cr.sex == Sex.Female ? Color.FromArgb(255, 230, 255) :
                     cr.sex == Sex.Male ? Color.FromArgb(220, 235, 255) : SystemColors.Window;
 
-            if (cr.Status == CreatureStatus.Dead)
+            switch (cr.Status)
             {
-                lvi.SubItems[0].ForeColor = SystemColors.GrayText;
-                lvi.BackColor = Color.FromArgb(255, 250, 240);
-            }
-            else if (cr.Status == CreatureStatus.Unavailable)
-            {
-                lvi.SubItems[0].ForeColor = SystemColors.GrayText;
-            }
-            else if (cr.Status == CreatureStatus.Obelisk)
-            {
-                lvi.SubItems[0].ForeColor = Color.DarkBlue;
-            }
-            else if (_creatureCollection.maxServerLevel > 0
-                    && cr.levelsWild[Stats.Torpidity] + 1 + _creatureCollection.maxDomLevel > _creatureCollection.maxServerLevel + (cr.Species.name.StartsWith("X-") || cr.Species.name.StartsWith("R-") ? 50 : 0))
-            {
-                lvi.SubItems[0].ForeColor = Color.OrangeRed; // this creature may pass the max server level and could be deleted by the game
+                case CreatureStatus.Dead:
+                    lvi.SubItems[ColumnIndexName].ForeColor = SystemColors.GrayText;
+                    lvi.BackColor = Color.FromArgb(255, 250, 240);
+                    break;
+                case CreatureStatus.Unavailable:
+                    lvi.SubItems[ColumnIndexName].ForeColor = SystemColors.GrayText;
+                    break;
+                case CreatureStatus.Obelisk:
+                    lvi.SubItems[ColumnIndexName].ForeColor = Color.DarkBlue;
+                    break;
+                default:
+                    {
+                        if (_creatureCollection.maxServerLevel > 0
+                            && cr.levelsWild[Stats.Torpidity] + 1 + _creatureCollection.maxDomLevel > _creatureCollection.maxServerLevel + (cr.Species.name.StartsWith("X-") || cr.Species.name.StartsWith("R-") ? 50 : 0))
+                        {
+                            lvi.SubItems[ColumnIndexName].ForeColor = Color.OrangeRed; // this creature may pass the max server level and could be deleted by the game
+                        }
+                        break;
+                    }
             }
 
             lvi.UseItemStyleForSubItems = false;
 
             // color for top-stats-nr
-            if (cr.topStatsCount > 0)
+            if (cr.topStatsConsideredCount > 0)
             {
                 if (Properties.Settings.Default.LibraryHighlightTopCreatures && cr.topBreedingCreature)
                 {
@@ -1092,64 +1200,63 @@ namespace ARKBreedingStats
                     else
                         lvi.BackColor = Color.LightGreen;
                 }
-                lvi.SubItems[7].BackColor = Utils.GetColorFromPercent(cr.topStatsCount * 8 + 44, 0.7);
+                lvi.SubItems[ColumnIndexTopStats].BackColor = Utils.GetColorFromPercent(cr.topStatsConsideredCount * 8 + 44, 0.7);
             }
             else
             {
-                lvi.SubItems[7].ForeColor = Color.LightGray;
+                lvi.SubItems[ColumnIndexTopStats].ForeColor = Color.LightGray;
             }
 
             // color for timestamp domesticated
             if (cr.domesticatedAt == null || cr.domesticatedAt.Value.Year < 2015)
             {
-                lvi.SubItems[5].Text = "n/a";
-                lvi.SubItems[5].ForeColor = Color.LightGray;
+                lvi.SubItems[ColumnIndexAdded].Text = "n/a";
+                lvi.SubItems[ColumnIndexAdded].ForeColor = Color.LightGray;
             }
 
             // color for topness
-            lvi.SubItems[6].BackColor = Utils.GetColorFromPercent(cr.topness / 5 - 100, 0.8); // topness is in permille. gradient from 50-100
+            lvi.SubItems[ColumnIndexTopness].BackColor = Utils.GetColorFromPercent(cr.topness / 5 - 100, 0.8); // topness is in permille. gradient from 50-100
 
             // color for generation
             if (cr.generation == 0)
-                lvi.SubItems[8].ForeColor = Color.LightGray;
+                lvi.SubItems[ColumnIndexGeneration].ForeColor = Color.LightGray;
 
             // color of WildLevelColumn
             if (cr.levelFound == 0)
-                lvi.SubItems[9].ForeColor = Color.LightGray;
+                lvi.SubItems[ColumnIndexWildLevel].ForeColor = Color.LightGray;
 
-            // color for mutation
+            // color for mutations counter
             if (cr.Mutations > 0)
             {
-                if (cr.Mutations > 19)
-                    lvi.SubItems[10].BackColor = Utils.MutationColorOverLimit;
+                if (cr.Mutations < Ark.MutationPossibleWithLessThan)
+                    lvi.SubItems[ColumnIndexMutations].BackColor = Utils.MutationColor;
                 else
-                    lvi.SubItems[10].BackColor = Utils.MutationColor;
+                    lvi.SubItems[ColumnIndexMutations].BackColor = Utils.MutationColorOverLimit;
             }
             else
-                lvi.SubItems[10].ForeColor = Color.LightGray;
+                lvi.SubItems[ColumnIndexMutations].ForeColor = Color.LightGray;
 
             // color for cooldown
-            lvi.SubItems[11].ForeColor = cooldownForeColor;
-            lvi.SubItems[11].BackColor = cooldownBackColor;
+            lvi.SubItems[ColumnIndexCountdown].ForeColor = cooldownForeColor;
+            lvi.SubItems[ColumnIndexCountdown].BackColor = cooldownBackColor;
 
             if (Properties.Settings.Default.showColorsInLibrary)
             {
                 // color for colors
-                for (int cl = 0; cl < 6; cl++)
+                for (int cl = 0; cl < Ark.ColorRegionCount; cl++)
                 {
                     if (cr.colors[cl] != 0)
                     {
-                        lvi.SubItems[24 + cl].BackColor = CreatureColors.CreatureColor(cr.colors[cl]);
-                        lvi.SubItems[24 + cl].ForeColor = Utils.ForeColor(lvi.SubItems[24 + cl].BackColor);
+                        lvi.SubItems[ColumnIndexFirstColor + cl].BackColor = CreatureColors.CreatureColor(cr.colors[cl]);
+                        lvi.SubItems[ColumnIndexFirstColor + cl].ForeColor = Utils.ForeColor(lvi.SubItems[ColumnIndexFirstColor + cl].BackColor);
                     }
                     else
                     {
-                        lvi.SubItems[24 + cl].ForeColor = cr.Species.EnabledColorRegions[cl] ? Color.LightGray : Color.White;
+                        lvi.SubItems[ColumnIndexFirstColor + cl].ForeColor = cr.Species.EnabledColorRegions[cl] ? Color.LightGray : Color.White;
                     }
                 }
             }
 
-            lvi.Tag = cr;
             return lvi;
         }
 
@@ -1239,8 +1346,8 @@ namespace ARKBreedingStats
             foreach (int i in listViewLibrary.SelectedIndices)
                 selectedCreatures.Add(_creaturesDisplayed[i]);
 
-            IEnumerable<Creature> sorted = _creatureListSorter.DoSort(_creaturesDisplayed.Where(c => !c.flags.HasFlag(CreatureFlags.Divider)), columnIndex, Properties.Settings.Default.LibraryGroupBySpecies ? _speciesInLibraryOrdered : null);
-            _creaturesDisplayed = Properties.Settings.Default.LibraryGroupBySpecies ? InsertDividers(sorted) : sorted.ToArray();
+            var sorted = _creatureListSorter.DoSort(_creaturesDisplayed.Where(c => !c.flags.HasFlag(CreatureFlags.Divider)), columnIndex, Properties.Settings.Default.LibraryGroupBySpecies ? _speciesInLibraryOrdered : null);
+            _creaturesDisplayed = Properties.Settings.Default.LibraryGroupBySpecies ? InsertDividers(sorted) : sorted;
             _libraryListViewItemCache = null;
             listViewLibrary.EndUpdate();
             SelectCreaturesInLibrary(selectedCreatures);
@@ -1280,7 +1387,7 @@ namespace ARKBreedingStats
                 Creature c = _creaturesDisplayed[listViewLibrary.SelectedIndices[0]];
                 creatureBoxListView.SetCreature(c);
                 if (tabControlLibFilter.SelectedTab == tabPageLibRadarChart)
-                    radarChartLibrary.SetLevels(c.levelsWild);
+                    radarChartLibrary.SetLevels(c.levelsWild, c.levelsMutated, c.Species);
                 pedigree1.PedigreeNeedsUpdate = true;
             }
 
@@ -1337,22 +1444,34 @@ namespace ARKBreedingStats
 
             if (_creaturesPreFiltered == null)
             {
-                filteredList = from creature in _creatureCollection.creatures
-                               where creature.Species != null && !creature.flags.HasFlag(CreatureFlags.Placeholder)
-                               select creature;
-
-                // if only one species should be shown adjust headers if the selected species has custom statNames
-                Dictionary<string, string> customStatNames = null;
-                if (listBoxSpeciesLib.SelectedItem is Species selectedSpecies)
+                if (!_creatureCollection.creatures.Any())
                 {
-                    filteredList = filteredList.Where(c => c.Species == selectedSpecies);
-                    customStatNames = selectedSpecies.statNames;
+                    _creaturesPreFiltered = Array.Empty<Creature>();
                 }
+                else
+                {
+                    filteredList = from creature in _creatureCollection.creatures
+                                   where creature.Species != null && !creature.flags.HasFlag(CreatureFlags.Placeholder)
+                                   select creature;
 
-                for (int s = 0; s < Stats.StatsCount; s++)
-                    listViewLibrary.Columns[12 + s].Text = Utils.StatName(s, true, customStatNames);
+                    // if only one species should be shown adjust headers if the selected species has custom statNames
+                    Dictionary<string, string> customStatNames = null;
+                    if (listBoxSpeciesLib.SelectedItem is Species selectedSpecies)
+                    {
+                        filteredList = filteredList.Where(c => c.Species == selectedSpecies);
+                        customStatNames = selectedSpecies.statNames;
+                    }
 
-                _creaturesPreFiltered = ApplyLibraryFilterSettings(filteredList).ToArray();
+                    for (int s = 0; s < Stats.StatsCount; s++)
+                    {
+                        listViewLibrary.Columns[ColumnIndexFirstStat + s].Text =
+                            Utils.StatName(s, true, customStatNames);
+                        listViewLibrary.Columns[ColumnIndexFirstStat + Stats.StatsCount + s].Text =
+                            Utils.StatName(s, true, customStatNames) + "M";
+                    }
+
+                    _creaturesPreFiltered = ApplyLibraryFilterSettings(filteredList).ToArray();
+                }
             }
 
             filteredList = _creaturesPreFiltered;
@@ -1539,6 +1658,35 @@ namespace ARKBreedingStats
             UpdateSpeciesLists(_creatureCollection.creatures);
         }
 
+        private void listViewLibrary_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.NumPad1:
+                    GenerateCreatureNames(0);
+                    break;
+                case Keys.NumPad2:
+                    GenerateCreatureNames(1);
+                    break;
+                case Keys.NumPad3:
+                    GenerateCreatureNames(2);
+                    break;
+                case Keys.NumPad4:
+                    GenerateCreatureNames(3);
+                    break;
+                case Keys.NumPad5:
+                    GenerateCreatureNames(4);
+                    break;
+                case Keys.NumPad6:
+                    GenerateCreatureNames(5);
+                    break;
+                default: return;
+            }
+
+            e.Handled = true;
+            e.SuppressKeyPress = true;
+        }
+
         private void listViewLibrary_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -1569,6 +1717,12 @@ namespace ARKBreedingStats
                     break;
                 case Keys.B when e.Control:
                     CopySelectedCreatureName();
+                    break;
+                case Keys.C when e.Control:
+                    CopySelectedCreatureFromLibraryToClipboard(false);
+                    break;
+                case Keys.V when e.Control:
+                    PasteCreatureFromClipboard();
                     break;
                 default: return;
             }
@@ -1666,11 +1820,11 @@ namespace ARKBreedingStats
             }
         }
 
-        private Debouncer filterLibraryDebouncer = new Debouncer();
+        private readonly Debouncer _filterLibraryDebouncer = new Debouncer();
 
         private void ToolStripTextBoxLibraryFilter_TextChanged(object sender, EventArgs e)
         {
-            filterLibraryDebouncer.Debounce(ToolStripTextBoxLibraryFilter.Text == string.Empty ? 0 : 500, FilterLib, Dispatcher.CurrentDispatcher, false);
+            _filterLibraryDebouncer.Debounce(ToolStripTextBoxLibraryFilter.Text == string.Empty ? 0 : 500, FilterLib, Dispatcher.CurrentDispatcher, false);
         }
 
         private void ToolStripButtonLibraryFilterClear_Click(object sender, EventArgs e)
@@ -1888,6 +2042,13 @@ namespace ARKBreedingStats
                 affectedSpeciesBlueprints.Count == 1 ? Values.V.SpeciesByBlueprint(affectedSpeciesBlueprints.First()) : null);
         }
 
+        private void BtRecalculateTopStatsAfterChange_Click(object sender, EventArgs e)
+        {
+            // Recalculate top stats after considered stats have changed.
+            CalculateTopStats(_creatureCollection.creatures);
+            FilterLibRecalculate();
+        }
+
         private void adminCommandToSetColorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdminCommandToSetColors();
@@ -1900,8 +2061,8 @@ namespace ARKBreedingStats
             var cr = _creaturesDisplayed[listViewLibrary.SelectedIndices[0]];
             byte[] cl = cr.colors;
             if (cl == null) return;
-            var colorCommands = new List<string>(6);
-            for (int ci = 0; ci < 6; ci++)
+            var colorCommands = new List<string>(Ark.ColorRegionCount);
+            for (int ci = 0; ci < Ark.ColorRegionCount; ci++)
             {
                 if (cr.Species.EnabledColorRegions[ci])
                     colorCommands.Add($"setTargetDinoColor {ci} {cl[ci]}");
@@ -1926,6 +2087,18 @@ namespace ARKBreedingStats
         {
             if (listViewLibrary.SelectedIndices.Count > 0)
                 CreateExactSpawnDS2Command(_creaturesDisplayed[listViewLibrary.SelectedIndices[0]]);
+        }
+
+        private void adminCommandSetMutationLevelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listViewLibrary.SelectedIndices.Count > 0)
+                CreateExactMutationLevelCommand(_creaturesDisplayed[listViewLibrary.SelectedIndices[0]]);
+        }
+
+        private void commandMutationLevelsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listViewLibrary.SelectedIndices.Count > 0)
+                CreateExactMutationLevelCommand(_creaturesDisplayed[listViewLibrary.SelectedIndices[0]]);
         }
 
         private void exactSpawnCommandToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1962,6 +2135,12 @@ namespace ARKBreedingStats
             CreatureSpawnCommand.DinoStorageV2CommandToClipboard(cr);
             SetMessageLabelText($"The SpawnExactDino admin console command for the creature {cr.name} ({cr.Species?.name}) was copied to the clipboard. The command needs the mod DinoStorage V2 installed on the server to work."
                                 , MessageBoxIcon.Warning);
+        }
+
+        private void CreateExactMutationLevelCommand(Creature cr)
+        {
+            CreatureSpawnCommand.MutationLevelCommandToClipboard(cr);
+            SetMessageLabelText($"The admin console command for adding the mutation levels to the creature {cr.name} ({cr.Species?.name}) was copied to the clipboard.");
         }
 
         #endregion
@@ -2057,5 +2236,145 @@ namespace ARKBreedingStats
 
             MessageBoxes.ShowMessageBox(result, "Creatures imported from tsv file", MessageBoxIcon.Information);
         }
+
+        private void GenerateCreatureNames(object sender, EventArgs e) => GenerateCreatureNames((int)((ToolStripMenuItem)sender).Tag);
+
+        /// <summary>
+        /// Replaces the names of the selected creatures with a pattern generated name.
+        /// </summary>
+        private void GenerateCreatureNames(int namePatternIndex)
+        {
+            if (listViewLibrary.SelectedIndices.Count == 0) return;
+
+            var creaturesToUpdate = new List<Creature>();
+            Creature[] sameSpecies = null;
+            var libraryCreatureCount = _creatureCollection.GetTotalCreatureCount();
+
+            foreach (int i in listViewLibrary.SelectedIndices)
+            {
+                var cr = _creaturesDisplayed[i];
+                if (cr.Species == null) continue;
+
+                if (sameSpecies?.FirstOrDefault()?.Species != cr.Species)
+                    sameSpecies = _creatureCollection.creatures.Where(c => c.Species == cr.Species).ToArray();
+
+                // set new name
+                cr.name = NamePattern.GenerateCreatureName(cr, cr, sameSpecies, _topLevels.TryGetValue(cr.Species, out var tl) ? tl : null,
+                    _customReplacingNamingPattern, false, namePatternIndex,
+                    Properties.Settings.Default.DisplayWarningAboutTooLongNameGenerated, libraryCreatureCount: libraryCreatureCount);
+
+                creaturesToUpdate.Add(cr);
+            }
+
+            listViewLibrary.BeginUpdate();
+            foreach (var cr in creaturesToUpdate)
+                UpdateDisplayedCreatureValues(cr, false, false);
+
+            listViewLibrary.EndUpdate();
+        }
+
+        #region library list view columns
+
+        private void resetColumnOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listViewLibrary.BeginUpdate();
+            var colIndices = new[] { 1, 2, 4, 5, 6, 36, 31, 32, 33, 34, 35, 37, 7, 9, 29, 11, 13, 15, 17, 19, 21, 23, 25, 27, 8, 10, 30, 12, 14, 16, 18, 20, 22, 24, 26, 28, 40, 41, 42, 43, 44, 45, 46, 38, 3, 0, 39 };
+
+            // indices have to be set increasingly, or they will "push" other values up
+            var colIndicesOrdered = colIndices.Select((i, c) => (columnIndex: c, displayIndex: i))
+                .OrderBy(c => c.displayIndex).ToArray();
+            for (int c = 0; c < colIndicesOrdered.Length && c < listViewLibrary.Columns.Count; c++)
+                listViewLibrary.Columns[colIndicesOrdered[c].columnIndex].DisplayIndex = colIndicesOrdered[c].displayIndex;
+
+            listViewLibrary.EndUpdate();
+        }
+
+        private void toolStripMenuItemResetLibraryColumnWidths_Click(object sender, EventArgs e)
+        {
+            ResetColumnWidthListViewLibrary(false);
+        }
+
+        private void resetColumnWidthNoMutationLevelColumnsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetColumnWidthListViewLibrary(true);
+        }
+
+        private void restoreMutationLevelsASAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleLibraryMutationLevelColumns(true, true);
+        }
+
+        private void collapseMutationsLevelsASEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleLibraryMutationLevelColumns(false);
+        }
+
+        private void ResetColumnWidthListViewLibrary(bool mutationColumnWidthsZero)
+        {
+            listViewLibrary.BeginUpdate();
+            var statWidths = Stats.UsuallyVisibleStats.Select(w => w ? 30 : 0).ToArray();
+            for (int ci = 0; ci < listViewLibrary.Columns.Count; ci++)
+                listViewLibrary.Columns[ci].Width = ci == ColumnIndexMutagenApplied ? 30
+                    : ci < ColumnIndexFirstStat || ci >= ColumnIndexPostColor ? 60
+                    : ci >= ColumnIndexFirstStat + Stats.StatsCount + Stats.StatsCount ? 30 // color
+                    : ci < ColumnIndexFirstStat + Stats.StatsCount ? statWidths[ci - ColumnIndexFirstStat] // wild levels
+                    : ci - ColumnIndexFirstStat - Stats.StatsCount == Stats.Torpidity ? 0 // no mutations for torpidity
+                    : (int)(statWidths[ci - ColumnIndexFirstStat - Stats.StatsCount] * 1.24); // mutated needs space for one more letter
+
+            // save in settings so it can be used when toggle the mutation columns, which use the settings
+            var widths = new int[listViewLibrary.Columns.Count];
+            for (int c = 0; c < widths.Length; c++)
+                widths[c] = listViewLibrary.Columns[c].Width;
+            Properties.Settings.Default.columnWidths = widths;
+
+            if (mutationColumnWidthsZero)
+                ToggleLibraryMutationLevelColumns(false);
+
+            listViewLibrary.EndUpdate();
+        }
+
+        private void toolStripMenuItemMutationColumns_CheckedChanged(object sender, EventArgs e)
+        {
+            var showMutationColumns = toolStripMenuItemMutationColumns.Checked;
+            Properties.Settings.Default.LibraryShowMutationLevelColumns = showMutationColumns;
+            ToggleLibraryMutationLevelColumns(showMutationColumns);
+        }
+
+        /// <summary>
+        /// Set width of library mutation level columns to 0 or restore.
+        /// </summary>
+        private void ToggleLibraryMutationLevelColumns(bool show, bool resetWidth = false)
+        {
+            var widths = Properties.Settings.Default.columnWidths;
+            if (widths == null || widths.Length < ColumnIndexFirstStat + 2 * Stats.StatsCount)
+            {
+                SaveListViewSettings(listViewLibrary, nameof(Properties.Settings.columnWidths), nameof(Properties.Settings.libraryColumnDisplayIndices));
+                widths = Properties.Settings.Default.columnWidths;
+            }
+
+            listViewLibrary.BeginUpdate();
+            if (show)
+            {
+                if (resetWidth)
+                {
+                    var mutationStatWidths = Stats.UsuallyVisibleStats.Select((v, i) => v && i != Stats.Torpidity ? 37 : 0).ToArray();
+                    mutationStatWidths.CopyTo(widths, ColumnIndexFirstStat + Stats.StatsCount);
+                }
+
+                for (int ci = ColumnIndexFirstStat + Stats.StatsCount; ci < ColumnIndexFirstStat + 2 * Stats.StatsCount; ci++)
+                    listViewLibrary.Columns[ci].Width = widths[ci];
+            }
+            else
+            {
+                for (int ci = ColumnIndexFirstStat + Stats.StatsCount; ci < ColumnIndexFirstStat + 2 * Stats.StatsCount; ci++)
+                {
+                    widths[ci] = listViewLibrary.Columns[ci].Width;
+                    listViewLibrary.Columns[ci].Width = 0;
+                }
+            }
+            listViewLibrary.EndUpdate();
+        }
+
+        #endregion
     }
 }

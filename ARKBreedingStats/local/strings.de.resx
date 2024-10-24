@@ -921,8 +921,8 @@ Wählen, um die Top stats in einer Kreature zu vereinen. Dieser Modus geht ein R
   <data name="importingFromSavegameToolStripMenuItem" xml:space="preserve">
     <value>Von Spielstand-Datei importieren</value>
   </data>
-  <data name="importingFromSavegameEmptyToolStripMenuItem" xml:space="preserve">
-    <value>Zuerst "Import Savegame" konfigurieren</value>
+  <data name="configureSavegameImportToolStripMenuItem" xml:space="preserve">
+    <value>"Import Savegame" konfigurieren</value>
   </data>
   <data name="until" xml:space="preserve">
     <value>bis</value>
@@ -1321,5 +1321,29 @@ Es ist auch möglich Tiere mit einer Farbe in mehreren möglichen Regionen zu fi
   </data>
   <data name="groupLibraryBySpecies" xml:space="preserve">
     <value>Bibliothek nach Spezies gruppieren</value>
+  </data>
+  <data name="nameAlreadyExistsInLibrary" xml:space="preserve">
+    <value>Dieser Name existiert bereits in der Bibliothek</value>
+  </data>
+  <data name="timerStarvingOf" xml:space="preserve">
+    <value>Verhungern von</value>
+  </data>
+  <data name="ClickCopyToClipboard" xml:space="preserve">
+    <value>Klicken um in die Zwischenablage zu kopieren</value>
+  </data>
+  <data name="BtBeepUpdated" xml:space="preserve">
+    <value>Aktualisiert</value>
+  </data>
+  <data name="BtBeepUpdatedTT" xml:space="preserve">
+    <value>Dieser Ton wird abgespielt, wenn eine Kreatur aktualisiert wird, d.h. erneut importiert wird</value>
+  </data>
+  <data name="issueCauseSpeedLevelingSetting" xml:space="preserve">
+    <value>Die Einstellung zum Leveln von Bewegungsgeschwindigkeit (AllowSpeedLeveling) oder die Spielversion (ASE oder ASA) ist wahrscheinlich nicht richtig gesetzt.</value>
+  </data>
+  <data name="pasteCreaturesToLibrary?" xml:space="preserve">
+    <value>{0} Kreaturen direkt in die Bibliothek einfügen?</value>
+  </data>
+  <data name="paste" xml:space="preserve">
+    <value>Einfügen</value>
   </data>
 </root>

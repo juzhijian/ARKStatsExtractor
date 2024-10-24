@@ -826,7 +826,7 @@
   <data name="importingFromSavegameToolStripMenuItem" xml:space="preserve">
     <value>Импорт из сохраненной игры</value>
   </data>
-  <data name="importingFromSavegameEmptyToolStripMenuItem" xml:space="preserve">
+  <data name="configureSavegameImportToolStripMenuItem" xml:space="preserve">
     <value>Сначала настройте «Импортировать сохранение игры»</value>
   </data>
   <data name="until" xml:space="preserve">
@@ -1196,5 +1196,8 @@ It's also possible to filter for creatures with a color in one of multiple possi
   </data>
   <data name="groupLibraryBySpecies" xml:space="preserve">
     <value>Сгруппировать библиотеку по видам</value>
+  </data>
+  <data name="nameAlreadyExistsInLibrary" xml:space="preserve">
+    <value>Это имя уже существует в библиотеке</value>
   </data>
 </root>

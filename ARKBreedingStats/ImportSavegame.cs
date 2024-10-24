@@ -34,7 +34,7 @@ namespace ARKBreedingStats
             IEnumerable<GameObject> tamedCreatureObjects = gameObjectContainer
                     .Where(o => o.IsCreature()
                     && o.IsTamed()
-                    && (importUnclaimedBabies || (o.IsCryo && Properties.Settings.Default.SaveImportCryo) || !o.IsUnclaimedBaby())
+                    && (importUnclaimedBabies || (o.IsInCryo && Properties.Settings.Default.SaveImportCryo) || !o.IsUnclaimedBaby())
                     && !ignoreClasses.Contains(o.ClassString));
 
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.ImportTribeNameFilter))
@@ -79,17 +79,13 @@ namespace ARKBreedingStats
 
         private static (GameObjectContainer, float) ReadSavegameFile(string fileName)
         {
-            if (new FileInfo(fileName).Length > int.MaxValue)
-            {
-                throw new Exception("Input file is too large.");
-            }
-
             ArkSavegame arkSavegame = new ArkSavegame();
 
             bool PredicateCreatures(GameObject o) => !o.IsItem && (o.Parent != null || o.Components.Any());
-            bool PredicateCreaturesAndCryopods(GameObject o) => (!o.IsItem && (o.Parent != null || o.Components.Any())) || o.ClassString.Contains("Cryopod") || o.ClassString.Contains("SoulTrap_");
+            bool PredicateCreaturesAndCryopods(GameObject o) => (!o.IsItem && (o.Parent != null || o.Components.Any())) || o.ClassString.Contains("Cryopod") || o.ClassString.Contains("SoulTrap_") || o.ClassString.Contains("Vivarium_");
 
-            using (Stream stream = new MemoryStream(File.ReadAllBytes(fileName)))
+            var largeFile = new FileInfo(fileName).Length > int.MaxValue;
+            using (var stream = largeFile ? (Stream)new FileStream(fileName, FileMode.Open) : new MemoryStream(File.ReadAllBytes(fileName)))
             using (ArkArchive archive = new ArkArchive(stream))
             {
                 arkSavegame.ReadBinary(archive, ReadingOptions.Create()
@@ -159,6 +155,7 @@ namespace ARKBreedingStats
 
             int[] wildLevels = Enumerable.Repeat(-1, Stats.StatsCount).ToArray(); // -1 is unknown
             int[] tamedLevels = new int[Stats.StatsCount];
+            int[] mutatedLevels = new int[Stats.StatsCount];
 
             for (int i = 0; i < Stats.StatsCount; i++)
             {
@@ -169,6 +166,7 @@ namespace ARKBreedingStats
             for (int i = 0; i < Stats.StatsCount; i++)
             {
                 tamedLevels[i] = statusObject.GetPropertyValue<ArkByteValue>("NumberOfLevelUpPointsAppliedTamed", i)?.ByteValue ?? 0;
+                //mutatedLevels[i] = statusObject.GetPropertyValue<ArkByteValue>("NumberOfLevelUpPointsAppliedMutated", i)?.ByteValue ?? 0; // TODO
             }
 
             float ti = statusObject.GetPropertyValue<float>("TamedIneffectivenessModifier", defaultValue: float.NaN);
@@ -178,7 +176,7 @@ namespace ARKBreedingStats
             Creature creature = new Creature(species,
                     creatureObject.GetPropertyValue<string>("TamedName"), owner, creatureObject.GetPropertyValue<string>("TribeName"),
                     creatureObject.IsFemale() ? Sex.Female : Sex.Male,
-                    wildLevels, tamedLevels, te,
+                    wildLevels, tamedLevels, mutatedLevels, te,
                     !string.IsNullOrWhiteSpace(creatureObject.GetPropertyValue<string>("ImprinterName")),
                     statusObject.GetPropertyValue<float>("DinoImprintingQuality"),
                     levelStep
@@ -249,7 +247,7 @@ namespace ARKBreedingStats
                 creature.Status = CreatureStatus.Dead; // dead is always dead
             }
 
-            if (creatureObject.IsCryo)
+            if (creatureObject.IsInCryo)
                 creature.Status = CreatureStatus.Cryopod;
 
             creature.RecalculateCreatureValues(levelStep);

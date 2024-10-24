@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using ARKBreedingStats.species;
+﻿using ARKBreedingStats.values;
+using System;
 
 namespace ARKBreedingStats
 {
@@ -92,13 +92,31 @@ namespace ARKBreedingStats
         #region Colors
 
         public const byte ColorFirstId = 1;
-        public const byte ColorMaxId = 200;
-        public const byte DyeFirstId = 201;
+        public const byte DyeFirstIdASE = 201;
         public const byte DyeMaxId = 255;
+
         /// <summary>
-        /// When choosing a random color for a mutation, ARK can erroneously select an undefined color. Usually this is color id 227 (one too high to be defined).
+        /// When choosing a random color for a mutation, ARK can erroneously select an undefined color. For ASE that's the color id 227 (one too high to be defined).
         /// </summary>
-        public const byte UndefinedColorId = 227;
+        public const byte UndefinedColorIdAse = 227;
+
+        /// <summary>
+        /// When choosing a random color for a mutation, ARK can erroneously select an undefined color. For ASA that's the color id 255 (one too high to be defined).
+        /// </summary>
+        public const byte UndefinedColorIdAsa = 255;
+
+        /// <summary>
+        /// When choosing a random color for a mutation, ARK can erroneously select an undefined color. 227 for ASE, 255 for ASA.
+        /// </summary>
+        public static byte UndefinedColorId = UndefinedColorIdAse;
+
+        /// <summary>
+        /// Sets the undefined color id to the one of ASE or ASA.
+        /// </summary>
+        public static void SetUndefinedColorId(bool asa)
+        {
+            UndefinedColorId = asa ? UndefinedColorIdAsa : UndefinedColorIdAse;
+        }
 
         /// <summary>
         /// Number of possible color regions for all species.
@@ -106,6 +124,58 @@ namespace ARKBreedingStats
         public const int ColorRegionCount = 6;
 
         #endregion
+
+        /// <summary>
+        /// The name is trimmed to this length in game.
+        /// </summary>
+        public const int MaxCreatureNameLength = 24;
+
+        public enum Game
+        {
+            Unknown,
+            /// <summary>
+            /// ARK: Survival Evolved (2015)
+            /// </summary>
+            Ase,
+            /// <summary>
+            /// ARK: Survival Ascended (2023)
+            /// </summary>
+            Asa,
+            /// <summary>
+            /// Use the same version that was already loaded
+            /// </summary>
+            SameAsBefore
+        }
+
+        /// <summary>
+        /// Collection indicator for ARK: Survival Evolved.
+        /// </summary>
+        public const string Ase = "ASE";
+
+        /// <summary>
+        /// Collection indicator for ARK: Survival Ascended, also the mod tag id for the ASA values.
+        /// </summary>
+        public const string Asa = "ASA";
+
+        /// <summary>
+        /// The default cuddle interval is 8 hours.
+        /// </summary>
+        private const int DefaultCuddleIntervalInSeconds = 8 * 60 * 60;
+
+        /// <summary>
+        /// Returns the imprinting gain per cuddle, dependent on the maturation time and the cuddle interval multiplier.
+        /// </summary>
+        /// <param name="maturationTime">Maturation time in seconds</param>
+        public static double ImprintingGainPerCuddle(double maturationTime)
+        {
+            var multipliers = Values.V.currentServerMultipliers;
+            // this is assumed to be the used formula
+            var maxPossibleCuddles = maturationTime / (DefaultCuddleIntervalInSeconds * multipliers.BabyImprintAmountMultiplier);
+            var denominator = maxPossibleCuddles - 0.25;
+            if (denominator < 0) return 0;
+            if (denominator < multipliers.BabyCuddleIntervalMultiplier) return 1;
+            return Math.Min(1, multipliers.BabyCuddleIntervalMultiplier / denominator);
+        }
     }
 
     /// <summary>
@@ -119,13 +189,22 @@ namespace ARKBreedingStats
         public const int StatsCount = 12;
 
         public const int Health = 0;
+        /// <summary>
+        /// Stamina, or Charge Capacity for glow species
+        /// </summary>
         public const int Stamina = 1;
         public const int Torpidity = 2;
+        /// <summary>
+        /// Oxygen, or Charge Regeneration for glow species
+        /// </summary>
         public const int Oxygen = 3;
         public const int Food = 4;
         public const int Water = 5;
         public const int Temperature = 6;
         public const int Weight = 7;
+        /// <summary>
+        /// MeleeDamageMultiplier, or Charge Emission Range for glow species
+        /// </summary>
         public const int MeleeDamageMultiplier = 8;
         public const int SpeedMultiplier = 9;
         public const int TemperatureFortitude = 10;
@@ -148,5 +227,43 @@ namespace ARKBreedingStats
             CraftingSpeedMultiplier,
             Torpidity
         };
+
+        /// <summary>
+        /// Returns the stat indices for the stats usually displayed for species (e.g. no crafting speed Gacha) in game.
+        /// </summary>
+        public static readonly bool[] UsuallyVisibleStats = {
+            true, //Health,
+            true, //Stamina,
+            true, //Torpidity,
+            true, //Oxygen,
+            true, //Food,
+            false, //Water,
+            false, //Temperature,
+            true, //Weight,
+            true, //MeleeDamageMultiplier,
+            true, //SpeedMultiplier,
+            false, //TemperatureFortitude,
+            false, //CraftingSpeedMultiplier
+        };
+
+        /// <summary>
+        /// Returns if the stat is a percentage value.
+        /// </summary>
+        public static bool IsPercentage(int statIndex)
+        {
+            return statIndex == MeleeDamageMultiplier
+                   || statIndex == SpeedMultiplier
+                   || statIndex == TemperatureFortitude
+                   || statIndex == CraftingSpeedMultiplier;
+        }
+
+        /// <summary>
+        /// Returns the displayed decimal values of the stat with the given index
+        /// </summary>
+        public static int Precision(int statIndex)
+        {
+            // damage and speed are percentage values and thus the displayed values have a higher precision
+            return IsPercentage(statIndex) ? 3 : 1;
+        }
     }
 }

@@ -46,6 +46,9 @@
             this.calculateTEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculateIBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculateIBMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.calculateIwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculateIdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.setWildLevelToClosestValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setDomLevelToClosestValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +68,20 @@
             this.btCalculateDomLevel = new System.Windows.Forms.Button();
             this.btResetIdM = new System.Windows.Forms.Button();
             this.btCalculateIdM = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btCalculateTE = new System.Windows.Forms.Button();
+            this.btCalculateIB = new System.Windows.Forms.Button();
+            this.btCalculateIBM = new System.Windows.Forms.Button();
+            this.CbTrodB = new System.Windows.Forms.CheckBox();
+            this.CbTrodIw = new System.Windows.Forms.CheckBox();
+            this.CbTrodTa = new System.Windows.Forms.CheckBox();
+            this.CbTrodTm = new System.Windows.Forms.CheckBox();
+            this.CbTrodId = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LbTaTmTeStored = new System.Windows.Forms.Label();
+            this.BtSolveTaTm = new System.Windows.Forms.Button();
+            this.BtSolveTaMTmM = new System.Windows.Forms.Button();
+            this.BtStoreTaTm = new System.Windows.Forms.Button();
             this.nudIdM = new ARKBreedingStats.uiControls.Nud();
             this.nudId = new ARKBreedingStats.uiControls.Nud();
             this.nudTmM = new ARKBreedingStats.uiControls.Nud();
@@ -78,16 +95,9 @@
             this.nudStatValue = new ARKBreedingStats.uiControls.Nud();
             this.nudLd = new ARKBreedingStats.uiControls.Nud();
             this.nudLw = new ARKBreedingStats.uiControls.Nud();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btCalculateTE = new System.Windows.Forms.Button();
-            this.btCalculateIB = new System.Windows.Forms.Button();
-            this.btCalculateIBM = new System.Windows.Forms.Button();
-            this.CbTrodB = new System.Windows.Forms.CheckBox();
-            this.CbTrodIw = new System.Windows.Forms.CheckBox();
-            this.CbTrodTa = new System.Windows.Forms.CheckBox();
-            this.CbTrodTm = new System.Windows.Forms.CheckBox();
-            this.CbTrodId = new System.Windows.Forms.CheckBox();
+            this.BtSolveTaTbhm = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTmM)).BeginInit();
@@ -191,6 +201,9 @@
             this.calculateTEToolStripMenuItem,
             this.calculateIBToolStripMenuItem,
             this.calculateIBMToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.calculateIwToolStripMenuItem,
+            this.calculateIdToolStripMenuItem,
             this.toolStripSeparator2,
             this.setWildLevelToClosestValueToolStripMenuItem,
             this.setDomLevelToClosestValueToolStripMenuItem,
@@ -201,7 +214,7 @@
             this.resetIdMToolStripMenuItem,
             this.resetAllMultiplierOfThisStatToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(231, 330);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(231, 380);
             // 
             // calculateIwMToolStripMenuItem
             // 
@@ -256,6 +269,25 @@
             this.calculateIBMToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
             this.calculateIBMToolStripMenuItem.Text = "Calculate IBM";
             this.calculateIBMToolStripMenuItem.Click += new System.EventHandler(this.calculateIBMToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(227, 6);
+            // 
+            // calculateIwToolStripMenuItem
+            // 
+            this.calculateIwToolStripMenuItem.Name = "calculateIwToolStripMenuItem";
+            this.calculateIwToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.calculateIwToolStripMenuItem.Text = "Calculate Iw";
+            this.calculateIwToolStripMenuItem.Click += new System.EventHandler(this.calculateIwToolStripMenuItem_Click);
+            // 
+            // calculateIdToolStripMenuItem
+            // 
+            this.calculateIdToolStripMenuItem.Name = "calculateIdToolStripMenuItem";
+            this.calculateIdToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.calculateIdToolStripMenuItem.Text = "Calculate Id";
+            this.calculateIdToolStripMenuItem.Click += new System.EventHandler(this.calculateIdToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -436,326 +468,6 @@
             this.btCalculateIdM.UseVisualStyleBackColor = true;
             this.btCalculateIdM.Click += new System.EventHandler(this.btCalculateIdM_Click);
             // 
-            // nudIdM
-            // 
-            this.nudIdM.DecimalPlaces = 4;
-            this.nudIdM.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudIdM.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudIdM.Location = new System.Drawing.Point(813, 3);
-            this.nudIdM.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudIdM.Name = "nudIdM";
-            this.nudIdM.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudIdM.Size = new System.Drawing.Size(58, 20);
-            this.nudIdM.TabIndex = 11;
-            this.nudIdM.ValueChanged += new System.EventHandler(this.nudId_ValueChanged);
-            // 
-            // nudId
-            // 
-            this.nudId.DecimalPlaces = 4;
-            this.nudId.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudId.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudId.Location = new System.Drawing.Point(749, 3);
-            this.nudId.Name = "nudId";
-            this.nudId.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudId.Size = new System.Drawing.Size(58, 20);
-            this.nudId.TabIndex = 10;
-            this.nudId.ValueChanged += new System.EventHandler(this.nudId_ValueChanged);
-            // 
-            // nudTmM
-            // 
-            this.nudTmM.DecimalPlaces = 4;
-            this.nudTmM.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudTmM.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudTmM.Location = new System.Drawing.Point(627, 3);
-            this.nudTmM.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudTmM.Name = "nudTmM";
-            this.nudTmM.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudTmM.Size = new System.Drawing.Size(58, 20);
-            this.nudTmM.TabIndex = 8;
-            this.nudTmM.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudTmM.ValueChanged += new System.EventHandler(this.nudTm_ValueChanged);
-            // 
-            // nudTm
-            // 
-            this.nudTm.DecimalPlaces = 4;
-            this.nudTm.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudTm.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudTm.Location = new System.Drawing.Point(563, 3);
-            this.nudTm.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.nudTm.Name = "nudTm";
-            this.nudTm.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudTm.Size = new System.Drawing.Size(58, 20);
-            this.nudTm.TabIndex = 7;
-            this.nudTm.ValueChanged += new System.EventHandler(this.nudTm_ValueChanged);
-            // 
-            // nudIwM
-            // 
-            this.nudIwM.DecimalPlaces = 4;
-            this.nudIwM.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudIwM.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudIwM.Location = new System.Drawing.Point(307, 3);
-            this.nudIwM.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudIwM.Name = "nudIwM";
-            this.nudIwM.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudIwM.Size = new System.Drawing.Size(58, 20);
-            this.nudIwM.TabIndex = 3;
-            this.nudIwM.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudIwM.ValueChanged += new System.EventHandler(this.nudIw_ValueChanged);
-            // 
-            // nudTaM
-            // 
-            this.nudTaM.DecimalPlaces = 4;
-            this.nudTaM.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudTaM.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudTaM.Location = new System.Drawing.Point(499, 3);
-            this.nudTaM.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudTaM.Name = "nudTaM";
-            this.nudTaM.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudTaM.Size = new System.Drawing.Size(58, 20);
-            this.nudTaM.TabIndex = 6;
-            this.nudTaM.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudTaM.ValueChanged += new System.EventHandler(this.nudTa_ValueChanged);
-            // 
-            // nudTa
-            // 
-            this.nudTa.DecimalPlaces = 4;
-            this.nudTa.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudTa.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nudTa.Location = new System.Drawing.Point(435, 3);
-            this.nudTa.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudTa.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.nudTa.Name = "nudTa";
-            this.nudTa.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudTa.Size = new System.Drawing.Size(58, 20);
-            this.nudTa.TabIndex = 5;
-            this.nudTa.ValueChanged += new System.EventHandler(this.nudTa_ValueChanged);
-            // 
-            // nudTBHM
-            // 
-            this.nudTBHM.DecimalPlaces = 4;
-            this.nudTBHM.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.nudTBHM.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudTBHM.Location = new System.Drawing.Point(371, 3);
-            this.nudTBHM.Name = "nudTBHM";
-            this.nudTBHM.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudTBHM.Size = new System.Drawing.Size(58, 20);
-            this.nudTBHM.TabIndex = 4;
-            this.nudTBHM.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudTBHM.ValueChanged += new System.EventHandler(this.nudTBHM_ValueChanged);
-            // 
-            // nudIw
-            // 
-            this.nudIw.DecimalPlaces = 4;
-            this.nudIw.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudIw.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudIw.Location = new System.Drawing.Point(243, 3);
-            this.nudIw.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudIw.Name = "nudIw";
-            this.nudIw.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudIw.Size = new System.Drawing.Size(58, 20);
-            this.nudIw.TabIndex = 2;
-            this.nudIw.ValueChanged += new System.EventHandler(this.nudIw_ValueChanged);
-            // 
-            // nudB
-            // 
-            this.nudB.DecimalPlaces = 2;
-            this.nudB.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudB.Location = new System.Drawing.Point(80, 3);
-            this.nudB.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudB.Name = "nudB";
-            this.nudB.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudB.Size = new System.Drawing.Size(99, 20);
-            this.nudB.TabIndex = 0;
-            this.nudB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudB.ValueChanged += new System.EventHandler(this.nudB_ValueChanged);
-            // 
-            // nudStatValue
-            // 
-            this.nudStatValue.DecimalPlaces = 6;
-            this.nudStatValue.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudStatValue.Location = new System.Drawing.Point(897, 3);
-            this.nudStatValue.Maximum = new decimal(new int[] {
-            1661992959,
-            1808227885,
-            5,
-            0});
-            this.nudStatValue.Name = "nudStatValue";
-            this.nudStatValue.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudStatValue.Size = new System.Drawing.Size(150, 20);
-            this.nudStatValue.TabIndex = 12;
-            this.nudStatValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudStatValue.ValueChanged += new System.EventHandler(this.nudStatValue_ValueChanged);
-            // 
-            // nudLd
-            // 
-            this.nudLd.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudLd.Location = new System.Drawing.Point(691, 3);
-            this.nudLd.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudLd.Name = "nudLd";
-            this.nudLd.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudLd.Size = new System.Drawing.Size(52, 20);
-            this.nudLd.TabIndex = 9;
-            this.nudLd.ValueChanged += new System.EventHandler(this.nudLd_ValueChanged);
-            // 
-            // nudLw
-            // 
-            this.nudLw.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.nudLw.Location = new System.Drawing.Point(185, 3);
-            this.nudLw.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudLw.Name = "nudLw";
-            this.nudLw.NeutralNumber = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudLw.Size = new System.Drawing.Size(52, 20);
-            this.nudLw.TabIndex = 1;
-            this.nudLw.ValueChanged += new System.EventHandler(this.nudLw_ValueChanged);
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -860,11 +572,409 @@
             this.CbTrodId.UseVisualStyleBackColor = false;
             this.CbTrodId.CheckedChanged += new System.EventHandler(this.CbTrodId_CheckedChanged);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.BtSolveTaTbhm);
+            this.groupBox1.Controls.Add(this.LbTaTmTeStored);
+            this.groupBox1.Controls.Add(this.BtSolveTaTm);
+            this.groupBox1.Controls.Add(this.BtSolveTaMTmM);
+            this.groupBox1.Controls.Add(this.BtStoreTaTm);
+            this.groupBox1.Location = new System.Drawing.Point(1059, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(126, 69);
+            this.groupBox1.TabIndex = 41;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ta-Tm-TBHM-Solver";
+            // 
+            // LbTaTmTeStored
+            // 
+            this.LbTaTmTeStored.AutoSize = true;
+            this.LbTaTmTeStored.Location = new System.Drawing.Point(68, 26);
+            this.LbTaTmTeStored.Name = "LbTaTmTeStored";
+            this.LbTaTmTeStored.Size = new System.Drawing.Size(0, 13);
+            this.LbTaTmTeStored.TabIndex = 3;
+            // 
+            // BtSolveTaTm
+            // 
+            this.BtSolveTaTm.Location = new System.Drawing.Point(39, 43);
+            this.BtSolveTaTm.Name = "BtSolveTaTm";
+            this.BtSolveTaTm.Size = new System.Drawing.Size(36, 23);
+            this.BtSolveTaTm.TabIndex = 2;
+            this.BtSolveTaTm.Text = "Spc";
+            this.BtSolveTaTm.UseVisualStyleBackColor = true;
+            this.BtSolveTaTm.Click += new System.EventHandler(this.BtSolveTaTm_Click);
+            // 
+            // BtSolveTaMTmM
+            // 
+            this.BtSolveTaMTmM.Location = new System.Drawing.Point(4, 43);
+            this.BtSolveTaMTmM.Name = "BtSolveTaMTmM";
+            this.BtSolveTaMTmM.Size = new System.Drawing.Size(33, 23);
+            this.BtSolveTaMTmM.TabIndex = 1;
+            this.BtSolveTaMTmM.Text = "Srv";
+            this.BtSolveTaMTmM.UseVisualStyleBackColor = true;
+            this.BtSolveTaMTmM.Click += new System.EventHandler(this.BtSolveTaMTmM_Click);
+            // 
+            // BtStoreTaTm
+            // 
+            this.BtStoreTaTm.Location = new System.Drawing.Point(4, 19);
+            this.BtStoreTaTm.Name = "BtStoreTaTm";
+            this.BtStoreTaTm.Size = new System.Drawing.Size(60, 23);
+            this.BtStoreTaTm.TabIndex = 0;
+            this.BtStoreTaTm.Text = "Store 1st";
+            this.BtStoreTaTm.UseVisualStyleBackColor = true;
+            this.BtStoreTaTm.Click += new System.EventHandler(this.BtStoreTaTm_Click);
+            // 
+            // nudIdM
+            // 
+            this.nudIdM.DecimalPlaces = 4;
+            this.nudIdM.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudIdM.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudIdM.Location = new System.Drawing.Point(813, 3);
+            this.nudIdM.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudIdM.Name = "nudIdM";
+            this.nudIdM.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudIdM.Size = new System.Drawing.Size(58, 20);
+            this.nudIdM.TabIndex = 11;
+            this.nudIdM.ValueChanged += new System.EventHandler(this.nudId_ValueChanged);
+            // 
+            // nudId
+            // 
+            this.nudId.DecimalPlaces = 4;
+            this.nudId.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudId.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudId.Location = new System.Drawing.Point(749, 3);
+            this.nudId.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudId.Name = "nudId";
+            this.nudId.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudId.Size = new System.Drawing.Size(58, 20);
+            this.nudId.TabIndex = 10;
+            this.nudId.ValueChanged += new System.EventHandler(this.nudId_ValueChanged);
+            // 
+            // nudTmM
+            // 
+            this.nudTmM.DecimalPlaces = 4;
+            this.nudTmM.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudTmM.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudTmM.Location = new System.Drawing.Point(627, 3);
+            this.nudTmM.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudTmM.Name = "nudTmM";
+            this.nudTmM.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTmM.Size = new System.Drawing.Size(58, 20);
+            this.nudTmM.TabIndex = 8;
+            this.nudTmM.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudTmM.ValueChanged += new System.EventHandler(this.nudTm_ValueChanged);
+            // 
+            // nudTm
+            // 
+            this.nudTm.DecimalPlaces = 4;
+            this.nudTm.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudTm.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudTm.Location = new System.Drawing.Point(563, 3);
+            this.nudTm.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudTm.Minimum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            -2147483648});
+            this.nudTm.Name = "nudTm";
+            this.nudTm.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTm.Size = new System.Drawing.Size(58, 20);
+            this.nudTm.TabIndex = 7;
+            this.nudTm.ValueChanged += new System.EventHandler(this.nudTm_ValueChanged);
+            // 
+            // nudIwM
+            // 
+            this.nudIwM.DecimalPlaces = 4;
+            this.nudIwM.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudIwM.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudIwM.Location = new System.Drawing.Point(307, 3);
+            this.nudIwM.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudIwM.Name = "nudIwM";
+            this.nudIwM.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudIwM.Size = new System.Drawing.Size(58, 20);
+            this.nudIwM.TabIndex = 3;
+            this.nudIwM.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudIwM.ValueChanged += new System.EventHandler(this.nudIw_ValueChanged);
+            // 
+            // nudTaM
+            // 
+            this.nudTaM.DecimalPlaces = 4;
+            this.nudTaM.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudTaM.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudTaM.Location = new System.Drawing.Point(499, 3);
+            this.nudTaM.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudTaM.Name = "nudTaM";
+            this.nudTaM.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTaM.Size = new System.Drawing.Size(58, 20);
+            this.nudTaM.TabIndex = 6;
+            this.nudTaM.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudTaM.ValueChanged += new System.EventHandler(this.nudTa_ValueChanged);
+            // 
+            // nudTa
+            // 
+            this.nudTa.DecimalPlaces = 4;
+            this.nudTa.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudTa.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nudTa.Location = new System.Drawing.Point(435, 3);
+            this.nudTa.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudTa.Minimum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            -2147483648});
+            this.nudTa.Name = "nudTa";
+            this.nudTa.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTa.Size = new System.Drawing.Size(58, 20);
+            this.nudTa.TabIndex = 5;
+            this.nudTa.ValueChanged += new System.EventHandler(this.nudTa_ValueChanged);
+            // 
+            // nudTBHM
+            // 
+            this.nudTBHM.DecimalPlaces = 4;
+            this.nudTBHM.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.nudTBHM.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudTBHM.Location = new System.Drawing.Point(371, 3);
+            this.nudTBHM.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudTBHM.Name = "nudTBHM";
+            this.nudTBHM.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudTBHM.Size = new System.Drawing.Size(58, 20);
+            this.nudTBHM.TabIndex = 4;
+            this.nudTBHM.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudTBHM.ValueChanged += new System.EventHandler(this.nudTBHM_ValueChanged);
+            // 
+            // nudIw
+            // 
+            this.nudIw.DecimalPlaces = 4;
+            this.nudIw.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudIw.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudIw.Location = new System.Drawing.Point(243, 3);
+            this.nudIw.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudIw.Name = "nudIw";
+            this.nudIw.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudIw.Size = new System.Drawing.Size(58, 20);
+            this.nudIw.TabIndex = 2;
+            this.nudIw.ValueChanged += new System.EventHandler(this.nudIw_ValueChanged);
+            // 
+            // nudB
+            // 
+            this.nudB.DecimalPlaces = 2;
+            this.nudB.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudB.Location = new System.Drawing.Point(80, 3);
+            this.nudB.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudB.Name = "nudB";
+            this.nudB.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudB.Size = new System.Drawing.Size(99, 20);
+            this.nudB.TabIndex = 0;
+            this.nudB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudB.ValueChanged += new System.EventHandler(this.nudB_ValueChanged);
+            // 
+            // nudStatValue
+            // 
+            this.nudStatValue.DecimalPlaces = 6;
+            this.nudStatValue.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudStatValue.Location = new System.Drawing.Point(897, 3);
+            this.nudStatValue.Maximum = new decimal(new int[] {
+            1661992959,
+            1808227885,
+            5,
+            0});
+            this.nudStatValue.Name = "nudStatValue";
+            this.nudStatValue.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudStatValue.Size = new System.Drawing.Size(150, 20);
+            this.nudStatValue.TabIndex = 12;
+            this.nudStatValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudStatValue.ValueChanged += new System.EventHandler(this.nudStatValue_ValueChanged);
+            // 
+            // nudLd
+            // 
+            this.nudLd.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudLd.Location = new System.Drawing.Point(691, 3);
+            this.nudLd.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudLd.Name = "nudLd";
+            this.nudLd.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudLd.Size = new System.Drawing.Size(52, 20);
+            this.nudLd.TabIndex = 9;
+            this.nudLd.ValueChanged += new System.EventHandler(this.nudLd_ValueChanged);
+            // 
+            // nudLw
+            // 
+            this.nudLw.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.nudLw.Location = new System.Drawing.Point(185, 3);
+            this.nudLw.Maximum = new decimal(new int[] {
+            2000000000,
+            0,
+            0,
+            0});
+            this.nudLw.Name = "nudLw";
+            this.nudLw.NeutralNumber = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudLw.Size = new System.Drawing.Size(52, 20);
+            this.nudLw.TabIndex = 1;
+            this.nudLw.ValueChanged += new System.EventHandler(this.nudLw_ValueChanged);
+            // 
+            // BtSolveTaTbhm
+            // 
+            this.BtSolveTaTbhm.Location = new System.Drawing.Point(77, 43);
+            this.BtSolveTaTbhm.Name = "BtSolveTaTbhm";
+            this.BtSolveTaTbhm.Size = new System.Drawing.Size(47, 23);
+            this.BtSolveTaTbhm.TabIndex = 4;
+            this.BtSolveTaTbhm.Text = "TBHM";
+            this.BtSolveTaTbhm.UseVisualStyleBackColor = true;
+            this.BtSolveTaTbhm.Click += new System.EventHandler(this.BtSolveTaTbhm_Click);
+            // 
             // StatMultiplierTestingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CbTrodId);
             this.Controls.Add(this.CbTrodTm);
             this.Controls.Add(this.CbTrodTa);
@@ -906,8 +1016,10 @@
             this.Controls.Add(this.nudLw);
             this.Controls.Add(this.lStatName);
             this.Name = "StatMultiplierTestingControl";
-            this.Size = new System.Drawing.Size(1053, 75);
+            this.Size = new System.Drawing.Size(1188, 75);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTmM)).EndInit();
@@ -986,5 +1098,14 @@
         private System.Windows.Forms.CheckBox CbTrodTa;
         private System.Windows.Forms.CheckBox CbTrodTm;
         private System.Windows.Forms.CheckBox CbTrodId;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button BtStoreTaTm;
+        private System.Windows.Forms.Button BtSolveTaTm;
+        private System.Windows.Forms.Button BtSolveTaMTmM;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem calculateIwToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem calculateIdToolStripMenuItem;
+        private System.Windows.Forms.Label LbTaTmTeStored;
+        private System.Windows.Forms.Button BtSolveTaTbhm;
     }
 }

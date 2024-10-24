@@ -605,7 +605,7 @@
   <data name="importingFromSavegameToolStripMenuItem" xml:space="preserve">
         <value>Zaimportuj z zapisu gry</value>
     </data>
-    <data name="importingFromSavegameEmptyToolStripMenuItem" xml:space="preserve">
+    <data name="configureSavegameImportToolStripMenuItem" xml:space="preserve">
         <value>Najpierw skonfiguruj "Import z zapisu gry"</value>
     </data>
     <data name="addedAt" xml:space="preserve">
@@ -1141,5 +1141,8 @@ Jeśli wyświetlona jest liczba z plusem, suma jest za wysoka i musisz wybrać i
     </data>
   <data name="groupLibraryBySpecies" xml:space="preserve">
     <value>Pogrupuj bibliotekę po gatunku</value>
+  </data>
+  <data name="nameAlreadyExistsInLibrary" xml:space="preserve">
+    <value>Ta nazwa już istnieje w bibliotece</value>
   </data>
 </root>

@@ -10,60 +10,62 @@ namespace ARKBreedingStats.values
     public class ServerMultipliers
     {
         /// <summary>
-        /// statMultipliers[statIndex][m], m: 0:tamingAdd, 1:tamingMult, 2:levelUpDom, 3:levelUpWild
+        /// statMultipliers[statIndex][m], m: 0: Stats.IndexTamingAdd, 1: Stats.IndexTamingMult, 2: Stats.IndexLevelDom, 3: Stats.IndexLevelWild
         /// </summary>
         [JsonProperty]
         public double[][] statMultipliers;
 
         [JsonProperty]
-        public double TamingSpeedMultiplier { get; set; }
+        public double TamingSpeedMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double DinoCharacterFoodDrainMultiplier { get; set; }
+        public double WildDinoTorporDrainMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double TamedDinoCharacterFoodDrainMultiplier { get; set; }
+        public double DinoCharacterFoodDrainMultiplier { get; set; } = 1;
+        [JsonProperty]
+        public double TamedDinoCharacterFoodDrainMultiplier { get; set; } = 1;
+        [JsonProperty]
+        public double WildDinoCharacterFoodDrainMultiplier { get; set; } = 1;
 
         [JsonProperty]
-        public double MatingSpeedMultiplier { get; set; }
+        public double MatingSpeedMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double MatingIntervalMultiplier { get; set; }
+        public double MatingIntervalMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double EggHatchSpeedMultiplier { get; set; }
+        public double EggHatchSpeedMultiplier { get; set; } = 1;
 
         [JsonProperty]
-        public double BabyMatureSpeedMultiplier { get; set; }
+        public double BabyMatureSpeedMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double BabyFoodConsumptionSpeedMultiplier { get; set; }
+        public double BabyFoodConsumptionSpeedMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double BabyCuddleIntervalMultiplier { get; set; }
+        public double BabyCuddleIntervalMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double BabyImprintingStatScaleMultiplier { get; set; }
+        public double BabyImprintingStatScaleMultiplier { get; set; } = 1;
         [JsonProperty]
-        public double BabyImprintAmountMultiplier { get; set; }
+        public double BabyImprintAmountMultiplier { get; set; } = 1;
+
+        /// <summary>
+        /// Setting introduced in ASA, for ASE it's always true.
+        /// </summary>
+        [JsonProperty]
+        public bool AllowSpeedLeveling { get; set; }
         [JsonProperty]
         public bool AllowFlyerSpeedLeveling { get; set; }
 
-        [OnDeserializing]
-        internal void SetDefaultValues(StreamingContext context)
-        {
-            TamingSpeedMultiplier = 1;
-            DinoCharacterFoodDrainMultiplier = 1;
-            TamedDinoCharacterFoodDrainMultiplier = 1;
-            MatingIntervalMultiplier = 1;
-            EggHatchSpeedMultiplier = 1;
-            MatingSpeedMultiplier = 1;
-            BabyMatureSpeedMultiplier = 1;
-            BabyFoodConsumptionSpeedMultiplier = 1;
-            BabyCuddleIntervalMultiplier = 1;
-            BabyImprintingStatScaleMultiplier = 1;
-            BabyImprintAmountMultiplier = 1;
-        }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool SinglePlayerSettings { get; set; }
 
         /// <summary>
-        /// fix any null values
+        /// If true, apply extra multipliers for the game ATLAS.
         /// </summary>
-        /// <param name="context"></param>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool AtlasSettings { get; set; }
+
+        /// <summary>
+        /// Fix any null values
+        /// </summary>
         [OnDeserialized]
-        private void DefineNullValues(StreamingContext context)
+        private void DefineNullValues(StreamingContext _)
         {
             if (statMultipliers == null) return;
             int l = statMultipliers.Length;
@@ -72,6 +74,16 @@ namespace ARKBreedingStats.values
                 if (statMultipliers[s] == null)
                     statMultipliers[s] = new double[] { 1, 1, 1, 1 };
             }
+        }
+
+        public ServerMultipliers() { }
+
+        public ServerMultipliers(bool withStatMultipliersObject)
+        {
+            if (!withStatMultipliersObject) return;
+            statMultipliers = new double[Stats.StatsCount][];
+            for (int s = 0; s < Stats.StatsCount; s++)
+                statMultipliers[s] = new double[4];
         }
 
         /// <summary>
@@ -83,7 +95,9 @@ namespace ARKBreedingStats.values
             var sm = new ServerMultipliers
             {
                 TamingSpeedMultiplier = TamingSpeedMultiplier,
+                WildDinoTorporDrainMultiplier = WildDinoTorporDrainMultiplier,
                 DinoCharacterFoodDrainMultiplier = DinoCharacterFoodDrainMultiplier,
+                WildDinoCharacterFoodDrainMultiplier = WildDinoCharacterFoodDrainMultiplier,
                 TamedDinoCharacterFoodDrainMultiplier = TamedDinoCharacterFoodDrainMultiplier,
                 MatingIntervalMultiplier = MatingIntervalMultiplier,
                 EggHatchSpeedMultiplier = EggHatchSpeedMultiplier,
@@ -93,7 +107,9 @@ namespace ARKBreedingStats.values
                 BabyCuddleIntervalMultiplier = BabyCuddleIntervalMultiplier,
                 BabyImprintingStatScaleMultiplier = BabyImprintingStatScaleMultiplier,
                 BabyImprintAmountMultiplier = BabyImprintAmountMultiplier,
-                AllowFlyerSpeedLeveling = AllowFlyerSpeedLeveling
+                AllowFlyerSpeedLeveling = AllowFlyerSpeedLeveling,
+                SinglePlayerSettings = SinglePlayerSettings,
+                AtlasSettings = AtlasSettings
             };
 
             if (withStatMultipliers && statMultipliers != null)
@@ -117,6 +133,7 @@ namespace ARKBreedingStats.values
         public void FixZeroValues()
         {
             if (TamingSpeedMultiplier == 0) TamingSpeedMultiplier = 1;
+            if (WildDinoTorporDrainMultiplier == 0) WildDinoTorporDrainMultiplier = 1;
             if (MatingIntervalMultiplier == 0) MatingIntervalMultiplier = 1;
             if (EggHatchSpeedMultiplier == 0) EggHatchSpeedMultiplier = 1;
             if (MatingSpeedMultiplier == 0) MatingSpeedMultiplier = 1;
@@ -124,5 +141,22 @@ namespace ARKBreedingStats.values
             if (BabyCuddleIntervalMultiplier == 0) BabyCuddleIntervalMultiplier = 1;
             if (BabyImprintAmountMultiplier == 0) BabyImprintAmountMultiplier = 1;
         }
+
+        /// <summary>
+        /// Index of additive taming multiplier in stat multipliers.
+        /// </summary>
+        public const int IndexTamingAdd = 0;
+        /// <summary>
+        /// Index of multiplicative taming multiplier in stat multipliers.
+        /// </summary>
+        public const int IndexTamingMult = 1;
+        /// <summary>
+        /// Index of domesticated level multiplier in stat multipliers.
+        /// </summary>
+        public const int IndexLevelDom = 2;
+        /// <summary>
+        /// Index of wild level multiplier in stat multipliers.
+        /// </summary>
+        public const int IndexLevelWild = 3;
     }
 }

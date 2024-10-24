@@ -151,18 +151,18 @@ namespace ARKBreedingStats.values
         /// <summary>
         /// Sets food for species, orders species, orders and initializes colors. Call after all values and mod values are loaded.
         /// </summary>
-        private void InitializeSpeciesAndColors()
+        private void InitializeSpeciesAndColors(bool undefinedColorAsa = false)
         {
             //var speciesWoFoodData = new List<string>(); // to determine which species has no food data yet
             if (specialFoodData != null)
             {
                 foreach (Species sp in _V.species)
                 {
-                    if (specialFoodData.ContainsKey(sp.name))
+                    if (sp.taming != null && specialFoodData.TryGetValue(sp.name, out var customFoodData))
                     {
-                        sp.taming.eats = specialFoodData[sp.name].eats;
-                        sp.taming.eatsAlsoPostTame = specialFoodData[sp.name].eatsAlsoPostTame;
-                        sp.taming.specialFoodValues = specialFoodData[sp.name].specialFoodValues;
+                        sp.taming.eats = customFoodData.eats;
+                        sp.taming.eatsAlsoPostTame = customFoodData.eatsAlsoPostTame;
+                        sp.taming.specialFoodValues = customFoodData.specialFoodValues;
                     }
                     //if (sp.IsDomesticable && !specialFoodData.ContainsKey(sp.name)) speciesWoFoodData.Add(sp.name);
                 }
@@ -173,7 +173,7 @@ namespace ARKBreedingStats.values
             LoadAndInitializeAliases();
             UpdateSpeciesBlueprintDictionaries();
 
-            InitializeArkColors();
+            InitializeArkColors(undefinedColorAsa);
             _speciesAndColorsInitialized = true;
         }
 
@@ -230,24 +230,38 @@ namespace ARKBreedingStats.values
                     {
                         if (string.IsNullOrWhiteSpace(sp.blueprintPath)) continue;
 
-                        if (blueprintPathDuplicateChecking.TryGetValue(sp.blueprintPath, out var originalSpecies))
-                            _V.species.Remove(originalSpecies);
-                        blueprintPathDuplicateChecking[sp.blueprintPath] = sp;
-
-                        _V.species.Add(sp);
-                        sp.Mod = modValues.mod;
                         speciesAddedCount++;
+
+                        if (blueprintPathDuplicateChecking.TryGetValue(sp.blueprintPath, out var originalSpecies))
+                        {
+                            originalSpecies.LoadOverrides(sp);
+                            originalSpecies.Mod = modValues.mod;
+                        }
+                        else
+                        {
+                            blueprintPathDuplicateChecking[sp.blueprintPath] = sp;
+                            _V.species.Add(sp);
+                            sp.Mod = modValues.mod;
+                        }
                     }
                 }
 
                 // mod colors (even if the mod doesn't add colors, the order of colors can change)
                 if (!modValues.mod.expansion)
                 {
-                    Colors.AddModArkColors(modValues.ArkColorsDyesParsed);
+                    Colors.AddModArkColors((modValues.ArkColorsDyesParsed, modValues.dyeStartIndex));
                     colorsAdded = true;
                 }
 
                 // mod food data TODO
+
+                // add blueprint remaps of mod file
+                if (modValues.BlueprintRemapping != null && modValues.BlueprintRemapping.Count > 0)
+                {
+                    if (BlueprintRemapping == null) BlueprintRemapping = new Dictionary<string, string>();
+                    foreach (var kv in modValues.BlueprintRemapping)
+                        BlueprintRemapping[kv.Key] = kv.Value;
+                }
             }
 
             loadedModsHash = CreatureCollection.CalculateModListHash(loadedMods.Where(m => !m.expansion));
@@ -263,14 +277,16 @@ namespace ARKBreedingStats.values
                 return false;
             }
 
-            InitializeSpeciesAndColors();
+            var asaLoaded = loadedMods.Any(m => m.id == Ark.Asa); // ASA values used
+            InitializeSpeciesAndColors(asaLoaded);
 
             return true;
         }
 
-        private void InitializeArkColors()
+        private void InitializeArkColors(bool undefinedColorAsa)
         {
-            _V.Colors.InitializeArkColors();
+            Ark.SetUndefinedColorId(undefinedColorAsa);
+            _V.Colors.InitializeArkColors(Ark.UndefinedColorId);
             foreach (var s in _V.species)
                 s.InitializeColors(_V.Colors);
             _V.InvisibleColorRegionsExist = _V.species.Any(s => s.colors?.Any(r => r?.invisible == true) == true);
@@ -460,8 +476,8 @@ namespace ARKBreedingStats.values
         /// </summary>
         public void ApplyMultipliers(CreatureCollection cc, bool eventMultipliers = false, bool applyStatMultipliers = true)
         {
-            currentServerMultipliers = (eventMultipliers ? cc.serverMultipliersEvents : cc.serverMultipliers)?.Copy(false);
-            if (currentServerMultipliers == null) currentServerMultipliers = V.serverMultipliersPresets.GetPreset(ServerMultipliersPresets.Official);
+            currentServerMultipliers = (eventMultipliers ? cc.serverMultipliersEvents : cc.serverMultipliers)?.Copy(false)
+                                       ?? V.serverMultipliersPresets.GetPreset(ServerMultipliersPresets.Official);
             if (currentServerMultipliers == null)
             {
                 throw new FileNotFoundException("No default server multiplier values found.\nIt's recommend to redownload ARK Smart Breeding.");
@@ -469,9 +485,9 @@ namespace ARKBreedingStats.values
 
             ServerMultipliers singlePlayerServerMultipliers = null;
 
-            if (cc.singlePlayerSettings)
+            if (currentServerMultipliers.SinglePlayerSettings)
             {
-                // The singleplayer multipliers are saved as a regular multiplierpreset, but they work differently
+                // The singleplayer multipliers are saved as a regular multiplier preset, but they work differently
                 // in the way they are multiplied on existing multipliers and won't work on their own.
                 // The preset name "singleplayer" should only be used for this purpose.
                 singlePlayerServerMultipliers = serverMultipliersPresets.GetPreset(ServerMultipliersPresets.Singleplayer);
@@ -490,6 +506,10 @@ namespace ARKBreedingStats.values
 
             currentServerMultipliers.FixZeroValues();
             double[] defaultMultipliers = new double[] { 1, 1, 1, 1 }; // used if serverMultipliers don't specify non-default values
+            // server multipliers for all multipliers except taming and breeding
+            var serverMultipliersNonBreedingTaming = cc.serverMultipliers ?? V.serverMultipliersPresets.GetPreset(ServerMultipliersPresets.Official);
+            var allowSpeedLeveling = serverMultipliersNonBreedingTaming.AllowSpeedLeveling || cc.Game != Ark.Asa;
+            var allowFlyerSpeedLeveling = serverMultipliersNonBreedingTaming.AllowFlyerSpeedLeveling;
 
             foreach (Species sp in species)
             {
@@ -506,62 +526,72 @@ namespace ARKBreedingStats.values
 
                         bool customOverrideForThisStatExists = customOverrideExists && customFullStatsRaw[s] != null;
 
-                        sp.stats[s].BaseValue = GetRawStatValue(s, 0, customOverrideForThisStatExists);
+                        sp.stats[s].BaseValue = GetRawStatValue(s, Species.StatsRawIndexBase, customOverrideForThisStatExists);
 
                         // don't apply the multiplier if AddWhenTamed is negative (e.g. Giganotosaurus, Griffin)
-                        double addWhenTamed = GetRawStatValue(s, 3, customOverrideForThisStatExists);
+                        double addWhenTamed = GetRawStatValue(s, Species.StatsRawIndexAdditiveBonus, customOverrideForThisStatExists);
                         sp.stats[s].AddWhenTamed = addWhenTamed * (addWhenTamed > 0 ? statMultipliers[0] : 1);
 
                         // don't apply the multiplier if MultAffinity is negative (e.g. Aberration variants)
-                        double multAffinity = GetRawStatValue(s, 4, customOverrideForThisStatExists);
+                        double multAffinity = GetRawStatValue(s, Species.StatsRawIndexMultiplicativeBonus, customOverrideForThisStatExists);
                         sp.stats[s].MultAffinity = multAffinity * (multAffinity > 0 ? statMultipliers[1] : 1);
 
                         if (useSpeedLevelup || s != Stats.SpeedMultiplier)
                         {
-                            sp.stats[s].IncPerTamedLevel = GetRawStatValue(s, 2, customOverrideForThisStatExists) * statMultipliers[2];
+                            sp.stats[s].IncPerTamedLevel = GetRawStatValue(s, Species.StatsRawIndexIncPerDomLevel, customOverrideForThisStatExists) * statMultipliers[2];
                         }
                         else
                         {
                             sp.stats[s].IncPerTamedLevel = 0;
                         }
 
-                        sp.stats[s].IncPerWildLevel = GetRawStatValue(s, 1, customOverrideForThisStatExists) * statMultipliers[3];
+                        sp.stats[s].IncPerWildLevel = GetRawStatValue(s, Species.StatsRawIndexIncPerWildLevel, customOverrideForThisStatExists) * statMultipliers[3];
+                        sp.stats[s].IncPerMutatedLevel = sp.stats[s].IncPerWildLevel; // todo consider adjustments if they're implemented
 
+                        var altBaseValue = 0d;
+                        var thisStatHasAltValues = sp.altBaseStatsRaw?.TryGetValue(s, out altBaseValue) == true;
                         // set troodonism values
-                        if (sp.altStats?[s] != null && sp.stats[s].BaseValue != 0)
+                        if (thisStatHasAltValues
+                            && sp.stats[s].BaseValue != 0
+                            && sp.altStats != null)
                         {
-                            sp.altStats[s].BaseValue = sp.altBaseStatsRaw[s];
+                            sp.altStats[s].BaseValue = altBaseValue;
 
                             // alt / troodonism values depend on the base value
-                            var altFactor = sp.altStats[s].BaseValue / sp.stats[s].BaseValue;
+                            var altFactor = altBaseValue / sp.stats[s].BaseValue;
 
-                            sp.altStats[s].AddWhenTamed = altFactor * sp.stats[s].AddWhenTamed;
-                            sp.altStats[s].MultAffinity = altFactor * sp.stats[s].MultAffinity;
-                            sp.altStats[s].IncPerTamedLevel = altFactor * sp.stats[s].IncPerTamedLevel;
                             sp.altStats[s].IncPerWildLevel = altFactor * sp.stats[s].IncPerWildLevel;
+                            // maybe not affected, maybe depends on postTame stat value (and then maybe on different troodonism variants)
+                            sp.altStats[s].IncPerTamedLevel = sp.stats[s].IncPerTamedLevel;
+                            // taming bonus probably not affected by troodonism
+                            sp.altStats[s].AddWhenTamed = sp.stats[s].AddWhenTamed;
+                            sp.altStats[s].MultAffinity = sp.stats[s].MultAffinity;
                         }
+
+                        ///// single player adjustments if set and available
 
                         if (singlePlayerServerMultipliers?.statMultipliers?[s] == null)
                             continue;
 
                         // don't apply the multiplier if AddWhenTamed is negative (e.g. Giganotosaurus, Griffin)
-                        sp.stats[s].AddWhenTamed *= sp.stats[s].AddWhenTamed > 0 ? singlePlayerServerMultipliers.statMultipliers[s][0] : 1;
+                        sp.stats[s].AddWhenTamed *= sp.stats[s].AddWhenTamed > 0 ? singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexTamingAdd] : 1;
                         // don't apply the multiplier if MultAffinity is negative (e.g. Aberration variants)
-                        sp.stats[s].MultAffinity *= sp.stats[s].MultAffinity > 0 ? singlePlayerServerMultipliers.statMultipliers[s][1] : 1;
-                        sp.stats[s].IncPerTamedLevel *= singlePlayerServerMultipliers.statMultipliers[s][2];
-                        sp.stats[s].IncPerWildLevel *= singlePlayerServerMultipliers.statMultipliers[s][3];
+                        sp.stats[s].MultAffinity *= sp.stats[s].MultAffinity > 0 ? singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexTamingMult] : 1;
+                        sp.stats[s].IncPerTamedLevel *= singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexLevelDom];
+                        sp.stats[s].IncPerWildLevel *= singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexLevelWild];
 
-                        // troodonism values
-                        if (sp.altStats?[s] != null)
+                        // troodonism values singleplayer adjustment
+                        if (thisStatHasAltValues
+                            && sp.altStats?[s] != null)
                         {
                             sp.altStats[s].AddWhenTamed *= sp.altStats[s].AddWhenTamed > 0
-                                ? singlePlayerServerMultipliers.statMultipliers[s][0]
+                                ? singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexTamingAdd]
                                 : 1;
                             sp.altStats[s].MultAffinity *= sp.altStats[s].MultAffinity > 0
-                                ? singlePlayerServerMultipliers.statMultipliers[s][1]
+                                ? singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexTamingMult]
                                 : 1;
-                            sp.altStats[s].IncPerTamedLevel *= singlePlayerServerMultipliers.statMultipliers[s][2];
-                            sp.altStats[s].IncPerWildLevel *= singlePlayerServerMultipliers.statMultipliers[s][3];
+                            sp.altStats[s].IncPerTamedLevel *= singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexLevelDom];
+                            sp.altStats[s].IncPerWildLevel *= singlePlayerServerMultipliers.statMultipliers[s][ServerMultipliers.IndexLevelWild];
                         }
 
                         double GetRawStatValue(int statIndex, int statValueTypeIndex, bool customOverride)
@@ -571,11 +601,15 @@ namespace ARKBreedingStats.values
                     }
 
                     // imprinting multiplier override
-                    sp.SetCustomImprintingMultipliers(customOverrideExists && cc.CustomSpeciesStats[sp.blueprintPath].Length > Stats.StatsCount ? cc.CustomSpeciesStats[sp.blueprintPath][Stats.StatsCount] : null);
+                    var imprintingMultiplierOverrides =
+                        customOverrideExists && cc.CustomSpeciesStats[sp.blueprintPath].Length > Stats.StatsCount
+                            ? cc.CustomSpeciesStats[sp.blueprintPath][Stats.StatsCount]
+                            : null;
+
+                    sp.SetCustomImprintingMultipliers(imprintingMultiplierOverrides);
 
                     // ATLAS multipliers
-
-                    if (cc.AtlasSettings)
+                    if (cc.serverMultipliers.AtlasSettings)
                     {
                         sp.stats[Stats.Health].BaseValue *= 1.25;
                         sp.stats[Stats.Health].IncPerTamedLevel *= 1.5;
@@ -583,6 +617,8 @@ namespace ARKBreedingStats.values
                         sp.stats[Stats.MeleeDamageMultiplier].IncPerTamedLevel *= 1.5;
                     }
                 }
+
+                sp.ApplyCanLevelOptions(allowSpeedLeveling, allowFlyerSpeedLeveling);
 
                 // breeding multiplier
                 if (sp.breeding == null)
@@ -656,7 +692,7 @@ namespace ARKBreedingStats.values
             {
                 if (!string.IsNullOrEmpty(s.blueprintPath))
                 {
-                    _blueprintToSpecies[s.blueprintPath] = s;
+                    _blueprintToSpecies[s.blueprintPath.ToLowerInvariant()] = s;
 
                     string speciesName = s.name;
                     if (_nameToSpecies.TryGetValue(speciesName, out var existingSpecies))
@@ -675,10 +711,7 @@ namespace ARKBreedingStats.values
                     if (classNameMatch.Success)
                     {
                         string className = classNameMatch.Value + "_C";
-                        if (_classNameToSpecies.ContainsKey(className))
-                            _classNameToSpecies[className] = s;
-                        else
-                            _classNameToSpecies.Add(className, s);
+                        _classNameToSpecies[className] = s;
                     }
                 }
             }
@@ -743,16 +776,24 @@ namespace ARKBreedingStats.values
         /// <summary>
         /// Returns the according species to the passed blueprintPath or null if unknown.
         /// </summary>
-        /// <param name="blueprintPath"></param>
-        /// <returns></returns>
         public Species SpeciesByBlueprint(string blueprintPath)
         {
             if (string.IsNullOrEmpty(blueprintPath)) return null;
-            if (_blueprintRemapping != null && _blueprintRemapping.TryGetValue(blueprintPath, out var realBlueprintPath))
+            if (BlueprintRemapping != null && BlueprintRemapping.TryGetValue(blueprintPath, out var realBlueprintPath))
             {
                 blueprintPath = realBlueprintPath;
             }
-            return _blueprintToSpecies.TryGetValue(blueprintPath, out var s) ? s : null;
+            return _blueprintToSpecies.TryGetValue(blueprintPath.ToLowerInvariant(), out var s) ? s : null;
+        }
+
+        /// <summary>
+        /// Returns the according species to the passed blueprintPath or null if unknown. Removes trailing _C if there.
+        /// </summary>
+        public Species SpeciesByBlueprint(string blueprintPath, bool removeTrailingC)
+        {
+            if (removeTrailingC && blueprintPath?.EndsWith("_C") == true)
+                return SpeciesByBlueprint(blueprintPath.Substring(0, blueprintPath.Length - 2));
+            return SpeciesByBlueprint(blueprintPath);
         }
 
         /// <summary>

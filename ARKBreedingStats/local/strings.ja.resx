@@ -932,7 +932,7 @@ OCRで種族の推測が頻繁に間違える場合は、この設定を無効�
   <data name="importingFromSavegameToolStripMenuItem" xml:space="preserve">
     <value>savegameからインポート中</value>
   </data>
-  <data name="importingFromSavegameEmptyToolStripMenuItem" xml:space="preserve">
+  <data name="configureSavegameImportToolStripMenuItem" xml:space="preserve">
     <value>先に「Import Savegame」を設定してください</value>
   </data>
   <data name="until" xml:space="preserve">
@@ -1302,5 +1302,8 @@ It's also possible to filter for creatures with a color in one of multiple possi
   </data>
   <data name="groupLibraryBySpecies" xml:space="preserve">
     <value>種族でライブラリを切り分ける</value>
+  </data>
+  <data name="nameAlreadyExistsInLibrary" xml:space="preserve">
+    <value>この名前はすでにライブラリに存在します</value>
   </data>
 </root>

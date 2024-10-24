@@ -929,8 +929,8 @@ Some offsprings might be worse than in High-Stats-Mode, but you also have a chan
   <data name="importingFromSavegameToolStripMenuItem" xml:space="preserve">
     <value>Importing from savegame</value>
   </data>
-  <data name="importingFromSavegameEmptyToolStripMenuItem" xml:space="preserve">
-    <value>At first configure "Import Savegame"</value>
+  <data name="configureSavegameImportToolStripMenuItem" xml:space="preserve">
+    <value>Configure Import Savegame</value>
   </data>
   <data name="until" xml:space="preserve">
     <value>until</value>
@@ -1333,5 +1333,47 @@ It's also possible to filter for creatures with a color in one of multiple possi
   </data>
   <data name="groupLibraryBySpecies" xml:space="preserve">
     <value>Group library by species</value>
+  </data>
+  <data name="nameAlreadyExistsInLibrary" xml:space="preserve">
+    <value>This name already exists in the library</value>
+  </data>
+  <data name="timerStarvingOf" xml:space="preserve">
+    <value>Starving of</value>
+  </data>
+  <data name="ClickCopyToClipboard" xml:space="preserve">
+    <value>Click to copy to clipboard</value>
+  </data>
+  <data name="BtBeepUpdated" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="BtBeepUpdatedTT" xml:space="preserve">
+    <value>This sound is played if a creature is updated, i.e. imported again</value>
+  </data>
+  <data name="issueCauseSpeedLevelingSetting" xml:space="preserve">
+    <value>The Allow speed leveling setting or the game (ASE or ASA) is probably not set correctly.</value>
+  </data>
+  <data name="pasteCreaturesToLibrary?" xml:space="preserve">
+    <value>Paste {0} creatures directly in the library?</value>
+  </data>
+  <data name="paste" xml:space="preserve">
+    <value>paste</value>
+  </data>
+  <data name="JavaScriptNamingPatternHelp" xml:space="preserve">
+    <value>/*
+  JavaScript patterns are enabled by using the text "#!javascript" as the first line of the pattern.
+  The script must return the creature name as a string.
+  Creature values are available as global properties.  e.g. this.hp, globalThis.hp or just `${hp}` 
+
+  In addition to the standard JavaScript functions, additional functions include:
+    log(text):
+      Writes the text to the javascript console
+
+    customReplace(key, defaultValue):
+      Replaces the text with a value saved in the file customReplacings.json.
+      If a second parameter is given, that is returned if the key is not available.
+
+    listName(index, suffix):
+      Takes a name from a list in the file creatureNames[suffix].txt
+*/</value>
   </data>
 </root>

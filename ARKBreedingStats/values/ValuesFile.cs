@@ -16,10 +16,11 @@ namespace ARKBreedingStats.values
         /// </summary>
         protected static bool IsValidFormatVersion(string version) =>
             version != null
-            && (
-                version == "1.12" // format with 12 stats (minimum required format)
+            && (version == "1.12" // format with 12 stats (minimum required format)
                 || version == "1.13" // introduced remaps for blueprintPaths
                 || version == "1.14-flyerspeed" // introduced isFlyer property for AllowFlyerSpeedLeveling
+                || version == "1.15-asa" // for new properties in ARK: Survival Ascended
+                || version == "1.16-mod-remap" // support for blueprint remap for mod files
             );
 
         [JsonProperty]
@@ -32,10 +33,19 @@ namespace ARKBreedingStats.values
         public Version Version;
         [JsonProperty]
         public List<Species> species;
+
+        /// <summary>
+        /// If not zero it indicates the values file contains new dye definitions that should overwrite the existing base definitions.
+        /// </summary>
+        [JsonProperty]
+        public int dyeStartIndex;
+
         [JsonProperty("colorDefinitions")]
         private object[][] _colorDefinitions;
+
         [JsonProperty("dyeDefinitions")]
         private object[][] _dyeDefinitions;
+
         internal List<ArkColor> ArkColorsDyesParsed;
 
         /// <summary>
@@ -43,7 +53,7 @@ namespace ARKBreedingStats.values
         /// This is needed if species are remapped ingame, e.g. if a variant is removed.
         /// </summary>
         [JsonProperty("remaps")]
-        protected Dictionary<string, string> _blueprintRemapping;
+        public Dictionary<string, string> BlueprintRemapping;
 
         /// <summary>
         /// If this represents values for a mod, the mod-infos are found here.
@@ -126,6 +136,12 @@ namespace ARKBreedingStats.values
                 errorMessage = "Values-File '" + filePath + $"' has an invalid version.\n{ex.Message}\nTry updating ARK Smart Breeding.";
                 if (throwExceptionOnFail)
                     throw new FormatException(errorMessage);
+            }
+            catch (FileLoadException ex)
+            {
+                errorMessage = ex.Message;
+                if (throwExceptionOnFail)
+                    throw;
             }
             return false;
         }

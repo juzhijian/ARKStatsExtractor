@@ -12,8 +12,11 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using ARKBreedingStats.importExportGun;
 using ARKBreedingStats.uiControls;
 using ARKBreedingStats.utils;
+using ARKBreedingStats.AsbServer;
+using ARKBreedingStats.library;
 
 namespace ARKBreedingStats
 {
@@ -30,8 +33,9 @@ namespace ARKBreedingStats
             if (!resetCollection
                 && UnsavedChanges()
                 && CustomMessageBox.Show(Loc.S("Collection changed discard and new?"),
-                    Loc.S("Discard changes?"), Loc.S("Discard changes and new"), buttonCancel: Loc.S("Cancel"), icon: MessageBoxIcon.Warning) != DialogResult.Yes
-            )
+                    Loc.S("Discard changes?"), Loc.S("Discard changes and new"), buttonCancel: Loc.S("Cancel"),
+                    icon: MessageBoxIcon.Warning) != DialogResult.Yes
+               )
             {
                 return;
             }
@@ -42,20 +46,65 @@ namespace ARKBreedingStats
                 var (statValuesLoaded, _) = LoadStatAndKibbleValues(applySettings: false);
                 if (!statValuesLoaded)
                 {
-                    MessageBoxes.ShowMessageBox("Couldn't load stat values. Please redownload the application.", $"{Loc.S("error")} while loading the stat-values");
+                    MessageBoxes.ShowMessageBox("Couldn't load stat values. Please redownload the application.",
+                        $"{Loc.S("error")} while loading the stat-values");
                 }
             }
 
-            if (_creatureCollection.serverMultipliers == null)
-                _creatureCollection.serverMultipliers = Values.V.serverMultipliersPresets.GetPreset(ServerMultipliersPresets.Official);
-            // use previously used multipliers again in the new file
-            ServerMultipliers oldMultipliers = _creatureCollection.serverMultipliers;
+            ServerMultipliers oldMultipliers = null;
+            ServerMultipliers oldEventMultipliers = null;
+            bool asaMode;
+
+            if (Properties.Settings.Default.KeepMultipliersForNewLibrary)
+            {
+                // use previously used multipliers again in the new file
+                oldMultipliers = _creatureCollection.serverMultipliers;
+                oldEventMultipliers = _creatureCollection.serverMultipliersEvents;
+            }
+
+            // ask which game version if no default is set
+            switch (Properties.Settings.Default.NewLibraryGame)
+            {
+                case Ark.Game.Ase:
+                    asaMode = false;
+                    break;
+                case Ark.Game.Asa:
+                    asaMode = true;
+                    break;
+                case Ark.Game.SameAsBefore:
+                    asaMode = _creatureCollection.Game == Ark.Asa;
+                    break;
+                default:
+                    var gameVersionDialog = new ArkVersionDialog(this);
+                    gameVersionDialog.ShowDialog();
+                    if (gameVersionDialog.UseSelectionAsDefault)
+                        Properties.Settings.Default.NewLibraryGame = gameVersionDialog.GameVersion;
+                    asaMode = gameVersionDialog.GameVersion == Ark.Game.Asa;
+                    break;
+            }
+
+            if (oldMultipliers == null)
+                oldMultipliers = Values.V.serverMultipliersPresets.GetPreset(ServerMultipliersPresets.Official);
 
             _creatureCollection = new CreatureCollection
             {
                 serverMultipliers = oldMultipliers,
+                serverMultipliersEvents = oldEventMultipliers,
                 ModList = new List<Mod>()
             };
+            _currentFileName = null;
+            _fileSync?.ChangeFile(_currentFileName);
+
+            if (asaMode)
+            {
+                _creatureCollection.Game = Ark.Asa;
+                ReloadModValuesOfCollectionIfNeeded(true, false, false, false);
+            }
+            else
+            {
+                UpdateAsaIndicator();
+            }
+
             pedigree1.Clear();
             breedingPlan1.Clear();
             creatureInfoInputExtractor.Clear(true);
@@ -66,8 +115,6 @@ namespace ARKBreedingStats
             UpdateCreatureListings();
             creatureBoxListView.Clear();
             Properties.Settings.Default.LastSaveFile = null;
-            _currentFileName = null;
-            _fileSync?.ChangeFile(_currentFileName);
             SetCollectionChanged(false);
         }
 
@@ -504,7 +551,7 @@ namespace ARKBreedingStats
 
             if (keepCurrentCreatures)
             {
-                creatureWasAdded = previouslyLoadedCreatureCollection.MergeCreatureList(_creatureCollection.creatures);
+                creatureWasAdded = previouslyLoadedCreatureCollection.MergeCreatureList(_creatureCollection.creatures, removeCreatures: _creatureCollection.DeletedCreatureGuids);
                 _creatureCollection = previouslyLoadedCreatureCollection;
             }
             else
@@ -557,6 +604,7 @@ namespace ARKBreedingStats
                 speciesSelector1.SetSpecies(_creatureCollection.creatures[0].Species);
 
             // set library species to what it was before loading
+            selectedLibrarySpecies = Values.V.SpeciesByBlueprint(selectedLibrarySpecies?.blueprintPath);
             if (selectedLibrarySpecies != null)
                 listBoxSpeciesLib.SelectedItem = selectedLibrarySpecies;
             else if (Properties.Settings.Default.LibrarySelectSelectedSpeciesOnLoad)
@@ -670,6 +718,9 @@ namespace ARKBreedingStats
             SetMessageLabelText("A File with the current library and the values in the extractor has been created and copied to the clipboard. You can paste this file to a folder to add it to an issue report.", MessageBoxIcon.Information, tempZipFilePath);
         }
 
+        /// <summary>
+        /// Zipped library files are often error reports.
+        /// </summary>
         private bool OpenZippedLibrary(string filePath)
         {
             if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
@@ -767,6 +818,198 @@ namespace ARKBreedingStats
                 && DiscardChangesAndLoadNewLibrary()
                 )
                 LoadCollectionFile(mi.Text);
+        }
+
+        /// <summary>
+        /// Imports creature from file created by the export gun mod.
+        /// Returns already existing Creature or null if it's a new creature.
+        /// </summary>
+        private Creature ImportExportGunFiles(string[] filePaths, bool addCreatures, out bool creatureAdded, out Creature lastImportedCreature, out bool copiedNameToClipboard, bool playImportSound = false)
+        {
+            creatureAdded = false;
+            copiedNameToClipboard = false;
+            var newCreatures = new List<Creature>();
+
+            var importedCounter = 0;
+            var importFailedCounter = 0;
+            string lastError = null;
+            string lastCreatureFilePath = null;
+            string serverMultipliersHash = null;
+            bool? multipliersImportSuccessful = null;
+            string serverImportResult = null;
+            Creature alreadyExistingCreature = null;
+            var gameSettingBefore = _creatureCollection.Game;
+
+            foreach (var filePath in filePaths)
+            {
+                var c = ImportExportGun.LoadCreature(filePath, out lastError, out serverMultipliersHash, out _);
+                if (c != null)
+                {
+                    newCreatures.Add(c);
+                    importedCounter++;
+                    lastCreatureFilePath = filePath;
+                }
+                else if (lastError != null)
+                {
+                    // file could be a server multiplier file, try to read it that way
+                    var esm = ImportExportGun.ReadServerMultipliers(filePath, out var serverImportResultTemp);
+                    if (esm != null)
+                    {
+                        multipliersImportSuccessful = ImportExportGun.SetCollectionMultipliers(_creatureCollection, esm, Path.GetFileNameWithoutExtension(filePath));
+                        serverImportResult = serverImportResultTemp;
+                        if (multipliersImportSuccessful == true)
+                            continue;
+                    }
+
+                    importFailedCounter++;
+                    MessageBoxes.ShowMessageBox(lastError);
+                }
+            }
+
+            if (lastCreatureFilePath != null && !string.IsNullOrEmpty(serverMultipliersHash) && _creatureCollection.ServerMultipliersHash != serverMultipliersHash)
+            {
+                // current server multipliers might be outdated, import them again
+                // for ASE the export gun create a .sav file containing a json, for ASA directly a .json file
+                var serverMultiplierFilePath = Path.Combine(Path.GetDirectoryName(lastCreatureFilePath), "Servers", serverMultipliersHash + ".json");
+                if (!File.Exists(serverMultiplierFilePath))
+                    serverMultiplierFilePath = Path.Combine(Path.GetDirectoryName(lastCreatureFilePath), "Servers", serverMultipliersHash + ".sav");
+                if (File.Exists(serverMultiplierFilePath))
+                    multipliersImportSuccessful = ImportExportGun.ImportServerMultipliers(_creatureCollection, serverMultiplierFilePath, serverMultipliersHash, out serverImportResult);
+            }
+
+            if (multipliersImportSuccessful == true)
+            {
+                if (_creatureCollection.Game != gameSettingBefore)
+                {
+                    // ASA setting changed
+                    var loadAsa = gameSettingBefore != Ark.Asa;
+                    ReloadModValuesOfCollectionIfNeeded(loadAsa, false, false);
+                }
+
+                ApplySettingsToValues();
+            }
+
+            var totalCreatureCount = _creatureCollection.GetTotalCreatureCount();
+            // select creature objects that will be in the library (i.e. new creature, or existing creature), and the old name
+            var persistentCreaturesAndOldName = newCreatures.Select(c => (creature:
+                IsCreatureAlreadyInLibrary(c.guid, c.ArkId, out alreadyExistingCreature)
+                    ? alreadyExistingCreature
+                    : c, oldName: alreadyExistingCreature?.name)).ToArray();
+
+            lastImportedCreature = newCreatures.LastOrDefault();
+            var importCreatureExists = lastImportedCreature != null;
+            if (importCreatureExists)
+            {
+                if (addCreatures)
+                {
+                    creatureAdded = true;
+                    // calculate level status of last added creature
+                    DetermineLevelStatusAndSoundFeedback(lastImportedCreature, playImportSound);
+
+                    _creatureCollection.MergeCreatureList(newCreatures, true);
+                    UpdateCreatureParentLinkingSort(false);
+
+                    // apply naming pattern if needed. This can only be done after parent linking to get correct name pattern values related to parents
+                    Species lastSpecies = null;
+                    Creature[] creaturesOfSpecies = null;
+                    foreach (var c in persistentCreaturesAndOldName)
+                    {
+                        copiedNameToClipboard = SetNameOfImportedCreature(c.creature,
+                            lastSpecies == c.creature.Species ? creaturesOfSpecies : null, out creaturesOfSpecies,
+                            new Creature(c.creature.Species, c.oldName), totalCreatureCount);
+                        lastSpecies = c.creature.Species;
+                        if (c.oldName == null)
+                            totalCreatureCount++; // if creature was added, increase total count for name pattern
+                    }
+
+                    UpdateListsAfterCreaturesAdded(Properties.Settings.Default.AutoImportGotoLibraryAfterSuccess);
+
+                    if (Properties.Settings.Default.AutoImportGotoLibraryAfterSuccess)
+                    {
+                        tabControlMain.SelectedTab = tabPageLibrary;
+                        if (listBoxSpeciesLib.SelectedItem != null &&
+                            listBoxSpeciesLib.SelectedItem != lastImportedCreature.Species)
+                            listBoxSpeciesLib.SelectedItem = lastImportedCreature.Species;
+                        SelectCreatureInLibrary(lastImportedCreature);
+                    }
+                    else
+                    {
+                        EditCreatureInTester(lastImportedCreature);
+                    }
+                }
+                else
+                {
+                    SetCreatureValuesLevelsAndInfoToExtractor(lastImportedCreature);
+                }
+            }
+            else if (multipliersImportSuccessful == true)
+            {
+                SetCollectionChanged(true);
+            }
+
+            var resultText = (importedCounter > 0 || importFailedCounter > 0
+                                 ? $"Imported{(addCreatures ? " and added" : string.Empty)} {importedCounter} creatures successfully.{(importFailedCounter > 0 ? $"Failed to import {importFailedCounter} files. Last error:{Environment.NewLine}{lastError}" : $"{Environment.NewLine}Last file: {lastCreatureFilePath}")}"
+                                 : string.Empty)
+                             + (string.IsNullOrEmpty(serverImportResult)
+                                 ? string.Empty
+                                 : (importedCounter > 0 || importFailedCounter > 0 ? Environment.NewLine : string.Empty)
+                                  + serverImportResult);
+
+            SetMessageLabelText(resultText, importFailedCounter > 0 || multipliersImportSuccessful == false ? MessageBoxIcon.Error : MessageBoxIcon.Information, lastCreatureFilePath);
+            if (importCreatureExists && addCreatures)
+                _ignoreNextMessageLabel = true; // ignore message of selected creature (is shown after some delay / debouncing)
+
+            return alreadyExistingCreature;
+        }
+
+        /// <summary>
+        /// Call after creatures were added (imported) to the library. Updates parent linkings, creature lists, set collection as changed
+        /// </summary>
+        private void UpdateCreatureParentLinkingSort(bool updateLists = true, bool goToLibraryTab = false)
+        {
+            UpdateParents(_creatureCollection.creatures);
+
+            foreach (var creature in _creatureCollection.creatures)
+            {
+                creature.RecalculateAncestorGenerations();
+            }
+
+            UpdateIncubationParents(_creatureCollection);
+
+            if (updateLists)
+                UpdateListsAfterCreaturesAdded(goToLibraryTab);
+        }
+
+        /// <summary>
+        /// Updates lists after creatures were added, recalculates library info, e.g. top stats.
+        /// </summary>
+        private void UpdateListsAfterCreaturesAdded(bool goToLibraryTab)
+        {
+            // update UI
+            SetCollectionChanged(true);
+            UpdateCreatureListings();
+
+            if (goToLibraryTab && _creatureCollection.creatures.Any())
+                tabControlMain.SelectedTab = tabPageLibrary;
+
+            // reapply last sorting
+            SortLibrary();
+
+            UpdateTempCreatureDropDown();
+        }
+
+        private void DetermineLevelStatusAndSoundFeedback(Creature c, bool playImportSound)
+        {
+            var species = c.Species;
+            _topLevels.TryGetValue(species, out var topLevels);
+            var statWeights = breedingPlan1.StatWeighting.GetWeightingForSpecies(species);
+            LevelStatusFlags.DetermineLevelStatus(species, topLevels, statWeights,
+                c.levelsWild, c.levelsMutated, c.valuesBreeding, out _, out _);
+
+            if (playImportSound)
+            {
+                SoundFeedback.BeepSignalCurrentLevelFlags(IsCreatureAlreadyInLibrary(c.guid, c.ArkId, out _));
+            }
         }
     }
 }

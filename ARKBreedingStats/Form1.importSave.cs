@@ -21,7 +21,36 @@ namespace ARKBreedingStats
     {
         private async void SavegameImportClick(object sender, EventArgs e)
         {
-            var error = await RunSavegameImport((ATImportFileLocation)((ToolStripMenuItem)sender).Tag);
+            string error = null;
+            if (sender is ToolStripMenuItem tsmi && tsmi.Tag is ATImportFileLocation atImportFileLocation)
+            {
+                error = await RunSavegameImport(atImportFileLocation);
+            }
+            else
+            {
+                var initialFolder = Properties.Settings.Default.ManualSaveGameImportFolder;
+                if (string.IsNullOrEmpty(initialFolder) || !Directory.Exists(initialFolder))
+                    initialFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+                string saveFileLocation = null;
+                using (OpenFileDialog dlg = new OpenFileDialog
+                {
+                    Filter = "ARK save file (*.ark)|*.ark",
+                    InitialDirectory = initialFolder
+                })
+                {
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        saveFileLocation = dlg.FileName;
+                        Properties.Settings.Default.ManualSaveGameImportFolder = Path.GetDirectoryName(dlg.FileName);
+                    }
+                }
+
+                if (string.IsNullOrEmpty(saveFileLocation)) return;
+
+                error = await RunSavegameImport(saveFileLocation);
+            }
+
             if (string.IsNullOrEmpty(error)) return;
             MessageBoxes.ShowMessageBox(error, "Savegame import error");
         }
@@ -32,25 +61,33 @@ namespace ARKBreedingStats
         /// <returns>null on success, else an error message to show, or an empty string if the error was already displayed.</returns>
         private async Task<string> RunSavegameImport(ATImportFileLocation atImportFileLocation)
         {
+            return await RunSavegameImport(atImportFileLocation.FileLocation, atImportFileLocation.ConvenientName,
+                 atImportFileLocation.ServerName);
+        }
+
+        /// <summary>
+        /// Imports the creatures from the given saveGame. ftp is possible.
+        /// </summary>
+        /// <returns>null on success, else an error message to show, or an empty string if the error was already displayed.</returns>
+        private async Task<string> RunSavegameImport(string fileLocation, string convenientName = null, string serverName = null)
+        {
             TsbQuickSaveGameImport.Enabled = false;
             TsbQuickSaveGameImport.BackColor = Color.Yellow;
-            ToolStripStatusLabelImport.Text = $"{Loc.S("ImportingSavegame")} {atImportFileLocation.ConvenientName}";
+            ToolStripStatusLabelImport.Text = $"{Loc.S("ImportingSavegame")} {convenientName ?? fileLocation}";
             ToolStripStatusLabelImport.Visible = true;
 
+            string workingCopyFolderPath = Properties.Settings.Default.savegameExtractionPath;
+            string workingCopyFilePath = null;
             try
             {
-                string workingCopyFolderPath = Properties.Settings.Default.savegameExtractionPath;
-                string workingCopyFilePath;
-
                 // working dir not configured? use temp dir
                 // luser configured savegame folder as working dir? use temp dir instead
                 if (string.IsNullOrWhiteSpace(workingCopyFolderPath) ||
-                    Path.GetDirectoryName(atImportFileLocation.FileLocation) == workingCopyFolderPath)
+                    Path.GetDirectoryName(fileLocation) == workingCopyFolderPath)
                 {
                     workingCopyFolderPath = Path.GetTempPath();
                 }
 
-                var fileLocation = atImportFileLocation.FileLocation;
                 string uriFileRegex = null;
 
                 var indexLastSlash = fileLocation.LastIndexOf('/');
@@ -70,8 +107,9 @@ namespace ARKBreedingStats
                     switch (uri.Scheme)
                     {
                         case "ftp":
+                        case "ftps":
                             string errorMessage;
-                            (workingCopyFilePath, errorMessage) = await CopyFtpFileAsync(uri, uriFileRegex, atImportFileLocation.ConvenientName,
+                            (workingCopyFilePath, errorMessage) = await CopyFtpFileAsync(uri, uriFileRegex, convenientName ?? serverName ?? fileLocation,
                                workingCopyFolderPath);
                             if (errorMessage != null)
                                 // the user didn't enter credentials
@@ -83,14 +121,14 @@ namespace ARKBreedingStats
                 }
                 else
                 {
-                    if (!File.Exists(atImportFileLocation.FileLocation))
-                        return $"File not found: {atImportFileLocation.FileLocation}";
+                    if (!File.Exists(fileLocation))
+                        return $"File not found: {fileLocation}";
 
                     workingCopyFilePath = Path.Combine(workingCopyFolderPath,
-                         Path.GetFileName(atImportFileLocation.FileLocation));
+                         Path.GetFileName(fileLocation));
                     try
                     {
-                        File.Copy(atImportFileLocation.FileLocation, workingCopyFilePath, true);
+                        File.Copy(fileLocation, workingCopyFilePath, true);
                     }
                     catch (Exception ex)
                     {
@@ -99,31 +137,16 @@ namespace ARKBreedingStats
                     }
                 }
 
-                await ImportSavegame.ImportCollectionFromSavegame(_creatureCollection, workingCopyFilePath,
-                    atImportFileLocation.ServerName);
-
-                FileService.TryDeleteFile(workingCopyFilePath);
-
-                UpdateParents(_creatureCollection.creatures);
-
-                foreach (var creature in _creatureCollection.creatures)
+                var fileSize = new FileInfo(workingCopyFilePath).Length;
+                if (fileSize > int.MaxValue
+                     && MessageBox.Show($"The file is very large (~{Math.Round(fileSize / 1e9, 1)} GB), importing can take some minutes. Continue?", "Importing large file", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    creature.RecalculateAncestorGenerations();
+                    return "Import aborted by user because of large file size";
                 }
 
-                UpdateIncubationParents(_creatureCollection);
+                await ImportSavegame.ImportCollectionFromSavegame(_creatureCollection, workingCopyFilePath, serverName);
 
-                // update UI
-                SetCollectionChanged(true);
-                UpdateCreatureListings();
-
-                if (_creatureCollection.creatures.Any())
-                    tabControlMain.SelectedTab = tabPageLibrary;
-
-                // reapply last sorting
-                SortLibrary();
-
-                UpdateTempCreatureDropDown();
+                UpdateCreatureParentLinkingSort(goToLibraryTab: true);
 
                 // if unknown mods are used in the savegame-file and the user wants to load the missing mod-files, do it
                 if (_creatureCollection.ModValueReloadNeeded
@@ -132,11 +155,13 @@ namespace ARKBreedingStats
             }
             catch (Exception ex)
             {
-                MessageBoxes.ExceptionMessageBox(ex, $"An error occurred while importing the file {atImportFileLocation.FileLocation}.", "Save file import error");
+                var noAsaSupportInfo = ex.Message.StartsWith("Found unknown Version 20819") ? "Importing save games from ARK: Survival Ascended (ASA) is not yet supported, currently only ARK: Survival Evolved (ASE) is supported for save file import.\n\n" : null;
+                MessageBoxes.ExceptionMessageBox(ex, $"{noAsaSupportInfo}An error occurred while importing the file {fileLocation}.", "Save file import error");
                 return string.Empty;
             }
             finally
             {
+                FileService.TryDeleteFile(workingCopyFilePath);
                 TsbQuickSaveGameImport.Enabled = true;
                 TsbQuickSaveGameImport.BackColor = SystemColors.Control;
                 ToolStripStatusLabelImport.Visible = false;
@@ -178,6 +203,12 @@ namespace ARKBreedingStats
                         }
                     }
                     var client = new AsyncFtpClient(ftpUri.Host, credentials.Username, credentials.Password, ftpUri.Port);
+                    if (ftpUri.Scheme == "ftps")
+                    {
+                        client.Config.EncryptionMode = FtpEncryptionMode.Auto;
+                        client.Config.ValidateAnyCertificate = true;
+                    }
+
                     string ftpPath = null;
 
                     try
@@ -207,7 +238,7 @@ namespace ARKBreedingStats
                                 await GetLastModifiedFileAsync(client, ftpUri, fileRegex, cancellationTokenSource.Token);
                             if (mostRecentlyModifiedMatch == null)
                             {
-                                throw new Exception($"No file found matching pattern '{fileRegex}'");
+                                throw new FileNotFoundException($"'{fileRegex}'");
                             }
 
                             ftpPath = mostRecentlyModifiedMatch.FullName;
@@ -235,22 +266,27 @@ namespace ARKBreedingStats
                     }
                     catch (FtpAuthenticationException ex)
                     {
-                        // if auth fails, clear credentials, alert the user and loop until the either auth succeeds or the user cancels
+                        // if auth fails, clear credentials, alert the user and loop until either auth succeeds or the user cancels
                         progressDialog.StatusText = $"Authentication failed: {ex.Message}";
                         credentials = null;
                         await Task.Delay(1000);
                     }
                     catch (OperationCanceledException)
                     {
-                        client.Dispose();
+                        await client.DisposeAsync();
                         return (null, "aborted by user");
+                    }
+                    catch (FileNotFoundException ex)
+                    {
+                        await client.DisposeAsync();
+                        return (null, $"File not found using regex pattern {ex.Message}");
                     }
                     catch (Exception ex)
                     {
-                        var errorMessage = $"Unexpected error while downloading file\n{ftpPath}:\n{ex.Message}{(string.IsNullOrEmpty(ex.InnerException?.Message) ? null : "\n\nInner Exception:\n" + ex.InnerException?.Message)}";
+                        var errorMessage = $"Unexpected error while determining and downloading file\n{ftpPath}\n{ExceptionMessages.WithInner(ex)}";
                         if (progressDialog.IsDisposed)
                         {
-                            client.Dispose();
+                            await client.DisposeAsync();
                             return (null, errorMessage);
                         }
                         progressDialog.StatusText = errorMessage + "\n\nTrying again in some seconds.";
@@ -258,14 +294,14 @@ namespace ARKBreedingStats
                     }
                     finally
                     {
-                        client.Dispose();
+                        await client.DisposeAsync();
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Loads the encrypted ftp crednetials from settings, decrypts them, then returns them as a hostname to credentials dictionary
+        /// Loads the encrypted ftp credentials from settings, decrypts them, then returns them as a hostname to credentials dictionary
         /// </summary>
         private static Dictionary<string, FtpCredentials> LoadSavedCredentials()
         {

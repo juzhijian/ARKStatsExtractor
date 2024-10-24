@@ -80,6 +80,7 @@ namespace ARKBreedingStats
         public void SetInfoPositionsAndFontSize()
         {
             labelTimer.Location = Properties.Settings.Default.OverlayTimerPosition;
+            labelInfo.Size = Properties.Settings.Default.OverlayInfoSize;
             labelInfo.Location = new Point(Size.Width - labelInfo.Width - Properties.Settings.Default.OverlayInfoPosition.X, Properties.Settings.Default.OverlayInfoPosition.Y);
             SetLabelFontSize(Properties.Settings.Default.OverlayRelativeFontSize);
         }
@@ -173,7 +174,6 @@ namespace ARKBreedingStats
         /// <summary>
         /// Used to display longer texts at the top right, e.g. taming-info.
         /// </summary>
-        /// <param name="infoText"></param>
         internal void SetInfoText(string infoText, Color textColor)
         {
             labelInfo.ForeColor = textColor;
@@ -191,9 +191,9 @@ namespace ARKBreedingStats
         {
             var sb = new StringBuilder();
 
+            var timerListChanged = false;
             if (timers?.Any() ?? false)
             {
-                var timerListChanged = false;
                 foreach (TimerListEntry tle in timers)
                 {
                     var timeLeft = tle.time.Subtract(DateTime.Now);
@@ -217,6 +217,7 @@ namespace ARKBreedingStats
             {
                 sb.AppendLine();
                 sb.AppendLine(Loc.S("Incubation"));
+                timerListChanged = false;
                 foreach (var it in IncubationTimers)
                 {
                     var timeLeft = it.incubationEnd.Subtract(DateTime.Now);
@@ -226,6 +227,7 @@ namespace ARKBreedingStats
                         if (!Properties.Settings.Default.KeepExpiredTimersInOverlay && secLeft < -20)
                         {
                             it.ShowInOverlay = false;
+                            timerListChanged = true;
                             RemoveTimer(it);
                             continue;
                         }
@@ -233,11 +235,14 @@ namespace ARKBreedingStats
                     }
                     sb.AppendLine($"{Utils.Duration(timeLeft)} : {(it.Mother?.Species ?? it.Father?.Species)?.DescriptiveName ?? "unknown species"}");
                 }
+                if (timerListChanged)
+                    IncubationTimers = IncubationTimers.Where(it => it.ShowInOverlay).ToList();
             }
             if (CreatureTimers?.Any() ?? false)
             {
                 sb.AppendLine();
                 sb.AppendLine(Loc.S("Maturation"));
+                timerListChanged = false;
                 foreach (var c in CreatureTimers)
                 {
                     var timeLeft = c.growingUntil?.Subtract(DateTime.Now);
@@ -247,7 +252,7 @@ namespace ARKBreedingStats
                         if (!Properties.Settings.Default.KeepExpiredTimersInOverlay && secLeft < -20)
                         {
                             c.ShowInOverlay = false;
-                            RemoveTimer(c);
+                            timerListChanged = true;
                             continue;
                         }
 
@@ -255,6 +260,8 @@ namespace ARKBreedingStats
                     }
                     sb.AppendLine($"{(timeLeft == null ? "grown" : Utils.Duration(timeLeft.Value))} : {c.name} ({c.Species.DescriptiveName})");
                 }
+                if (timerListChanged)
+                    CreatureTimers = CreatureTimers.Where(c => c.ShowInOverlay).ToList();
             }
             sb.Append(_notes);
             labelTimer.Text = sb.ToString();

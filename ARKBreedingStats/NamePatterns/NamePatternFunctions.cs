@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,6 +15,9 @@ namespace ARKBreedingStats.NamePatterns
     /// </summary>
     internal static class NamePatternFunctions
     {
+        /// <summary>
+        /// Match is expected to have 4 groups, first the function name, then three optional parameters.
+        /// </summary>
         internal static string ResolveFunction(Match match, NamePatternParameters parameters)
         {
             var functionName = match.Groups[1].Value.ToLower();
@@ -24,6 +28,18 @@ namespace ARKBreedingStats.NamePatterns
             }
 
             return string.Empty;
+        }
+
+        internal static string CustomReplace(string key, string defaultValue, Dictionary<string, string> customReplacings)
+        {
+            if (!string.IsNullOrEmpty(key) && customReplacings?.TryGetValue(key, out var replacement) == true)
+            {
+                return replacement;
+            }
+            else
+            {
+                return defaultValue;
+            }
         }
 
         private static string ParametersInvalid(string specificError, string expression, bool displayError)
@@ -51,6 +67,7 @@ namespace ARKBreedingStats.NamePatterns
                 {"float_div", FunctionFloatDiv},
                 {"div", FunctionDiv},
                 {"casing", FunctionCasing},
+                {"rand", FunctionRand },
                 {"replace", FunctionReplace},
                 {"regexreplace", FunctionRegExReplace},
                 {"customreplace", FunctionCustomReplace},
@@ -58,7 +75,9 @@ namespace ARKBreedingStats.NamePatterns
                 {"color", FunctionColor},
                 {"colornew", FunctionColorNew},
                 {"indexof", FunctionIndexOf},
-                {"md5", FunctionMd5}
+                {"md5", FunctionMd5},
+                {"listname", FunctionListName },
+                {"list", FunctionList }
             };
 
         private static string FunctionIf(Match m, NamePatternParameters p)
@@ -247,6 +266,20 @@ namespace ARKBreedingStats.NamePatterns
             return ParametersInvalid($"casing expects 'U', 'L' or 'T', given is '{m.Groups[3].Value}'", m.Groups[0].Value, p.DisplayError);
         }
 
+        private static string FunctionRand(Match m, NamePatternParameters p)
+        {
+            // parameter: 1: to (if one parameter), from (if two parameters), 2: to
+            // to is exclusive
+            int.TryParse(m.Groups[2].Value, out var from);
+            if (!int.TryParse(m.Groups[3].Value, out var to))
+            {
+                to = from;
+                from = 0;
+            }
+            if (from < 0 || from >= to) return string.Empty;
+            return NamePattern.Random.Next(from, to).ToString();
+        }
+
         private static string FunctionReplace(Match m, NamePatternParameters p)
         {
             // parameter: 1: replace, 2: text, 3: find, 4: replace
@@ -284,11 +317,7 @@ namespace ARKBreedingStats.NamePatterns
         private static string FunctionCustomReplace(Match m, NamePatternParameters p)
         {
             // parameter: 1: customreplace, 2: key, 3: return if key not available
-            if (p.CustomReplacings == null
-                || string.IsNullOrEmpty(m.Groups[2].Value)
-                || !p.CustomReplacings.ContainsKey(m.Groups[2].Value))
-                return m.Groups[3].Value;
-            return p.CustomReplacings[m.Groups[2].Value];
+            return CustomReplace(m.Groups[2].Value, m.Groups[3].Value, p.CustomReplacings);
         }
 
         private static string FunctionTime(Match m, NamePatternParameters p)
@@ -358,6 +387,30 @@ namespace ARKBreedingStats.NamePatterns
                 sb.Append(b.ToString("X2"));
 
             return sb.ToString();
+        }
+
+        private static string FunctionListName(Match m, NamePatternParameters p)
+        {
+            // parameter: 1: name index, 2: list suffix
+            if (!int.TryParse(m.Groups[2].Value, out var nameIndex)) return string.Empty;
+
+            return NameList.GetName(nameIndex, m.Groups[3].Value);
+        }
+
+        private static string FunctionList(Match m, NamePatternParameters p)
+        {
+            // splits string at separator, trims, removes empty entries, joins with separator
+            // parameter: 1: list string, 2: initial separator, 3: final separator
+
+            var listString = m.Groups[2].Value;
+            var initialSeparator = m.Groups[3].Value;
+            var finalSeparator = m.Groups[4].Value;
+            if (string.IsNullOrWhiteSpace(listString)) return string.Empty;
+            if (string.IsNullOrEmpty(initialSeparator)) return listString;
+
+            return string.Join(finalSeparator,
+                listString.Split(new[] { initialSeparator }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(e => e.Trim()).Where(e => !string.IsNullOrEmpty(e)));
         }
 
         public static void Dispose()

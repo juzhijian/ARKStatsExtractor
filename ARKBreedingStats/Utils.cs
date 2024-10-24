@@ -1,5 +1,4 @@
 ﻿using ARKBreedingStats.Library;
-using ARKBreedingStats.species;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ARKBreedingStats.mods;
 using ARKBreedingStats.values;
 
 namespace ARKBreedingStats
@@ -18,7 +18,7 @@ namespace ARKBreedingStats
         /// </summary>
         /// <param name="percent">percent that determines the shade between red and green (0 to 100)</param>
         /// <param name="light">double from -1 to 1. Values greater zero make the color brighter, lower than zero make the color darker.</param>
-        /// <param name="blue">true if color should fade from violett to green</param>
+        /// <param name="blue">true if color should fade from violet to green</param>
         /// <returns>the calculated color.</returns>
         public static Color GetColorFromPercent(int percent, double light = 0, bool blue = false)
         {
@@ -38,19 +38,13 @@ namespace ARKBreedingStats
         /// <summary>
         /// Returns a string with ARKml tags. Currently that doesn't seem to be supported anymore by the ARK chat.
         /// </summary>
-        public static string GetARKml(string text, int r, int g, int b)
-        {
-            return
-                $"<RichColor Color=\"{Math.Round(r / 255d, 2)},{Math.Round(g / 255d, 2)},{Math.Round(b / 255d, 2)},1\">{text}</>";
-        }
+        public static string GetARKml(string text, int r, int g, int b) => $"<RichColor Color=\"{Math.Round(r / 255d, 2)},{Math.Round(g / 255d, 2)},{Math.Round(b / 255d, 2)},1\">{text}</>";
 
         /// <summary>
         /// RGB values for a given percentage (0-100). 0 is red, 100 is green. Light can be adjusted (1 bright, 0 default, -1 dark).
         /// </summary>
         private static void GetRgbFromPercent(out int r, out int g, out int b, int percent, double light = 0)
         {
-            if (light > 1) { light = 1; }
-            if (light < -1) { light = -1; }
             g = (int)(percent * 5.1); // g = percent * 255 / 50 = percent * 5.1
             r = 511 - g;
             b = 0;
@@ -58,6 +52,10 @@ namespace ARKBreedingStats
             if (g < 0) { g = 0; }
             if (r > 255) { r = 255; }
             if (g > 255) { g = 255; }
+
+            if (light == 0) return;
+            if (light > 1) { light = 1; }
+            if (light < -1) { light = -1; }
             if (light > 0)
             {
                 r = (int)((255 - r) * light + r);
@@ -76,28 +74,30 @@ namespace ARKBreedingStats
         /// <summary>
         /// Adjusts the lightness of a color.
         /// </summary>
-        public static Color AdjustColorLight(Color color, double light = 0)
+        /// <param name="color">Color to adjust</param>
+        /// <param name="lightDelta">-1 very dark, 0 no change, 1 very bright</param>
+        public static Color AdjustColorLight(Color color, double lightDelta = 0)
         {
-            if (light == 0) return color;
+            if (lightDelta == 0) return color;
 
-            if (light > 1) { light = 1; }
-            if (light < -1) { light = -1; }
+            if (lightDelta > 1) { lightDelta = 1; }
+            if (lightDelta < -1) { lightDelta = -1; }
             byte r = color.R;
             byte g = color.G;
             byte b = color.B;
 
-            if (light > 0)
+            if (lightDelta > 0)
             {
-                r = (byte)((255 - r) * light + r);
-                g = (byte)((255 - g) * light + g);
-                b = (byte)((255 - b) * light + b);
+                r = (byte)((255 - r) * lightDelta + r);
+                g = (byte)((255 - g) * lightDelta + g);
+                b = (byte)((255 - b) * lightDelta + b);
             }
             else
             {
-                light += 1;
-                r = (byte)(r * light);
-                g = (byte)(g * light);
-                b = (byte)(b * light);
+                lightDelta += 1;
+                r = (byte)(r * lightDelta);
+                g = (byte)(g * lightDelta);
+                b = (byte)(b * lightDelta);
             }
             return Color.FromArgb(r, g, b);
         }
@@ -106,78 +106,77 @@ namespace ARKBreedingStats
         /// Returns a color from a hue value.
         /// </summary>
         /// <param name="hue">red: 0, green: 120, blue: 240</param>
-        /// <param name="light">-1 very dark, 0 default, 1 very bright</param>
-        public static Color ColorFromHue(int hue, double light = 0)
+        /// <param name="lightDelta">-1 very dark, 0 default, 1 very bright</param>
+        public static Color ColorFromHue(int hue, double lightDelta = 0)
+        {
+            return AdjustColorLight(ColorFromHsv(hue), lightDelta);
+        }
+
+        /// <summary>
+        /// Returns a color from hsl values.
+        /// </summary>
+        /// <param name="hue">red: 0, green: 120, blue: 240</param>
+        /// <param name="saturation">0…1 gray to colorful</param>
+        /// <param name="value">0…1 black to full intensity / white</param>
+        public static Color ColorFromHsv(double hue, double saturation = 1, double value = 1, double alpha = 1)
         {
             hue %= 360;
             if (hue < 0) hue += 360;
-            // there are six sections, 0-120, 120-240, 240-360
-            // in each section one channel is either ascending, descending, max or 0
-            byte sectionPos = (byte)(hue % 60);
-            byte asc = (byte)(sectionPos * 4.25); // == sectionPos * 255 / 60;
-            byte desc = (byte)(255 - asc);
-            const byte zero = 0;
-            const byte max = 255;
+            saturation = Math.Max(Math.Min(saturation, 1), 0);
+            value = Math.Max(Math.Min(value, 1), 0);
+
+            var v = (byte)(value * 255);
+            if (saturation < double.Epsilon)
+            {
+                return Color.FromArgb(v, v, v);
+            }
+
+            // there are six hue sections from 0 to 360 with each having 60 degrees
+            // in each section one channel is either ascending, descending, max or min
+            var sectionPos = hue / 60;
+            var section = (int)sectionPos;
+            var sectorFraction = sectionPos - section;
+
+            var p = (byte)(255 * value * (1 - saturation));
+            var q = (byte)(255 * value * (1 - saturation * sectorFraction));
+            var t = (byte)(255 * value * (1 - saturation * (1 - sectorFraction)));
 
             byte r, g, b;
-
-            if (hue < 60)
+            // go to correct hue section
+            switch (section)
             {
-                r = max;
-                g = asc;
-                b = zero;
+                case 0:
+                    r = v;
+                    g = t;
+                    b = p;
+                    break;
+                case 1:
+                    r = q;
+                    g = v;
+                    b = p;
+                    break;
+                case 2:
+                    r = p;
+                    g = v;
+                    b = t;
+                    break;
+                case 3:
+                    r = p;
+                    g = q;
+                    b = v;
+                    break;
+                case 4:
+                    r = t;
+                    g = p;
+                    b = v;
+                    break;
+                default:
+                    r = v;
+                    g = p;
+                    b = q;
+                    break;
             }
-            else if (hue < 120)
-            {
-                r = desc;
-                g = max;
-                b = zero;
-            }
-            else if (hue < 180)
-            {
-                r = zero;
-                g = max;
-                b = asc;
-            }
-            else if (hue < 240)
-            {
-                r = zero;
-                g = desc;
-                b = max;
-            }
-            else if (hue < 300)
-            {
-                r = asc;
-                g = zero;
-                b = max;
-            }
-            else
-            {
-                r = max;
-                g = zero;
-                b = desc;
-            }
-
-            if (light != 0)
-            {
-                if (light > 1) { light = 1; }
-                if (light < -1) { light = -1; }
-
-                if (light > 0)
-                {
-                    r = (byte)((255 - r) * light + r);
-                    g = (byte)((255 - g) * light + g);
-                    b = (byte)((255 - b) * light + b);
-                }
-                else
-                {
-                    light += 1;
-                    r = (byte)(r * light);
-                    g = (byte)(g * light);
-                    b = (byte)(b * light);
-                }
-            }
-            return Color.FromArgb(r, g, b);
+            return Color.FromArgb((int)(255 * alpha), r, g, b);
         }
 
         /// <summary>
@@ -391,15 +390,6 @@ namespace ARKBreedingStats
         }
 
         /// <summary>
-        /// Returns the displayed decimal values of the stat with the given index
-        /// </summary>
-        public static int Precision(int statIndex)
-        {
-            // damage and speed are percentage values, need more precision
-            return (statIndex == Stats.SpeedMultiplier || statIndex == Stats.MeleeDamageMultiplier || statIndex == Stats.CraftingSpeedMultiplier) ? 3 : 1;
-        }
-
-        /// <summary>
         /// String that represents a duration.
         /// </summary>
         public static string Duration(TimeSpan ts)
@@ -445,22 +435,6 @@ namespace ARKBreedingStats
         public static string TimeLeft(DateTime dt)
         {
             return dt < DateTime.Now ? "-" : Duration(dt.Subtract(DateTime.Now));
-        }
-
-        /// <summary>
-        /// By default the cuddle interval is 8 hours.
-        /// </summary>
-        private const int DefaultCuddleIntervalInSeconds = 8 * 60 * 60;
-
-        /// <summary>
-        /// Returns the imprinting gain per cuddle, dependent on the maturation time and the cuddle interval multiplier.
-        /// </summary>
-        /// <param name="maturationTime">Maturation time in seconds</param>
-        /// <returns></returns>
-        public static double ImprintingGainPerCuddle(double maturationTime)
-        {
-            var multipliers = Values.V.currentServerMultipliers;
-            return Math.Min(1, DefaultCuddleIntervalInSeconds * multipliers.BabyCuddleIntervalMultiplier * multipliers.BabyImprintAmountMultiplier / maturationTime);
         }
 
         /// <summary>
@@ -515,6 +489,65 @@ namespace ARKBreedingStats
         }
 
         /// <summary>
+        /// Displays a control with options, where the user can select one of them or cancel.
+        /// The index of the selection is returned or -1 when cancelled.
+        /// </summary>
+        public static int ShowListInput(IList<string> optionTexts, string headerText = null, string windowTitle = null, int buttonHeight = 21)
+        {
+            const int width = 350;
+            const int margin = 15;
+            var result = -1;
+            Form inputForm = new Form
+            {
+                Width = width,
+                FormBorderStyle = FormBorderStyle.SizableToolWindow,
+                Text = windowTitle,
+                StartPosition = FormStartPosition.CenterParent,
+                ShowInTaskbar = false,
+                AutoScroll = true
+            };
+            var y = 10;
+            if (!string.IsNullOrEmpty(headerText))
+            {
+                Label textLabel = new Label { Left = margin, Top = y, Text = headerText, AutoSize = true };
+                inputForm.Controls.Add(textLabel);
+                y += 30;
+            }
+
+            var tt = new ToolTip();
+
+            var i = 0;
+            foreach (var option in optionTexts)
+            {
+                var optionButton = new Button { Text = option, Left = margin, Width = width - 3 * margin, Top = y, DialogResult = DialogResult.OK, Tag = i++ };
+                if (buttonHeight > 0) optionButton.Height = buttonHeight;
+                y += buttonHeight + 12;
+                optionButton.Click += (sender, e) =>
+                {
+                    result = (int)((Button)sender).Tag;
+                    inputForm.Close();
+                };
+                inputForm.Controls.Add(optionButton);
+                tt.SetToolTip(optionButton, option);
+            }
+
+            const int cancelButtonWidth = 80;
+            Button buttonCancel = new Button { Text = Loc.S("Cancel"), Left = width - cancelButtonWidth - 2 * margin, Width = cancelButtonWidth, Top = y, DialogResult = DialogResult.Cancel };
+            buttonCancel.Click += (sender, e) => { inputForm.Close(); };
+            inputForm.Controls.Add(buttonCancel);
+            y += 30;
+            inputForm.CancelButton = buttonCancel;
+
+            inputForm.Height = Math.Min(y + 50, 800);
+
+            var dialogResult = inputForm.ShowDialog();
+            tt.RemoveAll();
+            tt.Dispose();
+
+            return dialogResult != DialogResult.OK ? -1 : result;
+        }
+
+        /// <summary>
         /// This function may only be used if the ArkId is unique (when importing files that have ArkId1 and ArkId2)
         /// </summary>
         /// <param name="arkId">ArkId built from ArkId1 and ArkId2, user input from the ingame-representation is not allowed</param>
@@ -524,6 +557,14 @@ namespace ARKBreedingStats
             byte[] bytes = new byte[16];
             BitConverter.GetBytes(arkId).CopyTo(bytes, 0);
             return new Guid(bytes);
+        }
+
+        /// <summary>
+        /// This function may only be used if the Guid is created by an imported Ark id (i.e. two int32)
+        /// </summary>
+        public static long ConvertCreatureGuidToArkId(Guid guid)
+        {
+            return BitConverter.ToInt64(guid.ToByteArray(), 0);
         }
 
         public static bool IsArkIdImported(long arkId, Guid guid)
@@ -545,17 +586,38 @@ namespace ARKBreedingStats
         public static long ConvertArkIdsToLongArkId(int id1, int id2) => ((long)id1 << 32) | (id2 & 0xFFFFFFFFL);
 
         /// <summary>
-        /// returns a shortened string with an ellipsis in the middle. One third of the beginning is shown and two thirds of then end
+        /// Converts int64 Ark id to two int32 ids, like used in the game.
+        /// </summary>
+        public static (int, int) ConvertArkId64ToArkIds32(long id) => ((int)(id >> 32), (int)id);
+
+        /// <summary>
+        /// Returns a shortened string with an ellipsis in the middle. One third of the beginning is shown and two thirds of then end.
         /// </summary>
         /// <param name="longPath">long string</param>
         /// <param name="maxLength">max length of the string</param>
-        /// <returns>string with ellipsis in the middle</returns>
+        /// <returns>String with ellipsis in the middle</returns>
         public static string ShortPath(string longPath, int maxLength = 50)
         {
+            if (string.IsNullOrEmpty(longPath)) return longPath;
             if (longPath.Length <= maxLength)
                 return longPath;
+            if (maxLength < 1) return string.Empty;
+            if (maxLength == 1) return longPath.Substring(0, 1);
             int begin = maxLength / 3;
             return longPath.Substring(0, begin) + "…" + longPath.Substring(longPath.Length - maxLength + begin + 1);
+        }
+
+        /// <summary>
+        /// If the passed string is longer than the stated length, it's shortened by removing a part in the middle.
+        /// Useful for file paths where the first and last part contain the more relevant info.
+        /// </summary>
+        public static string ShortenStringByTrimmingMiddle(string str, int maxLength = 30)
+        {
+            var l = str.Length;
+            if (maxLength < 1) return string.Empty;
+            if (l <= maxLength) return str;
+            var startEndLength = maxLength / 2;
+            return str.Substring(0, startEndLength) + "…" + str.Substring(l - startEndLength);
         }
 
         /// <summary>
@@ -622,21 +684,23 @@ namespace ARKBreedingStats
             else
             {
                 // check if rectangle is on screen
-                bool isOnScreen = false;
+                bool centerIsOnScreen = false;
                 foreach (Screen screen in Screen.AllScreens)
                 {
-                    if (screen.WorkingArea.Contains(windowRect))
+                    if (screen.WorkingArea.Contains(Center(windowRect)))
                     {
-                        isOnScreen = true;
+                        centerIsOnScreen = true;
                         break;
                     }
                 }
-                if (!isOnScreen)
+                if (!centerIsOnScreen)
                 {
                     windowRect.X = 100;
                     windowRect.Y = 100;
                 }
             }
+
+            Point Center(Rectangle rect) => new Point(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2);
 
             form.Top = windowRect.Top;
             form.Left = windowRect.Left;
@@ -682,6 +746,20 @@ namespace ARKBreedingStats
                     _applicationNameVersion = $"{Application.ProductName} v{Application.ProductVersion}";
                 return _applicationNameVersion;
             }
+        }
+
+        public static IList<IList<T>> CartesianProduct<T>(this IEnumerable<IEnumerable<T>> sequences)
+        {
+            IEnumerable<IEnumerable<T>> emptyProduct = new[] { Enumerable.Empty<T>() };
+
+            var combinations = sequences.Aggregate(emptyProduct, (accumulator, sequence) => accumulator
+                .SelectMany(accseq => sequence
+                    .Select(item => accseq.Append(item)))
+            );
+
+            return combinations
+                .Select(x => x.ToArray())
+                .ToArray();
         }
     }
 }

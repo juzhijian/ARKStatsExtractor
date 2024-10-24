@@ -16,7 +16,7 @@ namespace ARKBreedingStats.species
         /// <summary>
         /// Color used if there's no definition for it.
         /// </summary>
-        private static ArkColor _undefinedColor = new ArkColor("undefined", new double[] { 1, 1, 1, 0 }, false);
+        private static readonly ArkColor UndefinedColor = new ArkColor("undefined", new double[] { 1, 1, 1, 1 }, false) { Id = Ark.UndefinedColorId };
 
         /// <summary>
         /// Color definitions of the base game.
@@ -26,7 +26,7 @@ namespace ARKBreedingStats.species
         /// <summary>
         /// If mods are loaded, each mod has its colors (or null if no color definitions are given) in the according order.
         /// </summary>
-        private List<List<ArkColor>> _modColors;
+        private List<(List<ArkColor> colors, int dyeStartIndex)> _modColors;
 
         public ArkColors(List<ArkColor> baseColorList)
         {
@@ -36,9 +36,9 @@ namespace ARKBreedingStats.species
         /// <summary>
         /// Adds Ark colors of a mod value file to the base values. Should be called even if the mod has no color definitions (ARK can then add missing colors that where left out before due to mod-overwriting).
         /// </summary>
-        internal void AddModArkColors(List<ArkColor> modColors)
+        internal void AddModArkColors((List<ArkColor> colors, int dyeStartIndex) modColors)
         {
-            if (_modColors == null) _modColors = new List<List<ArkColor>>();
+            if (_modColors == null) _modColors = new List<(List<ArkColor> colors, int dyeStartIndex)>();
             _modColors.Add(modColors);
         }
 
@@ -46,7 +46,7 @@ namespace ARKBreedingStats.species
         /// Creates the color id table according to the mod order and the lookup tables to find colors by their name or id.
         /// Call this function after the values file is loaded and after mod values are loaded that contain colors.
         /// </summary>
-        public void InitializeArkColors()
+        public void InitializeArkColors(byte undefinedColorId)
         {
             if (_baseColors == null) return;
 
@@ -60,33 +60,42 @@ namespace ARKBreedingStats.species
             _colorsByName = new Dictionary<string, ArkColor>();
             _colorsById = new Dictionary<byte, ArkColor> { { 0, new ArkColor() } };
             var nextFreeColorId = Ark.ColorFirstId;
-            var nextFreeDyeId = Ark.DyeFirstId;
+            var nextFreeDyeId = Ark.DyeFirstIdASE;
+            var colorIdMax = Ark.DyeFirstIdASE - 1;
             var noMoreAvailableColorId = false;
             var noMoreAvailableDyeId = false;
+
+            var baseColorsAdded = false;
+            void AddBaseColors()
+            {
+                AddColorDefinitions(_baseColors);
+                baseColorsAdded = true;
+            }
 
             // no mods are loaded or first mod has no color overrides, use base colors first
             if (_modColors?.Any() != true)
             {
-                AddColorDefinitions(_baseColors);
+                AddBaseColors();
             }
             else
             {
                 // add mod color definitions, these are appended if the color name doesn't exist yet
-                var baseColorsAdded = false;
                 foreach (var modColors in _modColors)
                 {
-                    if (modColors == null)
+                    if (modColors.colors == null)
                     {
                         // if the mod has no color definitions, it uses the base color definitions; add them if not yet added
                         if (!baseColorsAdded)
-                        {
-                            AddColorDefinitions(_baseColors);
-                            baseColorsAdded = true;
-                        }
+                            AddBaseColors();
+
                         continue;
                     }
 
-                    AddColorDefinitions(modColors);
+                    // if the mod only overwrites colors, it needs the base colors loaded
+                    if (modColors.dyeStartIndex != 0 && !baseColorsAdded)
+                        AddBaseColors();
+
+                    AddColorDefinitions(modColors.colors, (byte)modColors.dyeStartIndex);
                 }
 
                 // dye colors are apparently added independently from the colors, even if base colors are not added. This might need more testing, so far no mods are found that add dye colors.
@@ -96,9 +105,17 @@ namespace ARKBreedingStats.species
                 }
             }
 
-            void AddColorDefinitions(IEnumerable<ArkColor> colorDefinitions)
+            // if dyeStartIndex != 0 the dye information from the mod colors overwrites the existing definitions from the index/id on
+            void AddColorDefinitions(IEnumerable<ArkColor> colorDefinitions, byte dyeStartIndex = 0)
             {
                 if (colorDefinitions == null) return;
+
+                if (dyeStartIndex != 0 && dyeStartIndex <= Ark.DyeMaxId)
+                {
+                    nextFreeDyeId = dyeStartIndex;
+                    noMoreAvailableDyeId = false;
+                }
+
                 foreach (var c in colorDefinitions)
                 {
                     var colorNameExists = _colorsByName.ContainsKey(c.Name);
@@ -118,22 +135,24 @@ namespace ARKBreedingStats.species
                         if (noMoreAvailableColorId) continue;
 
                         c.Id = nextFreeColorId;
-                        if (nextFreeColorId == Ark.ColorMaxId)
+                        if (nextFreeColorId == colorIdMax)
                             noMoreAvailableColorId = true;
                         else nextFreeColorId++;
                     }
                     if (!colorNameExists)
                         _colorsByName.Add(c.Name, c);
-                    _colorsById.Add(c.Id, c);
+                    _colorsById[c.Id] = c;
                 }
             }
 
             ColorsList = _colorsById.Values.OrderBy(c => c.Id).ToArray();
+            UndefinedColor.Id = undefinedColorId;
+            _equalColorIds = CalculateEqualColorIds(ColorsList);
         }
 
-        public ArkColor ById(byte id) => _colorsById.TryGetValue(id, out var color) ? color : _undefinedColor;
+        public ArkColor ById(byte id) => _colorsById.TryGetValue(id, out var color) ? color : UndefinedColor;
 
-        public ArkColor ByName(string name) => _colorsByName.TryGetValue(name, out var color) ? color : _undefinedColor;
+        public ArkColor ByName(string name) => _colorsByName.TryGetValue(name, out var color) ? color : UndefinedColor;
 
         /// <summary>
         /// Returns the ARK-id of the color that is closest to the sRGB values.
@@ -176,34 +195,27 @@ namespace ARKBreedingStats.species
         /// </summary>
         public static byte[] GetAlternativeColorIds(byte[] colorIds)
         {
-            if (colorIds == null) return null;
-
-            if (_equalColorIds == null)
-            {
-                var filePath = FileService.GetJsonPath(FileService.EqualColorIdsFile);
-                if (!File.Exists(filePath)) return null;
-                if (!FileService.LoadJsonFile(filePath, out _equalColorIds, out _))
-                    return null;
-            }
-
-            var altColorIds = new byte[colorIds.Length];
-
-            var altColorIdExists = false;
+            if (colorIds == null
+                || _equalColorIds == null)
+                return null;
 
             byte GetAlternativeId(byte id)
             {
-                for (int j = 0; j < _equalColorIds.Length; j++)
+                foreach (var equalColors in _equalColorIds)
                 {
-                    for (int k = 0; k < _equalColorIds[j].Length; k++)
+                    for (var i = 0; i < equalColors.Length; i++)
                     {
-                        if (_equalColorIds[j][k] == id)
-                            return k == 0 ? _equalColorIds[j][1] : _equalColorIds[j][0];
+                        if (equalColors[i] == id)
+                            // assuming there are at least 2 same colors. Return the other color id
+                            return i == 0 ? equalColors[1] : equalColors[0];
                     }
                 }
 
                 return 0;
             }
 
+            var altColorIds = new byte[colorIds.Length];
+            var altColorIdExists = false;
             for (int i = 0; i < colorIds.Length; i++)
             {
                 var altId = GetAlternativeId(colorIds[i]);
@@ -251,7 +263,7 @@ namespace ARKBreedingStats.species
         {
             if (ColorsList?.Any() != true)
                 return new byte[Ark.ColorRegionCount];
-            
+
             if (rand == null)
                 rand = new Random();
 
@@ -260,6 +272,41 @@ namespace ARKBreedingStats.species
             for (int i = 0; i < Ark.ColorRegionCount; i++)
                 colors[i] = ColorsList[rand.Next(colorCount)].Id;
             return colors;
+        }
+
+        /// <summary>
+        /// Determines the ids of equal colors which are indistinguishable by their linear color values.
+        /// </summary>
+        private byte[][] CalculateEqualColorIds(ArkColor[] colors)
+        {
+            var allColors = colors.Append(UndefinedColor).ToArray();
+            var equalColorsList = new List<byte[]>();
+            var alreadySavedAsAlternativeColors = new HashSet<byte>();
+
+            var equalColors = new List<byte>();
+            for (var i = 0; i < allColors.Length; i++)
+            {
+                var color = allColors[i];
+                if (color.LinearRgba == null || alreadySavedAsAlternativeColors.Contains(color.Id)) continue;
+                equalColors.Clear();
+                equalColors.Add(color.Id);
+                for (var j = i + 1; j < allColors.Length; j++)
+                {
+                    var color2 = allColors[j];
+                    if (color2.LinearRgba == null || alreadySavedAsAlternativeColors.Contains(color2.Id)) continue;
+
+                    if (!color.LinearRgba.SequenceEqual(color2.LinearRgba)
+                       || equalColors.Contains(color2.Id))
+                        continue;
+
+                    equalColors.Add(color2.Id);
+                    alreadySavedAsAlternativeColors.Add(color2.Id);
+                }
+                if (equalColors.Count > 1)
+                    equalColorsList.Add(equalColors.ToArray());
+            }
+
+            return equalColorsList.ToArray();
         }
     }
 }

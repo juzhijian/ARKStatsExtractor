@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using ARKBreedingStats.library;
 using ARKBreedingStats.species;
 
 namespace ARKBreedingStats.uiControls
@@ -13,7 +14,7 @@ namespace ARKBreedingStats.uiControls
         /// <summary>
         /// Set a species to display the stats of the current top levels. This can help in determine if a new creature is good.
         /// </summary>
-        public void SetSpecies(Species species, int[] highLevels, int[] lowLevels)
+        public void SetSpecies(Species species, TopLevels topLevels)
         {
             if (species == null)
             {
@@ -26,8 +27,9 @@ namespace ARKBreedingStats.uiControls
                 return;
             }
 
-            if (highLevels == null) highLevels = new int[Stats.StatsCount];
-            if (lowLevels == null) lowLevels = new int[Stats.StatsCount];
+            if (topLevels == null) topLevels = new TopLevels(true);
+            var highLevels = topLevels.WildLevelsHighest;
+            var lowLevels = topLevels.WildLevelsLowest;
 
             LbHeader.Text = $"Best stat values for bred creatures without imprinting of the species {species.DescriptiveNameAndMod} in this library.";
             string sbNames = null;
@@ -40,16 +42,16 @@ namespace ARKBreedingStats.uiControls
             {
                 if (!species.UsesStat(si)) continue;
 
-                var precision = Utils.Precision(si);
-                var statValue = StatValueCalculation.CalculateValue(species, si, highLevels[si], 0, true, 1, 0);
-                var statRepresentation = precision == 3 ? $"{statValue * 100:0.0} %" : $"{statValue:0.0}    ";
+                var isPercentage = Stats.IsPercentage(si);
+                var statValue = StatValueCalculation.CalculateValue(species, si, highLevels[si], 0, 0, true, 1, 0);
+                var statRepresentation = isPercentage ? $"{statValue * 100:0.0} %" : $"{statValue:0.0}    ";
 
                 sbNames += $"{Utils.StatName(si, customStatNames: species.statNames)}\n";
                 sbValues += statRepresentation + "\n";
                 sbLevels += highLevels[si] + "\n";
 
-                statValue = StatValueCalculation.CalculateValue(species, si, lowLevels[si], 0, true, 1, 0);
-                statRepresentation = precision == 3 ? $"{statValue * 100:0.0} %" : $"{statValue:0.0}    ";
+                statValue = StatValueCalculation.CalculateValue(species, si, lowLevels[si], 0, 0, true, 1, 0);
+                statRepresentation = isPercentage ? $"{statValue * 100:0.0} %" : $"{statValue:0.0}    ";
 
                 sbLowestValues += statRepresentation + "\n";
                 sbLowestLevels += lowLevels[si] + "\n";

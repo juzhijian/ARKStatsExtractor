@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using ARKBreedingStats.utils;
@@ -16,6 +17,12 @@ namespace ARKBreedingStats
             labelCopyright.Text = AssemblyCopyright;
             labelDescription.Text = AssemblyDescription;
             textBoxContributors.Text = Contributors;
+            const string noticeFileName = "NOTICE.txt";
+            var dependenciesFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                noticeFileName);
+            TbDependencies.Text = File.Exists(dependenciesFilePath)
+                ? File.ReadAllText(dependenciesFilePath)
+                : "see " + "https://raw.githubusercontent.com/cadon/ARKStatsExtractor/dev/ARKBreedingStats/" + noticeFileName;
         }
 
         #region Assemblyattributaccessoren
@@ -24,16 +31,16 @@ namespace ARKBreedingStats
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
                 if (attributes.Length > 0)
                 {
-                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-                    if (titleAttribute.Title != "")
+                    var titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    if (!string.IsNullOrEmpty(titleAttribute.Title))
                     {
                         return titleAttribute.Title;
                     }
                 }
-                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+                return Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
             }
         }
 
@@ -90,26 +97,28 @@ namespace ARKBreedingStats
             System.Diagnostics.Process.Start(RepositoryInfo.RepositoryUrl);
         }
 
-        private string Contributors => @"Thanks for contributions, help and support to
+        private const string Contributors = @"Thanks for contributions, help and support to
 
-* NakramR (coding, OCR, library, overlay)
-* Flachdachs (savefile extractor, installer-version, style, fixes)
-* coldino (ARK-data, support)
-* VolatilesPulse (ARK-data, support)
-* qowyn (savefile extractor, ARK-data)
-* aaron-williamson (file-syncing for cloud-services)
-* DelilahEve (updater)
-* DodoCooker (fixes, performance)
-* Warstone (Kibble recipes)
-* tsebring (naming-generator, fixes)
-* maxime-paquatte (custom timer sounds)
-* hallipr (FTP savefile import)
-* EmkioA (Cryopod import, listView tweaks)
-* dunger (fixes)
-* Myrmecoleon (extra species images)
-* Lunat1q (improved OCR)
-* ThatGamerBlue (species dividers in virtual listview)
-* Jaymei (ATLAS species data)
+* NakramR: coding, library, OCR, overlay
+* Flachdachs: save file extractor, installer-version, style
+* coldino: ARK-data, support
+* VolatilesPulse: ARK-data, support
+* qowyn: original save file extractor, ARK-data
+* alex4401: save file extractor format updates
+* Miragedmuk: save file extractor format updates
+* aaron-williamson: file-syncing for cloud-services
+* DelilahEve: auto updater
+* DodoCooker: performance for large libraries
+* Warstone: Kibble recipes
+* tsebring: naming-generator
+* maxime-paquatte: custom timer sounds
+* hallipr: FTP save file import and Javascript name pattern support
+* EmkioA: Cryopod import, listView tweaks
+* dunger: fixes
+* Myrmecoleon: extra species color region images
+* Lunat1q: improved OCR
+* ThatGamerBlue: species dividers in virtual listView
+* Jaymei: ATLAS species data
 
 Translations:
 * French by Vykan and Yanuut

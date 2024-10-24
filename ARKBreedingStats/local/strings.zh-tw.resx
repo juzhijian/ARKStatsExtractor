@@ -633,7 +633,7 @@
   <data name="importingFromARKToolsToolStripMenuItem" xml:space="preserve">
     <value>從 ARK 工具匯入生物</value>
   </data>
-  <data name="importingFromSavegameEmptyToolStripMenuItem" xml:space="preserve">
+  <data name="configureSavegameImportToolStripMenuItem" xml:space="preserve">
     <value>請先設定 "匯入保存遊戲"</value>
   </data>
   <data name="importingFromSavegameToolStripMenuItem" xml:space="preserve">
@@ -1331,5 +1331,8 @@ It's also possible to filter for creatures with a color in one of multiple possi
   </data>
   <data name="groupLibraryBySpecies" xml:space="preserve">
     <value>按物種分類</value>
+  </data>
+  <data name="nameAlreadyExistsInLibrary" xml:space="preserve">
+    <value>該名稱已存在於庫中</value>
   </data>
 </root>

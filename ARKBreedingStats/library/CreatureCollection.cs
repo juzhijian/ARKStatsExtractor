@@ -14,11 +14,6 @@ namespace ARKBreedingStats.Library
     {
         public const string CurrentLibraryFormatVersion = "1.13";
 
-        public CreatureCollection()
-        {
-            FormatVersion = CurrentLibraryFormatVersion;
-        }
-
         public const int MaxDomLevelDefault = 88;
         public const int MaxDomLevelSinglePlayerDefault = 88;
 
@@ -28,7 +23,7 @@ namespace ARKBreedingStats.Library
         [JsonIgnore]
         public static CreatureCollection CurrentCreatureCollection;
         [JsonProperty]
-        public string FormatVersion;
+        public string FormatVersion = CurrentLibraryFormatVersion;
         [JsonProperty]
         public List<Creature> creatures = new List<Creature>();
         [JsonProperty]
@@ -64,17 +59,37 @@ namespace ARKBreedingStats.Library
 
         [JsonProperty]
         public ServerMultipliers serverMultipliers;
-        [JsonProperty]
-        public ServerMultipliers serverMultipliersEvents; // this object's statMultipliers are not used
 
+        /// <summary>
+        /// Only the taming and breeding multipliers of this are used.
+        /// </summary>
         [JsonProperty]
+        public ServerMultipliers serverMultipliersEvents;
+
+        /// <summary>
+        /// Deprecated setting, remove on 2025-01-01
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool singlePlayerSettings;
 
         /// <summary>
-        /// If true, apply extra multipliers for the game ATLAS.
+        /// Deprecated setting, remove on 2025-01-01
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public bool AtlasSettings;
+
+        /// <summary>
+        /// Indicates the game the library is used for. Possible values are "ASE" (default) for ARK: Survival Evolved or "ASA" for ARK: Survival Ascended.
+        /// </summary>
+        [JsonProperty("Game")]
+        private string _game = Ark.Ase;
+
+        /// <summary>
+        /// Used for the exportGun mod.
+        /// This hash is used to determine if an imported creature file is using the current server multipliers.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ServerMultipliersHash;
 
         /// <summary>
         /// Allow more than 100% imprinting, can happen with mods, e.g. S+ Nanny
@@ -93,7 +108,6 @@ namespace ARKBreedingStats.Library
         /// <summary>
         /// Hash-Code that represents the loaded mod-values and their order
         /// </summary>
-        [JsonProperty]
         public int modListHash;
 
         [JsonProperty]
@@ -134,6 +148,15 @@ namespace ARKBreedingStats.Library
         /// </summary>
         [JsonProperty]
         public Dictionary<string, double?[][]> CustomSpeciesStats;
+
+        private Dictionary<string, int> _creatureCountBySpecies;
+        private int _totalCreatureCount;
+
+        /// <summary>
+        /// ServerMultipliers uri on the server to pull the settings.
+        /// </summary>
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ServerSettingsUriSource;
 
         /// <summary>
         /// Calculates a hashcode for a list of mods and their order. Can be used to check for changes.
@@ -188,11 +211,18 @@ namespace ARKBreedingStats.Library
         /// <param name="creaturesToMerge">List of creatures to add</param>
         /// <param name="addPreviouslyDeletedCreatures">If true creatures will be added even if they were just deleted.</param>
         /// <returns>True if creatures were added or updated</returns>
-        public bool MergeCreatureList(IEnumerable<Creature> creaturesToMerge, bool addPreviouslyDeletedCreatures = false)
+        public bool MergeCreatureList(IEnumerable<Creature> creaturesToMerge, bool addPreviouslyDeletedCreatures = false, List<Guid> removeCreatures = null)
         {
             bool creaturesWereAddedOrUpdated = false;
-            Species onlyThisSpeciesAdded = null;
+            string onlyThisSpeciesBlueprintAdded = null;
             bool onlyOneSpeciesAdded = true;
+
+            if (removeCreatures != null)
+            {
+                creaturesWereAddedOrUpdated = creatures.RemoveAll(c => removeCreatures.Contains(c.guid)) > 0;
+            }
+
+            var guidDict = creatures.ToDictionary(c => c.guid);
 
             foreach (Creature creatureNew in creaturesToMerge)
             {
@@ -200,15 +230,16 @@ namespace ARKBreedingStats.Library
 
                 if (onlyOneSpeciesAdded)
                 {
-                    if (onlyThisSpeciesAdded == null || onlyThisSpeciesAdded == creatureNew.Species)
-                        onlyThisSpeciesAdded = creatureNew.Species;
-                    else
+                    if (onlyThisSpeciesBlueprintAdded == null)
+                        onlyThisSpeciesBlueprintAdded = creatureNew.speciesBlueprint;
+                    else if (onlyThisSpeciesBlueprintAdded != creatureNew.speciesBlueprint)
                         onlyOneSpeciesAdded = false;
                 }
 
-                var creatureExisting = creatures.FirstOrDefault(c => c.guid == creatureNew.guid);
-                if (creatureExisting == null)
+                if (!guidDict.TryGetValue(creatureNew.guid, out var creatureExisting))
                 {
+                    if (creatureNew.addedToLibrary == null)
+                        creatureNew.addedToLibrary = DateTime.Now;
                     creatures.Add(creatureNew);
                     creaturesWereAddedOrUpdated = true;
                     continue;
@@ -297,6 +328,14 @@ namespace ARKBreedingStats.Library
                         creaturesWereAddedOrUpdated = true;
                     }
 
+                    if ((creatureExisting.levelsMutated == null && creatureNew.levelsMutated != null)
+                        || (creatureExisting.levelsMutated != null && creatureNew.levelsMutated != null && !creatureExisting.levelsMutated.SequenceEqual(creatureNew.levelsMutated)))
+                    {
+                        creatureExisting.levelsMutated = creatureNew.levelsMutated;
+                        recalculate = true;
+                        creaturesWereAddedOrUpdated = true;
+                    }
+
                     if (!creatureExisting.levelsDom.SequenceEqual(creatureNew.levelsDom))
                     {
                         creatureExisting.levelsDom = creatureNew.levelsDom;
@@ -331,7 +370,11 @@ namespace ARKBreedingStats.Library
             }
 
             if (creaturesWereAddedOrUpdated)
-                ResetExistingColors(onlyOneSpeciesAdded ? onlyThisSpeciesAdded : null);
+            {
+                ResetExistingColors(onlyOneSpeciesAdded ? onlyThisSpeciesBlueprintAdded : null);
+                _creatureCountBySpecies = null;
+                _totalCreatureCount = -1;
+            }
 
             return creaturesWereAddedOrUpdated;
         }
@@ -339,16 +382,16 @@ namespace ARKBreedingStats.Library
         /// <summary>
         /// Removes creature from library and adds its guid to the deleted creatures.
         /// </summary>
-        /// <param name="c"></param>
         internal void DeleteCreature(Creature c)
         {
-            if (creatures.Remove(c))
-            {
-                if (DeletedCreatureGuids == null)
-                    DeletedCreatureGuids = new List<Guid>();
-                DeletedCreatureGuids.Add(c.guid);
-                ResetExistingColors(c.Species);
-            }
+            if (!creatures.Remove(c)) return;
+
+            if (DeletedCreatureGuids == null)
+                DeletedCreatureGuids = new List<Guid>();
+            DeletedCreatureGuids.Add(c.guid);
+            ResetExistingColors(c.Species.blueprintPath);
+            _creatureCountBySpecies = null;
+            _totalCreatureCount = -1;
         }
 
         public int? getWildLevelStep()
@@ -359,18 +402,18 @@ namespace ARKBreedingStats.Library
         /// <summary>
         /// Checks if an existing creature has the given ARK-ID
         /// </summary>
-        /// <param name="arkID">ARK-ID to check</param>
+        /// <param name="arkId">ARK-ID to check</param>
         /// <param name="concerningCreature">the creature with that id (if already in the collection it will be ignored)</param>
         /// <param name="creatureWithSameId">null if the Ark-Id is not yet in the collection, else the creature with the same Ark-Id</param>
         /// <returns>True if there is a creature with the given Ark-Id</returns>
-        public bool ArkIdAlreadyExist(long arkID, Creature concerningCreature, out Creature creatureWithSameId)
+        public bool ArkIdAlreadyExist(long arkId, Creature concerningCreature, out Creature creatureWithSameId)
         {
             // ArkId is not always unique. ARK uses ArkId = id1.ToString() + id2.ToString(); internally. If id2 has less decimal digits than int.MaxValue, the ids will differ. TODO handle this correctly
             creatureWithSameId = null;
             bool exists = false;
             foreach (var c in creatures)
             {
-                if (c.ArkId == arkID && c != concerningCreature)
+                if (c.ArkId == arkId && c != concerningCreature)
                 {
                     creatureWithSameId = c;
                     exists = true;
@@ -380,16 +423,17 @@ namespace ARKBreedingStats.Library
             return exists;
         }
 
-        public bool CreatureById(Guid guid, long arkId, Species species, out Creature foundCreature)
+        /// <summary>
+        /// Returns a creature based on the guid or ArkId.
+        /// </summary>
+        public bool CreatureById(Guid guid, long arkId, out Creature foundCreature)
         {
             foundCreature = null;
             if (guid == Guid.Empty && arkId == 0) return false;
 
-            var creaturesToCheck = creatures.Where(c => c.Species == species).ToArray();
-
             if (guid != Guid.Empty)
             {
-                foreach (var c in creaturesToCheck)
+                foreach (var c in creatures)
                 {
                     if (c.guid == guid)
                     {
@@ -401,7 +445,7 @@ namespace ARKBreedingStats.Library
 
             if (arkId != 0)
             {
-                foreach (var c in creaturesToCheck)
+                foreach (var c in creatures)
                 {
                     if (c.ArkIdImported && c.ArkId == arkId)
                     {
@@ -441,6 +485,18 @@ namespace ARKBreedingStats.Library
         {
             if (tags == null) tags = new List<string>();
 
+            // backwards compatibility, remove 10 lines below in 2025-01-01
+            if (singlePlayerSettings && serverMultipliers != null)
+            {
+                serverMultipliers.SinglePlayerSettings = singlePlayerSettings;
+                singlePlayerSettings = false;
+            }
+            if (AtlasSettings && serverMultipliers != null)
+            {
+                serverMultipliers.AtlasSettings = AtlasSettings;
+                AtlasSettings = false;
+            }
+
             // convert DateTimes to local times
             foreach (var tle in timerListEntries)
                 tle.time = tle.time.ToLocalTime();
@@ -459,14 +515,14 @@ namespace ARKBreedingStats.Library
 
         /// <summary>
         /// Reset the lists of available color ids. Call this method after a creature was added or removed from the collection.
+        /// <param name="speciesBlueprintPath">If null, the color info of all species is cleared, else only the matching one.</param>
         /// </summary>
-        /// <param name="species"></param>
-        internal void ResetExistingColors(Species species = null)
+        internal void ResetExistingColors(string speciesBlueprintPath = null)
         {
-            if (species == null)
+            if (speciesBlueprintPath == null)
                 _existingColors.Clear();
-            else if (!string.IsNullOrEmpty(species.blueprintPath))
-                _existingColors.Remove(species.blueprintPath);
+            else if (!string.IsNullOrEmpty(speciesBlueprintPath))
+                _existingColors.Remove(speciesBlueprintPath);
         }
 
         /// <summary>
@@ -549,7 +605,7 @@ namespace ARKBreedingStats.Library
                 infoText += $"{(infoText == null ? null : "\n")}These colors are new in their region: {string.Join(", ", newRegionColors)}.";
             }
 
-            infoText = infoText == null ? "No new colors" : infoText;
+            infoText = infoText ?? "No new colors";
 
             return results;
         }
@@ -569,6 +625,55 @@ namespace ARKBreedingStats.Library
             /// The color does not exist on any region on any creature of that species.
             /// </summary>
             ColorIsNew
+        }
+
+        public string Game
+        {
+            get => _game;
+            set
+            {
+                _game = value;
+                switch (value)
+                {
+                    case Ark.Asa:
+                        if (modIDs == null) modIDs = new List<string>();
+                        if (!modIDs.Contains(Ark.Asa))
+                        {
+                            modIDs.Insert(0, Ark.Asa);
+                            modListHash = 0; // making sure the mod values are reloaded when checked
+                        }
+                        break;
+                    default:
+                        // non ASA
+                        if (modIDs == null) return;
+                        ModList.RemoveAll(m => m.id == Ark.Asa);
+                        if (modIDs.Remove(Ark.Asa))
+                            modListHash = 0;
+                        break;
+                }
+            }
+        }
+
+        public Dictionary<string, int> GetCreatureCountBySpecies(bool recalculate = false)
+        {
+            if (_creatureCountBySpecies == null || recalculate)
+            {
+                _creatureCountBySpecies = creatures.Where(c => !c.flags.HasFlag(CreatureFlags.Placeholder)).GroupBy(c => c.speciesBlueprint)
+                    .ToDictionary(g => g.Key, g => g.Count());
+            }
+
+            return _creatureCountBySpecies;
+        }
+
+        /// <summary>
+        /// Returns total creature count. Ignoring placeholders.
+        /// </summary>
+        /// <returns></returns>
+        public int GetTotalCreatureCount()
+        {
+            if (_totalCreatureCount == -1)
+                _totalCreatureCount = creatures.Count(c => !c.flags.HasFlag(CreatureFlags.Placeholder));
+            return _totalCreatureCount;
         }
     }
 }

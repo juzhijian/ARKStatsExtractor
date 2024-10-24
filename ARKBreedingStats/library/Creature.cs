@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using ARKBreedingStats.library;
 
 namespace ARKBreedingStats.Library
 {
@@ -25,6 +26,8 @@ namespace ARKBreedingStats.Library
         public int[] levelsWild;
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int[] levelsDom;
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public int[] levelsMutated;
 
         /// <summary>
         /// The taming effectiveness (0: 0, 1: 100 %).
@@ -40,15 +43,43 @@ namespace ARKBreedingStats.Library
 
         public double[] valuesBreeding;
         public double[] valuesDom;
+
         /// <summary>
-        /// Indices of stats that are top for that species in the creatureCollection
+        /// Set a stat index to a top stat or not for that species in the creatureCollection.
         /// </summary>
-        public bool[] topBreedingStats;
-        public short topStatsCount;
+        public void SetTopStat(int statIndex, bool isTopStat) =>
+            _topBreedingStatIndices = (isTopStat ? _topBreedingStatIndices | (1 << statIndex) : _topBreedingStatIndices & ~(1 << statIndex));
+
         /// <summary>
-        /// topStatCount with all stats (regardless of considerStatHighlight[]) and without torpor (for breedingPlanner)
+        /// Returns if a stat index is a top stat for that species in the creatureCollection.
         /// </summary>
-        public short topStatsCountBP;
+        public bool IsTopStat(int statIndex) => (_topBreedingStatIndices & (1 << statIndex)) != 0;
+
+        public void ResetTopStats() => _topBreedingStatIndices = 0;
+        private int _topBreedingStatIndices; // bit flags if a stat index is a top stat
+
+        /// <summary>
+        /// Number of top stats that are considered in the library.
+        /// </summary>
+        public byte topStatsConsideredCount;
+
+        /// <summary>
+        /// Set a stat index to a top mutation stat or not for that species in the creatureCollection.
+        /// </summary>
+        public void SetTopMutationStat(int statIndex, bool isTopMutationStat) =>
+            _topMutationStatIndices = (isTopMutationStat ? _topMutationStatIndices | (1 << statIndex) : _topMutationStatIndices & ~(1 << statIndex));
+
+        /// <summary>
+        /// Returns if a stat index is a top mutation stat for that species in the creatureCollection.
+        /// </summary>
+        public bool IsTopMutationStat(int statIndex) => (_topMutationStatIndices & (1 << statIndex)) != 0;
+        public void ResetTopMutationStats() => _topMutationStatIndices = 0;
+        private int _topMutationStatIndices; // bit flags if a stat index is a top mutation stat
+
+        /// <summary>
+        /// topStatCount with all stats (regardless of considerStatHighlight[]) and without torpor (for breeding planner)
+        /// </summary>
+        public byte topStatsCountBP;
         /// <summary>
         /// True if it has some topBreedingStats and if it's male, no other male has more topBreedingStats.
         /// </summary>
@@ -166,8 +197,8 @@ namespace ARKBreedingStats.Library
         {
             set
             {
-                if (growingPaused && value != null)
-                    growingLeft = value.Value.Subtract(DateTime.Now);
+                if (growingPaused)
+                    growingLeft = value?.Subtract(DateTime.Now) ?? TimeSpan.Zero;
                 else
                     _growingUntil = value == null || value <= DateTime.Now ? null : value;
             }
@@ -202,9 +233,18 @@ namespace ARKBreedingStats.Library
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public List<string> tags = new List<string>();
 
+        [JsonProperty("traits", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public List<CreatureTrait> Traits;
+
+        /// <summary>
+        /// Used to display the creature's position in a list.
+        /// </summary>
+        public int ListIndex;
+
         public Creature() { }
 
-        public Creature(Species species, string name, string owner = null, string tribe = null, Sex sex = Sex.Unknown, int[] levelsWild = null, int[] levelsDom = null, double tamingEff = 0, bool isBred = false, double imprinting = 0, int? levelStep = null)
+        public Creature(Species species, string name, string owner = null, string tribe = null, Sex sex = Sex.Unknown,
+            int[] levelsWild = null, int[] levelsDom = null, int[] levelsMutated = null, double tamingEff = 0, bool isBred = false, double imprinting = 0, int? levelStep = null)
         {
             Species = species;
             this.name = name ?? string.Empty;
@@ -213,6 +253,7 @@ namespace ARKBreedingStats.Library
             this.sex = sex;
             this.levelsWild = levelsWild;
             this.levelsDom = levelsDom ?? new int[Stats.StatsCount];
+            this.levelsMutated = levelsMutated;
             this.isBred = isBred;
             if (isBred)
             {
@@ -246,11 +287,12 @@ namespace ARKBreedingStats.Library
         /// Creates a placeholder creature with the given ArkId, which have to be imported
         /// </summary>
         /// <param name="arkId">ArkId from an imported source (no user input)</param>
-        public Creature(long arkId)
+        public Creature(long arkId, Species species)
         {
             ArkId = arkId;
             ArkIdImported = true;
             guid = Utils.ConvertArkIdToGuid(arkId);
+            Species = species;
             flags = CreatureFlags.Placeholder;
         }
 
@@ -319,7 +361,7 @@ namespace ARKBreedingStats.Library
         /// <summary>
         /// The total level without domesticate levels, i.e. the torpidity level + 1.
         /// </summary>
-        public int LevelHatched => (levelsWild?[Stats.Torpidity] ?? 0) + 1;
+        public int LevelHatched => (levelsWild?[Stats.Torpidity] ?? 0) + 1 - (flags.HasFlag(CreatureFlags.MutagenApplied) ? isBred ? Ark.MutagenLevelUpsBred : Ark.MutagenLevelUpsNonBred : 0);
 
         /// <summary>
         /// The total current level inclusive domesticate levels.
@@ -382,6 +424,7 @@ namespace ARKBreedingStats.Library
                 motherGuid = mother?.guid ?? Guid.Empty;
             }
         }
+
         public Creature Father
         {
             get => father;
@@ -403,13 +446,11 @@ namespace ARKBreedingStats.Library
                 || flags.HasFlag(CreatureFlags.Placeholder))
                 return;
 
-            if (topBreedingStats == null) topBreedingStats = new bool[Stats.StatsCount];
-
-            short c = 0, cBP = 0;
+            byte c = 0, cBP = 0;
             onlyTopConsideredStats = true;
             for (int s = 0; s < Stats.StatsCount; s++)
             {
-                if (topBreedingStats[s])
+                if (IsTopStat(s))
                 {
                     if (s != Stats.Torpidity)
                         cBP++;
@@ -421,7 +462,7 @@ namespace ARKBreedingStats.Library
                     onlyTopConsideredStats = false;
                 }
             }
-            topStatsCount = c;
+            topStatsConsideredCount = c;
             topStatsCountBP = cBP;
         }
 
@@ -436,8 +477,8 @@ namespace ARKBreedingStats.Library
             InitializeArrays();
             for (int s = 0; s < Stats.StatsCount; s++)
             {
-                valuesBreeding[s] = StatValueCalculation.CalculateValue(Species, s, levelsWild[s], 0, true, 1, 0);
-                valuesDom[s] = StatValueCalculation.CalculateValue(Species, s, levelsWild[s], levelsDom[s], true, tamingEff, imprintingBonus);
+                valuesBreeding[s] = StatValueCalculation.CalculateValue(Species, s, levelsWild[s], levelsMutated?[s] ?? 0, 0, true, 1, 0);
+                valuesDom[s] = StatValueCalculation.CalculateValue(Species, s, levelsWild[s], levelsMutated?[s] ?? 0, levelsDom[s], true, tamingEff, imprintingBonus);
             }
         }
 
@@ -520,12 +561,21 @@ namespace ARKBreedingStats.Library
         /// <summary>
         /// Maturation of this creature, 0: baby, 1: adult.
         /// </summary>
-        public double Maturation => Species?.breeding == null || growingUntil == null ? 1 : 1 - growingUntil.Value.Subtract(DateTime.Now).TotalSeconds / Species.breeding.maturationTimeAdjusted;
+        public double Maturation
+        {
+            get => Species?.breeding == null || growingUntil == null
+                    ? 1
+                    : 1 - growingUntil.Value.Subtract(DateTime.Now).TotalSeconds /
+                    Species.breeding.maturationTimeAdjusted;
+            set => growingUntil = Species?.breeding == null
+                ? default(DateTime?)
+                : DateTime.Now.AddSeconds(Species.breeding.maturationTimeAdjusted * (1 - value));
+        }
 
         [OnDeserialized]
         private void Initialize(StreamingContext ct)
         {
-            InitializeArkInGame();
+            InitializeArkIdInGame();
             if (flags.HasFlag(CreatureFlags.Placeholder)) return;
             InitializeArrays();
         }
@@ -533,14 +583,13 @@ namespace ARKBreedingStats.Library
         /// <summary>
         /// Set the string of ArkIdInGame depending on the real ArkId or the user input number.
         /// </summary>
-        internal void InitializeArkInGame() => ArkIdInGame = ArkIdImported ? Utils.ConvertImportedArkIdToIngameVisualization(ArkId) : ArkId.ToString();
+        internal void InitializeArkIdInGame() => ArkIdInGame = ArkIdImported ? Utils.ConvertImportedArkIdToIngameVisualization(ArkId) : ArkId.ToString();
 
         private void InitializeArrays()
         {
             if (levelsDom == null) levelsDom = new int[Stats.StatsCount];
             if (valuesBreeding == null) valuesBreeding = new double[Stats.StatsCount];
             if (valuesDom == null) valuesDom = new double[Stats.StatsCount];
-            if (topBreedingStats == null) topBreedingStats = new bool[Stats.StatsCount];
         }
 
         /// <summary>
@@ -557,13 +606,20 @@ namespace ARKBreedingStats.Library
             flags = (flags & ~CreatureFlags.Mutated) | (Mutations > 0 ? CreatureFlags.Mutated : CreatureFlags.None);
         }
 
+        public void AddTrait(CreatureTrait trait)
+        {
+            if (Traits == null)
+                Traits = new List<CreatureTrait> { trait };
+            else Traits.Add(trait);
+        }
+
         /// <summary>
         /// Calculates the pretame wild level. This value can be off due to wrong inputs due to ingame rounding.
         /// </summary>
         /// <param name="postTameLevel"></param>
         /// <param name="tamingEffectiveness"></param>
         /// <returns></returns>
-        internal static int CalculatePreTameWildLevel(int postTameLevel, double tamingEffectiveness) => (int)Math.Ceiling(postTameLevel / (1 + tamingEffectiveness / 2));
+        internal static int CalculatePreTameWildLevel(int postTameLevel, double tamingEffectiveness) => (int)Math.Ceiling(Math.Round(postTameLevel / (1 + tamingEffectiveness / 2), 6));
     }
 
     public enum Sex

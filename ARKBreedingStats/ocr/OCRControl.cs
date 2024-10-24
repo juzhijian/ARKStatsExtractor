@@ -590,7 +590,7 @@ namespace ARKBreedingStats.ocr
         private void BtNewOcrConfig_Click(object sender, EventArgs e)
         {
             var currentOcrConfig = ArkOcr.Ocr.ocrConfig;
-            ArkOcr.Ocr.ocrConfig = new OcrTemplate();
+            ArkOcr.Ocr.ocrConfig = new OcrTemplate(true);
             if (SaveOcrFileAs()) return;
 
             // user doesn't want to create new config, reset to old one
@@ -739,6 +739,7 @@ namespace ARKBreedingStats.ocr
 
         private void nudResizing_ValueChanged(object sender, EventArgs e)
         {
+            if (ArkOcr.Ocr.ocrConfig == null) return;
             ArkOcr.Ocr.ocrConfig.resize = (double)nudResizing.Value;
             UpdateResizeResultLabel();
         }
