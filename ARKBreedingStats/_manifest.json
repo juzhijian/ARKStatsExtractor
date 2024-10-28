@@ -12,7 +12,7 @@
       "Name": "Species Images",
       "Author": "cadaei, Myrmecoleon, coldino",
       "Description": "Download this package to have a visualization for the colors of creatures (~21 MB), uncheck if you don't want to download these files.",
-      "Url": "https://github.com/juzhijian/ARKStatsExtractor/raw/master/speciesImages/speciesImages.zip",
+      "Url": "https://hub.llll.host/juzhijian/ARKStatsExtractor/raw/master/speciesImages/speciesImages.zip",
       "LocalPath": "images/speciesImages",
       "IsFolder": true,
       "Selectable": true,
@@ -23,7 +23,7 @@
       "Category": "Name Pattern Templates",
       "Name": "Name Pattern Templates",
       "Description": "Templates for naming patterns",
-      "Url": "https://github.com/cadon/ARKStatsExtractor/raw/master/json/namePatternTemplates.json",
+      "Url": "https://hub.llll.host/cadon/ARKStatsExtractor/raw/master/json/namePatternTemplates.json",
       "LocalPath": "json/namePatternTemplates.json",
       "version": "2021.5.11"
     }

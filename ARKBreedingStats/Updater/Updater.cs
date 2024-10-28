@@ -21,7 +21,7 @@ namespace ARKBreedingStats.Updater
         private const string ReleasesFeedUrl = "https://api.github.com/repos/cadon/ARKStatsExtractor/releases/latest";
         private const string ManifestUrl = MasterRawUrl + "ARKBreedingStats/_manifest.json";
         internal const string UpdaterExe = "asb-updater.exe";
-        private const string ObeliskUrl = "https://raw.githubusercontent.com/arkutils/Obelisk/master/data/asb/";
+        private const string ObeliskUrl = "https://raw.llll.host/arkutils/Obelisk/master/data/asb/";
 
         #region main program
 

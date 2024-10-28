@@ -22,7 +22,7 @@ namespace ARKBreedingStats
                 noticeFileName);
             TbDependencies.Text = File.Exists(dependenciesFilePath)
                 ? File.ReadAllText(dependenciesFilePath)
-                : "see " + "https://raw.githubusercontent.com/cadon/ARKStatsExtractor/dev/ARKBreedingStats/" + noticeFileName;
+                : "see " + "https://raw.llll.host/cadon/ARKStatsExtractor/dev/ARKBreedingStats/" + noticeFileName;
         }
 
         #region Assemblyattributaccessoren
