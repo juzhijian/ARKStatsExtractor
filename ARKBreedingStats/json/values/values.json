@@ -25032,7 +25032,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Thorny Dragon",
+			"name": "棘蜥",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Gauntlet/Volcanic/SpineyLizard_Character_BP_Gauntlet.SpineyLizard_Character_BP_Gauntlet",
 			"variants": [ "Gauntlet", "创世纪", "Mission", "Volcano" ],
 			"fullStatsRaw": [
@@ -37696,7 +37696,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Thorny Dragon",
+			"name": "棘蜥",
 			"blueprintPath": "/Game/Genesis/Dinos/MissionVariants/Retrieve/Volcanic/SpineyLizard_Character_BP_Retrieve.SpineyLizard_Character_BP_Retrieve",
 			"variants": [ "创世纪", "Mission", "Retrieve", "Volcano" ],
 			"fullStatsRaw": [
@@ -50300,7 +50300,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Thorny Dragon",
+			"name": "棘蜥",
 			"blueprintPath": "/Game/Genesis2/Dinos/Summoner/SummonedDinos/SpineyLizard_Character_BP_Summoned.SpineyLizard_Character_BP_Summoned",
 			"variants": [ "创世纪2", "Summoned" ],
 			"fullStatsRaw": [
@@ -54557,7 +54557,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Thorny Dragon",
+			"name": "棘蜥",
 			"blueprintPath": "/Game/Genesis2/Missions/Hunt/Dinos/SpineyLizard_Character_BP_Hunt.SpineyLizard_Character_BP_Hunt",
 			"variants": [ "创世纪2", "Hunt", "Mission" ],
 			"fullStatsRaw": [
@@ -61591,7 +61591,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Hesperornis",
+			"name": "黄昏鸟",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Hesperornis_Character_BP_STA.Hesperornis_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -67165,7 +67165,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Ice Wyvern",
+			"name": "寒冰飞龙",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/Ragnarok_Wyvern_Override_Ice_STA.Ragnarok_Wyvern_Override_Ice_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"isFlyer": true,
@@ -69505,7 +69505,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Thorny Dragon",
+			"name": "棘蜥",
 			"blueprintPath": "/Game/Genesis2/Missions/ModularMission/Gauntlet2/STA/Dinos/SpineyLizard_Character_BP_STA.SpineyLizard_Character_BP_STA",
 			"variants": [ "Gauntlet2", "创世纪2", "Mission" ],
 			"fullStatsRaw": [
@@ -84626,7 +84626,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Ice Wyvern",
+			"name": "寒冰飞龙",
 			"blueprintPath": "/Game/Mods/LostIsland/Assets/Dinos/IceWyvern/Ragnarok_Wyvern_Override_Ice.Ragnarok_Wyvern_Override_Ice",
 			"variants": [ "LostIsland", "Unused" ],
 			"isFlyer": true,
@@ -85418,7 +85418,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Ice Wyvern",
+			"name": "寒冰飞龙",
 			"blueprintPath": "/Game/Mods/Ragnarok/Custom_Assets/Dinos/Wyvern/Ice_Wyvern/Ragnarok_Wyvern_Override_Ice.Ragnarok_Wyvern_Override_Ice",
 			"variants": [ "Ragnarok" ],
 			"isFlyer": true,
@@ -96712,7 +96712,7 @@
 			"displayedStats": 927
 		},
 		{
-			"name": "Hesperornis",
+			"name": "黄昏鸟",
 			"blueprintPath": "/Game/PrimalEarth/Dinos/Hesperornis/Hesperornis_Character_BP.Hesperornis_Character_BP",
 			"fullStatsRaw": [
 				[ 95, 0.2, 0.27, 0.5, 0 ],
@@ -112794,7 +112794,7 @@
 			"displayedStats": 919
 		},
 		{
-			"name": "Thorny Dragon",
+			"name": "棘蜥",
 			"blueprintPath": "/Game/ScorchedEarth/Dinos/SpineyLizard/SpineyLizard_Character_BP.SpineyLizard_Character_BP",
 			"variants": [ "ScorchedEarth" ],
 			"fullStatsRaw": [
